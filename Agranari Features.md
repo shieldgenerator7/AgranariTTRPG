@@ -20,7 +20,9 @@ Permanent Stats
 
 You can see in the dark. Darkvision Penetration increases the darkness threshold at which you can still see. Darkvision Range increases how far out you can see in the dark. Light Resistance decreases the amount of Light damage you take when suddenly transitioning from dark to light areas.
 
-# aDirada’s Lie
+## aDirada’s Lie
+
+Manipulate reality.
 
 Permanent Stats
 
@@ -40,6 +42,8 @@ Each lie is made up of a series of fibs. Fibs are tiny changes that lead up to t
 Most deers have two hoof hands, each with their own lying middle hoof. This means that they can lie with their left hoof or their right hoof.
 
 ## Heart Fire
+
+Will yourself to succeed and set things on fire.
 
 Permanent Stats
 
@@ -68,20 +72,58 @@ Some features you can learn over time. The following features can be bought with
 
 These features often have requirements that must be met in order to purchase. When a requirement mentions a stat, its variance stat also counts towards it. For example, if a feature requires 50+ Strength, and you have 25 base Strength and 30 Strength Variance, you have met the requirements for purchasing the stats.
 
-If the requirement says 50+ in a specific type of weapon, that weapon’s Accuracy, Accuracy Variance, and Damage Variance must add up to the requirement. You cannot combine multiple weapons of the same type to meet this requirement; you must have at least 1 weapon of that type that meets the requirement.
+If the requirement says 50+ in a specific type of weapon, that weapon’s Accuracy, Accuracy Variance, Damage Variance, and Crit Factor must add up to the requirement. You cannot combine multiple weapons of the same type to meet this requirement; you must have at least 1 weapon of that type that meets the requirement.
 
 ## Hard Swinger
+
+Increase your melee Bludgeoning damage by adding your Strength.
 
 100 XP
 
 Requires
 
 -   50+ Strength
--   50+ in a Bludgeoning weapon
+-   50+ in a Bludgeoning melee weapon
 
 Whenever you make a melee attack with a Bludgeoning weapon, you may make a Strength check and add its value to your Damage value. If you do, this attack’s recovery time cost increases by 1.
 
+## Piercer
+
+Wound, Stun, and knock out an enemy when you crit with a Piercing weapon.
+
+100 XP
+
+Requires
+
+-   50+ in a Piercing weapon
+
+Trainable Stats
+
+-   Pierce Constitution Penalty (default: 1)
+-   Pierce Constitution Penalty Variance (default: 0)
+
+Whenever you attack an enemy with a Piercing weapon and crit, you may have your weapon pierce straight through their body. If you do, the damage value is doubled for the enemy for the purpose of Durability checks and Pain Tolerance checks, they get a penalty to their Constitution checks, and the weapon requires an action to remove, with a time cost of 1. The Constitution check penalty is equal to your Pierce Constitution Penalty stat, stacks, and lasts until the wound is healed. If this attack didn’t cause a wound, the penalty instead lasts for 1 second.
+
+## Slasher
+
+Stun an enemy when you hit with a Slashing weapon.
+
+100 XP
+
+Requires
+
+-   50+ in a Slashing weapon
+
+Trainable Stats
+
+-   Slashing Stun Factor (default: x1.5)
+-   Slashing Stun Duration (default: 1)
+
+Whenever you attack an enemy with a Slashing weapon and hit, the damage you deal is multiplied for the enemy for the purpose of rolling for Pain Tolerance. The multiplication factor is equal to your Slashing Stun Factor. If the enemy fails their Pain Tolerance roll, all actions they’re channeling are interrupted, and they become stunned for a duration equal to your Slashing Stun Duration.
+
 ## Sharpshooter
+
+Increase your crit damage on ranged weapons.
 
 100 XP
 
@@ -92,11 +134,13 @@ Requires
 
 Trainable Stats
 
--   Ranged Crit Factor (default: 1 per weapon)
+-   Ranged Crit Factor (default: x1.01 per weapon)
 
 Whenever you crit with a ranged weapon, you also multiply your damage by your Ranged Crit Factor in that weapon.
 
 ## Climbing
+
+Climb steep slopes and vertical faces.
 
 100 XP
 
@@ -111,3 +155,101 @@ Trainable Stats
 -   Climbing Proficiency
 
 You can climb up steep slopes and vertical faces. Climb Speed determines how far you can get in a single second. Climb Speed Variance determines what to roll for when you want to climb further in a second. Climbing Proficiency is how well you can climb, and allows you to climb surfaces that are harder to climb.
+
+## Swimming
+
+Swim in water.
+
+100 XP
+
+Requires
+
+-   15+ Strength
+
+Trainable Stats
+
+-   Swim Speed (default: Speed \* 0.2 m/s)
+-   Swim Speed Variance (default: 0 m/s)
+-   Swim Proficiency
+
+You can swim in water at the surface. Swim Speed is how far you can swim in one second. Swim Speed Variance is what you roll when you want to swim further in one second. Swim Proficiency is how good you are at swimming.
+
+## Flying
+
+Fly in the air.
+
+Requires
+
+-   Wings
+
+Trainable Stats
+
+-   Fly Speed (default: Speed \* 0.2 m/s)
+-   Fly Speed Variance (default: 0 m/s)
+-   Fly Proficiency
+
+You can fly. Your Fly Speed is how far you can fly in one second. You can roll your Fly Speed Variance to Fly further in that same second. Your Fly Proficiency determines how good you are at flying.
+
+## Offensive Duelist
+
+Increase Accuracy when you crit.
+
+200 XP
+
+Requires
+
+-   100+ XP in a weapon
+
+Trainable Stats
+
+-   Accuracy Bonus (default: 1)
+
+Whenever you make a melee attack on an enemy and crit, you gain a bonus to Accuracy when you attack that enemy. This bonus is equal to your Accuracy Bonus stat, and stacks. This bonus lasts until the end of combat.
+
+## Defensive Duelist
+
+Increase chance of dodging when you dodge.
+
+200 XP
+
+Requires
+
+-   100+ XP in a weapon
+
+Trainable Stats
+
+-   Dodge Bonus (default: 1)
+
+Whenever you successfully dodge an enemy’s melee attack, you get a bonus to your Dodge stat when dodging melee attacks from that enemy. The bonus is equal to your Dodge Bonus stat, and stacks. This bonus lasts until the end of combat.
+
+## Patient Shot
+
+Increase Accuracy by waiting.
+
+200 XP
+
+Requires
+
+-   100+ XP in a ranged weapon
+
+Trainable Stats
+
+-   Patient Accuracy Factor (default: x0.1)
+
+As an action, you may prepare to shoot at an enemy. Make an Accuracy check. You get a bonus to Accuracy on your next attack with that weapon against that enemy. The bonus is equal to the result of your Accuracy check times your Patient Accuracy Factor stat. This bonus stacks and lasts until you can no longer sense that enemy, combat ends, or you do something other than channel Patient Shot. This action requires focus.
+
+## Camper
+
+Hide in bushes.
+
+100 XP
+
+Requires
+
+-   50+ in Stealth
+
+Trainable Stats
+
+-   Stealth Bush Bonus (default: 1)
+
+When you hide behind cover or bushes, gain a Stealth bonus equal to your Stealth Bush Bonus stat. This bonus only applies to Stealth against being detected by the Vision sense. This bonus lasts until you move.

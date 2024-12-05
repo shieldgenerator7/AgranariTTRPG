@@ -73,6 +73,13 @@ This is more of damage reduction than attack blocking, so it’s not really like
 
 ## Attacks
 
+Trainable Stats
+
+-   Accuracy
+-   Accuracy Variance
+-   Damage Variance
+-   Crit Factor
+
 Each character has a varying proficiency with each kind of weapon. The more they use that weapon, the more proficient they are with it. By default, every character starts with 0 proficiency in every weapon.
 
 When a player is at least passably proficient with a weapon, they gain two stats: Accuracy and Accuracy Variance. Accuracy is a flat value that increases the chance to hit. Accuracy Variance is a die roll, usually similar in value to Accuracy.
@@ -81,6 +88,8 @@ Example: A cat fighter is proficient with a sword, with 37 Accuracy and 27 Accur
 
 Damage is determined by the weapon mostly, with its Damage stat. Each character will also have a Damage Variance stat to add to that, one for each weapon.
 
+If a player rolls an Accuracy value at least twice as high as the enemy’s Dodge value, they crit. When they crit, their damage is multiplied by their Crit Factor for that weapon.
+
 As a character improves their mastery with a weapon, they get points to spend on their stats for that weapon.
 
 | Stat              | Point Cost |
@@ -88,6 +97,7 @@ As a character improves their mastery with a weapon, they get points to spend on
 | Accuracy          | 7          |
 | Accuracy Variance | 2          |
 | Damage Variance   | 4          |
+| Crit Factor       | 2          |
 
 I haven’t quite figured out yet how these skill upgrade points are awarded.
 

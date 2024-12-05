@@ -234,9 +234,9 @@ Requires
 
 Trainable Stats
 
--   Patient Accuracy Factor (default: x0.1)
+-   Patient Accuracy Factor (default: x0.1 per weapon)
 
-As an action, you may prepare to shoot at an enemy. Make an Accuracy check. You get a bonus to Accuracy on your next attack with that weapon against that enemy. The bonus is equal to the result of your Accuracy check times your Patient Accuracy Factor stat. This bonus stacks and lasts until you can no longer sense that enemy, combat ends, or you do something other than channel Patient Shot. This action requires focus.
+As an action, you may prepare to shoot at an enemy. Make an Accuracy check. You get a bonus to Accuracy on your next ranged attack with that weapon against that enemy. The bonus is equal to the result of your Accuracy check times your Patient Accuracy Factor stat. This bonus stacks and lasts until you can no longer sense that enemy, combat ends, or you do something other with your hands other than channel Patient Shot. This action requires focus and has a time cost of 1 second.
 
 ## Camper
 

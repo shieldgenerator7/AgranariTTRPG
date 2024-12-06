@@ -85,7 +85,11 @@ Requires
 -   50+ Strength
 -   50+ in a Bludgeoning melee weapon
 
-Whenever you make a melee attack with a Bludgeoning weapon, you may make a Strength check and add its value to your Damage value. If you do, this attack’s recovery time cost increases by 1.
+Trainable Stats
+
+-   Hard Swing Strength Factor (default: x0.1 per weapon)
+
+Whenever you make a melee attack with a Bludgeoning weapon, you may make a Strength check, multiply it by your Hard Swing Strength Factor stat, and add its value to your Damage value. If you do, this attack’s recovery time cost increases by 1.
 
 ## Piercer
 

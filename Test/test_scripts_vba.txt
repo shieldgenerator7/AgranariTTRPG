@@ -45,6 +45,6 @@ Range("F5:F12").Value = ""
 End Sub
 Sub ClearHistory()
 
-Range("N4:S200").Value = ""
+Range("M4:R200").Value = ""
 
 End Sub

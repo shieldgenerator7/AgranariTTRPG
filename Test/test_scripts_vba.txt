@@ -48,3 +48,22 @@ Sub ClearHistory()
 Range("M4:R200").Value = ""
 
 End Sub
+
+Sub AddWillPower(knobCell As String, benchMarkCell As String, RacerCell As String)
+
+Dim knob As Range
+Set knob = Range(knobCell)
+Dim benchMark As Double
+benchMark = Range(benchMarkCell).Value
+
+While benchMark > Range(RacerCell).Value
+    knob.Value = knob.Value + 1
+Wend
+
+End Sub
+
+Sub WP_Accuracy()
+
+Call AddWillPower("F5", "I7", "I5")
+
+End Sub

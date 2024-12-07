@@ -39,6 +39,12 @@ Range("M4:R200").Value = ""
 
 End Sub
 
+Sub ClearWounds()
+
+Range("T4:X200").Value = ""
+
+End Sub
+
 Sub AddWillPower(knobCell As String, benchMarkCell As String, RacerCell As String)
 
 Dim knob As Range

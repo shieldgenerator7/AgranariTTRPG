@@ -302,6 +302,14 @@ Some species have special actions they can do with their mouth. For example, wol
 
 A creature can make a jaw action even if they already used actions for both their hands, leg, and tail.
 
+## Special Rules
+
+### “Flanking”
+
+For optimally dodging, you need to be in a square with nothing around you, so you have room to dodge around. For each of the cardinal directions around you that is occupied, you get a -10% penalty to your Dodge value. This means you can still dodge even when completely surrounded, but also that surrounding an enemy greatly increases the chances of you hitting.
+
+This is similar to the flanking rules in DnD.
+
 # Conditions
 
 Players can be in various states.
@@ -312,8 +320,14 @@ On the ground. Basically the same as in DnD. Enemies have advantage on attacks w
 
 ## Unconscious
 
-The player can’t move or take any actions. They automatically fail Dodge checks and Strength checks. They don’t have to roll for Pain Tolerance.
+The player can’t move or take any actions. They automatically fail Dodge checks and Strength checks. They don’t have to roll for Pain Tolerance or Constitution when they take damage.
 
 ## Grappled
 
 Grappled is not really a condition. The grappler has to be more or less actively trying to effect your movements for this to do anything.
+
+## Winced
+
+This happens when a player takes damage above their Pain Tolerance value.
+
+The player can’t take meaningful actions until they roll a Pain Tolerance value above the damage taken. Healing the wound also removes this condition.

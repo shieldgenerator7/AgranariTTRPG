@@ -134,6 +134,10 @@ Range("M" & row).Value = time
 'Select Attacker Cell
 Range("N" & row).Select
 
+'Clear WP
+Call ClearStats
+Range("E5:E12").Value = ""
+
 End Sub
 
 
@@ -166,6 +170,10 @@ Range("M" & row).Value = time
 
 'Select Attacker Cell
 Range("N" & row).Select
+
+'Clear WP
+Call ClearStats
+Range("E5:E12").Value = ""
 
 End Sub
 

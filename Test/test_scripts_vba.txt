@@ -70,3 +70,89 @@ End Sub
 Sub WP_Constitution()
 Call AddWillPower("F12", "I9", "I12")
 End Sub
+
+
+
+
+Sub WoundAdd()
+
+'Find Row
+Dim row As Integer
+row = 4
+While Range("T" & row).Value <> ""
+    row = row + 1
+Wend
+
+'Get Wound Info
+Dim charName As String
+charName = Range("A10").Value
+Dim bodyPart As String
+bodyPart = Worksheets("Wound Generator").Range("A3")
+Dim side As String
+side = Worksheets("Wound Generator").Range("B3")
+Dim stat As String
+stat = Worksheets("Wound Generator").Range("C3")
+Dim penalty As Double
+penalty = Range("I9").Value - Range("I10").Value
+
+'Add Wound
+Range("T" & row).Value = charName
+Range("U" & row).Value = bodyPart
+Range("V" & row).Value = side
+Range("W" & row).Value = stat
+Range("X" & row).Value = penalty
+
+End Sub
+
+
+Sub ProgressTime()
+
+Dim lastTime As Double
+lastTime = 0
+
+'Find Row
+Dim row As Integer
+row = 4
+While Range("M" & row).Value <> ""
+    lastTime = Range("M" & row).Value
+    row = row + 1
+Wend
+
+'Get Next Time
+Dim time As Double
+time = Int(lastTime) + 1
+
+'Write Out Time
+Range("M" & row).Value = time
+
+End Sub
+
+
+Sub NextTurn()
+
+Dim lastTime As Double
+lastTime = 0
+
+'Find Row
+Dim row As Integer
+row = 4
+While Range("M" & row).Value <> ""
+    lastTime = Range("M" & row).Value
+    row = row + 1
+Wend
+
+'Get Increment
+Dim increment As Double
+increment = 0.1
+If lastTime - Int(lastTime) >= 0.9 Then
+    increment = 0.01
+End If
+
+'Get Next Time
+Dim time As Double
+time = lastTime + increment
+
+'Write Out Time
+Range("M" & row).Value = time
+
+End Sub

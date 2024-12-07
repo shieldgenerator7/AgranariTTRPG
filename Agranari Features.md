@@ -342,11 +342,11 @@ Trainable Stats
 -   Area Damage Bonus (default: 1)
 -   Area Damage Bonus Variance (default: 1)
 
-When you make a melee weapon attack, instead of attacking a target, you may instead attack an area. The area must consist of spaces that you could reach with your weapon. The area is telegraphed to your opponents for 1 second until your next turn. At any point during your next turn, you may unleash the area attack, dealing undodgable damage to all creatures in the area. The damage is evenly divided among the creatures hit.
-
-You are allowed to move between declaring the attack and unleashing it, and you are allowed to hold it for as many turns as you like. However, while holding it, it requires the use of the limbs used to hold the weapon, meaning you can’t do anything else with those limbs in the mean time.
+When you make a melee weapon attack, instead of attacking a target, you may instead attack an area. The area must consist of spaces that you could reach with your weapon. The area is telegraphed to your opponents for 1 second until your next turn. At any point during your next turn, you may unleash the area attack, dealing undodgable damage to all creatures in the area. The damage is evenly divided among the spaces hit.
 
 When you make an area attack, you gain a bonus to your total damage equal to your Area Damage Bonus stat.
+
+You are allowed to move between declaring the attack and unleashing it, and you are allowed to hold it for as many turns as you like. However, while holding it, it requires the use of the limbs used to hold the weapon, meaning you can’t do anything else with those limbs in the meantime. After the area attack, your limbs involved in the attack need 2 seconds to recover.
 
 ## Slippery
 

@@ -168,3 +168,22 @@ Range("M" & row).Value = time
 Range("N" & row).Select
 
 End Sub
+
+
+Sub RecordRolls()
+
+'Find Row
+Dim row As Integer
+row = 4
+While Range("M" & row).Value <> ""
+    lastTime = Range("M" & row).Value
+    row = row + 1
+Wend
+row = row - 1
+
+'Record Values
+Range("P" & row).Value = Range("I9").Value
+Range("Q" & row).Value = Excel.WorksheetFunction.Sum(Range("F5"), Range("F8"))
+Range("R" & row).Value = Excel.WorksheetFunction.Sum(Range("F7"), Range("F10"), Range("F11"), Range("F12"))
+
+End Sub

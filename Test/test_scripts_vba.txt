@@ -8,16 +8,6 @@ Call RollValue(Range("A10").Value, "F17", "Durability Variance", "E10")
 Call RollValue(Range("A11").Value, "F19", "Pain Tolerance Variance", "E11")
 Call RollValue(Range("A12").Value, "F21", "Constitution Variance", "E12")
 
-'Dim sheetName As String
-'sheetName = Excel.WorksheetFunction.Lookup(Range("$A5"), Range("$A$18:$A$27"), Range("$B$18:$B$27"))
-'Range("A1").Value = sheetName
-'Range("B1").Value = Worksheets(sheetName).Range("C6")
-'Range("E5").Value = Rnd() * _
-    'Worksheets(sheetName).Range("C6") _
-    '- Excel.WorksheetFunction.SumIfs(Range("W:W"), Range("S:S"), Range("$A5"), Range("V:V"), "Dodge Variance")
-    '*INDIRECT("'"&LOOKUP($A5,$A$18:$A$27,$B$18:$B$27)&"'!C6")
-    '-Application.WorksheetFunction.SumIfs(Range("W:W"),Range("S:S"),Range("$A5"),Range("V:V"),Range("Dodge Variance"))
-
 End Sub
 
 

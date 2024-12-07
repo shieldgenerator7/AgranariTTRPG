@@ -1,0 +1,50 @@
+Sub Roll()
+
+Call RollValue(Range("A5").Value, "C6", "Accuracy Variance", "E5")
+Call RollValue(Range("A7").Value, "F15", "Dodge Variance", "E7")
+Call RollValue(Range("A8").Value, "E6", "Damage Variance", "E8")
+
+Call RollValue(Range("A10").Value, "F17", "Durability Variance", "E10")
+Call RollValue(Range("A11").Value, "F19", "Pain Tolerance Variance", "E11")
+Call RollValue(Range("A12").Value, "F21", "Constitution Variance", "E12")
+
+'Dim sheetName As String
+'sheetName = Excel.WorksheetFunction.Lookup(Range("$A5"), Range("$A$18:$A$27"), Range("$B$18:$B$27"))
+'Range("A1").Value = sheetName
+'Range("B1").Value = Worksheets(sheetName).Range("C6")
+'Range("E5").Value = Rnd() * _
+    'Worksheets(sheetName).Range("C6") _
+    '- Excel.WorksheetFunction.SumIfs(Range("W:W"), Range("S:S"), Range("$A5"), Range("V:V"), "Dodge Variance")
+    '*INDIRECT("'"&LOOKUP($A5,$A$18:$A$27,$B$18:$B$27)&"'!C6")
+    '-Application.WorksheetFunction.SumIfs(Range("W:W"),Range("S:S"),Range("$A5"),Range("V:V"),Range("Dodge Variance"))
+
+End Sub
+
+
+Sub RollValue(charName As String, source As String, stat As String, destination As String)
+
+If charName = "0" Then
+    Range(destination).Value = "0"
+    Exit Sub
+End If
+
+Dim sheetName As String
+sheetName = Excel.WorksheetFunction.Lookup(charName, Range("$A$18:$A$27"), Range("$B$18:$B$27"))
+
+Range(destination).Value = Rnd() * _
+    Worksheets(sheetName).Range(source) _
+    - Excel.WorksheetFunction.SumIfs(Range("W:W"), Range("S:S"), charName, Range("V:V"), stat)
+
+End Sub
+Sub ClearStats()
+
+Range("D5:D12").Value = ""
+Range("F5:F12").Value = ""
+
+
+End Sub
+Sub ClearHistory()
+
+Range("N4:S200").Value = ""
+
+End Sub

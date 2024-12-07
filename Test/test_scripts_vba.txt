@@ -53,7 +53,20 @@ Wend
 End Sub
 
 Sub WP_Accuracy()
-
 Call AddWillPower("F5", "I7", "I5")
-
+End Sub
+Sub WP_Dodge()
+Call AddWillPower("F7", "I5", "I7")
+End Sub
+Sub WP_Damage()
+Call AddWillPower("F8", "I10", "I9")
+End Sub
+Sub WP_Durability()
+Call AddWillPower("F10", "I9", "I10")
+End Sub
+Sub WP_PainTolerance()
+Call AddWillPower("F11", "I9", "I11")
+End Sub
+Sub WP_Constitution()
+Call AddWillPower("F12", "I9", "I12")
 End Sub

@@ -257,3 +257,128 @@ Trainable Stats
 -   Stealth Bush Bonus (default: 1)
 
 When you hide behind cover or bushes, gain a Stealth bonus equal to your Stealth Bush Bonus stat. This bonus only applies to Stealth against being detected by the Vision sense. This bonus lasts until you move.
+
+## Charger
+
+Increase your melee damage by running towards an enemy.
+
+200 XP
+
+Requirements:
+
+-   100+ in a melee weapon
+
+Trainable Stats
+
+-   Meters Traveled Factor (default: x0.1)
+
+When you move any amount of meters in a (relatively) straight line towards an enemy and then make a melee attack against them, you get a bonus to the Accuracy value and Damage value of that attack. The Accuracy bonus is equal to the attack’s Accuracy value multiplied by the number of meters you just traveled times your Meters Traveled Factor. The Damage bonus is equal to the attack’s Damage value multiplied by the number of meters you just traveled times your Meters Traveled Factor.
+
+## Standing Strike
+
+Increase your damage on enemies who just entered your range.
+
+200 XP
+
+Requirements:
+
+-   100+ Max Health
+-   100+ Resistances
+
+Trainable Stats
+
+-   Standing Strike Accuracy Bonus (default: 1)
+
+When an enemy enters your melee range, you may interrupt them with a melee attack of your own. You must have an action available for a melee attack to do so. For this attack, you gain a bonus to your Accuracy value equal to your Standing Strike Accuracy Bonus, and the damage counts as double for the enemy for the purposes of Pain Tolerance checks.
+
+## Undead Resolve
+
+Become practically unkillable.
+
+300 XP
+
+Requirements:
+
+-   100+ Max Health
+-   100+ Constitution
+
+Trainable Stats
+
+-   Constitution Willpower Factor (default x1.01)
+
+Your health can go below 0. When you make a Constitution check and your Constitution value is greater than your missing health, you don’t die, even if your health is below 0.
+
+Willpower you spend on Constitution checks gets additionally multiplied by your Constitution Willpower Factor stat.
+
+## Brawler
+
+Gain Dodge while near multiple enemies.
+
+300 XP
+
+Requirements:
+
+-   100+ Dodge
+
+Trainable Stats
+
+-   Nearby Enemy Dodge Bonus (default: 1)
+-   Nearby Enemy Dodge Bonus Variance (default: 1)
+
+For each enemy within 1 meter of you, you gain a bonus to your Dodge checks equal to your Nearby Enemy Dodge Bonus stat.
+
+## Area Attacker
+
+Make attacks that hit a whole area instead of single enemy.
+
+300 XP
+
+Requirements:
+
+-   150+ in a melee weapon
+
+Trainable Stats
+
+-   Area Damage Bonus (default: 1)
+-   Area Damage Bonus Variance (default: 1)
+
+When you make a melee weapon attack, instead of attacking a target, you may instead attack an area. The area must consist of spaces that you could reach with your weapon. The area is telegraphed to your opponents for 1 second until your next turn. At any point during your next turn, you may unleash the area attack, dealing undodgable damage to all creatures in the area. The damage is evenly divided among the creatures hit.
+
+You are allowed to move between declaring the attack and unleashing it, and you are allowed to hold it for as many turns as you like. However, while holding it, it requires the use of the limbs used to hold the weapon, meaning you can’t do anything else with those limbs in the mean time.
+
+When you make an area attack, you gain a bonus to your total damage equal to your Area Damage Bonus stat.
+
+## Slippery
+
+Dodge attacks and move agily.
+
+300 XP
+
+Requirements:
+
+-   150+ Dodge
+-   5+ Speed
+
+Trainable Stats:
+
+-   Slippery Dodge Bonus (default: 1)
+-   Slippery Dodge Bonus Variance (default: 1)
+
+Whenever an opponent attacks you, you may interrupt by moving 1 meter in any direction. You then gain a bonus to Dodge that attack. That bonus is equal to your Slippery Dodge Bonus stat.
+
+## Brute
+
+Deal massive damage by knocking enemies back.
+
+500 XP
+
+Requirements:
+
+-   200 in a melee weapon
+
+Trainable Stats:
+
+-   Brute Factor (default: x)
+-   Brute Knock Back Damage Factor (default: x1.1)
+
+When you deal damage to an enemy with a melee attack, you may force them away from you. The distance moved is equal to the attack’s Damage value divided by the enemy’s Durability value, then times your Strength check times your Brute Factor, divided by the enemy’s weight. Then the enemy takes damage equal to the distance they were knocked back multiplied by your Brute Knock Back Damage Factor stat.

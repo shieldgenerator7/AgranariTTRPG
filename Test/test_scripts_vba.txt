@@ -131,6 +131,9 @@ time = Int(lastTime) + 1
 'Write Out Time
 Range("M" & row).Value = time
 
+'Select Attacker Cell
+Range("N" & row).Select
+
 End Sub
 
 
@@ -160,5 +163,8 @@ time = lastTime + increment
 
 'Write Out Time
 Range("M" & row).Value = time
+
+'Select Attacker Cell
+Range("N" & row).Select
 
 End Sub

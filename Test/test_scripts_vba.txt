@@ -195,3 +195,23 @@ Range("Q" & row).Value = Excel.WorksheetFunction.Sum(Range("F5"), Range("F8"))
 Range("R" & row).Value = Excel.WorksheetFunction.Sum(Range("F7"), Range("F10"), Range("F11"), Range("F12"))
 
 End Sub
+
+
+
+Sub RollStat()
+
+'Get worksheet
+Dim worksheet As worksheet
+Set worksheet = Worksheets(Range("A15").Value)
+
+'Get stat vars
+Dim base As Double
+base = Excel.WorksheetFunction.SumIfs(worksheet.Range("F:F"), worksheet.Range("A:A"), Range("B15").Value)
+Dim variance As Double
+variance = Excel.WorksheetFunction.SumIfs(worksheet.Range("F:F"), worksheet.Range("A:A"), Range("C15").Value)
+
+'Roll
+Range("D15").Value = base & " + d" & variance
+Range("E15").Value = base + Rnd() * variance
+
+End Sub

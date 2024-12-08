@@ -204,6 +204,9 @@ Sub RollStat()
 Dim worksheet As worksheet
 Set worksheet = Worksheets(Range("A15").Value)
 
+'Input validation
+Range("C15").Value = Range("B15").Value & " Variance"
+
 'Get stat vars
 Dim base As Double
 base = Excel.WorksheetFunction.SumIfs(worksheet.Range("F:F"), worksheet.Range("A:A"), Range("B15").Value)

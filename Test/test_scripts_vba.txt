@@ -209,9 +209,20 @@ Dim base As Double
 base = Excel.WorksheetFunction.SumIfs(worksheet.Range("F:F"), worksheet.Range("A:A"), Range("B15").Value)
 Dim variance As Double
 variance = Excel.WorksheetFunction.SumIfs(worksheet.Range("F:F"), worksheet.Range("A:A"), Range("C15").Value)
+Dim factor As Double
+factor = 1
+
+If Range("G15").Value <> "" Then
+    factor = Excel.WorksheetFunction.SumIfs(worksheet.Range("F:F"), worksheet.Range("A:A"), Range("G15").Value)
+End If
 
 'Roll
+If Range("G15").Value = "" Then
 Range("D15").Value = base & " + d" & variance
 Range("E15").Value = base + Rnd() * variance
+Else
+    Range("D15").Value = "(" & base & " + d" & variance & ") x" & factor
+    Range("E15").Value = (base + Rnd() * variance) * factor
+End If
 
 End Sub

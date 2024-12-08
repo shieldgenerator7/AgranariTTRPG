@@ -221,11 +221,21 @@ End If
 
 'Roll
 If Range("G15").Value = "" Then
-Range("D15").Value = base & " + d" & variance
+Range("D15").Value = Round(base, 1) & " + d" & Round(variance, 1)
 Range("E15").Value = base + Rnd() * variance
 Else
-    Range("D15").Value = "(" & base & " + d" & variance & ") x" & factor
+    Range("D15").Value = "(" & Round(base, 1) & " + d" & Round(variance, 1) & ") x" & Round(factor, 1)
     Range("E15").Value = (base + Rnd() * variance) * factor
+End If
+
+End Sub
+
+
+
+Sub PlaceBonus()
+
+If ActiveCell.row <> 15 Then
+    ActiveCell.Value = Range("E15").Value
 End If
 
 End Sub

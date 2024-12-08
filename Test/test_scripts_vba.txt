@@ -235,7 +235,16 @@ End Sub
 Sub PlaceBonus()
 
 If ActiveCell.row <> 15 Then
-    ActiveCell.Value = Range("E15").Value
+    ActiveCell.Value = Range("E15").Value + Range("K15").Value
+    Range("K15").Value = ""
 End If
+
+End Sub
+
+
+
+Sub StoreBonus()
+
+Range("K15").Value = Range("K15").Value + Range("E15").Value
 
 End Sub

@@ -66,6 +66,22 @@ Ignite Range is essentially the range of your Heart Fire spells. At 0 range, you
 
 You regain all fire points at the end of a night’s sleep.
 
+## Lizsuanne’s Trick (temp name)
+
+Glue things together and dissolve others.
+
+Permanent Stats
+
+• Saliva Acidity (DisAdv x3 (d100))
+
+• Saliva Adhesiveness (Adv x1, DisAdv x1 (d100))
+
+• Saliva Dry Time (DisAdv x1 (100) sec)
+
+• Saliva Touch Bonus (DisAdv x2 (d100))
+
+Your saliva is slightly acidic when wet and sticky when dry. When wet, the acidity of the saliva is determined by your Saliva Acidity stat. When dry, the adhesiveness is determined by your Saliva Adhesiveness stat. How long it takes for your saliva to dry under normal conditions is determined by your Saliva Dry Time stat. While you have your wet saliva on your hands, you get a bonus to Touch checks. This bonus is equal to your Saliva Touch Bonus stat.
+
 # Trainable Features
 
 Some features you can learn over time. The following features can be bought with XP points, largely Irregardless of your species.

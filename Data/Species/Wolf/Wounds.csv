@@ -1,0 +1,12 @@
+﻿Body Part,Stat,Wound Chance
+Face,Accuracy,10
+Face,Sight,10
+Face,Sight Variance,10
+Face,Smell,10
+Face,Smell Variance,10
+Chest,Constitution,10
+Chest,Constitution Variance,10
+Leg_Left,Speed,10
+Leg_Left,Speed Variance,10
+Leg_Right,Speed,10
+Leg_Right,Speed Variance,10

@@ -10,7 +10,7 @@ let stringifyAttribute = [
     "xp_variance",
 ];
 
-class Attribute {
+class Stat {
     constructor(name, statCost) {
 
         //save variables
@@ -94,13 +94,13 @@ class Attribute {
         }
     }
 }
-export default Attribute;
+export default Stat;
 
-export function inflateAttribute(attribute) {
-    Object.setPrototypeOf(attribute, Attribute.prototype);
+export function inflateStat(stat) {
+    Object.setPrototypeOf(stat, Stat.prototype);
 
-    attribute.statCost = attribute.statCost ?? 20;
-    attribute.lastRoll = 0;
-    attribute.displayStyle = 0;
-    attribute._computeValues();
+    stat.statCost = stat.statCost ?? 20;
+    stat.lastRoll = 0;
+    stat.displayStyle = 0;
+    stat._computeValues();
 }

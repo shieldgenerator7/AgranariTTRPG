@@ -2,7 +2,7 @@
 
 import { inflateArray } from "../Utility/Utility";
 import Ability, { inflateAbility } from "./Ability";
-import { inflateAttribute } from "./Attribute";
+import { inflateStat } from "./Stat";
 import { inflateConsumable } from "./Consumable";
 import ConsumableReference, { inflateConsumableReference } from "./ConsumableReference";
 import { inflateRollGroup } from "./RollGroup";
@@ -97,7 +97,7 @@ window.Character = Character;
 export function inflateCharacter(character, updateCharacter = (c) => { }) {
     Object.setPrototypeOf(character, Character.prototype);
 
-    character.attributeList = inflateArray(character.attributeList, inflateAttribute);
+    character.attributeList = inflateArray(character.attributeList, inflateStat);
 
     character.abilityList = inflateArray(character.abilityList, inflateAbility);
 

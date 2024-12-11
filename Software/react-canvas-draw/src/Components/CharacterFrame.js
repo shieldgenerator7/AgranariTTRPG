@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Ability, { inflateAbility } from "../Data/Ability";
-import Attribute, { inflateAttribute } from "../Data/Attribute";
+import Stat, { inflateStat } from "../Data/Stat";
 import Character from "../Data/Character";
 import { DIE_ROLL_FLAIR_CRIT, DIE_ROLL_FLAIR_FUMBLE } from "../Data/Constants";
 import Consumable from "../Data/Consumable";
@@ -367,14 +367,14 @@ function CharacterFrame({ character, updateCharacter, game, updateGame, diceRoll
                 }
             <div className="buttonPanel">
                 <button onClick={(e) => {
-                    let attr = new Attribute("attr");
+                    let attr = new Stat("attr");
                     character.editAttributes = !character.editAttributes;
                     updateCharacter(character);
                 }}>{(character.editAttributes) ? "OK" : "EDIT"}</button>
                 {character.editAttributes
                     &&
                     <button onClick={(e) => {
-                        let attr = new Attribute("attr");
+                        let attr = new Stat("attr");
                         character.attributeList.push(attr);
                         character.editAttributes = true;
                         updateCharacter(character);
@@ -398,7 +398,7 @@ function CharacterFrame({ character, updateCharacter, game, updateGame, diceRoll
                                 //Attribute
                                 if (obj.value != undefined) {//TODO: improve type detection
                                     let attr = obj;
-                                    inflateAttribute(attr);
+                                    inflateStat(attr);
                                     character.attributeList.push(attr);
                                     character.editAttributes = true;
                                     updateCharacter(character);

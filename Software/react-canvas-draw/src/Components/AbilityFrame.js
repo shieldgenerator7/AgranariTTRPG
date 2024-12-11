@@ -160,7 +160,7 @@ function AbilityFrame({ ability, character, updateFunc, attributeAdjusted, abili
                                             //bonus: Attribute
                                             else if (isString(ability.dieRollBonus)) {
                                                 let attrName = ability.dieRollBonus.trim();
-                                                let attr = character.attributeList
+                                                let attr = character.statList
                                                     .filter(a => a.name?.trim() == attrName || a.displayName?.trim() == attrName)[0];
                                                 if (attr?.value) {
                                                     let bonusvalue = attr.value * 1;

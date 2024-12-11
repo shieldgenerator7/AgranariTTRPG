@@ -43,7 +43,7 @@ function CommandPanel({ game, updateGame, characterList, setCharacterList, log }
                             let clipboardText = v || "{}";
                             try {
                                 let obj = JSON.parse(clipboardText);
-                                if (obj.attributeList) {//TODO: make better json obj type detection
+                                if (obj.statList) {//TODO: make better json obj type detection
                                     let character = obj;
                                     inflateCharacter(character);
                                     character.name += " (Copy)";

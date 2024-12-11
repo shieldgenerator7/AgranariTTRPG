@@ -3,7 +3,7 @@
 class Rest {
     constructor(name) {
         this.name = name;
-        this.attributeList = [];//list of attributes to refresh
+        this.statList = [];//list of attributes to refresh
     }
 }
 export default Rest;

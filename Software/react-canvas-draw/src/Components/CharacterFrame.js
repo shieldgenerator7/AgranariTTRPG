@@ -80,7 +80,7 @@ function CharacterFrame({ character, updateCharacter, game, updateGame, diceRoll
                             <div className={"attributeContainer"}>
                                 {character.editAttributes &&
                                     <ListOrdered
-                                        arr={character.attributeList}
+                                        arr={character.statList}
                                         contentFunc={
                                             (attr, i) => (<>
                                                 {!attr.IsSpacer &&
@@ -99,7 +99,7 @@ function CharacterFrame({ character, updateCharacter, game, updateGame, diceRoll
                                             </>)
                                         }
                                         updateFunc={(arr) => {
-                                            character.attributeList = arr;
+                                            character.statList = arr;
                                             updateCharacter(character);
                                         }}
                                         allowReordering={false}
@@ -110,9 +110,9 @@ function CharacterFrame({ character, updateCharacter, game, updateGame, diceRoll
                                 {!character.editAttributes &&
 
                                     (<>{
-                                        character.attributeList.map((attr, i) => (
+                                        character.statList.map((attr, i) => (
                                             <AttributeFrame
-                                                attribute={attr}
+                                                stat={attr}
                                                 character={character}
                                                 updateCharacter={updateCharacter}
                                                 game={game}
@@ -388,10 +388,10 @@ function CharacterFrame({ character, updateCharacter, game, updateGame, diceRoll
                     &&
                     <button onClick={(e) => {
                         let attr = new Stat("attr");
-                        character.attributeList.push(attr);
+                        character.statList.push(attr);
                         character.editAttributes = true;
                         updateCharacter(character);
-                    }}>NEW ATTRIBUTE</button>
+                    }}>NEW STAT</button>
                 }
                 {character.editAttributes
                     &&
@@ -412,7 +412,7 @@ function CharacterFrame({ character, updateCharacter, game, updateGame, diceRoll
                                 if (obj.value != undefined) {//TODO: improve type detection
                                     let attr = obj;
                                     inflateStat(attr);
-                                    character.attributeList.push(attr);
+                                    character.statList.push(attr);
                                     character.editAttributes = true;
                                     updateCharacter(character);
                                 }

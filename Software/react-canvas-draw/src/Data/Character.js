@@ -12,7 +12,7 @@ class Character {
     constructor(name) {
         this.name = name;
         this.portrait = undefined;//TODO: implement portrait
-        this.attributeList = [];
+        this.statList = [];
         this.abilityList = [];
         this.consumableList = [];
         this.tempBonusList = [];
@@ -29,7 +29,7 @@ class Character {
 
     getAttribute(attrName) {
         attrName = attrName.trim();
-        return this.attributeList
+        return this.statList
             .find(a => a.name?.trim() == attrName || a.displayName?.trim() == attrName);
     }
 
@@ -97,7 +97,7 @@ window.Character = Character;
 export function inflateCharacter(character, updateCharacter = (c) => { }) {
     Object.setPrototypeOf(character, Character.prototype);
 
-    character.attributeList = inflateArray(character.attributeList, inflateStat);
+    character.statList = inflateArray(character.statList, inflateStat);
 
     character.abilityList = inflateArray(character.abilityList, inflateAbility);
 

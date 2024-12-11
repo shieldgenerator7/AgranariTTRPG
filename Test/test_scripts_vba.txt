@@ -248,3 +248,101 @@ Sub StoreBonus()
 Range("K15").Value = Range("K15").Value + Range("E15").Value
 
 End Sub
+
+
+
+
+Sub ImportSpeciesStats()
+
+Range("B1").Value = "test"
+Dim startRow As Integer: startRow = 5
+
+Dim speciesName As String: speciesName = Range("A2").Value
+Range("A" & startRow + 1).Value = speciesName
+
+Dim arr As Variant
+arr = ArrayFromCSVfile("Data/Species/" & speciesName & "/StatCosts.csv")
+
+Range("A" & startRow).Value = arr(1, 1)
+
+
+End Sub
+
+
+'2024-12-11: copied from https://stackoverflow.com/a/12283969/2336212
+Public Function ArrayFromCSVfile( _
+    strName As String, _
+    Optional RowDelimiter As String = vbCr, _
+    Optional FieldDelimiter = ",", _
+    Optional RemoveQuotes As Boolean = True _
+) As Variant
+
+    ' Load a file created by FileToArray into a 2-dimensional array
+    ' The file name is specified by strName, and it is exected to exist
+    ' in the user's temporary folder. This is a deliberate restriction:
+    ' it's always faster to copy remote files to a local drive than to
+    ' edit them across the network
+
+    ' RemoveQuotes=TRUE strips out the double-quote marks (Char 34) that
+    ' encapsulate strings in most csv files.
+    Range("A5").Value = "Searching"
+    Application.StatusBar = "Searching"
+
+    On Error Resume Next
+
+    Dim objFSO As Scripting.FileSystemObject
+    Dim arrData As Variant
+    Dim strFile As String
+    Dim strTemp As String
+
+    Set objFSO = New Scripting.FileSystemObject
+    strTemp = "" 'objFSO.GetSpecialFolder(Scripting.TemporaryFolder).ShortPath
+    strFile = objFSO.BuildPath(strTemp, strName)
+    If Not objFSO.FileExists(strFile) Then  ' raise an error?
+        Range("A5").Value = "No file found: " & strName
+        Exit Function
+    End If
+
+    Application.StatusBar = "Reading the file... (" & strName & ")"
+
+    If Not RemoveQuotes Then
+        arrData = Join2d(objFSO.OpenTextFile(strFile, ForReading).ReadAll, RowDelimiter, FieldDelimiter)
+        Application.StatusBar = "Reading the file... Done"
+    Else
+        ' we have to do some allocation here...
+
+        strTemp = objFSO.OpenTextFile(strFile, ForReading).ReadAll
+        Application.StatusBar = "Reading the file... Done"
+
+        Application.StatusBar = "Parsing the file..."
+
+        'strTemp = Replace$(strTemp, Chr(34) & RowDelimiter, RowDelimiter)
+        'strTemp = Replace$(strTemp, RowDelimiter & Chr(34), RowDelimiter)
+        'strTemp = Replace$(strTemp, Chr(34) & FieldDelimiter, FieldDelimiter)
+        'strTemp = Replace$(strTemp, FieldDelimiter & Chr(34), FieldDelimiter)
+
+        'If Right$(strTemp, Len(strTemp)) = Chr(34) Then
+         '   strTemp = Left$(strTemp, Len(strTemp) - 1)
+        'End If
+
+        'If Left$(strTemp, 1) = Chr(34) Then
+         '   strTemp = Right$(strTemp, Len(strTemp) - 1)
+        'End If
+
+        Application.StatusBar = "Parsing the file... Done"
+        arrData = Split2d(strTemp, RowDelimiter, FieldDelimiter)
+        strTemp = ""
+    End If
+
+    'Application.StatusBar = False
+
+    Set objFSO = Nothing
+    ArrayFromCSVfile = arrData
+    Erase arrData
+End Function
+
+
+
+
+
+

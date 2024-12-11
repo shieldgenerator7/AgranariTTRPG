@@ -1,53 +1,30 @@
 ﻿Stat,Min XP Cost,Avg XP Cost,Max XP Cost
 ---,---,---,---
 Accuracy,19,22,24
-Accuracy Variance,5,9,15
 Constitution,7,10,12
-Constitution Variance,0.5,2,4
 Crit Factor,198,200,220
-Damage Variance,1,5,9
+Damage,1,5,9
 Dodge,15,25,40
-Dodge Variance,2,5,10
 Durability,8,12,15
-Durability Variance,2,4,7
 Max Health,7,10,12
 Pain Tolerance,8,11,13
-Pain Tolerance Variance,2,4,6
 Speed,15,18,20
-Speed Variance,5,8,10
 Strength,16,18,19
-Strength Variance,8,10,11
 Willpower,14,15,16
 Willpower Factor,45,50,57
 Search,15,20,21
-Search Variance,14,20,21
 Charisma,18,20,23
-Charisma Variance,18,20,23
 Scavenge,18,20,23
-Scavenge Variance,19,20,24
 Intimidate,11,20,22
-Intimidate Variance,13,20,23
 Courage,10,20,27
-Courage Variance,14,20,24
 Hope,10,20,27
-Hope Variance,14,20,24
 Stealth,14,20,24
-Stealth Variance,14.8,20,23.4
 Sight,15.6,20,22.8
-Sight Variance,16.4,20,22.2
 Hearing,17.2,20,21.6
-Hearing Variance,18,20,21
 Smell,18.8,20,20.4
-Smell Variance,19.6,20,19.8
 Taste,20.4,20,19.2
-Taste Variance,21.2,20,18.6
 Touch,22,20,18
-Touch Variance,22.8,20,17.4
 Thermal Sense,23.6,20,16.8
-Thermal Sense Variance,24.4,20,16.2
 Direction Sense,25.2,20,15.6
-Direction Sense Variance,26,20,15
 Infrared Sense,26.8,20,14.4
-Infrared Sense Variance,27.6,20,13.8
 Tinkering,28.4,10,13.2
-Tinkering Variance,29.2,5,12.6

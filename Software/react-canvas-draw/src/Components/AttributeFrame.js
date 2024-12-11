@@ -90,9 +90,6 @@ function AttributeFrame({ attribute, character, updateCharacter, game, diceRolle
         return (
             <div className="abilityFrame">
                 <span>
-                    <span>
-                    {attribute.getDisplayText()}
-                    </span>
                     {onClickType == ONCLICK_ADJUST_VALUE &&
                         <span>
                             <Counter
@@ -111,15 +108,15 @@ function AttributeFrame({ attribute, character, updateCharacter, game, diceRolle
                             ></Counter>
                         </span>
                     }
-                    {onClickType == ONCLICK_DIE_ROLL &&
+                    {(true || onClickType == ONCLICK_DIE_ROLL) &&
                         <span>
                             <button className={"plusMinus"}
                                 onClick={
                                     () => {
-                                        let roll = rollDice(attribute.dieRoll || "1d20");
+                                        let roll = rollDice(`1d${attribute.StatVariance}`);
                                         roll.name = attribute.name;
                                         let originalResult = roll.Value;
-                                        roll.addRoll(attribute.name, attribute.value * 1);
+                                        roll.addRoll(attribute.name, attribute.Stat * 1);
                                         diceRolled(character, attribute.name, originalResult, roll.Value);
 
                                         //roll ability dice, if applicable
@@ -173,7 +170,11 @@ function AttributeFrame({ attribute, character, updateCharacter, game, diceRolle
                                             diceRolled(character, "Temp Bonus", tempBonus.bonus, roll.Value);
                                         });
 
-                                        //
+                                        //store roll in temp var
+                                        attribute.lastRoll = roll.Value;                                        
+                                        updateCharacter(character);
+
+                                        //record roll
                                         character.dieRollLog.push(roll);
                                         character.dieRollLogSelect.length = 0;
                                         character.dieRollLogSelect.push(character.dieRollLog.length - 1);

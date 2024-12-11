@@ -1,6 +1,7 @@
 import logo from './logo.png';
 import './App.css';
 import React, { useEffect, useState } from 'react';
+import { useSearchParams } from "react-router-dom";
 import Creature, { inflateCreature } from './Data/Creature';
 import EditPanel from './Components/EditPanel';
 import { parsePasteFromExcel } from './Utility/Parser';
@@ -17,6 +18,9 @@ import Game, { inflateGame } from './Data/Game';
 import Consumable from './Data/Consumable';
 
 function App() {
+    //URL params
+    const [searchParams, setSearchParams] = useSearchParams();
+    const paramCharacter = searchParams.get("character");
     //Storage
     let storage;
     let setStorage = (s) => { storage = s; };
@@ -182,12 +186,17 @@ function App() {
     //     document.title = ((characterName) ? `${characterName} - ` : "") + `Creature Combat v${VERSION}`;
     // }, [character, characterList]);
 
+    let charactersToShow = characterList;
+    if (paramCharacter?.trim() || false) {
+        charactersToShow = characterList.filter(char => char.name == paramCharacter);
+    }
+
     return (
         <div className="App">
             <header className="App-header">
                 <div className='characterZone'>
                     {
-                        characterList.map((char, i) => (
+                        charactersToShow.map((char, i) => (
                             <CharacterFrame
                                 character={char}
                                 updateCharacter={(c) => updateCharacter(c)}

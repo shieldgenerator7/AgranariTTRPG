@@ -76,189 +76,189 @@ function CharacterFrame({ character, updateCharacter, game, updateGame, diceRoll
                 <table><tbody>
                     <tr>
                         <td>
-                <h2>Stats</h2>
-                <div className={"attributeContainer"}>
-                    {character.editAttributes &&
-                        <ListOrdered
-                            arr={character.attributeList}
-                            contentFunc={
-                                (attr, i) => (<>
-                                    {!attr.IsSpacer &&
-                                    <AttributeFrame
-                                        attribute={attr}
-                                        character={character}
-                                        updateCharacter={updateCharacter}
-                                        diceRolled={diceRolled}
-                                        attributeAdjusted={attributeAdjusted}
-                                        key={`character_attribute_${i}`}
-                                    ></AttributeFrame>
-                                    }
-                                    {attr.IsSpacer &&
-                                        <div className="spacer"></div>
-                                    }
-                                </>)
-                            }
-                            updateFunc={(arr) => {
-                                character.attributeList = arr;
-                                updateCharacter(character);
-                            }}
-                            allowReordering={false}
-                            allowCopying={false}
-                            allowDeletion={false}
-                        ></ListOrdered>
-                    }
-                    {!character.editAttributes &&
-
-                        (<>{
-                            character.attributeList.map((attr, i) => (
-                                <AttributeFrame
-                                    attribute={attr}
-                                    character={character}
-                                    updateCharacter={updateCharacter}
-                                    game={game}
-                                    diceRolled={diceRolled}
-                                    attributeAdjusted={attributeAdjusted}
-                                    key={`character_attribute_${i}`}
-                                ></AttributeFrame>
-                            ))
-                        }</>)
-                    }
-                </div>
-                <h2>Abilities</h2>
-                <div className={"abilityContainer"}>
-                    {character.editAttributes &&
-                        <ListOrdered
-                            arr={character.abilityList}
-                            contentFunc={
-                                (ability, i) => (
-                                    <AbilityFrame
-                                        ability={ability}
-                                        character={character}
-                                        updateFunc={() => updateCharacter(character)}
-                                        diceRolled={diceRolled}
-                                        attributeAdjusted={attributeAdjusted}
-                                        abilityModified={abilityModified}
-                                        key={`character_ability_${i}`}
-                                    ></AbilityFrame>
-                                )
-                            }
-                            updateFunc={(arr) => {
-                                character.abilityList = arr;
-                                updateCharacter(character);
-                            }}
-                        ></ListOrdered>
-                    }
-                    {!character.editAttributes &&
-
-                        (<>{
-                            character.abilityList.map((ability, i) => (
-                                <AbilityFrame
-                                    ability={ability}
-                                    character={character}
-                                    updateFunc={() => updateCharacter(character)}
-                                    diceRolled={diceRolled}
-                                    attributeAdjusted={attributeAdjusted}
-                                    abilityModified={abilityModified}
-                                    key={`character_ability_${i}`}
-                                ></AbilityFrame>
-                            ))
-                        }</>)
-                    }
-                </div>
-
-
-                <h2>
-                    Consumables
-                    {!showConsumableList &&
-                        <button className="addButton"
-                            id={btnShowConsumableListId}
-                            onClick={(e) => {
-                                setShowConsumableList(true);
-                            }}>+</button>
-                    }
-                    {showConsumableList &&
-                        <SearchSelect
-                            id={sltConsumableListId}
-                            options={["", "NEW"].concat(game.consumableList).map(o => o.name ?? o)}
-                            setOption={(option) => {
-                                console.log("option selected", option);
-                                let needsEdited = false;
-                                let consumable = game.getConsumable(option);
-                                if (!consumable) {
-                                    consumable = new Consumable(option);
-                                    game.consumableList.push(consumable);
-                                    needsEdited = true;
-                                    character.editAttributes = true;
-                                    updateGame(game);
+                            <h2>Stats</h2>
+                            <div className={"attributeContainer"}>
+                                {character.editAttributes &&
+                                    <ListOrdered
+                                        arr={character.attributeList}
+                                        contentFunc={
+                                            (attr, i) => (<>
+                                                {!attr.IsSpacer &&
+                                                    <AttributeFrame
+                                                        attribute={attr}
+                                                        character={character}
+                                                        updateCharacter={updateCharacter}
+                                                        diceRolled={diceRolled}
+                                                        attributeAdjusted={attributeAdjusted}
+                                                        key={`character_attribute_${i}`}
+                                                    ></AttributeFrame>
+                                                }
+                                                {attr.IsSpacer &&
+                                                    <div className="spacer"></div>
+                                                }
+                                            </>)
+                                        }
+                                        updateFunc={(arr) => {
+                                            character.attributeList = arr;
+                                            updateCharacter(character);
+                                        }}
+                                        allowReordering={false}
+                                        allowCopying={false}
+                                        allowDeletion={false}
+                                    ></ListOrdered>
                                 }
-                                character.addConsumable(consumable, 1);
-                                updateCharacter(character);
-                                setShowConsumableList(false);
-                            }}
-                        ></SearchSelect>
-                    }
-                </h2>
-                <div className={"consumableContainer"}>
-                    {character.editAttributes &&
-                        <ListOrdered
-                            arr={character.consumableList}
-                            contentFunc={
-                                (consumableRef, i) => {
-                                    const oldname = consumableRef.consumableName;
-                                    return (
-                                        <ConsumableFrame
-                                            consumableReference={consumableRef}
-                                            character={character}
-                                            updateCharacter={updateCharacter}
-                                            game={game}
-                                            updateFunc={(consumable) => {
-                                                consumableRef.consumableName = consumable.name;
-                                                renameConsumable(oldname, consumable.name, character);
-                                                updateCharacter(character);
+                                {!character.editAttributes &&
+
+                                    (<>{
+                                        character.attributeList.map((attr, i) => (
+                                            <AttributeFrame
+                                                attribute={attr}
+                                                character={character}
+                                                updateCharacter={updateCharacter}
+                                                game={game}
+                                                diceRolled={diceRolled}
+                                                attributeAdjusted={attributeAdjusted}
+                                                key={`character_attribute_${i}`}
+                                            ></AttributeFrame>
+                                        ))
+                                    }</>)
+                                }
+                            </div>
+                            <h2>Abilities</h2>
+                            <div className={"abilityContainer"}>
+                                {character.editAttributes &&
+                                    <ListOrdered
+                                        arr={character.abilityList}
+                                        contentFunc={
+                                            (ability, i) => (
+                                                <AbilityFrame
+                                                    ability={ability}
+                                                    character={character}
+                                                    updateFunc={() => updateCharacter(character)}
+                                                    diceRolled={diceRolled}
+                                                    attributeAdjusted={attributeAdjusted}
+                                                    abilityModified={abilityModified}
+                                                    key={`character_ability_${i}`}
+                                                ></AbilityFrame>
+                                            )
+                                        }
+                                        updateFunc={(arr) => {
+                                            character.abilityList = arr;
+                                            updateCharacter(character);
+                                        }}
+                                    ></ListOrdered>
+                                }
+                                {!character.editAttributes &&
+
+                                    (<>{
+                                        character.abilityList.map((ability, i) => (
+                                            <AbilityFrame
+                                                ability={ability}
+                                                character={character}
+                                                updateFunc={() => updateCharacter(character)}
+                                                diceRolled={diceRolled}
+                                                attributeAdjusted={attributeAdjusted}
+                                                abilityModified={abilityModified}
+                                                key={`character_ability_${i}`}
+                                            ></AbilityFrame>
+                                        ))
+                                    }</>)
+                                }
+                            </div>
+
+
+                            <h2>
+                                Consumables
+                                {!showConsumableList &&
+                                    <button className="addButton"
+                                        id={btnShowConsumableListId}
+                                        onClick={(e) => {
+                                            setShowConsumableList(true);
+                                        }}>+</button>
+                                }
+                                {showConsumableList &&
+                                    <SearchSelect
+                                        id={sltConsumableListId}
+                                        options={["", "NEW"].concat(game.consumableList).map(o => o.name ?? o)}
+                                        setOption={(option) => {
+                                            console.log("option selected", option);
+                                            let needsEdited = false;
+                                            let consumable = game.getConsumable(option);
+                                            if (!consumable) {
+                                                consumable = new Consumable(option);
+                                                game.consumableList.push(consumable);
+                                                needsEdited = true;
+                                                character.editAttributes = true;
                                                 updateGame(game);
-                                            }}
-                                            diceRolled={diceRolled}
-                                            attributeAdjusted={attributeAdjusted}
-                                            abilityModified={abilityModified}
-                                            key={`character_consumable_${i}`}
-                                        ></ConsumableFrame>
-                                    );
+                                            }
+                                            character.addConsumable(consumable, 1);
+                                            updateCharacter(character);
+                                            setShowConsumableList(false);
+                                        }}
+                                    ></SearchSelect>
                                 }
-                            }
-                            updateFunc={(arr) => {
-                                character.consumableList = arr;
-                                updateCharacter(character);
-                            }}
-                        ></ListOrdered>
-                    }
-                    {!character.editAttributes &&
-                        (<>{
-                            character.consumableList.map((consumableRef, i) => (
-                                <ConsumableFrame
-                                    consumableReference={consumableRef}
-                                    character={character}
-                                    updateCharacter={updateCharacter}
-                                    game={game}
-                                    updateFunc={(consumable) => {
-                                        consumableRef.Name = consumable.name;
-                                        updateCharacter(character);
-                                        updateGame(game);
-                                    }}
-                                    diceRolled={diceRolled}
-                                    attributeAdjusted={attributeAdjusted}
-                                    abilityModified={abilityModified}
-                                    key={`character_consumable_${i}`}
-                                ></ConsumableFrame>
-                            ))
-                        }</>)
-                    }
-                </div>
+                            </h2>
+                            <div className={"consumableContainer"}>
+                                {character.editAttributes &&
+                                    <ListOrdered
+                                        arr={character.consumableList}
+                                        contentFunc={
+                                            (consumableRef, i) => {
+                                                const oldname = consumableRef.consumableName;
+                                                return (
+                                                    <ConsumableFrame
+                                                        consumableReference={consumableRef}
+                                                        character={character}
+                                                        updateCharacter={updateCharacter}
+                                                        game={game}
+                                                        updateFunc={(consumable) => {
+                                                            consumableRef.consumableName = consumable.name;
+                                                            renameConsumable(oldname, consumable.name, character);
+                                                            updateCharacter(character);
+                                                            updateGame(game);
+                                                        }}
+                                                        diceRolled={diceRolled}
+                                                        attributeAdjusted={attributeAdjusted}
+                                                        abilityModified={abilityModified}
+                                                        key={`character_consumable_${i}`}
+                                                    ></ConsumableFrame>
+                                                );
+                                            }
+                                        }
+                                        updateFunc={(arr) => {
+                                            character.consumableList = arr;
+                                            updateCharacter(character);
+                                        }}
+                                    ></ListOrdered>
+                                }
+                                {!character.editAttributes &&
+                                    (<>{
+                                        character.consumableList.map((consumableRef, i) => (
+                                            <ConsumableFrame
+                                                consumableReference={consumableRef}
+                                                character={character}
+                                                updateCharacter={updateCharacter}
+                                                game={game}
+                                                updateFunc={(consumable) => {
+                                                    consumableRef.Name = consumable.name;
+                                                    updateCharacter(character);
+                                                    updateGame(game);
+                                                }}
+                                                diceRolled={diceRolled}
+                                                attributeAdjusted={attributeAdjusted}
+                                                abilityModified={abilityModified}
+                                                key={`character_consumable_${i}`}
+                                            ></ConsumableFrame>
+                                        ))
+                                    }</>)
+                                }
+                            </div>
 
-                </td>
-                <td>
-                    
-                </td>
-                </tr>
+                        </td>
+                        <td>
+
+                        </td>
+                    </tr>
                 </tbody></table>
 
                 {!character.editAttributes &&
@@ -302,35 +302,35 @@ function CharacterFrame({ character, updateCharacter, game, updateGame, diceRoll
             </div>
 
 
-                {
-                    !character.editAttributes &&
-                    <div className="diceRollLogPanel">
-                        <h2>Dice Rolls
-                            {
-                                [
-                                    "d4",
-                                    "d6",
-                                    "d8",
-                                    "d10",
-                                    "d12",
-                                    "d20",
-                                    "d100",
-                                ].map((d,i) => (                                    
-                            <button className="dieButton"
-                                key={`character_dieroll_${i}`}
-                                onClick={(e) => {
-                                    let roll = rollDice(d);
-                                    diceRolled(character, d, roll.Value, roll.Value);
-                                    character.dieRollLog.push(roll);
-                                    character.dieRollLogSelect.length = 0;
-                                    updateCharacter(character);
-                                }}
-                            >
-                                {d}
-                            </button>                                
-                                ))
-                            }
-                            {character.dieRollLog.length > 0 &&
+            {
+                !character.editAttributes &&
+                <div className="diceRollLogPanel">
+                    <h2>Dice Rolls
+                        {
+                            [
+                                "d4",
+                                "d6",
+                                "d8",
+                                "d10",
+                                "d12",
+                                "d20",
+                                "d100",
+                            ].map((d, i) => (
+                                <button className="dieButton"
+                                    key={`character_dieroll_${i}`}
+                                    onClick={(e) => {
+                                        let roll = rollDice(d);
+                                        diceRolled(character, d, roll.Value, roll.Value);
+                                        character.dieRollLog.push(roll);
+                                        character.dieRollLogSelect.length = 0;
+                                        updateCharacter(character);
+                                    }}
+                                >
+                                    {d}
+                                </button>
+                            ))
+                        }
+                        {character.dieRollLog.length > 0 &&
                             <button className="panelCloseButton"
                                 onClick={() => {
                                     character.dieRollLog = [];
@@ -338,46 +338,46 @@ function CharacterFrame({ character, updateCharacter, game, updateGame, diceRoll
                                     updateCharacter(character);
                                 }}>X
                             </button>
-                            }
-                        </h2>
-                        <span className="diceRollLog">
+                        }
+                    </h2>
+                    <span className="diceRollLog">
 
-                            {character.dieRollLog.map((roll, i) =>
-                                <span
-                                    className={
-                                        `rollResult
+                        {character.dieRollLog.map((roll, i) =>
+                            <span
+                                className={
+                                    `rollResult
                                         ${character.dieRollLogSelect.includes(i) && "rollResultSelect" || ""}
                                         ${roll.hasFlair(DIE_ROLL_FLAIR_CRIT) && "rollResultCrit" || ""}
                                         ${roll.hasFlair(DIE_ROLL_FLAIR_FUMBLE) && "rollResultFumb" || ""}
                                         `
+                                }
+                                key={`character_die_roll_log_${i}`}
+                                onClick={() => {
+                                    console.log("roll", i, roll);
+                                    let selected = character.dieRollLogSelect.includes(i);
+                                    //Deselect
+                                    if (selected) {
+                                        let index = character.dieRollLogSelect.indexOf(i);
+                                        character.dieRollLogSelect.splice(index, 1);
                                     }
-                                    key={`character_die_roll_log_${i}`}
-                                    onClick={() => {
-                                        console.log("roll", i, roll);
-                                        let selected = character.dieRollLogSelect.includes(i);
-                                        //Deselect
-                                        if (selected) {
-                                            let index = character.dieRollLogSelect.indexOf(i);
-                                            character.dieRollLogSelect.splice(index, 1);
-                                        }
-                                        //Select
-                                        else {
-                                            character.dieRollLogSelect.push(i);
-                                        }
-                                        updateCharacter(character);
-                                    }}
-                                >
-                                    {/* <div className="rollResultInternal"> */}
-                                    {roll.Value}
-                                    {/* <span className="rollResultName">{roll.name}</span>
+                                    //Select
+                                    else {
+                                        character.dieRollLogSelect.push(i);
+                                    }
+                                    updateCharacter(character);
+                                }}
+                            >
+                                {/* <div className="rollResultInternal"> */}
+                                {roll.Value}
+                                {/* <span className="rollResultName">{roll.name}</span>
                                     </div> */}
-                                </span>
-                            )}
+                            </span>
+                        )}
 
-                        </span>
+                    </span>
 
-                    </div>
-                }
+                </div>
+            }
             <div className="buttonPanel">
                 <button onClick={(e) => {
                     let attr = new Stat("attr");

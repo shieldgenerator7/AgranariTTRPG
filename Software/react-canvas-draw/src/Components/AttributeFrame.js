@@ -17,71 +17,71 @@ function AttributeFrame({ attribute, character, updateCharacter, game, diceRolle
         return (
             <div className="abilityFrameEdit">
                 <div className="abilityFrameLine">
-                {/* Name */}
-                <Field
-                    name={"Stat"}
-                    value={attribute.name}
-                    setValue={(value) => {
-                        attributeAdjusted(character, `${attribute.name}_name`, attribute.name, value);
-                        attribute.name = value;
-                        updateCharacter(character);
-                    }}
-                    className={"editText"}
-                ></Field>
-                {/* Display Name */}
-                <Field
-                    name={"Display"}
-                    value={attribute.displayName}
-                    setValue={(value) => {
-                        attributeAdjusted(character, `${attribute.name}_displayname`, attribute.displayName, value);
-                        attribute.displayName = value;
-                        updateCharacter(character);
-                    }}
-                    className={"editTextShort"}
-                    placeHolder={attribute.name}
+                    {/* Name */}
+                    <Field
+                        name={"Stat"}
+                        value={attribute.name}
+                        setValue={(value) => {
+                            attributeAdjusted(character, `${attribute.name}_name`, attribute.name, value);
+                            attribute.name = value;
+                            updateCharacter(character);
+                        }}
+                        className={"editText"}
+                    ></Field>
+                    {/* Display Name */}
+                    <Field
+                        name={"Display"}
+                        value={attribute.displayName}
+                        setValue={(value) => {
+                            attributeAdjusted(character, `${attribute.name}_displayname`, attribute.displayName, value);
+                            attribute.displayName = value;
+                            updateCharacter(character);
+                        }}
+                        className={"editTextShort"}
+                        placeHolder={attribute.name}
                     ></Field>
                 </div>
                 <div className="abilityFrameLine">
-                {/* XP */}
-                <Counter
-                    value={attribute.XP}
-                    setValue={(value) => {
-                        attributeAdjusted(character, `${attribute.name}`, attribute.Stat, value);
-                        attribute.XP = value;
-                        updateCharacter(character);
-                    }}
-                    label={"XP"}
-                    showEditField={true}
-                    min={0}
-                    max={0}
-                    inline={true}
-                ></Counter>
-                {/* Variance XP */}
-                <Counter
-                    value={attribute.XPVariance}
-                    setValue={(value) => {
-                        attributeAdjusted(character, `${attribute.name}_variance`, attribute.StatVariance, value);
-                        attribute.XPVariance = value;
-                        updateCharacter(character);
-                    }}
-                    label={"Var. XP"}
-                    showEditField={true}
-                    min={0}
-                    max={0}
-                    inline={true}
-                ></Counter>
-                {/* Stat Cost */}
-                <Field
-                    name={"Stat Cost"}
-                    value={attribute.statCost}
-                    setValue={(value) => {
-                        attributeAdjusted(character, `${attribute.name}_statCost`, attribute.statCost, value);
-                        attribute.acceptStatCost(value);
-                        updateCharacter(character);
-                    }}
-                    className={"editTextShort"}
+                    {/* XP */}
+                    <Counter
+                        value={attribute.XP}
+                        setValue={(value) => {
+                            attributeAdjusted(character, `${attribute.name}`, attribute.Stat, value);
+                            attribute.XP = value;
+                            updateCharacter(character);
+                        }}
+                        label={"XP"}
+                        showEditField={true}
+                        min={0}
+                        max={0}
+                        inline={true}
+                    ></Counter>
+                    {/* Variance XP */}
+                    <Counter
+                        value={attribute.XPVariance}
+                        setValue={(value) => {
+                            attributeAdjusted(character, `${attribute.name}_variance`, attribute.StatVariance, value);
+                            attribute.XPVariance = value;
+                            updateCharacter(character);
+                        }}
+                        label={"Var. XP"}
+                        showEditField={true}
+                        min={0}
+                        max={0}
+                        inline={true}
+                    ></Counter>
+                    {/* Stat Cost */}
+                    <Field
+                        name={"Stat Cost"}
+                        value={attribute.statCost}
+                        setValue={(value) => {
+                            attributeAdjusted(character, `${attribute.name}_statCost`, attribute.statCost, value);
+                            attribute.acceptStatCost(value);
+                            updateCharacter(character);
+                        }}
+                        className={"editTextShort"}
                     ></Field>
-                    </div>
+                </div>
             </div>
         );
     }
@@ -171,7 +171,7 @@ function AttributeFrame({ attribute, character, updateCharacter, game, diceRolle
                                         });
 
                                         //store roll in temp var
-                                        attribute.lastRoll = roll.Value;                                        
+                                        attribute.lastRoll = roll.Value;
                                         updateCharacter(character);
 
                                         //record roll

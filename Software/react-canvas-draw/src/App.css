@@ -419,7 +419,7 @@
     width: 100%;
 }
 
-.characterContent td{
+.characterContent td {
     width: 50%;
 }
 
@@ -525,8 +525,8 @@
     border-top: 1px solid black;
     border-radius: 5px 0px 0px 5px;
     word-wrap: normal;
-    overflow-x:hidden;    
-    overflow-wrap:break-word;
+    overflow-x: hidden;
+    overflow-wrap: break-word;
 }
 
 .diceRollLogPanel h2 {
@@ -535,7 +535,7 @@
     margin-bottom: 5px;
 }
 
-.dieButton{
+.dieButton {
     display: inline;
     padding: px 25px 1px 25px;
     margin-left: 5px;
@@ -547,10 +547,12 @@
     border: 1px solid #a89b76;
     border-radius: 5px;
 }
+
 .dieButton:hover {
     background: #ffeec1;
     border: none;
 }
+
 .panelCloseButton {
     display: inline;
     /* padding: 5px 10px 5px 10px; */
@@ -563,6 +565,7 @@
     background: none;
     height: 40px;
 }
+
 .panelCloseButton:hover {
     background: #ff9e9e;
     border-radius: 5px;
@@ -805,19 +808,20 @@
     background: #ffeec1;
 }
 
-.spacer{
+.spacer {
     border-top: 3px solid black;
     width: 78%;
     height: 1px;
     margin-top: 18px;
 }
 
-.logReport{
+.logReport {
     margin-top: 20px;
     font-size: medium;
     padding: 10px;
 }
-.logReportInfo{
+
+.logReportInfo {
     width: 100%;
     text-align: right;
 }

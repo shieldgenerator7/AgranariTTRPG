@@ -77,9 +77,9 @@ class ListOrdered extends Component {
                         onDrop={(e) => this.handleDrop(e, obj)}
                     >
                         {allowReordering &&
-                        <div className="listordereddraghandle">
-                            &#8801;
-                        </div>
+                            <div className="listordereddraghandle">
+                                &#8801;
+                            </div>
                         }
                         {contentFunc(
                             obj,
@@ -87,18 +87,18 @@ class ListOrdered extends Component {
                         )}
                         {/* Copy button */}
                         {allowCopying &&
-                        <button className="listorderedbutton" onClick={() => {
-                            let json = JSON.stringify(obj);
-                            navigator.clipboard.writeText(json);
-                        }}>
-                            &#10697;</button>
+                            <button className="listorderedbutton" onClick={() => {
+                                let json = JSON.stringify(obj);
+                                navigator.clipboard.writeText(json);
+                            }}>
+                                &#10697;</button>
                         }
                         {/* Remove button */}
                         {allowDeletion &&
-                        <button className="listorderedbuttonX" onClick={() => {
-                            arr.splice(i, 1);
-                            updateFunc(arr);
-                        }}>X</button>
+                            <button className="listorderedbuttonX" onClick={() => {
+                                arr.splice(i, 1);
+                                updateFunc(arr);
+                            }}>X</button>
                         }
                         {/* <RiDragMove2Line/> */}
                     </div>

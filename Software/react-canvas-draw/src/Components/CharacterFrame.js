@@ -73,6 +73,9 @@ function CharacterFrame({ character, updateCharacter, game, updateGame, diceRoll
                         }}
                     >Delete Character</button>
                 }
+                <table>
+                    <tr>
+                        <td>
                 <h2>Attributes</h2>
                 <div className={"attributeContainer"}>
                     {character.editAttributes &&
@@ -247,6 +250,13 @@ function CharacterFrame({ character, updateCharacter, game, updateGame, diceRoll
                         }</>)
                     }
                 </div>
+
+                </td>
+                <td>
+                    
+                </td>
+                </tr>
+                </table>
 
                 {!character.editAttributes &&
                     <>

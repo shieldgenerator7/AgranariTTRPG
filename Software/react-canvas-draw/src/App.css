@@ -382,7 +382,7 @@
     border: 5px solid #38362f;
     /* background: #f5eac9; */
     background: #cebd90;
-    width: 450px;
+    width: 1000px;
     height: 98%;
     /* min-height: 90%; */
     border-radius: 25px;
@@ -413,6 +413,14 @@
 .characterContent h2 {
     font-size: large;
     margin-bottom: 5px;
+}
+
+.characterContent table {
+    width: 100%;
+}
+
+.characterContent td{
+    width: 50%;
 }
 
 .attributeContainer {

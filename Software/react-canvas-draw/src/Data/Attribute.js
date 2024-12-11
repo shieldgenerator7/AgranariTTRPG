@@ -8,11 +8,11 @@ let stringifyAttribute = [
     "displayname",
     "xp",
     "xp_variance",
-]
+];
 
 class Attribute {
     constructor(name, statCost) {
-        
+
         //save variables
         this.name = name;
         this.displayName = "";
@@ -73,7 +73,7 @@ class Attribute {
         this.bonusTotal = 0;
         this.bonusList ??= {};
         Object.entries(this.bonusList).forEach(([k, v]) => {
-            this.bonusTotal += v; 
+            this.bonusTotal += v;
         });
 
         //stat value

@@ -102,6 +102,9 @@ function CharacterFrame({ character, updateCharacter, game, updateGame, diceRoll
                                 character.attributeList = arr;
                                 updateCharacter(character);
                             }}
+                            allowReordering={false}
+                            allowCopying={false}
+                            allowDeletion={false}
                         ></ListOrdered>
                     }
                     {!character.editAttributes &&

@@ -85,7 +85,7 @@ function CharacterFrame({ character, updateCharacter, game, updateGame, diceRoll
                                             (attr, i) => (<>
                                                 {!attr.IsSpacer &&
                                                     <AttributeFrame
-                                                        attribute={attr}
+                                                        stat={attr}
                                                         character={character}
                                                         updateCharacter={updateCharacter}
                                                         diceRolled={diceRolled}

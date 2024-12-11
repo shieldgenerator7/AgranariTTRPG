@@ -10,8 +10,8 @@ import { clamp, isString } from "../Utility/Utility";
 import Counter from "./Counter";
 import Field from "./Field";
 
-function AttributeFrame({ attribute, character, updateCharacter, game, diceRolled, attributeAdjusted }) {
-    let onClickType = attribute.OnClickType;
+function AttributeFrame({ stat, character, updateCharacter, game, diceRolled, attributeAdjusted }) {
+    let onClickType = stat.OnClickType;
     //Edit Attributes
     if (character.editAttributes) {
         return (
@@ -20,10 +20,10 @@ function AttributeFrame({ attribute, character, updateCharacter, game, diceRolle
                     {/* Name */}
                     <Field
                         name={"Stat"}
-                        value={attribute.name}
+                        value={stat.name}
                         setValue={(value) => {
-                            attributeAdjusted(character, `${attribute.name}_name`, attribute.name, value);
-                            attribute.name = value;
+                            attributeAdjusted(character, `${stat.name}_name`, stat.name, value);
+                            stat.name = value;
                             updateCharacter(character);
                         }}
                         className={"editText"}
@@ -31,23 +31,23 @@ function AttributeFrame({ attribute, character, updateCharacter, game, diceRolle
                     {/* Display Name */}
                     <Field
                         name={"Display"}
-                        value={attribute.displayName}
+                        value={stat.displayName}
                         setValue={(value) => {
-                            attributeAdjusted(character, `${attribute.name}_displayname`, attribute.displayName, value);
-                            attribute.displayName = value;
+                            attributeAdjusted(character, `${stat.name}_displayname`, stat.displayName, value);
+                            stat.displayName = value;
                             updateCharacter(character);
                         }}
                         className={"editTextShort"}
-                        placeHolder={attribute.name}
+                        placeHolder={stat.name}
                     ></Field>
                 </div>
                 <div className="abilityFrameLine">
                     {/* XP */}
                     <Counter
-                        value={attribute.XP}
+                        value={stat.XP}
                         setValue={(value) => {
-                            attributeAdjusted(character, `${attribute.name}`, attribute.Stat, value);
-                            attribute.XP = value;
+                            attributeAdjusted(character, `${stat.name}`, stat.Stat, value);
+                            stat.XP = value;
                             updateCharacter(character);
                         }}
                         label={"XP"}
@@ -58,10 +58,10 @@ function AttributeFrame({ attribute, character, updateCharacter, game, diceRolle
                     ></Counter>
                     {/* Variance XP */}
                     <Counter
-                        value={attribute.XPVariance}
+                        value={stat.XPVariance}
                         setValue={(value) => {
-                            attributeAdjusted(character, `${attribute.name}_variance`, attribute.StatVariance, value);
-                            attribute.XPVariance = value;
+                            attributeAdjusted(character, `${stat.name}_variance`, stat.StatVariance, value);
+                            stat.XPVariance = value;
                             updateCharacter(character);
                         }}
                         label={"Var. XP"}
@@ -73,10 +73,10 @@ function AttributeFrame({ attribute, character, updateCharacter, game, diceRolle
                     {/* Stat Cost */}
                     <Field
                         name={"Stat Cost"}
-                        value={attribute.statCost}
+                        value={stat.statCost}
                         setValue={(value) => {
-                            attributeAdjusted(character, `${attribute.name}_statCost`, attribute.statCost, value);
-                            attribute.acceptStatCost(value);
+                            attributeAdjusted(character, `${stat.name}_statCost`, stat.statCost, value);
+                            stat.acceptStatCost(value);
                             updateCharacter(character);
                         }}
                         className={"editTextShort"}
@@ -93,18 +93,18 @@ function AttributeFrame({ attribute, character, updateCharacter, game, diceRolle
                     {onClickType == ONCLICK_ADJUST_VALUE &&
                         <span>
                             <Counter
-                                value={attribute.value}
+                                value={stat.value}
                                 setValue={(v) => {
-                                    let oldValue = attribute.value;
-                                    attribute.value = v;
+                                    let oldValue = stat.value;
+                                    stat.value = v;
                                     updateCharacter(character);
-                                    attributeAdjusted(character, attribute.name, oldValue, v);
+                                    attributeAdjusted(character, stat.name, oldValue, v);
                                 }}
                                 allowNegative={false}
                                 inline={true}
                                 min={0}
-                                max={attribute.max}
-                                label={attribute.getDisplayText()}
+                                max={stat.max}
+                                label={stat.getDisplayText()}
                             ></Counter>
                         </span>
                     }
@@ -113,11 +113,11 @@ function AttributeFrame({ attribute, character, updateCharacter, game, diceRolle
                             <button className={"plusMinus"}
                                 onClick={
                                     () => {
-                                        let roll = rollDice(`1d${attribute.StatVariance}`);
-                                        roll.name = attribute.name;
+                                        let roll = rollDice(`1d${stat.StatVariance}`);
+                                        roll.name = stat.name;
                                         let originalResult = roll.Value;
-                                        roll.addRoll(attribute.name, attribute.Stat * 1);
-                                        diceRolled(character, attribute.name, originalResult, roll.Value);
+                                        roll.addRoll(stat.name, stat.Stat * 1);
+                                        diceRolled(character, stat.name, originalResult, roll.Value);
 
                                         //roll ability dice, if applicable
                                         let abilityList = character.abilityList
@@ -129,10 +129,10 @@ function AttributeFrame({ attribute, character, updateCharacter, game, diceRolle
                                         abilityList = abilityList.filter(ability => ability?.action == ACTION_ROLL_MODIFY);
                                         abilityList
                                             .forEach(ability => {
-                                                let ablname = `${attribute.name} (+${ability.name})`;
-                                                //early exit: attribute filter
+                                                let ablname = `${stat.name} (+${ability.name})`;
+                                                //early exit: stat filter
                                                 if (ability.dieRollAttributeFilter) {
-                                                    if (ability.dieRollAttributeFilter != attribute.name) {
+                                                    if (ability.dieRollAttributeFilter != stat.name) {
                                                         return;
                                                     }
                                                 }
@@ -153,7 +153,7 @@ function AttributeFrame({ attribute, character, updateCharacter, game, diceRolle
                                                 //bonus: Attribute
                                                 else if (isString(ability.dieRollBonus)) {
                                                     let attrName = ability.dieRollBonus.trim();
-                                                    let attr = character.attributeList
+                                                    let attr = character.statList
                                                         .filter(a => a.name?.trim() == attrName || a.displayName?.trim() == attrName)[0];
                                                     if (attr?.value) {
                                                         let bonusvalue = attr.value * 1;
@@ -164,14 +164,14 @@ function AttributeFrame({ attribute, character, updateCharacter, game, diceRolle
                                             });
 
                                         //add bonuses, if applicable
-                                        let tempBonusList = character.tempBonusList.filter(tempBonus => !tempBonus.filter || tempBonus.filter.trim() == attribute.name.trim());
+                                        let tempBonusList = character.tempBonusList.filter(tempBonus => !tempBonus.filter || tempBonus.filter.trim() == stat.name.trim());
                                         tempBonusList.forEach(tempBonus => {
                                             roll.addRoll("Temp Bonus", tempBonus.bonus);
                                             diceRolled(character, "Temp Bonus", tempBonus.bonus, roll.Value);
                                         });
 
                                         //store roll in temp var
-                                        attribute.lastRoll = roll.Value;
+                                        stat.lastRoll = roll.Value;
                                         updateCharacter(character);
 
                                         //record roll
@@ -189,13 +189,13 @@ function AttributeFrame({ attribute, character, updateCharacter, game, diceRolle
                                         return false;
                                     }
                                 }
-                            >{`${attribute.getDisplayText()}`}</button>
+                            >{`${stat.getDisplayText()}`}</button>
                         </span>
                     }
                     {
-                        attribute.OnClickType == ONCLICK_TOGGLE &&
+                        stat.OnClickType == ONCLICK_TOGGLE &&
                         <span>
-                            {attribute.getDisplayText()}
+                            {stat.getDisplayText()}
                         </span>
                     }
                 </span>

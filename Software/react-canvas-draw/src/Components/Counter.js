@@ -3,7 +3,7 @@
 import React from 'react';
 import { clamp, isNumber } from "../Utility/Utility";
 
-function Counter({ value, setValue, allowNegative = false, inline = false, max = 99, increment = 1, label = "" }) {
+function Counter({ value, setValue, allowNegative = false, inline = false, max = 99, increment = 1, label = "" , showEditField = false}) {
     //input checking
     if (!(increment > 0)) {
         console.error("Invalid increment value!", increment, "(resetting to default increment)");
@@ -34,8 +34,8 @@ function Counter({ value, setValue, allowNegative = false, inline = false, max =
     //
     return (
         <div className={`counter ${(inline) ? "inline" : ""}`}>
-            {!label &&
-                <input type="text" inputMode="numeric" onChange={(e) => {
+            {showEditField &&
+                <input type="text" inputMode="numeric" className={"editNumber"} onChange={(e) => {
                     let v = e.target.value * 1;
                     if (!valueAcceptable(v)) { return; }
                     set(v);

@@ -11,11 +11,11 @@ import { arrayRemoveDuplicatesQuery } from "./Utility";
 
 //2024-03-08: copied from StoryViewer
 
-const storageName = "CharacterTracker_SaveGame";
+const storageName = "AgranariTTRPG_SaveGame";
 
 class Storage {
     constructor() {
-        this.storageName = "CharacterTracker_SaveGame";
+        this.storageName = "AgranariTTRPG_SaveGame";
         this.storage = {
             //list of all characters
             characterList: [],//TODO: just store the game

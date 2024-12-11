@@ -73,10 +73,10 @@ function CharacterFrame({ character, updateCharacter, game, updateGame, diceRoll
                         }}
                     >Delete Character</button>
                 }
-                <table>
+                <table><tbody>
                     <tr>
                         <td>
-                <h2>Attributes</h2>
+                <h2>Stats</h2>
                 <div className={"attributeContainer"}>
                     {character.editAttributes &&
                         <ListOrdered
@@ -259,7 +259,7 @@ function CharacterFrame({ character, updateCharacter, game, updateGame, diceRoll
                     
                 </td>
                 </tr>
-                </table>
+                </tbody></table>
 
                 {!character.editAttributes &&
                     <>

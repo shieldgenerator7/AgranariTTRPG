@@ -19,7 +19,7 @@ function AttributeFrame({ attribute, character, updateCharacter, game, diceRolle
                 <div className="abilityFrameLine">
                 {/* Name */}
                 <Field
-                    name={"Attribute"}
+                    name={"Stat"}
                     value={attribute.name}
                     setValue={(value) => {
                         attributeAdjusted(character, `${attribute.name}_name`, attribute.name, value);
@@ -88,9 +88,11 @@ function AttributeFrame({ attribute, character, updateCharacter, game, diceRolle
     //Button controls
     else {
         return (
-            <div className="attributeFrame">
+            <div className="abilityFrame">
                 <span>
+                    <span>
                     {attribute.getDisplayText()}
+                    </span>
                     {onClickType == ONCLICK_ADJUST_VALUE &&
                         <span>
                             <Counter

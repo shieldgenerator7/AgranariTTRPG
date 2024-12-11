@@ -26,6 +26,7 @@ class Attribute {
         this.lastRoll = 0;
         this.statValue = 0;
         this.statVarianceValue = 0;
+        this.displayStyle = 0;//TODO: make setting for this; 0: 20 +d20, 1: 20 - 40
     }
 
     get XP() {
@@ -83,7 +84,14 @@ class Attribute {
     }
 
     getDisplayText() {
-        return `${this.displayName || this.name}: ${this.Stat} - ${this.StatVariance} = ${this.lastRoll || "---"}`;
+        switch (this.displayStyle) {
+            case 0:
+                return `${this.displayName || this.name}: ${this.Stat} + d${this.StatVariance} = ${this.lastRoll || "---"}`;
+            case 1:
+                return `${this.displayName || this.name}: ${this.Stat} - ${this.StatVariance + this.Stat} = ${this.lastRoll || "---"}`;
+            default:
+                return `${this.displayName || this.name}: no display style for`;
+        }
     }
 }
 export default Attribute;
@@ -93,5 +101,6 @@ export function inflateAttribute(attribute) {
 
     attribute.statCost = attribute.statCost ?? 20;
     attribute.lastRoll = 0;
+    attribute.displayStyle = 0;
     attribute._computeValues();
 }

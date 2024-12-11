@@ -56,7 +56,8 @@ export function between(value, min, max) {
 }
 
 //Cuts decimals off the given value so that only the given number of places remains
-Math.cut = function (value, places = 0) {
+//EX: Math.cut(5.55, 1); //5.6
+Math.cut = function (value, places = 1) {
     let factor = Math.pow(10, places);
     return Math.round(value * factor) / factor;
 };

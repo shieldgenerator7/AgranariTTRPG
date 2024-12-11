@@ -86,9 +86,9 @@ class Attribute {
     getDisplayText() {
         switch (this.displayStyle) {
             case 0:
-                return `${this.displayName || this.name}: ${this.Stat} + d${this.StatVariance} = ${this.lastRoll || "---"}`;
+                return `${this.displayName || this.name}: ${Math.cut(this.Stat)} + d${Math.cut(this.StatVariance)} = ${Math.cut(this.lastRoll) || "---"}`;
             case 1:
-                return `${this.displayName || this.name}: ${this.Stat} - ${this.StatVariance + this.Stat} = ${this.lastRoll || "---"}`;
+                return `${this.displayName || this.name}: ${Math.cut(this.Stat)} - ${Math.cut(this.StatVariance + this.Stat)} = ${Math.cut(this.lastRoll) || "---"}`;
             default:
                 return `${this.displayName || this.name}: no display style for`;
         }

@@ -16,6 +16,7 @@ function AttributeFrame({ attribute, character, updateCharacter, game, diceRolle
     if (character.editAttributes) {
         return (
             <div className="attributeFrameEdit">
+                {/* Name */}
                 <Field
                     name={"Attribute"}
                     value={attribute.name}
@@ -26,6 +27,7 @@ function AttributeFrame({ attribute, character, updateCharacter, game, diceRolle
                     }}
                     className={"editText"}
                 ></Field>
+                {/* Display Name */}
                 <Field
                     name={"Display"}
                     value={attribute.displayName}
@@ -37,32 +39,35 @@ function AttributeFrame({ attribute, character, updateCharacter, game, diceRolle
                     className={"editTextShort"}
                     placeHolder={attribute.name}
                 ></Field>
+                {/* XP */}
                 <Field
-                    name={"Val"}
-                    value={attribute.value}
+                    name={"XP"}
+                    value={attribute.XP}
                     setValue={(value) => {
-                        attributeAdjusted(character, attribute.name, attribute.value, value);
-                        attribute.value = value;
+                        attributeAdjusted(character, attribute.name, attribute.Stat, value);
+                        attribute.XP = value;
                         updateCharacter(character);
                     }}
                     className={"editNumber"}
                 ></Field>
+                {/* Variance XP */}
                 <Field
-                    name={"Max"}
-                    value={attribute.max}
+                    name={"Variance XP"}
+                    value={attribute.XPVariance}
                     setValue={(value) => {
-                        attributeAdjusted(character, `${attribute.name}_max`, attribute.max, value);
-                        attribute.max = value;
+                        attributeAdjusted(character, `${attribute.name}_variance`, attribute.StatVariance, value);
+                        attribute.XPVariance = value;
                         updateCharacter(character);
                     }}
                     className={"editNumber"}
                 ></Field>
+                {/* Stat Cost */}
                 <Field
                     name={"Die Roll"}
-                    value={attribute.dieRoll}
+                    value={attribute.statCost}
                     setValue={(value) => {
-                        attributeAdjusted(character, `${attribute.name}_dieRoll`, attribute.dieRoll, value);
-                        attribute.dieRoll = value;
+                        attributeAdjusted(character, `${attribute.name}_statCost`, attribute.statCost, value);
+                        attribute.acceptStatCost(value);
                         updateCharacter(character);
                     }}
                     className={"editTextShort"}
@@ -70,17 +75,12 @@ function AttributeFrame({ attribute, character, updateCharacter, game, diceRolle
             </div>
         );
     }
-    //Show spacer
-    else if (attribute.IsSpacer) {
-        return (
-            <div></div>
-        );
-    }
     //Button controls
     else {
         return (
             <div className="attributeFrame">
                 <span>
+                    {attribute.getDisplayText()}
                     {onClickType == ONCLICK_ADJUST_VALUE &&
                         <span>
                             <Counter

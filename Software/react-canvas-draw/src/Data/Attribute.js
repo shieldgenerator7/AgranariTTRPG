@@ -28,6 +28,22 @@ class Attribute {
         this.statVarianceValue = 0;
     }
 
+    get XP() {
+        return this.xp;
+    }
+    set XP(value) {
+        this.xp = value;
+        this._computeValues();
+    }
+
+    get XPVariance() {
+        return this.xp_variance;
+    }
+    set XPVariance(value) {
+        this.xp_variance = value;
+        this._computeValues();
+    }
+
     get Stat() {
         return this.statValue;
     }
@@ -67,7 +83,7 @@ class Attribute {
     }
 
     getDisplayText() {
-        return `${this.displayName ?? this.name}: ${this.Stat} - ${this.StatVariance} = ${this.lastRoll || "---"}`;
+        return `${this.displayName || this.name}: ${this.Stat} - ${this.StatVariance} = ${this.lastRoll || "---"}`;
     }
 }
 export default Attribute;

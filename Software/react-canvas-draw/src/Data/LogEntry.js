@@ -73,11 +73,14 @@ class LogEntry {
                         : (!isEmpty(v.oldVal) && isEmpty(v.newVal))
                             ? "removed"
                             : undefined;
+                if (isNumber(diff)) {
+                    diff = Math.cut(diff);
+                }
                 if (v.oldVal == v.newVal) {
                     diff = undefined;
                 }
-                return `${name}: ${v.oldVal} -> ${v.newVal}${(diff != undefined)
-                    ? (isNumber)
+                return `${name}: ${Math.cut(v.oldVal)} -> ${Math.cut(v.newVal)}${(diff != undefined)
+                    ? (isNumber(diff))
                         ? ` (${(diff > 0) ? "+" : ""}${diff})`
                         : diff
                     : ""
@@ -86,7 +89,7 @@ class LogEntry {
             return retStr;
         }
         //"2024-09-22 22:18 - 2024-04-15 @Crownspire: Tak Redwind Attack: 15 -> 17"
-        return `${this.Date} ${this.Time} - ${this.event} @${this.location}: ${this.characterName} ${this.rollName}: ${this.rollValue} -> ${this.rollResult}`;
+        return `${this.Date} ${this.Time} - ${this.event} @${this.location}: ${this.characterName} ${this.rollName}: ${Math.cut(this.rollValue)} -> ${Math.cut(this.rollResult)}`;
     }
 
     includes(text) {

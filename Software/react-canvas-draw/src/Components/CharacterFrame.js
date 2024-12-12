@@ -368,7 +368,7 @@ function CharacterFrame({ character, updateCharacter, game, updateGame, diceRoll
                                 }}
                             >
                                 {/* <div className="rollResultInternal"> */}
-                                {roll.Value}
+                                {Math.cut(roll.Value)}
                                 {/* <span className="rollResultName">{roll.name}</span>
                                     </div> */}
                             </span>

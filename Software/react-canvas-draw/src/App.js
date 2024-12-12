@@ -223,7 +223,7 @@ function App() {
                                 characterList={characterList}
                                 setCharacterList={setCharacterList}
                                 renameConsumable={renameConsumablePropagation}
-                                key={`character_${characterToShow.name}_${i}`}
+                                key={`character_${char.name}_${i}`}
                             ></CharacterFrame>
                         ))
                     }

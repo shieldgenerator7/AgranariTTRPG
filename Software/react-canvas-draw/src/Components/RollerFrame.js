@@ -17,8 +17,14 @@ import { isString } from "../Utility/Utility";
 import TempBonus from "../Data/TempBonus";
 import TempBonusFrame from "./TempBonusFrame";
 
+/**
+ * This component shows a list of rolls to be done for an action.
+ * EX: For an attack, it'll display the roll to make for accuracy, dodge, etc, and have controls for willpower
+ * @param {*} param0 
+ * @returns 
+ */
 //2024-12-11: copied from CharacterFrame
-function RollerFrame({ character, updateCharacter, game, updateGame, diceRolled, attributeAdjusted, abilityModified, characterList, setCharacterList, renameConsumable }) {
+function RollerFrame({ title, rollSlotList, updateCharacter, game, updateGame, diceRolled, attributeAdjusted, abilityModified, characterList, setCharacterList, renameConsumable }) {
     let showConsumableList = false;
     let setShowConsumableList = (b) => showConsumableList = b;
     [showConsumableList, setShowConsumableList] = useState(false);
@@ -42,6 +48,7 @@ function RollerFrame({ character, updateCharacter, game, updateGame, diceRolled,
                 // console.log("mouse event", e, e.target.id, onClickIgnoreIds);
             }}
         >
+            <div>title</div>
             <div className="characterContent">
                 <h1>{character.name}</h1>
                 {character.editAttributes &&

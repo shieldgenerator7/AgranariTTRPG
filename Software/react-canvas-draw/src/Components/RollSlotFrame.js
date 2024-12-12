@@ -11,8 +11,20 @@ import Counter from "./Counter";
 import Field from "./Field";
 
 //2024-12-11: copied from AttributeFrame
-function RollSlotFrame({ stat, character, updateCharacter, game, diceRolled, attributeAdjusted }) {
-    let onClickType = stat.OnClickType;
+function RollSlotFrame({ rollSlot, updateRollSlot }) {
+
+    //TODO: add buttons and fields
+    return (
+        <>
+            
+            <span>{rollSlot.character.name} {rollSlot.stat.name}:</span>
+            <span>{rollSlot.lastRoll ?? "---"}</span>
+            <span>{rollSlot.Status}</span>
+            TODO: Roll Button
+            TODO: WillPower Button
+        </>
+    )
+
     //Edit Attributes
     if (character.editAttributes) {
         return (

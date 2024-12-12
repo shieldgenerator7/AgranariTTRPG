@@ -27,10 +27,10 @@ class Character {
         this.dieRollLogSelect = [];
     }
 
-    getAttribute(attrName) {
-        attrName = attrName.trim();
+    getStat(statName) {
+        statName = statName.trim();
         return this.statList
-            .find(a => a.name?.trim() == attrName || a.displayName?.trim() == attrName);
+            .find(a => a.name?.trim() == statName || a.displayName?.trim() == statName);
     }
 
     getConsumable(cnsmName) {
@@ -40,7 +40,7 @@ class Character {
 
     hasResource(ability) {
         //Attributes
-        let attr = this.getAttribute(ability.resourceName);
+        let attr = this.getStat(ability.resourceName);
         if (attr && attr.value >= ability.resourceCost) {
             return true;
         }
@@ -55,7 +55,7 @@ class Character {
 
     consumeResource(ability) {
         //Attributes
-        let attr = this.getAttribute(ability.resourceName);
+        let attr = this.getStat(ability.resourceName);
         if (attr) {
             let prevValue = attr.Value;
             attr.Value -= ability.resourceCost;

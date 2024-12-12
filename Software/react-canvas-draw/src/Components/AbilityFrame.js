@@ -159,9 +159,9 @@ function AbilityFrame({ ability, character, updateFunc, attributeAdjusted, abili
                                             }
                                             //bonus: Attribute
                                             else if (isString(ability.dieRollBonus)) {
-                                                let attrName = ability.dieRollBonus.trim();
+                                                let statName = ability.dieRollBonus.trim();
                                                 let attr = character.statList
-                                                    .filter(a => a.name?.trim() == attrName || a.displayName?.trim() == attrName)[0];
+                                                    .filter(a => a.name?.trim() == statName || a.displayName?.trim() == statName)[0];
                                                 if (attr?.value) {
                                                     let bonusvalue = attr.value * 1;
                                                     roll.addRoll(`${attr.name} (${ability.name})`, bonusvalue);

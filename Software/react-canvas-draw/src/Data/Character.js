@@ -136,7 +136,7 @@ export function inflateCharacter(character, updateCharacter = (c) => { }) {
 
     character.dieRollLog = inflateArray(character.dieRollLog, inflateRollGroup);
     character.dieRollLogSelect = inflateArray(character.dieRollLogSelect, () => { });
-    
+
     character.resources ??= {
         health: 100,
         willPower: 20,

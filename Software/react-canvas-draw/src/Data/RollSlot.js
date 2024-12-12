@@ -2,7 +2,7 @@
 
 import { inflateArray, clamp } from "../Utility/Utility";
 
-class RollSlot{
+class RollSlot {
     constructor(character, statName, statusFunc) {
         this.character = character;
         this.statName = statName;

@@ -229,13 +229,13 @@ function App() {
                     }
                 </div>
                 {!characterToShow &&
-                <CommandPanel
-                    game={game}
-                    updateGame={updateGame}
-                    characterList={characterList}
-                    setCharacterList={setCharacterList}
-                    log={log}
-                ></CommandPanel>
+                    <CommandPanel
+                        game={game}
+                        updateGame={updateGame}
+                        characterList={characterList}
+                        setCharacterList={setCharacterList}
+                        log={log}
+                    ></CommandPanel>
                 }
             </header>
         </div>

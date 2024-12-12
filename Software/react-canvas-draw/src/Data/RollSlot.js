@@ -1,5 +1,7 @@
 "use strict";
 
+import { inflateArray, clamp } from "../Utility/Utility";
+
 class RollSlot{
     constructor(character, statName, statusFunc) {
         this.character = character;

@@ -1,6 +1,6 @@
 "use strict";
 
-import { inflateArray } from "../Utility/Utility";
+import { inflateArray, clamp } from "../Utility/Utility";
 import Ability, { inflateAbility } from "./Ability";
 import { inflateStat } from "./Stat";
 import { inflateConsumable } from "./Consumable";
@@ -43,6 +43,23 @@ class Character {
         }
         return this.statList
             .find(a => this._normalizeForMatching(a.name) == statName || this._normalizeForMatching(a.displayName) == statName);
+    }
+
+    get Health() {
+        return this.resources.health;
+    }
+    set Health(value) {
+        this.resources.health = clamp(value, 0, this.getStat("maxhealth"));
+    }
+    get MissingHealth() {
+        return this.getStat("maxhealth") - this.resources.health;
+    }
+
+    get WillPower() {
+        return this.resources.willPower;
+    }
+    set WillPower(value) {
+        this.resources.willPower = clamp(value, 0, this.getStat("willpower"));
     }
 
     getConsumable(cnsmName) {

@@ -16,6 +16,10 @@ class Character {
         this.abilityList = [];
         this.consumableList = [];
         this.tempBonusList = [];
+        this.resources = {
+            health: 100,
+            willPower: 20,
+        };
 
         //TODO: implement equipment
         this.equipmentList = [];
@@ -27,10 +31,18 @@ class Character {
         this.dieRollLogSelect = [];
     }
 
+    _normalizeForMatching(name) {
+        return name?.trim().replaceAll(" ", "").toLowerCase();
+    }
+
     getStat(statName) {
-        statName = statName.trim();
+        statName = this._normalizeForMatching(statName);
+        if (!statName) {
+            console.error("statname must be a name of a stat! statName: ", statName);
+            return;
+        }
         return this.statList
-            .find(a => a.name?.trim() == statName || a.displayName?.trim() == statName);
+            .find(a => this._normalizeForMatching(a.name) == statName || this._normalizeForMatching(a.displayName) == statName);
     }
 
     getConsumable(cnsmName) {
@@ -107,6 +119,11 @@ export function inflateCharacter(character, updateCharacter = (c) => { }) {
 
     character.dieRollLog = inflateArray(character.dieRollLog, inflateRollGroup);
     character.dieRollLogSelect = inflateArray(character.dieRollLogSelect, () => { });
+    
+    character.resources ??= {
+        health: 100,
+        willPower: 20,
+    };
 
     //Portrait
     // if (character.imageURL && !isImage(character.imgPortrait)) {

@@ -186,17 +186,32 @@ function App() {
     //     document.title = ((characterName) ? `${characterName} - ` : "") + `Creature Combat v${VERSION}`;
     // }, [character, characterList]);
 
-    let charactersToShow = characterList;
+    let characterToShow = undefined;
     if (paramCharacter?.trim() || false) {
-        charactersToShow = characterList.filter(char => char.name == paramCharacter);
+        characterToShow = characterList.find(char => char.name.trim().toLowerCase() == paramCharacter.trim().toLowerCase());
     }
 
     return (
         <div className="App">
             <header className="App-header">
                 <div className='characterZone'>
-                    {
-                        charactersToShow.map((char, i) => (
+                    {characterToShow &&
+                        <CharacterFrame
+                            character={characterToShow}
+                            updateCharacter={(c) => updateCharacter(c)}
+                            game={game}
+                            updateGame={updateGame}
+                            diceRolled={diceRolled}
+                            attributeAdjusted={attributeAdjusted}
+                            abilityModified={abilityModified}
+                            characterList={characterList}
+                            setCharacterList={setCharacterList}
+                            renameConsumable={renameConsumablePropagation}
+                            key={`character_${characterToShow.name}`}
+                        ></CharacterFrame>
+                    }
+                    {!characterToShow &&
+                        characterList.map((char, i) => (
                             <CharacterFrame
                                 character={char}
                                 updateCharacter={(c) => updateCharacter(c)}
@@ -208,12 +223,12 @@ function App() {
                                 characterList={characterList}
                                 setCharacterList={setCharacterList}
                                 renameConsumable={renameConsumablePropagation}
-                                key={`character_${i}`}
+                                key={`character_${characterToShow.name}_${i}`}
                             ></CharacterFrame>
                         ))
                     }
                 </div>
-
+                {!characterToShow &&
                 <CommandPanel
                     game={game}
                     updateGame={updateGame}
@@ -221,7 +236,7 @@ function App() {
                     setCharacterList={setCharacterList}
                     log={log}
                 ></CommandPanel>
-
+                }
             </header>
         </div>
     );

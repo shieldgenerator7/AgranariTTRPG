@@ -5,6 +5,7 @@ class RollSlot{
         this.character = character;
         this.statName = statName;
         this.willPower = 0;
+        this.statusFunc = statusFunc;
         //
         this.stat = this.character.getStat(statName);
         this.lastRoll;
@@ -34,7 +35,7 @@ class RollSlot{
     }
 
     get Status() {
-        return this.statusFunc?.() ?? `${this.statName}: ${(this.lastRoll) ? this.lastRoll : "---"}`;
+        return this.statusFunc?.(this.lastRoll) ?? "";
     }
 }
 export default RollSlot;

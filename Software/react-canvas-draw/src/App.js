@@ -16,11 +16,14 @@ import CommandPanel from './Components/CommandPanel';
 import Log from './Data/Log';
 import Game, { inflateGame } from './Data/Game';
 import Consumable from './Data/Consumable';
+import { Socket } from 'socket.io';
 
 function App() {
     //URL params
     const [searchParams, setSearchParams] = useSearchParams();
     const paramCharacter = searchParams.get("character");
+    //connection
+    const socket = Socket.io();
     //Storage
     let storage;
     let setStorage = (s) => { storage = s; };

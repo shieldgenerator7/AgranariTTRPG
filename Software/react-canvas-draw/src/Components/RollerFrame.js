@@ -33,32 +33,36 @@ function RollerFrame({ title, actionRoller, updateRoller, updateCharacter, game,
 
     let prevChar = undefined;
 
-    let divList = [];
+    let rowList = [];
     actionRoller.rollList.forEach((rollSlot, i) => {
         if (rollSlot.character != prevChar) {
             prevChar = rollSlot.character;
-            divList.push((
-                <div className="rollSlotCharacterHeader">
+            rowList.push((
+                <tr className="rollSlotCharacterHeader"><td>
                     {rollSlot.character.name}
-                </div>
+                </td></tr>
             ));
         }
-        let div = (
+        let row = (
             <RollSlotFrame
                 rollSlot={rollSlot}
                 updateRollSlot={updateRollSlot}
                 key={i}
             ></RollSlotFrame>
         );
-        divList.push(div);
+        rowList.push(row);
     });
 
     return (
         <div className="actionFrame">
             {title}
+            <table>
+                <tbody>
             {
-                divList
+                rowList
             }
+                </tbody>
+            </table>
         </div>
     );
 

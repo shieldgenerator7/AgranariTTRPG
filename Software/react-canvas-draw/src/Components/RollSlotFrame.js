@@ -1,12 +1,10 @@
 "use strict";
 
-"use strict";
-
 import Attribute from "../Data/Character";
 import { ACTION_ROLL_MODIFY, ONCLICK_ADJUST_VALUE, ONCLICK_DIE_ROLL, ONCLICK_TOGGLE } from "../Data/Constants";
 import { rollDice } from "../Data/DiceRoller";
 import RollGroup from "../Data/RollGroup";
-import { clamp, isString } from "../Utility/Utility";
+import { clamp, isNumber, isString } from "../Utility/Utility";
 import Counter from "./Counter";
 import Field from "./Field";
 
@@ -15,9 +13,10 @@ function RollSlotFrame({ rollSlot, updateRollSlot }) {
 
     //TODO: add buttons and fields
     return (
-        <div className="rollSlotFrame">
+        <tr className="rollSlotFrame">
             
-            <span>{rollSlot.stat.name}:</span> 
+            <td>{rollSlot.stat.name}:</td> 
+            <td>
             <button
                 onClick={() => {
                     rollSlot.roll();
@@ -26,9 +25,13 @@ function RollSlotFrame({ rollSlot, updateRollSlot }) {
             >
                 ROLL
             </button>
-            <span> {Math.cut(rollSlot.lastRoll) ?? "---"}</span>
-            {
-                rollSlot.lastRoll && !rollSlot.WillPower &&
+            </td>
+            <td> {Math.cut(rollSlot.lastRoll) ?? "---"} </td>
+            <td>{
+                rollSlot.lastRoll &&
+                <>
+                   {
+                    !rollSlot.WillPower &&
                 <button
                     onClick={() => {
                         rollSlot.contestWithWillPower();      
@@ -50,14 +53,19 @@ function RollSlotFrame({ rollSlot, updateRollSlot }) {
                         inline={true}
                 ></Counter>
             }
+                </>
+            }
+            </td>
+            <td>
             {
                 rollSlot.lastRoll && rollSlot.WillPower && 
                 <span>-{">"} {Math.cut(rollSlot.Total)}</span>                
             }
-            <span>{rollSlot.Status}</span>
             {/* TODO: Roll Button
             TODO: WillPower Button */}
-        </div>
+            </td>
+            <td>{rollSlot.Status}</td>
+        </tr>
     );
 
 }

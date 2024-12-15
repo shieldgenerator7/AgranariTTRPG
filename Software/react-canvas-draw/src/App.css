@@ -921,6 +921,13 @@
 
 
 
+.dropzone {
+    border: 1px solid black;
+    background-color: #8f8e7f;
+}
+
+
+
 
 
 .searchSelect {

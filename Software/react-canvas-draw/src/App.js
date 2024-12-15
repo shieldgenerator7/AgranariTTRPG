@@ -16,6 +16,8 @@ import Consumable from './Data/Consumable';
 import { Socket } from 'socket.io';
 import RollerFrame from './Components/RollerFrame';
 import ActionRollAttack, { inflateActionRollAttack } from './Data/Actions/ActionRollAttack';
+import Dropzone from 'react-dropzone';
+import { UploadFile } from './Utility/Upload';
 
 function App() {
     //Title
@@ -297,6 +299,38 @@ function App() {
                                 key={`character_${char.name}_${i}`}
                             ></CharacterFrame>
                         ))
+                    }
+                    {
+                        !characterToShow &&
+                        <div className='characterFrame'>
+                                Character Menu
+                                {/* Drop Zone */}
+                                <Dropzone
+                                    onDrop={
+                                        files => files.forEach(file =>
+                                            UploadFile(
+                                                file,
+                                                true,
+                                                (json) => {
+                                                    let card = JSON.parse(decodeURIComponent(json));
+                                                    // inflateCreature(card);
+                                                    // backwardsCompatifyCreature(card);
+                                                    // cardList.push(card);
+                                                    // setCardList([...cardList]);
+                                                    // setCard(card);
+                                                    console.log("json dropped", card);
+                                                }
+                                            ))
+                                    }
+                                >
+                                    {({ getRootProps, getInputProps }) => (
+                                        <div {...getRootProps({ className: "dropzone" })}>
+                                            <input {...getInputProps()} />
+                                            <p>Drop .card files here</p>
+                                        </div>
+                                    )}
+                                </Dropzone>
+                        </div>
                     }
                 </div>
                 {!characterToShow &&

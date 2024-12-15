@@ -814,18 +814,18 @@
     padding: 10px;
 }
 
-.rollSlotFrame{
+.rollSlotFrame {
     display: inline;
     margin-left: 0px;
     padding: 2px;
-    font-size:0.6em;
-    margin:0px;
+    font-size: 0.6em;
+    margin: 0px;
 }
 
-.rollSlotCharacterHeader{
+.rollSlotCharacterHeader {
     font-size: 0.75em;
     font-weight: bold;
-    display:block;
+    display: block;
     margin: 0px;
     padding: 0px;
     margin-top: 15px;

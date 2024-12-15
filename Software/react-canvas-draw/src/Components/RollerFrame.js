@@ -26,10 +26,10 @@ import RollSlotFrame from "./RollSlotFrame";
  */
 //2024-12-11: copied from CharacterFrame
 function RollerFrame({ title, actionRoller, updateRoller, updateCharacter, game, updateGame, diceRolled, attributeAdjusted }) {
-   
+
     const updateRollSlot = () => {
         updateRoller(actionRoller);
-    }
+    };
 
     let prevChar = undefined;
 
@@ -58,9 +58,9 @@ function RollerFrame({ title, actionRoller, updateRoller, updateCharacter, game,
             {title}
             <table>
                 <tbody>
-            {
-                rowList
-            }
+                    {
+                        rowList
+                    }
                 </tbody>
             </table>
         </div>

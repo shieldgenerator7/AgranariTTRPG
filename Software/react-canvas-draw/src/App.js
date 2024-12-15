@@ -326,7 +326,7 @@ function App() {
                                     {({ getRootProps, getInputProps }) => (
                                         <div {...getRootProps({ className: "dropzone" })}>
                                             <input {...getInputProps()} />
-                                            <p>Drop .card files here</p>
+                                            <p>drop .CHAR files here</p>
                                         </div>
                                     )}
                                 </Dropzone>

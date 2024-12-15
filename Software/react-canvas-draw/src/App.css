@@ -922,9 +922,18 @@
 
 
 .dropzone {
-    border: 1px solid black;
+    border: 1px solid rgb(110, 110, 110);
+    border-radius: 20px;
+    color: #69685e;
     background-color: #8f8e7f;
+    padding:10px;
+    margin:10px;
+    text-align: center;
 }
+.dropzone:hover{
+    background-color: rgb(167, 167, 167);
+    border: 1px dashed rgb(110, 110, 110);
+}/**/
 
 
 

@@ -17,7 +17,7 @@ function RollSlotFrame({ rollSlot, updateRollSlot }) {
     return (
         <div className="rollSlotFrame">
             
-            <span>{rollSlot.character.name} {rollSlot.stat.name}:</span> 
+            <span>{rollSlot.stat.name}:</span> 
             <span> {rollSlot.lastRoll ?? "---"} </span>
             <span>{rollSlot.Status}</span>
             {/* TODO: Roll Button

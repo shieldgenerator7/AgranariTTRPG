@@ -29,6 +29,8 @@ class Character {
         this.restList = [];//TOOD: implement rests
         this.dieRollLog = [];
         this.dieRollLogSelect = [];
+
+        this.isCharacter = true;
     }
 
     _normalizeForMatching(name) {
@@ -125,6 +127,7 @@ window.Character = Character;
 //2024-09-20: copied from Creature.inflateCreature()
 export function inflateCharacter(character, updateCharacter = (c) => { }) {
     Object.setPrototypeOf(character, Character.prototype);
+    character.isCharacter = true;
 
     character.statList = inflateArray(character.statList, inflateStat);
 

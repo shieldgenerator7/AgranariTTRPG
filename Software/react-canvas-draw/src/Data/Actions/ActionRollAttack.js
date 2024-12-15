@@ -20,9 +20,17 @@ class ActionRollAttack{
         this.constitutionSlot = new RollSlot(defender, "constitution", (roll)=>(this.defender.MissingHealth + this.damageTakenSlot.lastRoll > roll)?"UNCONSCIOUS":"");
 
         this.rollList = [
+            //attacker
+            this.attacker,
             this.attackSlot,
+            //defender
+            this.defender,
             this.dodgeSlot,
+            //attacker
+            this.attacker,
             this.damageSlot,
+            //defender
+            this.defender,
             this.damageTakenSlot,
             this.durabilitySlot,
             this.painToleranceSlot,

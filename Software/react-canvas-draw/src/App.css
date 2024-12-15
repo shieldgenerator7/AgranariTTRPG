@@ -817,9 +817,14 @@
     display: inline;
     margin-left: 0px;
     padding: 2px;
-    font-size: medium;
+    font-size:large;
 }
 
+.rollSlotCharacterHeader{
+    font-size: large;
+    font-weight: bold;
+    display:block;
+}
 
 
 

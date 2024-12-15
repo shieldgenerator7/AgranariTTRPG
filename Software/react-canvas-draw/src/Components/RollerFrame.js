@@ -32,6 +32,12 @@ function RollerFrame({ title, actionRoller, updateCharacter, game, updateGame, d
             {title}
             {
                 actionRoller.rollList.map((rollSlot, i) => 
+                    (rollSlot.isCharacter)
+                        ?
+                    <div className="rollSlotCharacterHeader">
+                        {rollSlot.name}
+                    </div>
+                        :
                     <RollSlotFrame
                         rollSlot={rollSlot}
                         key={i}

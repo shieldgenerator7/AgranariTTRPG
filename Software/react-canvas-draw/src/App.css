@@ -829,16 +829,19 @@
     padding: 0px;
     margin-top: 15px;
 }
+
 .rollSlotCellNumber {
     text-align: right;
     min-width: 40px;
 }
+
 .bold {
     font-weight: bold;
     padding-left: 10px;
     padding-right: 10px;
     font-size: 1.2em;
 }
+
 .rollSlotLabel {
     /* color: black; */
     font-size: large;
@@ -848,14 +851,17 @@
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     background: #cebd90;
 }
+
 .willpower {
-    color:rgb(39, 114, 255);
+    color: rgb(39, 114, 255);
 }
+
 .willpower:hover {
-    color:black;
+    color: black;
     background-color: rgb(126, 171, 255);
 }
-.resourceTable{
+
+.resourceTable {
     font-size: .65em;
     max-width: 75%;
 }

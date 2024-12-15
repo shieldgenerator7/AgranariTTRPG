@@ -19,14 +19,14 @@ function RollSlotFrame({ rollSlot, updateRollSlot }) {
             <td>
                 {
                     rollSlot.rollable &&
-                <button className="plusMinus"
-                    onClick={() => {
-                        rollSlot.roll();
-                        updateRollSlot();
-                    }}
-                >
-                    {rollSlot.label}:
-                </button>
+                    <button className="plusMinus"
+                        onClick={() => {
+                            rollSlot.roll();
+                            updateRollSlot();
+                        }}
+                    >
+                        {rollSlot.label}:
+                    </button>
                 }
                 {
                     !rollSlot.rollable &&
@@ -63,7 +63,7 @@ function RollSlotFrame({ rollSlot, updateRollSlot }) {
                                 })}
                                 label={`${(rollSlot.WillPower > 0) ? "+" : ""}${rollSlot.WillPower}`}
                                 inline={true}
-                                    extraclass="willpower"
+                                extraclass="willpower"
                             ></Counter>
                         }
                     </>

@@ -77,16 +77,16 @@ function CharacterFrame({ character, updateCharacter, game, updateGame, diceRoll
                 {
                     character.resources &&
                     <table className="resourceTable">
-                            <tbody>
-                                {Object.entries(character.resources).map(([k, v], i) => (
-                                    <tr key={i}>
-                                        <td>{k}</td>
-                                        <td className="rollSlotCellNumber">{v}</td>
-                                        <td>/</td>
-                                        <td className="rollSlotCellNumber">{character.getStatValue(character.getMaxStatName(k))}</td>
-                                    </tr>
-                                ))}
-                            </tbody>
+                        <tbody>
+                            {Object.entries(character.resources).map(([k, v], i) => (
+                                <tr key={i}>
+                                    <td>{k}</td>
+                                    <td className="rollSlotCellNumber">{v}</td>
+                                    <td>/</td>
+                                    <td className="rollSlotCellNumber">{character.getStatValue(character.getMaxStatName(k))}</td>
+                                </tr>
+                            ))}
+                        </tbody>
                     </table>
                 }
                 {/* // */}
@@ -119,9 +119,9 @@ function CharacterFrame({ character, updateCharacter, game, updateGame, diceRoll
                                             character.statList = arr;
                                             updateCharacter(character);
                                         }}
-                                        // allowReordering={false}
-                                        // allowCopying={false}
-                                        // allowDeletion={false}
+                                    // allowReordering={false}
+                                    // allowCopying={false}
+                                    // allowDeletion={false}
                                     ></ListOrdered>
                                 }
                                 {!character.editAttributes &&

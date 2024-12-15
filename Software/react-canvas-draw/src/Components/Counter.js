@@ -43,7 +43,7 @@ function Counter({ value, setValue, allowNegative = false, inline = false, max =
                     value={`${value}`}></input>
             }
             <button className={`plusMinus ${extraclass}`}
-                tabIndex={(showEditField)?-1:undefined}
+                tabIndex={(showEditField) ? -1 : undefined}
                 onClick={(e) => {
                     set((value * 1) + increment);
                 }}

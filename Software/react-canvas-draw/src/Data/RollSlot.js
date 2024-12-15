@@ -20,7 +20,7 @@ class RollSlot {
         this.totalFunc = undefined;
     }
 
-    getDisplayText() {        
+    getDisplayText() {
         return `${this.character.name} ${this.label}: ${formatNumber(this.stat.Stat)} + d${formatNumber(this.stat.StatVariance)}`;
     }
 
@@ -46,7 +46,7 @@ class RollSlot {
     }
     set WillPower(value) {
         if (isNumber(value * 1)) {
-        this.willPower = clamp(value, 0, this.character.resources.willPower);
+            this.willPower = clamp(value, 0, this.character.resources.willPower);
         }
         else {
             this.willPower = undefined;
@@ -71,7 +71,7 @@ class RollSlot {
 }
 export default RollSlot;
 
-export function inflateRollSlot(rollSlot, characterList){
+export function inflateRollSlot(rollSlot, characterList) {
     Object.setPrototypeOf(rollSlot, RollSlot.prototype);
 
     rollSlot.character = characterList.find(char => char.name = rollSlot.characterName);

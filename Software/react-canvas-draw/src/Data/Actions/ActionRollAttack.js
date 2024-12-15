@@ -6,7 +6,7 @@ import { arraySum, isNumber } from "../../Utility/Utility";
 const CONDITION_STUNNED = 0;
 const CONDITION_UNCONSCIOUS = 1;
 
-class ActionRollAttack{
+class ActionRollAttack {
     constructor(attacker, defender) {
         this.attacker = attacker;
         this.attackerName = attacker.name;
@@ -20,13 +20,13 @@ class ActionRollAttack{
         let attacker = this.attacker;
         let defender = this.defender;
 
-        this.attackSlot = new RollSlot(attacker, "accuracy", ()=>this.dodgeSlot.Total, (total) => this.getHitMessage(total, this.dodgeSlot.Total));
+        this.attackSlot = new RollSlot(attacker, "accuracy", () => this.dodgeSlot.Total, (total) => this.getHitMessage(total, this.dodgeSlot.Total));
         this.dodgeSlot = new RollSlot(defender, "dodge", () => this.attackSlot.Total, (total) => this.getDodgeMessage(this.attackSlot.Total, total));
-        this.damageSlot = new RollSlot(attacker, "damage",()=>this.durabilitySlot.Total, (total)=>(total > 0)?"dmg dealt":"");
-        this.damageTakenSlot = new RollSlot(defender, "armor", undefined, (total)=>(total > 0)?"dmg taken":"");
-        this.durabilitySlot = new RollSlot(defender, "durability",()=>this.damageTakenSlot.Total, (roll)=>(this.damageTakenSlot.Total > roll)?"WOUNDED":"");
-        this.painToleranceSlot = new RollSlot(defender, "paintolerance",()=>this.damageTakenSlot.Total, (roll)=>(this.damageTakenSlot.Total > roll)?"WINCED":"");
-        this.constitutionSlot = new RollSlot(defender, "constitution",()=>this.damageTakenSlot.Total, (roll)=>(this.defender.MissingHealth + this.damageTakenSlot.Total > roll)?"UNCONSCIOUS":"");
+        this.damageSlot = new RollSlot(attacker, "damage", () => this.durabilitySlot.Total, (total) => (total > 0) ? "dmg dealt" : "");
+        this.damageTakenSlot = new RollSlot(defender, "armor", undefined, (total) => (total > 0) ? "dmg taken" : "");
+        this.durabilitySlot = new RollSlot(defender, "durability", () => this.damageTakenSlot.Total, (roll) => (this.damageTakenSlot.Total > roll) ? "WOUNDED" : "");
+        this.painToleranceSlot = new RollSlot(defender, "paintolerance", () => this.damageTakenSlot.Total, (roll) => (this.damageTakenSlot.Total > roll) ? "WINCED" : "");
+        this.constitutionSlot = new RollSlot(defender, "constitution", () => this.damageTakenSlot.Total, (roll) => (this.defender.MissingHealth + this.damageTakenSlot.Total > roll) ? "UNCONSCIOUS" : "");
 
         this.damageTakenSlot.label = "Damage Taken";
         this.damageTakenSlot.rollable = false;

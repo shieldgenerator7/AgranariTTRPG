@@ -832,6 +832,12 @@
 .rollSlotCellNumber {
     text-align: right;
 }
+.bold {
+    font-weight: bold;
+    padding-left: 10px;
+    padding-right: 10px;
+    font-size: 1.2em;
+}
 .rollSlotLabel {
     /* color: black; */
     font-size: large;

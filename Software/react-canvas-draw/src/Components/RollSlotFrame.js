@@ -73,7 +73,7 @@ function RollSlotFrame({ rollSlot, updateRollSlot }) {
                     <span>{"-->"}</span>
                 }
             </td>
-            <td className="rollSlotCellNumber">
+            <td className="rollSlotCellNumber bold">
                 {
                     <span>{formatNumber(rollSlot.Total)}</span>
                 }

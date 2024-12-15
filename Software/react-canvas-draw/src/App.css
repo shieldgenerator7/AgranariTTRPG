@@ -364,6 +364,11 @@
     background: #ffeec1;
     border-radius: 7px;
 }
+.plusMinus:disabled:hover {
+    color: rgb(167, 167, 167);
+    background: #cebd90;
+    border-radius: 7px;
+}
 
 .characterZone {
     position: absolute;

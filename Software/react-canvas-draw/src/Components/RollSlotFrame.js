@@ -49,6 +49,7 @@ function RollSlotFrame({ rollSlot, updateRollSlot }) {
                                     rollSlot.contestWithWillPower();
                                     updateRollSlot();
                                 }}
+                                disabled={rollSlot.character.WillPower == 0}
                             >
                                 WP
                             </button>

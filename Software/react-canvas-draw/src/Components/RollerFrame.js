@@ -27,9 +27,9 @@ import TempBonusFrame from "./TempBonusFrame";
 function RollerFrame({ title, rollSlotList, updateCharacter, game, updateGame, diceRolled, attributeAdjusted, abilityModified, characterList, setCharacterList, renameConsumable }) {
    
     return (
-        <>
+        <div className="actionFrame">
             {title}
-        </>
+        </div>
     );
 
 }

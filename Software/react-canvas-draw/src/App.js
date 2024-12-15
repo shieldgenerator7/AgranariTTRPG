@@ -14,6 +14,8 @@ import Log from './Data/Log';
 import Game, { inflateGame } from './Data/Game';
 import Consumable from './Data/Consumable';
 import { Socket } from 'socket.io';
+import RollerFrame from './Components/RollerFrame';
+import ActionRollAttack from './Data/Actions/ActionRollAttack';
 
 function App() {
     //Title
@@ -186,7 +188,37 @@ function App() {
     //     setPanelList([...panelList]);
     // };
 
+    //Roller
+    let roller = new ActionRollAttack(characterList[0], characterList[1]);
+    let setRoller = (r) => {
+        roller = r;
+        storage.roller = roller;
+    };
+    const defaultRoller = () => storage.roller ?? new ActionRollAttack(characterList[0], characterList[1]);
+    [roller, setRoller] = useState(defaultRoller);
+    window.roller = roller;
+    let updateRoller = (oldroller) => {
+        let newroller = JSON.parse(JSON.stringify(oldroller));
+        if (isImage(oldroller.imgPortrait)) {
+            newroller.imgPortrait = oldroller.imgPortrait;
+        }
+        // inflateRoller(
+        //     newroller,
+        //     (r) => { if (r == roller) { updateRoller(r); } }
+        // );
+        //
+        // let charList = [...characterList];
+        // if (charList.includes(oldroller)) {
+        //     let index = charList.indexOf(oldroller);
+        //     charList.splice(index, 1, newroller);
+        // }
+        // setCharacterList(charList);
+        //
+        setRoller(newroller);
+        // storage.characterList = characterList;
+    };
 
+    //Character to Show
     let characterToShow = undefined;
     if (paramCharacter?.trim() || false) {
         characterToShow = characterList.find(char => char.name.trim().toLowerCase() == paramCharacter.trim().toLowerCase());
@@ -196,6 +228,9 @@ function App() {
         <div className="App">
             <header className="App-header">
                 <div className='characterZone'>
+                    <RollerFrame
+                        title="Attack"
+                    ></RollerFrame>
                     {characterToShow &&
                         <CharacterFrame
                             character={characterToShow}

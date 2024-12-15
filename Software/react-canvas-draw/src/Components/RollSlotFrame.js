@@ -15,15 +15,15 @@ function RollSlotFrame({ rollSlot, updateRollSlot }) {
     return (
         <tr className="rollSlotFrame">
 
-            <td>{rollSlot.stat.name}:</td>
+            {/* Roll Button + Stat Name */}
             <td>
-                <button
+                <button className="plusMinus"
                     onClick={() => {
                         rollSlot.roll();
                         updateRollSlot();
                     }}
                 >
-                    ROLL
+                    {rollSlot.label}:
                 </button>
             </td>
             <td className="rollSlotCellNumber"> {formatNumber(rollSlot.lastRoll) ?? "---"} </td>

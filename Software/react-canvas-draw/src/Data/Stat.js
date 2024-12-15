@@ -1,6 +1,6 @@
 "use strict";
 
-import { clamp } from "../Utility/Utility";
+import { clamp, formatNumber } from "../Utility/Utility";
 import { LIMIT_POSITIVE_ONLY, ONCLICK_ADJUST_VALUE, ONCLICK_DIE_ROLL, ONCLICK_TOGGLE, REGEX_SPACER_TEST } from "./Constants";
 
 let stringifyAttribute = [
@@ -86,9 +86,9 @@ class Stat {
     getDisplayText() {
         switch (this.displayStyle) {
             case 0:
-                return `${this.displayName || this.name}: ${Math.cut(this.Stat)} + d${Math.cut(this.StatVariance)} = ${Math.cut(this.lastRoll) || "---"}`;
+                return `${this.displayName || this.name}: ${formatNumber(this.Stat)} + d${formatNumber(this.StatVariance)} = ${formatNumber(this.lastRoll) || "---"}`;
             case 1:
-                return `${this.displayName || this.name}: ${Math.cut(this.Stat)} - ${Math.cut(this.StatVariance + this.Stat)} = ${Math.cut(this.lastRoll) || "---"}`;
+                return `${this.displayName || this.name}: ${formatNumber(this.Stat)} - ${formatNumber(this.StatVariance + this.Stat)} = ${formatNumber(this.lastRoll) || "---"}`;
             default:
                 return `${this.displayName || this.name}: no display style for`;
         }

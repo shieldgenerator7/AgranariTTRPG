@@ -1,6 +1,6 @@
 "use strict";
 
-import { inflateArray, clamp, isNumber } from "../Utility/Utility";
+import { inflateArray, clamp, isNumber, formatNumber } from "../Utility/Utility";
 import { rollDice } from "./DiceRoller";
 
 class RollSlot {
@@ -17,7 +17,7 @@ class RollSlot {
     }
 
     getDisplayText() {        
-        return `${this.character.name} ${this.stat.name ?? this.statName}: ${Math.cut(this.stat.Stat)} + d${Math.cut(this.stat.StatVariance)}`;
+        return `${this.character.name} ${this.stat.name ?? this.statName}: ${formatNumber(this.stat.Stat)} + d${formatNumber(this.stat.StatVariance)}`;
     }
 
     getRollDisplayText() {

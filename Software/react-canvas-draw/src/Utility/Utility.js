@@ -72,6 +72,10 @@ Math.cut = function (value, places = 1) {
     return Math.round(value * factor) / factor;
 };
 
+export function formatNumber(value) {
+    return (value ?? 0).toFixed(1);
+}
+
 //2024-01-30: copied from https://stackoverflow.com/a/9705160/2336212
 function toDegrees(angle) {
     return angle * (180 / Math.PI);

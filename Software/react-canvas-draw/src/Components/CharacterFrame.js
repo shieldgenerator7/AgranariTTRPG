@@ -13,7 +13,7 @@ import ConsumableFrame from "./ConsumableFrame";
 import Field from "./Field";
 import ListOrdered from "./ListOrdered";
 import SearchSelect from "./SearchSelect";
-import { isString } from "../Utility/Utility";
+import { formatNumber, isString } from "../Utility/Utility";
 import TempBonus from "../Data/TempBonus";
 import TempBonusFrame from "./TempBonusFrame";
 
@@ -368,7 +368,7 @@ function CharacterFrame({ character, updateCharacter, game, updateGame, diceRoll
                                 }}
                             >
                                 {/* <div className="rollResultInternal"> */}
-                                {Math.cut(roll.Value)}
+                                {formatNumber(roll.Value)}
                                 {/* <span className="rollResultName">{roll.name}</span>
                                     </div> */}
                             </span>

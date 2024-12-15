@@ -1,6 +1,6 @@
 "use strict";
 
-import { getDate, getTime, isEmpty, isNumber } from "../Utility/Utility";
+import { formatNumber, getDate, getTime, isEmpty, isNumber } from "../Utility/Utility";
 
 class LogEntry {
     constructor(character, rollName) {
@@ -79,7 +79,7 @@ class LogEntry {
                 if (v.oldVal == v.newVal) {
                     diff = undefined;
                 }
-                return `${name}: ${Math.cut(v.oldVal)} -> ${Math.cut(v.newVal)}${(diff != undefined)
+                return `${name}: ${formatNumber(v.oldVal)} -> ${formatNumber(v.newVal)}${(diff != undefined)
                     ? (isNumber(diff))
                         ? ` (${(diff > 0) ? "+" : ""}${diff})`
                         : diff
@@ -89,7 +89,7 @@ class LogEntry {
             return retStr;
         }
         //"2024-09-22 22:18 - 2024-04-15 @Crownspire: Tak Redwind Attack: 15 -> 17"
-        return `${this.Date} ${this.Time} - ${this.event} @${this.location}: ${this.characterName} ${this.rollName}: ${Math.cut(this.rollValue)} -> ${Math.cut(this.rollResult)}`;
+        return `${this.Date} ${this.Time} - ${this.event} @${this.location}: ${this.characterName} ${this.rollName}: ${formatNumber(this.rollValue)} -> ${formatNumber(this.rollResult)}`;
     }
 
     includes(text) {

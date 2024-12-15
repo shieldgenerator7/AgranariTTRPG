@@ -4,7 +4,7 @@ import Attribute from "../Data/Character";
 import { ACTION_ROLL_MODIFY, ONCLICK_ADJUST_VALUE, ONCLICK_DIE_ROLL, ONCLICK_TOGGLE } from "../Data/Constants";
 import { rollDice } from "../Data/DiceRoller";
 import RollGroup from "../Data/RollGroup";
-import { clamp, isNumber, isString } from "../Utility/Utility";
+import { clamp, formatNumber, isNumber, isString } from "../Utility/Utility";
 import Counter from "./Counter";
 import Field from "./Field";
 
@@ -26,8 +26,8 @@ function RollSlotFrame({ rollSlot, updateRollSlot }) {
                     ROLL
                 </button>
             </td>
-            <td> {Math.cut(rollSlot.lastRoll) ?? "---"} </td>
             <td>
+            <td> {formatNumber(rollSlot.lastRoll) ?? "---"} </td>
                 {
                     rollSlot.lastRoll &&
                     <>
@@ -60,7 +60,7 @@ function RollSlotFrame({ rollSlot, updateRollSlot }) {
             <td>
                 {
                     rollSlot.lastRoll && rollSlot.WillPower &&
-                    <span>{"-->"} {Math.cut(rollSlot.Total)}</span>
+                    <span>{"-->"} {formatNumber(rollSlot.Total)}</span>
                 }
             </td>
             <td>{rollSlot.Status}</td>

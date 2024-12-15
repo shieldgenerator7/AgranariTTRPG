@@ -15,15 +15,15 @@ function RollSlotFrame({ rollSlot, updateRollSlot }) {
 
     //TODO: add buttons and fields
     return (
-        <>
+        <div className="rollSlotFrame">
             
-            <span>{rollSlot.character.name} {rollSlot.stat.name}:</span>
-            <span>{rollSlot.lastRoll ?? "---"}</span>
+            <span>{rollSlot.character.name} {rollSlot.stat.name}:</span> 
+            <span> {rollSlot.lastRoll ?? "---"} </span>
             <span>{rollSlot.Status}</span>
-            TODO: Roll Button
-            TODO: WillPower Button
-        </>
-    )
+            {/* TODO: Roll Button
+            TODO: WillPower Button */}
+        </div>
+    );
 
     //Edit Attributes
     if (character.editAttributes) {

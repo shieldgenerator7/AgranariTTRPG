@@ -16,6 +16,7 @@ import SearchSelect from "./SearchSelect";
 import { isString } from "../Utility/Utility";
 import TempBonus from "../Data/TempBonus";
 import TempBonusFrame from "./TempBonusFrame";
+import RollSlotFrame from "./RollSlotFrame";
 
 /**
  * This component shows a list of rolls to be done for an action.
@@ -30,8 +31,11 @@ function RollerFrame({ title, actionRoller, updateCharacter, game, updateGame, d
         <div className="actionFrame">
             {title}
             {
-                actionRoller.rollList.map((rollSlot,i) => 
-                (<div key={i}>{ rollSlot.getDisplayText() }</div>)
+                actionRoller.rollList.map((rollSlot, i) => 
+                    <RollSlotFrame
+                        rollSlot={rollSlot}
+                        key={i}
+                    ></RollSlotFrame>
                 )
             }
         </div>

@@ -315,13 +315,13 @@ function CharacterFrame({ character, updateCharacter, game, updateGame, diceRoll
                                 onClick={(e) => {
                                     let tempBonus = new Bonus(2, "");
                                     tempBonus.editing = true;
-                                    character.tempBonusList.push(tempBonus);
+                                    character.bonusList.push(tempBonus);
                                     updateCharacter(character);
                                 }}>+</button>
                         </h2>
                         {
                             <ListOrdered
-                                arr={character.tempBonusList}
+                                arr={character.bonusList}
                                 contentFunc={(tempBonus, i) => (
                                     <TempBonusFrame
                                         tempBonus={tempBonus}
@@ -338,7 +338,7 @@ function CharacterFrame({ character, updateCharacter, game, updateGame, diceRoll
                                     ></TempBonusFrame>
                                 )}
                                 updateFunc={(arr) => {
-                                    character.tempBonusList = arr;
+                                    character.bonusList = arr;
                                     updateCharacter(character);
                                 }}
                                 allowCopying={false}

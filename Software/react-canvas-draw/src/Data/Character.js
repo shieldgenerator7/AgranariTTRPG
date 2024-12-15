@@ -15,7 +15,7 @@ class Character {
         this.statList = [];
         this.abilityList = [];
         this.consumableList = [];
-        this.tempBonusList = [];
+        this.bonusList = [];
         this.resources = {
             health: 100,
             willPower: 20,
@@ -153,7 +153,7 @@ class Character {
 
     getBonusList(statName) {
         statName = this._normalizeForMatching(statName);
-        return this.tempBonusList.filter(
+        return this.bonusList.filter(
             bonus => this._normalizeForMatching(bonus.filter).includes(statName)
         );
     }
@@ -173,7 +173,7 @@ export function inflateCharacter(character, updateCharacter = (c) => { }) {
 
     character.consumableList = inflateArray(character.consumableList, inflateConsumableReference);
 
-    character.tempBonusList = inflateArray(character.tempBonusList, inflateBonus);
+    character.bonusList = inflateArray(character.bonusList, inflateBonus);
 
     character.dieRollLog = inflateArray(character.dieRollLog, inflateRollGroup);
     character.dieRollLogSelect = inflateArray(character.dieRollLogSelect, () => { });

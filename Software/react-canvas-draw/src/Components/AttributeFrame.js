@@ -164,10 +164,10 @@ function AttributeFrame({ stat, character, updateCharacter, game, diceRolled, at
                                             });
 
                                         //add bonuses, if applicable
-                                        let tempBonusList = character.tempBonusList.filter(tempBonus => !tempBonus.filter || tempBonus.filter.trim() == stat.name.trim());
-                                        tempBonusList.forEach(tempBonus => {
                                             roll.addRoll("Temp Bonus", tempBonus.amount);
                                             diceRolled(character, "Temp Bonus", tempBonus.amount, roll.Value);
+                                        let bonusList = character.bonusList.filter(tempBonus => !tempBonus.filter || tempBonus.filter.trim() == stat.name.trim());
+                                        bonusList.forEach(tempBonus => {
                                         });
 
                                         //store roll in temp var

@@ -26,8 +26,8 @@ function RollSlotFrame({ rollSlot, updateRollSlot }) {
                     ROLL
                 </button>
             </td>
-            <td>
-            <td> {formatNumber(rollSlot.lastRoll) ?? "---"} </td>
+            <td className="rollSlotCellNumber"> {formatNumber(rollSlot.lastRoll) ?? "---"} </td>
+            <td className="rollSlotCellNumber">
                 {
                     rollSlot.lastRoll &&
                     <>
@@ -60,7 +60,13 @@ function RollSlotFrame({ rollSlot, updateRollSlot }) {
             <td>
                 {
                     rollSlot.lastRoll && rollSlot.WillPower &&
-                    <span>{"-->"} {formatNumber(rollSlot.Total)}</span>
+                    <span>{"-->"}</span>
+                }
+            </td>
+            <td className="rollSlotCellNumber">
+                {
+                    rollSlot.lastRoll && rollSlot.WillPower &&
+                    <span>{formatNumber(rollSlot.Total)}</span>
                 }
             </td>
             <td>{rollSlot.Status}</td>

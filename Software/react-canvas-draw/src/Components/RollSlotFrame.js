@@ -18,6 +18,14 @@ function RollSlotFrame({ rollSlot, updateRollSlot }) {
         <div className="rollSlotFrame">
             
             <span>{rollSlot.stat.name}:</span> 
+            <button
+                onClick={() => {
+                    rollSlot.roll();
+                    updateRollSlot();
+                }}
+            >
+                ROLL
+            </button>
             <span> {rollSlot.lastRoll ?? "---"} </span>
             <span>{rollSlot.Status}</span>
             {/* TODO: Roll Button

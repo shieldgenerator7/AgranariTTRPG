@@ -6,6 +6,7 @@ import { rollDice } from "./DiceRoller";
 class RollSlot {
     constructor(character, statName, statusFunc) {
         this.character = character;
+        this.characterName = this.character.name;
         this.statName = statName;
         this.willPower = 0;
         this.statusFunc = statusFunc;
@@ -46,3 +47,11 @@ class RollSlot {
     }
 }
 export default RollSlot;
+
+export function inflateRollSlot(rollSlot, characterList){
+    Object.setPrototypeOf(rollSlot, RollSlot.prototype);
+
+    rollSlot.character = characterList.find(char => char.name = rollSlot.characterName);
+
+    return rollSlot;
+}

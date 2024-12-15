@@ -199,13 +199,14 @@ function App() {
     window.roller = roller;
     let updateRoller = (oldroller) => {
         let newroller = JSON.parse(JSON.stringify(oldroller));
-        if (isImage(oldroller.imgPortrait)) {
-            newroller.imgPortrait = oldroller.imgPortrait;
-        }
-        // inflateRoller(
-        //     newroller,
-        //     (r) => { if (r == roller) { updateRoller(r); } }
-        // );
+        // if (isImage(oldroller.imgPortrait)) {
+        //     newroller.imgPortrait = oldroller.imgPortrait;
+        // }
+        inflateActionRollAttack(
+            newroller,
+            characterList
+            // (r) => { if (r == roller) { updateRoller(r); } }
+        );
         //
         // let charList = [...characterList];
         // if (charList.includes(oldroller)) {
@@ -231,6 +232,7 @@ function App() {
                     <RollerFrame
                         title="Attack"
                         actionRoller={roller}
+                        updateRoller={updateRoller}
                     ></RollerFrame>
                     {characterToShow &&
                         <CharacterFrame

@@ -1,6 +1,6 @@
 "use strict";
 
-import RollSlot from "../RollSlot";
+import RollSlot, { inflateRollSlot } from "../RollSlot";
 import { arraySum } from "../../Utility/Utility";
 
 const CONDITION_STUNNED = 0;
@@ -20,17 +20,9 @@ class ActionRollAttack{
         this.constitutionSlot = new RollSlot(defender, "constitution", (roll)=>(this.defender.MissingHealth + this.damageTakenSlot.lastRoll > roll)?"UNCONSCIOUS":"");
 
         this.rollList = [
-            //attacker
-            this.attacker,
             this.attackSlot,
-            //defender
-            this.defender,
             this.dodgeSlot,
-            //attacker
-            this.attacker,
             this.damageSlot,
-            //defender
-            this.defender,
             this.damageTakenSlot,
             this.durabilitySlot,
             this.painToleranceSlot,
@@ -96,3 +88,11 @@ class ActionRollAttack{
     }
 }
 export default ActionRollAttack;
+
+export function inflateActionRollAttack(actionRollAttack, characterList) {
+    Object.setPrototypeOf(actionRollAttack, ActionRollAttack.prototype);
+
+    actionRollAttack.rollList.map(rollSlot =>
+        inflateRollSlot(rollSlot, characterList)
+    );
+}

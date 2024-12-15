@@ -35,7 +35,7 @@ function RollSlotFrame({ rollSlot, updateRollSlot }) {
                     </span>
                 }
             </td>
-            <td className="rollSlotCellNumber"> {formatNumber(rollSlot.lastRoll) ?? "---"} </td>
+            <td className="rollSlotCellNumber"> {(rollSlot.lastRoll)?formatNumber(rollSlot.lastRoll) : "---"} </td>
             <td className="rollSlotCellNumber">
                 {
                     rollSlot.lastRoll &&

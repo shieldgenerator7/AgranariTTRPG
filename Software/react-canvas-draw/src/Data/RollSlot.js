@@ -60,7 +60,7 @@ class RollSlot {
     }
 
     get Status() {
-        return this.statusFunc?.(this.Total) ?? "";
+        return this.statusFunc?.(this.Total || undefined) ?? "";
     }
 
     acceptState(rollSlot) {

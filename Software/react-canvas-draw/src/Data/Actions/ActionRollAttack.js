@@ -1,7 +1,7 @@
 "use strict";
 
 import RollSlot, { inflateRollSlot } from "../RollSlot";
-import { arraySum } from "../../Utility/Utility";
+import { arraySum, isNumber } from "../../Utility/Utility";
 
 const CONDITION_STUNNED = 0;
 const CONDITION_UNCONSCIOUS = 1;
@@ -43,6 +43,12 @@ class ActionRollAttack{
     }
 
     getHitMessage(attack, dodge) {
+        //early exit: no attack or no dodge
+        if (!isNumber(attack) || !isNumber(dodge)) {
+            return "";
+        }
+
+        //processing
         return (attack > dodge * 2)
             ? "CRIT!"
             : (attack > dodge)

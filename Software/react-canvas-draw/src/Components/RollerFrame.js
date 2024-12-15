@@ -55,7 +55,14 @@ function RollerFrame({ actionRoller, updateRoller, removeRoller, updateCharacter
 
     return (
         <div className="actionFrame">
+            <button className="headerButton"
+                onClick={() => {
+                    actionRoller.rollAll();
+                    updateRoller(actionRoller);
+                }}
+            >
             {actionRoller.title}
+            </button>
             <table>
                 <tbody>
                     {

@@ -72,6 +72,12 @@ class ActionRollAttack {
                 : "DODGED!";
     }
 
+    rollAll() {
+        this.rollList.forEach(rollSlot => {
+            rollSlot.roll();
+        })
+    }
+
     commit() {
 
         //early exit: no attack

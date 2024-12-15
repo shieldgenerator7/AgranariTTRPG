@@ -837,6 +837,17 @@
     min-width: 600px;
     padding: 10px;
 }
+.headerButton{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    background-color: transparent;
+    font-size: 1em;
+    text-align: left;
+    border-radius: 15px;
+    border:none;
+}
+.headerButton:hover{
+    background-color: rgba(255,255,255,0.5);
+}
 
 .rollSlotFrame {
     margin-left: 0px;

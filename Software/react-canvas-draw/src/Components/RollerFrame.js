@@ -70,6 +70,15 @@ function RollerFrame({ actionRoller, updateRoller, removeRoller, updateCharacter
                     removeRoller(actionRoller);
                 }}
             >COMMIT</button>
+
+            {/* cancel button */}
+            <button className="panelEx"
+                onClick={() => {
+                    removeRoller(actionRoller);
+                }}
+            >
+                X
+            </button>
         </div>
     );
 

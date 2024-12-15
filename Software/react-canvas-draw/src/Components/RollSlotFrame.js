@@ -17,6 +17,8 @@ function RollSlotFrame({ rollSlot, updateRollSlot }) {
 
             {/* Roll Button + Stat Name */}
             <td>
+                {
+                    rollSlot.rollable &&
                 <button className="plusMinus"
                     onClick={() => {
                         rollSlot.roll();
@@ -25,6 +27,13 @@ function RollSlotFrame({ rollSlot, updateRollSlot }) {
                 >
                     {rollSlot.label}:
                 </button>
+                }
+                {
+                    !rollSlot.rollable &&
+                    <span className="rollSlotLabel">
+                        {rollSlot.label}:
+                    </span>
+                }
             </td>
             <td className="rollSlotCellNumber"> {formatNumber(rollSlot.lastRoll) ?? "---"} </td>
             <td className="rollSlotCellNumber">

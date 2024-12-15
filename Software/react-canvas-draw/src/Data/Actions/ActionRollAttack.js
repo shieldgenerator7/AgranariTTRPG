@@ -23,10 +23,13 @@ class ActionRollAttack{
         this.attackSlot = new RollSlot(attacker, "accuracy", ()=>this.dodgeSlot.Total);
         this.dodgeSlot = new RollSlot(defender, "dodge", () => this.attackSlot.Total, (total) => this.getHitMessage(this.attackSlot.Total, total));
         this.damageSlot = new RollSlot(attacker, "damage",()=>this.durabilitySlot.Total);
-        this.damageTakenSlot = new RollSlot(defender, "armor", undefined, () => this.damageSlot.Total * defender.getStat("armor"));
+        this.damageTakenSlot = new RollSlot(defender, "armor", undefined, undefined, (lastRoll, willPower) => this.damageSlot.Total * (100/(100+defender.getStat("armor"))));
         this.durabilitySlot = new RollSlot(defender, "durability",()=>this.damageTakenSlot.Total, (roll)=>(this.damageTakenSlot.Total > roll)?"WOUNDED":"");
         this.painToleranceSlot = new RollSlot(defender, "paintolerance",()=>this.damageTakenSlot.Total, (roll)=>(this.damageTakenSlot.Total > roll)?"WINCED":"");
         this.constitutionSlot = new RollSlot(defender, "constitution",()=>this.damageTakenSlot.Total, (roll)=>(this.defender.MissingHealth + this.damageTakenSlot.Total > roll)?"UNCONSCIOUS":"");
+
+        this.damageTakenSlot.label = "Damage Taken";
+        this.damageTakenSlot.rollable = false;
 
         this.rollList = [
             this.attackSlot,

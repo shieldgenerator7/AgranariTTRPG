@@ -4,20 +4,23 @@ import { inflateArray, clamp, isNumber, formatNumber } from "../Utility/Utility"
 import { rollDice } from "./DiceRoller";
 
 class RollSlot {
-    constructor(character, statName, goalFunc, statusFunc) {
+    constructor(character, statName, goalFunc, statusFunc, totalFunc) {
         this.character = character;
         this.characterName = this.character.name;
         this.statName = statName;
         this.willPower = undefined;
         this.goalFunc = goalFunc;
         this.statusFunc = statusFunc;
+        this.totalFunc = totalFunc;
         //
         this.stat = this.character.getStat(statName) ?? {};
+        this.label = this.stat.name ?? this.statName;
+        this.rollable = true;
         this.lastRoll = undefined;
     }
 
     getDisplayText() {        
-        return `${this.character.name} ${this.stat.name ?? this.statName}: ${formatNumber(this.stat.Stat)} + d${formatNumber(this.stat.StatVariance)}`;
+        return `${this.character.name} ${this.label}: ${formatNumber(this.stat.Stat)} + d${formatNumber(this.stat.StatVariance)}`;
     }
 
     getRollDisplayText() {
@@ -50,6 +53,9 @@ class RollSlot {
     }
 
     get Total() {
+        if (this.totalFunc) {
+            return this.totalFunc(this.lastRoll, this.WillPower);
+        }
         return this.lastRoll + (this.WillPower ?? 0) * this.character.getStat("willpowerfactor").Stat;
     }
 

@@ -42,7 +42,7 @@ function RollSlotFrame({ rollSlot, updateRollSlot }) {
                     <>
                         {
                             (!rollSlot.WillPower && rollSlot.goalFunc) &&
-                            <button
+                            <button className="plusMinus"
                                 onClick={() => {
                                     rollSlot.contestWithWillPower();
                                     updateRollSlot();

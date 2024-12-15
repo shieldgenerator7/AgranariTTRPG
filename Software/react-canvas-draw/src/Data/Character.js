@@ -77,6 +77,10 @@ class Character {
         this.resources.willPower = clamp(value, 0, this.getStatValue("willpower"));
     }
 
+    get XPTotal() {
+        return arraySum(this.statList, stat => stat.XPTotal);//TODO: also calculate XP cost of features
+    }
+
     addCondition() {
         console.error("Method not implemented yet!");
         return;

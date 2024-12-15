@@ -45,6 +45,10 @@ class Stat {
         this._computeValues();
     }
 
+    get XPTotal() {
+        return this.XP + this.XPVariance;
+    }
+
     get Stat() {
         return this.statValue;
     }

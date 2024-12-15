@@ -110,6 +110,10 @@ function CharacterFrame({ character, updateCharacter, game, updateGame, diceRoll
                                     </td>
                                 </tr>
                             ))}
+                                <tr>
+                                    <td>XP</td>
+                                    <td className="rollSlotCellNumber">{ character.XPTotal}</td>
+                                </tr>
                         </tbody>
                     </table>
                 }

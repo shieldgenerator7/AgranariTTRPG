@@ -76,6 +76,8 @@ class Character {
     }
 
     hasResource(ability) {
+        console.error("Method not re-implemented yet!");
+        return;
         //Attributes
         let attr = this.getStat(ability.resourceName);
         if (attr && attr.value >= ability.resourceCost) {
@@ -91,6 +93,8 @@ class Character {
     }
 
     consumeResource(ability) {
+        console.error("Method not re-implemented yet!");
+        return;
         //Attributes
         let attr = this.getStat(ability.resourceName);
         if (attr) {

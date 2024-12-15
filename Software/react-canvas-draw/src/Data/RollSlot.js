@@ -45,6 +45,11 @@ class RollSlot {
     get Status() {
         return this.statusFunc?.(this.lastRoll) ?? "";
     }
+
+    acceptState(rollSlot) {
+        this.willPower = rollSlot.willPower;
+        this.lastRoll = rollSlot.lastRoll;
+    }
 }
 export default RollSlot;
 

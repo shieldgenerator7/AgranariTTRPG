@@ -9,7 +9,16 @@ const CONDITION_UNCONSCIOUS = 1;
 class ActionRollAttack{
     constructor(attacker, defender) {
         this.attacker = attacker;
+        this.attackerName = attacker.name;
         this.defender = defender;
+        this.defenderName = defender.name;
+
+        this.init();
+    }
+
+    init() {
+        let attacker = this.attacker;
+        let defender = this.defender;
 
         this.attackSlot = new RollSlot(attacker, "accuracy");
         this.dodgeSlot = new RollSlot(defender, "dodge",(roll)=>this.getHitMessage(this.attackSlot.lastRoll, roll));
@@ -92,7 +101,27 @@ export default ActionRollAttack;
 export function inflateActionRollAttack(actionRollAttack, characterList) {
     Object.setPrototypeOf(actionRollAttack, ActionRollAttack.prototype);
 
-    actionRollAttack.rollList.map(rollSlot =>
-        inflateRollSlot(rollSlot, characterList)
-    );
+    const findCharacter = (name) => characterList.find(char => char.name == name);
+
+    actionRollAttack.attacker = findCharacter(actionRollAttack.attackerName);
+    actionRollAttack.defender = findCharacter(actionRollAttack.defenderName);
+
+    let slotNameList = [
+        "attackSlot",
+        "dodgeSlot",
+        "damageSlot",
+        "damageTakenSlot",
+        "durabilitySlot",
+        "painToleranceSlot",
+        "constitutionSlot",
+    ];
+
+    let oldSlotData = {};
+    slotNameList.forEach(slotName => {
+        oldSlotData[slotName] = actionRollAttack[slotName];
+    });
+    actionRollAttack.init();
+    slotNameList.forEach(slotName => {
+        actionRollAttack[slotName].acceptState(oldSlotData[slotName]);
+    });
 }

@@ -15,7 +15,7 @@ import Game, { inflateGame } from './Data/Game';
 import Consumable from './Data/Consumable';
 import { Socket } from 'socket.io';
 import RollerFrame from './Components/RollerFrame';
-import ActionRollAttack from './Data/Actions/ActionRollAttack';
+import ActionRollAttack, { inflateActionRollAttack } from './Data/Actions/ActionRollAttack';
 
 function App() {
     //Title

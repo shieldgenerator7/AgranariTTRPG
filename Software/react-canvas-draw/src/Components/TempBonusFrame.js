@@ -29,7 +29,7 @@ function TempBonusFrame({ tempBonus, updateFunc }) {
                         }}
                         className={"editText"}
                     ></Field>
-                    <button
+                    <button className="plusMinus"
                         onClick={(e) => {
                             tempBonus.editing = false;
                             updateFunc();

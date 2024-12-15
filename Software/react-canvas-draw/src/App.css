@@ -406,7 +406,7 @@
     border: 5px solid #38362f;
     /* background: #f5eac9; */
     background: #cebd90;
-    width: 1000px;
+    width: 430px;
     height: 98%;
     /* min-height: 90%; */
     border-radius: 25px;
@@ -444,7 +444,6 @@
 }
 
 .characterContent td {
-    width: 50%;
 }
 
 .attributeContainer {
@@ -462,6 +461,7 @@
     display: flex;
     flex-direction: row;
     margin-top: 10px;
+    font-size: .6em;
 }
 
 .editText {
@@ -887,7 +887,6 @@
 
 .resourceTable {
     font-size: .65em;
-    max-width: 80%;
 }
 .commitButton{
     padding: 10px;

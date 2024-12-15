@@ -296,9 +296,9 @@ function CharacterFrame({ character, updateCharacter, game, updateGame, diceRoll
                             </div> */}
 
                         </td>
-                        <td>
+                        {/* <td>
 
-                        </td>
+                        </td> */}
                     </tr>
                 </tbody></table>
 

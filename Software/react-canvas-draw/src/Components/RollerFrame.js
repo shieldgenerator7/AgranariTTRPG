@@ -31,17 +31,33 @@ function RollerFrame({ title, actionRoller, updateRoller, updateCharacter, game,
         updateRoller(actionRoller);
     }
 
+    let prevChar = undefined;
+
+    let divList = [];
+    actionRoller.rollList.forEach((rollSlot, i) => {
+        if (rollSlot.character != prevChar) {
+            prevChar = rollSlot.character;
+            divList.push((
+                <div className="rollSlotCharacterHeader">
+                    {rollSlot.character.name}
+                </div>
+            ));
+        }
+        let div = (
+            <RollSlotFrame
+                rollSlot={rollSlot}
+                updateRollSlot={updateRollSlot}
+                key={i}
+            ></RollSlotFrame>
+        );
+        divList.push(div);
+    });
+
     return (
         <div className="actionFrame">
             {title}
             {
-                actionRoller.rollList.map((rollSlot, i) => 
-                    <RollSlotFrame
-                        rollSlot={rollSlot}
-                        updateRollSlot={updateRollSlot}
-                        key={i}
-                    ></RollSlotFrame>
-                )
+                divList
             }
         </div>
     );

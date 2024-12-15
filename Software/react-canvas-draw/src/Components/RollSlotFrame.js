@@ -26,7 +26,7 @@ function RollSlotFrame({ rollSlot, updateRollSlot }) {
             >
                 ROLL
             </button>
-            <span> {rollSlot.lastRoll ?? "---"} </span>
+            <span> {Math.cut(rollSlot.lastRoll) ?? "---"} </span>
             <span>{rollSlot.Status}</span>
             {/* TODO: Roll Button
             TODO: WillPower Button */}

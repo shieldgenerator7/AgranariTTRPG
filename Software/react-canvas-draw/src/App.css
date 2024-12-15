@@ -810,20 +810,25 @@
     box-shadow: 10px 25px 15px rgb(66, 66, 66);
     position: relative;
     overflow-y: hidden;
-    min-width: 430px;
+    min-width: 250px;
+    padding: 10px;
 }
 
 .rollSlotFrame{
     display: inline;
     margin-left: 0px;
     padding: 2px;
-    font-size:large;
+    font-size:0.6em;
+    margin:0px;
 }
 
 .rollSlotCharacterHeader{
-    font-size: large;
+    font-size: 0.75em;
     font-weight: bold;
     display:block;
+    margin: 0px;
+    padding: 0px;
+    margin-top: 15px;
 }
 
 

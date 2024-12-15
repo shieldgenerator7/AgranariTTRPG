@@ -73,7 +73,10 @@ Math.cut = function (value, places = 1) {
 };
 
 export function formatNumber(value) {
-    return ((value * 1) || 0).toFixed(1);
+    if (!isNumber(value)) {
+        return "---";
+    }
+    return (value * 1).toFixed(1);
 }
 
 //2024-01-30: copied from https://stackoverflow.com/a/9705160/2336212

@@ -226,7 +226,7 @@ function App() {
         storage.rollerList = rollerList;
         window.rollerList = rollerList;
     };
-    const defaultRollerList = () => (storage.rollerList?.length > 0) ? storage.rollerList : [roller, new ActionRollAttack(characterList[1], characterList[0])];
+    const defaultRollerList = () => (storage.rollerList?.length > 0) ? storage.rollerList : [];
     [rollerList, setRollerList] = useState(defaultRollerList);
     window.rollerList = rollerList;
     const updateRollerList = () => {
@@ -234,6 +234,11 @@ function App() {
     }
     const addRoller = (roller) => {
         rollerList.push(roller);
+        updateRollerList();
+    }
+    const removeRoller = (roller) => {
+        let index = rollerList.indexOf(roller);
+        rollerList.splice(index, 1);
         updateRollerList();
     }
 
@@ -254,6 +259,7 @@ function App() {
                         actionRoller={roller}
                         updateRoller={updateRollerList}
                         key={`roller_${i}`}
+                        removeRoller={removeRoller}
                     ></RollerFrame>
                         )
                     }

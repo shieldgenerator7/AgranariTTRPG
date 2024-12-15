@@ -77,6 +77,16 @@ class Character {
         this.resources.willPower = clamp(value, 0, this.getStatValue("willpower"));
     }
 
+    addCondition() {
+        console.error("Method not implemented yet!");
+        return;
+    }
+
+    addWound() {
+        console.error("Method not implemented yet!");
+        return;        
+    }
+
     getConsumable(cnsmName) {
         cnsmName = cnsmName.trim();
         return this.consumableList.find(cr => cr.consumableName == cnsmName);
@@ -168,6 +178,8 @@ export function inflateCharacter(character, updateCharacter = (c) => { }) {
         health: 100,
         willPower: 20,
     };
+    character.resources.health ||= 0;
+    character.resources.willPower ||= 0;
 
     //Portrait
     // if (character.imageURL && !isImage(character.imgPortrait)) {

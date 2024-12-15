@@ -80,7 +80,7 @@ class ActionRollAttack {
         ]);
 
         //early exit: miss
-        if (this.dodgeSlot.lastRoll >= this.attackSlot.lastRoll) {
+        if (this.dodgeSlot.Total >= this.attackSlot.Total) {
             return;
         }
 
@@ -95,23 +95,23 @@ class ActionRollAttack {
         ]);
 
         //local vars
-        const damage = this.damageTakenSlot.lastRoll;
+        const damage = this.damageTakenSlot.Total;
 
         //defender takes damage
         this.defender.Health -= damage;
 
         //defender gets wounded
-        if (damage > this.durabilitySlot.lastRoll) {
-            this.defender.addWound(this.defender.species.randomWound());
+        if (damage > this.durabilitySlot.Total) {
+            this.defender.addWound(this.defender.species?.randomWound());
         }
 
         //defender gets winced
-        if (damage > this.painToleranceSlot.lastRoll) {
+        if (damage > this.painToleranceSlot.Total) {
             this.defender.addCondition(CONDITION_STUNNED);
         }
 
         //defender goes unconscious
-        if (this.defender.MissingHealth > this.constitutionSlot.lastRoll) {
+        if (this.defender.MissingHealth > this.constitutionSlot.Total) {
             this.defender.addCondition(CONDITION_UNCONSCIOUS);
         }
     }

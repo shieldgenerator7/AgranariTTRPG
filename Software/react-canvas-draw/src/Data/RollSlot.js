@@ -8,7 +8,7 @@ class RollSlot {
         this.character = character;
         this.characterName = this.character.name;
         this.statName = statName;
-        this.willPower = undefined;
+        this.willPower = 0;
         this.goalFunc = goalFunc;
         this.statusFunc = statusFunc;
         //

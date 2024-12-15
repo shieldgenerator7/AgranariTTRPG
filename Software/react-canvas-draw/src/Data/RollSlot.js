@@ -1,14 +1,15 @@
 "use strict";
 
-import { inflateArray, clamp } from "../Utility/Utility";
+import { inflateArray, clamp, isNumber } from "../Utility/Utility";
 import { rollDice } from "./DiceRoller";
 
 class RollSlot {
-    constructor(character, statName, statusFunc) {
+    constructor(character, statName, goalFunc, statusFunc) {
         this.character = character;
         this.characterName = this.character.name;
         this.statName = statName;
-        this.willPower = 0;
+        this.willPower = undefined;
+        this.goalFunc = goalFunc;
         this.statusFunc = statusFunc;
         //
         this.stat = this.character.getStat(statName) ?? {};
@@ -30,8 +31,9 @@ class RollSlot {
     }
 
     contestWithWillPower(goal) {
+        goal ??= this.goalFunc();
         let diff = goal - this.lastRoll;
-        let willPowerFactor = this.character.getStat("willpowerfactor");
+        let willPowerFactor = this.character.getStat("willpowerfactor").Stat;
         this.willPower = Math.ceil(diff / willPowerFactor);
     }
 
@@ -39,11 +41,20 @@ class RollSlot {
         return this.willPower;
     }
     set WillPower(value) {
+        if (isNumber(value * 1)) {
         this.willPower = clamp(value, 0, this.character.resources.willPower);
+        }
+        else {
+            this.willPower = undefined;
+        }
+    }
+
+    get Total() {
+        return this.lastRoll + (this.WillPower ?? 0) * this.character.getStat("willpowerfactor").Stat;
     }
 
     get Status() {
-        return this.statusFunc?.(this.lastRoll) ?? "";
+        return this.statusFunc?.(this.Total) ?? "";
     }
 
     acceptState(rollSlot) {

@@ -32,6 +32,10 @@ function $(id) {
 }
 
 export function clamp(value, min, max) {
+    value ??= 0;
+    min ??= value;
+    max ??= value;
+
     if (min > max) {
         console.error("Min should be less than or equal to max!",
             "min:", min,

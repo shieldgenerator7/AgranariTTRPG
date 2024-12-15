@@ -20,13 +20,13 @@ class ActionRollAttack{
         let attacker = this.attacker;
         let defender = this.defender;
 
-        this.attackSlot = new RollSlot(attacker, "accuracy");
-        this.dodgeSlot = new RollSlot(defender, "dodge",(roll)=>this.getHitMessage(this.attackSlot.lastRoll, roll));
-        this.damageSlot = new RollSlot(attacker, "damage");
-        this.damageTakenSlot = new RollSlot(defender, "armor", () => this.damageSlot.lastRoll * defender.getStat("armor"));
-        this.durabilitySlot = new RollSlot(defender, "durability", (roll)=>(this.damageTakenSlot.lastRoll > roll)?"WOUNDED":"");
-        this.painToleranceSlot = new RollSlot(defender, "paintolerance", (roll)=>(this.damageTakenSlot.lastRoll > roll)?"WINCED":"");
-        this.constitutionSlot = new RollSlot(defender, "constitution", (roll)=>(this.defender.MissingHealth + this.damageTakenSlot.lastRoll > roll)?"UNCONSCIOUS":"");
+        this.attackSlot = new RollSlot(attacker, "accuracy", ()=>this.dodgeSlot.Total);
+        this.dodgeSlot = new RollSlot(defender, "dodge", () => this.attackSlot.Total, (total) => this.getHitMessage(this.attackSlot.Total, total));
+        this.damageSlot = new RollSlot(attacker, "damage",()=>this.durabilitySlot.Total);
+        this.damageTakenSlot = new RollSlot(defender, "armor", undefined, () => this.damageSlot.Total * defender.getStat("armor"));
+        this.durabilitySlot = new RollSlot(defender, "durability",()=>this.damageTakenSlot.Total, (roll)=>(this.damageTakenSlot.Total > roll)?"WOUNDED":"");
+        this.painToleranceSlot = new RollSlot(defender, "paintolerance",()=>this.damageTakenSlot.Total, (roll)=>(this.damageTakenSlot.Total > roll)?"WINCED":"");
+        this.constitutionSlot = new RollSlot(defender, "constitution",()=>this.damageTakenSlot.Total, (roll)=>(this.defender.MissingHealth + this.damageTakenSlot.Total > roll)?"UNCONSCIOUS":"");
 
         this.rollList = [
             this.attackSlot,

@@ -26,7 +26,18 @@ function RollSlotFrame({ rollSlot, updateRollSlot }) {
             >
                 ROLL
             </button>
-            <span> {Math.cut(rollSlot.lastRoll) ?? "---"} </span>
+            <span> {Math.cut(rollSlot.lastRoll) ?? "---"} -{">"} {Math.cut(rollSlot.Total)}</span>
+            {
+                !rollSlot.WillPower &&
+                <button
+                    onClick={() => {
+                        rollSlot.contestWithWillPower();      
+                        updateRollSlot();  
+                    }}
+                >
+                    WP
+                </button>
+            }
             <span>{rollSlot.Status}</span>
             {/* TODO: Roll Button
             TODO: WillPower Button */}

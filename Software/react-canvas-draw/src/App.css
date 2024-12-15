@@ -810,7 +810,7 @@
     box-shadow: 10px 25px 15px rgb(66, 66, 66);
     position: relative;
     overflow-y: hidden;
-    min-width: 500px;
+    min-width: 600px;
     padding: 10px;
 }
 
@@ -832,7 +832,7 @@
 
 .rollSlotCellNumber {
     text-align: right;
-    min-width: 40px;
+    min-width: 60px;
 }
 
 .bold {

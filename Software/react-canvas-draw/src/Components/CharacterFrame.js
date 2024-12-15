@@ -81,9 +81,9 @@ function CharacterFrame({ character, updateCharacter, game, updateGame, diceRoll
                             {Object.entries(character.resources).map(([k, v], i) => (
                                 <tr key={i}>
                                     <td>{k}</td>
-                                    <td className="rollSlotCellNumber">{v}</td>
+                                    <td className="rollSlotCellNumber">{formatNumber(v)}</td>
                                     <td>/</td>
-                                    <td className="rollSlotCellNumber">{character.getStatValue(character.getMaxStatName(k))}</td>
+                                    <td className="rollSlotCellNumber">{formatNumber(character.getStatValue(character.getMaxStatName(k)))}</td>
                                 </tr>
                             ))}
                         </tbody>

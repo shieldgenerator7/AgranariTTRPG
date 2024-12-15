@@ -54,7 +54,7 @@ function RollSlotFrame({ rollSlot, updateRollSlot }) {
                             </button>
                         }
                         {
-                            rollSlot.lastRoll && rollSlot.WillPower &&
+                            rollSlot.lastRoll && rollSlot.WillPower > 0 &&
                             <Counter
                                 value={rollSlot.WillPower}
                                 setValue={(value => {

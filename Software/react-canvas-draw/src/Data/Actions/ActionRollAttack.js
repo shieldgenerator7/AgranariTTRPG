@@ -73,6 +73,17 @@ class ActionRollAttack {
     }
 
     commit() {
+
+        //early exit: no attack
+        if (!isNumber(this.attackSlot.lastRoll) || !isNumber(this.dodgeSlot.lastRoll)) {
+            return;
+        }
+
+        //early exit: no damage        
+        if (!isNumber(this.damageSlot.lastRoll)) {
+            return;
+        }
+
         //will power cost: attack
         this.attacker.WillPower -= this._getCombinedWillPowerCost([
             this.attackSlot,

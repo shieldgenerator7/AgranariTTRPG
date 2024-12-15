@@ -1,6 +1,7 @@
 "use strict";
 
 import { inflateArray, clamp } from "../Utility/Utility";
+import { rollDice } from "./DiceRoller";
 
 class RollSlot {
     constructor(character, statName, statusFunc) {
@@ -10,7 +11,7 @@ class RollSlot {
         this.statusFunc = statusFunc;
         //
         this.stat = this.character.getStat(statName);
-        this.lastRoll;
+        this.lastRoll = undefined;
     }
 
     getRollDisplayText() {

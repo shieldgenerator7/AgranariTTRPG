@@ -1,6 +1,6 @@
 "use strict";
 
-import { inflateArray, clamp } from "../Utility/Utility";
+import { inflateArray, clamp, arraySum } from "../Utility/Utility";
 import Ability, { inflateAbility } from "./Ability";
 import { inflateStat } from "./Stat";
 import { inflateConsumable } from "./Consumable";
@@ -47,21 +47,27 @@ class Character {
             .find(a => this._normalizeForMatching(a.name) == statName || this._normalizeForMatching(a.displayName) == statName);
     }
 
+    getStatValue(statName) {
+        let value = this.getStat(statName)?.Stat ?? 0;
+        let bonusList = this.getBonusList(statName);
+        return value + arraySum(bonusList, bonus => bonus.bonus);
+    }
+
     get Health() {
         return this.resources.health;
     }
     set Health(value) {
-        this.resources.health = clamp(value, 0, this.getStat("maxhealth"));
+        this.resources.health = clamp(value, 0, this.getStatValue("maxhealth"));
     }
     get MissingHealth() {
-        return this.getStat("maxhealth") - this.resources.health;
+        return this.getStatValue("maxhealth") - this.resources.health;
     }
 
     get WillPower() {
         return this.resources.willPower;
     }
     set WillPower(value) {
-        this.resources.willPower = clamp(value, 0, this.getStat("willpower"));
+        this.resources.willPower = clamp(value, 0, this.getStatValue("willpower"));
     }
 
     getConsumable(cnsmName) {
@@ -118,6 +124,13 @@ class Character {
             let index = this.consumableList.indexOf(consumableReference);
             this.consumableList.splice(index, 1);
         }
+    }
+
+    getBonusList(statName) {
+        statName = this._normalizeForMatching(statName);
+        return this.tempBonusList.filter(
+            bonus => this._normalizeForMatching(bonus.filter).includes(statName)
+        );
     }
 
 }

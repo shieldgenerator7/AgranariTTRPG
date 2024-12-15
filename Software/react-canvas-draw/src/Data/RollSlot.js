@@ -37,7 +37,7 @@ class RollSlot {
     contestWithWillPower(goal) {
         goal ??= this.goalFunc?.();
         let diff = goal - this.lastRoll;
-        let willPowerFactor = this.character.getStat("willpowerfactor").Stat;
+        let willPowerFactor = this.character.getStatValue("willpowerfactor");
         this.willPower = Math.max(Math.ceil(diff / willPowerFactor), 1);
     }
 
@@ -57,7 +57,7 @@ class RollSlot {
         if (this.totalFunc) {
             return this.totalFunc(this.lastRoll, this.WillPower);
         }
-        return this.lastRoll + (this.WillPower ?? 0) * this.character.getStat("willpowerfactor").Stat;
+        return this.lastRoll + (this.WillPower ?? 0) * this.character.getStatValue("willpowerfactor");
     }
 
     get Status() {

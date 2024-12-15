@@ -6,7 +6,7 @@ import { inflateStat } from "./Stat";
 import { inflateConsumable } from "./Consumable";
 import ConsumableReference, { inflateConsumableReference } from "./ConsumableReference";
 import { inflateRollGroup } from "./RollGroup";
-import { inflateTempBonus } from "./TempBonus";
+import { inflateBonus } from "./Bonus";
 
 class Character {
     constructor(name) {
@@ -173,7 +173,7 @@ export function inflateCharacter(character, updateCharacter = (c) => { }) {
 
     character.consumableList = inflateArray(character.consumableList, inflateConsumableReference);
 
-    character.tempBonusList = inflateArray(character.tempBonusList, inflateTempBonus);
+    character.tempBonusList = inflateArray(character.tempBonusList, inflateBonus);
 
     character.dieRollLog = inflateArray(character.dieRollLog, inflateRollGroup);
     character.dieRollLogSelect = inflateArray(character.dieRollLogSelect, () => { });

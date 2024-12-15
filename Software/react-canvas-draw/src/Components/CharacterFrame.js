@@ -14,7 +14,7 @@ import Field from "./Field";
 import ListOrdered from "./ListOrdered";
 import SearchSelect from "./SearchSelect";
 import { formatNumber, isString } from "../Utility/Utility";
-import TempBonus from "../Data/TempBonus";
+import Bonus from "../Data/Bonus";
 import TempBonusFrame from "./TempBonusFrame";
 import Counter from "./Counter";
 import ActionRollAttack from "../Data/Actions/ActionRollAttack";
@@ -313,7 +313,7 @@ function CharacterFrame({ character, updateCharacter, game, updateGame, diceRoll
                             Temporary Bonuses
                             <button className="addButton"
                                 onClick={(e) => {
-                                    let tempBonus = new TempBonus(2, "");
+                                    let tempBonus = new Bonus(2, "");
                                     tempBonus.editing = true;
                                     character.tempBonusList.push(tempBonus);
                                     updateCharacter(character);

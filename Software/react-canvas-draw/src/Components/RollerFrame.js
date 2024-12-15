@@ -14,7 +14,7 @@ import Field from "./Field";
 import ListOrdered from "./ListOrdered";
 import SearchSelect from "./SearchSelect";
 import { isString } from "../Utility/Utility";
-import TempBonus from "../Data/TempBonus";
+import Bonus from "../Data/Bonus";
 import TempBonusFrame from "./TempBonusFrame";
 import RollSlotFrame from "./RollSlotFrame";
 

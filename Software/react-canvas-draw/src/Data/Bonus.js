@@ -1,6 +1,6 @@
 "use strict";
 
-class TempBonus {
+class Bonus {
     constructor(bonus, filter, source) {
         this.bonus = bonus;//the bonus amount
         this.filter = filter;//what it is a bonus to (ex: Accuracy, Dodge Variance, etc)
@@ -9,8 +9,8 @@ class TempBonus {
         this.editing = false;
     }
 }
-export default TempBonus;
+export default Bonus;
 
-export function inflateTempBonus(tempBonus) {
-    Object.setPrototypeOf(tempBonus, TempBonus.prototype);
+export function inflateBonus(bonus) {
+    Object.setPrototypeOf(bonus, Bonus.prototype);
 }

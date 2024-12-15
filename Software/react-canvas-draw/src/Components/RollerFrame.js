@@ -38,7 +38,7 @@ function RollerFrame({ title, actionRoller, updateRoller, updateCharacter, game,
         if (rollSlot.character != prevChar) {
             prevChar = rollSlot.character;
             rowList.push((
-                <tr className="rollSlotCharacterHeader"><td>
+                <tr className="rollSlotCharacterHeader" key={`header_${i}`}><td>
                     {rollSlot.character.name}
                 </td></tr>
             ));
@@ -47,7 +47,7 @@ function RollerFrame({ title, actionRoller, updateRoller, updateCharacter, game,
             <RollSlotFrame
                 rollSlot={rollSlot}
                 updateRollSlot={updateRollSlot}
-                key={i}
+                key={`roller_${i}`}
             ></RollSlotFrame>
         );
         rowList.push(row);

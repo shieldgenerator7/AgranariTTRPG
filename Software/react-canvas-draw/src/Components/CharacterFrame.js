@@ -78,8 +78,8 @@ function CharacterFrame({ character, updateCharacter, game, updateGame, diceRoll
                     character.resources &&
                     <table className="resourceTable">
                             <tbody>
-                                {Object.entries(character.resources).map(([k, v]) => (
-                                    <tr>
+                                {Object.entries(character.resources).map(([k, v], i) => (
+                                    <tr key={i}>
                                         <td>{k}</td>
                                         <td className="rollSlotCellNumber">{v}</td>
                                         <td>/</td>

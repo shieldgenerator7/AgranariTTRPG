@@ -10,8 +10,12 @@ class RollSlot {
         this.willPower = 0;
         this.statusFunc = statusFunc;
         //
-        this.stat = this.character.getStat(statName);
+        this.stat = this.character.getStat(statName) ?? {};
         this.lastRoll = undefined;
+    }
+
+    getDisplayText() {        
+        return `${this.character.name} ${this.stat.name ?? this.statName}: ${Math.cut(this.stat.Stat)} + d${Math.cut(this.stat.StatVariance)}`;
     }
 
     getRollDisplayText() {

@@ -230,6 +230,7 @@ function App() {
                 <div className='characterZone'>
                     <RollerFrame
                         title="Attack"
+                        actionRoller={roller}
                     ></RollerFrame>
                     {characterToShow &&
                         <CharacterFrame

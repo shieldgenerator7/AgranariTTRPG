@@ -24,11 +24,16 @@ import TempBonusFrame from "./TempBonusFrame";
  * @returns 
  */
 //2024-12-11: copied from CharacterFrame
-function RollerFrame({ title, rollSlotList, updateCharacter, game, updateGame, diceRolled, attributeAdjusted, abilityModified, characterList, setCharacterList, renameConsumable }) {
+function RollerFrame({ title, actionRoller, updateCharacter, game, updateGame, diceRolled, attributeAdjusted }) {
    
     return (
         <div className="actionFrame">
             {title}
+            {
+                actionRoller.rollList.map((rollSlot,i) => 
+                (<div key={i}>{ rollSlot.getDisplayText() }</div>)
+                )
+            }
         </div>
     );
 

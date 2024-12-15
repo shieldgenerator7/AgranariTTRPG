@@ -38,7 +38,7 @@ class RollSlot {
         goal ??= this.goalFunc?.();
         let diff = goal - this.lastRoll;
         let willPowerFactor = this.character.getStatValue("willpowerfactor");
-        this.willPower = Math.max(Math.ceil(diff / willPowerFactor), 1);
+        this.WillPower = Math.max(Math.ceil(diff / willPowerFactor), 1);
     }
 
     get WillPower() {
@@ -46,10 +46,10 @@ class RollSlot {
     }
     set WillPower(value) {
         if (isNumber(value * 1)) {
-            this.willPower = clamp(value, 0, this.character.resources.willPower);
+            this.willPower = Math.ceil(clamp(value, 0, this.character.resources.willPower));
         }
         else {
-            this.willPower = undefined;
+            this.willPower = 0;
         }
     }
 

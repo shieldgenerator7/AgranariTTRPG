@@ -312,6 +312,7 @@ function CharacterFrame({ character, updateCharacter, game, updateGame, diceRoll
                                     character.tempBonusList = arr;
                                     updateCharacter(character);
                                 }}
+                                allowCopying={false}
                             ></ListOrdered>
                         }
                     </>

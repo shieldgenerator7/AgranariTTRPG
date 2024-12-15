@@ -8,16 +8,17 @@ function TempBonusFrame({ tempBonus, updateFunc }) {
         <div className="attributeFrameEdit">
             {tempBonus.editing &&
                 <>
-                    {tempBonus.bonus}
-                    <Counter
-                        value={tempBonus.bonus}
-                        setValue={(v) => {
-                            tempBonus.bonus = v;
-                            updateFunc();
-                        }}
-                        min={-100}
-                        max={100}
-                        inline={true}
+                <Counter
+                    value={tempBonus.bonus}
+                    setValue={(v) => {
+                        tempBonus.bonus = v;
+                        updateFunc();
+                    }}
+                    min={-1000}
+                    max={1000}
+                    inline={true}
+                    label={`${(tempBonus.bonus > 0) ? "+" : ""}${tempBonus.bonus}`}
+                    showEditField={true}
                     ></Counter>
                     <Field
                         name={"Filter"}

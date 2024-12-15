@@ -68,13 +68,11 @@ function RollSlotFrame({ rollSlot, updateRollSlot }) {
             </td>
             <td>
                 {
-                    rollSlot.lastRoll && rollSlot.WillPower &&
                     <span>{"-->"}</span>
                 }
             </td>
             <td className="rollSlotCellNumber">
                 {
-                    rollSlot.lastRoll && rollSlot.WillPower &&
                     <span>{formatNumber(rollSlot.Total)}</span>
                 }
             </td>

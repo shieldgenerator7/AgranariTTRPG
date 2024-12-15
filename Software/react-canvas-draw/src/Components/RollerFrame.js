@@ -63,6 +63,12 @@ function RollerFrame({ title, actionRoller, updateRoller, updateCharacter, game,
                     }
                 </tbody>
             </table>
+            <button className="commitButton"
+                onClick={() => {
+                    actionRoller.commit();
+                    updateRoller(actionRoller);
+                }}
+            >COMMIT</button>
         </div>
     );
 

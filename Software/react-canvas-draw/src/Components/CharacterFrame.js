@@ -16,6 +16,7 @@ import SearchSelect from "./SearchSelect";
 import { formatNumber, isString } from "../Utility/Utility";
 import TempBonus from "../Data/TempBonus";
 import TempBonusFrame from "./TempBonusFrame";
+import Counter from "./Counter";
 
 function CharacterFrame({ character, updateCharacter, game, updateGame, diceRolled, attributeAdjusted, abilityModified, characterList, setCharacterList, renameConsumable }) {
     let showConsumableList = false;
@@ -84,6 +85,28 @@ function CharacterFrame({ character, updateCharacter, game, updateGame, diceRoll
                                     <td className="rollSlotCellNumber">{formatNumber(v)}</td>
                                     <td>/</td>
                                     <td className="rollSlotCellNumber">{formatNumber(character.getStatValue(character.getMaxStatName(k)))}</td>
+                                    <td className="rollSlotCellNumber">
+                                        <Counter
+                                            value={v}
+                                            setValue={(value) => {
+                                                character.resources[k] = value;
+                                                updateCharacter(character);
+                                            }}
+                                            min={0}
+                                            max={character.getStatValue(character.getMaxStatName(k))}
+                                            inline={true}
+                                        ></Counter>
+                                    </td>
+                                    <td>
+                                        <button className="plusMinus"
+                                            onClick={() => {
+                                                character.resources[k] = character.getStatValue(character.getMaxStatName(k));
+                                                updateCharacter(character);
+                                            }}
+                                        >
+                                            R
+                                        </button>
+                                    </td>
                                 </tr>
                             ))}
                         </tbody>

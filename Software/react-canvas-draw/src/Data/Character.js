@@ -53,6 +53,13 @@ class Character {
         return value + arraySum(bonusList, bonus => bonus.bonus);
     }
 
+    getMaxStatName(resourceName) {
+        resourceName = this._normalizeForMatching(resourceName);
+        let stat = this.statList
+            .find(a => this._normalizeForMatching(a.name).includes(resourceName) || this._normalizeForMatching(a.displayName).includes(resourceName));
+        return stat?.name;
+    }
+
     get Health() {
         return this.resources.health;
     }

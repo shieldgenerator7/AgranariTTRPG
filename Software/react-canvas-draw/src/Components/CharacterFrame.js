@@ -73,6 +73,23 @@ function CharacterFrame({ character, updateCharacter, game, updateGame, diceRoll
                         }}
                     >Delete Character</button>
                 }
+                {/* Resources */}
+                {
+                    character.resources &&
+                    <table className="resourceTable">
+                            <tbody>
+                                {Object.entries(character.resources).map(([k, v]) => (
+                                    <tr>
+                                        <td>{k}</td>
+                                        <td className="rollSlotCellNumber">{v}</td>
+                                        <td>/</td>
+                                        <td className="rollSlotCellNumber">{character.getStatValue(character.getMaxStatName(k))}</td>
+                                    </tr>
+                                ))}
+                            </tbody>
+                    </table>
+                }
+                {/* // */}
                 <table><tbody>
                     <tr>
                         <td>

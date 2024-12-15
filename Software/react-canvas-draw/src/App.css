@@ -831,6 +831,7 @@
 }
 .rollSlotCellNumber {
     text-align: right;
+    min-width: 40px;
 }
 .bold {
     font-weight: bold;
@@ -853,6 +854,10 @@
 .willpower:hover {
     color:black;
     background-color: rgb(126, 171, 255);
+}
+.resourceTable{
+    font-size: .65em;
+    max-width: 75%;
 }
 
 

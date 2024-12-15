@@ -8,6 +8,7 @@ function TempBonusFrame({ tempBonus, updateFunc }) {
         <div className="attributeFrameEdit">
             {tempBonus.editing &&
                 <>
+                    {tempBonus.bonus}
                     <Counter
                         value={tempBonus.bonus}
                         setValue={(v) => {

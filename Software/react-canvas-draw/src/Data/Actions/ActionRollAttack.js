@@ -20,8 +20,8 @@ class ActionRollAttack{
         let attacker = this.attacker;
         let defender = this.defender;
 
-        this.attackSlot = new RollSlot(attacker, "accuracy", ()=>this.dodgeSlot.Total);
-        this.dodgeSlot = new RollSlot(defender, "dodge", () => this.attackSlot.Total, (total) => this.getHitMessage(this.attackSlot.Total, total));
+        this.attackSlot = new RollSlot(attacker, "accuracy", ()=>this.dodgeSlot.Total, (total) => this.getHitMessage(total, this.dodgeSlot.Total));
+        this.dodgeSlot = new RollSlot(defender, "dodge", () => this.attackSlot.Total, (total) => this.getDodgeMessage(this.attackSlot.Total, total));
         this.damageSlot = new RollSlot(attacker, "damage",()=>this.durabilitySlot.Total);
         this.damageTakenSlot = new RollSlot(defender, "armor", undefined, undefined, (lastRoll, willPower) => this.damageSlot.Total * (100/(100+defender.getStat("armor"))));
         this.durabilitySlot = new RollSlot(defender, "durability",()=>this.damageTakenSlot.Total, (roll)=>(this.damageTakenSlot.Total > roll)?"WOUNDED":"");
@@ -54,6 +54,19 @@ class ActionRollAttack{
             : (attack > dodge)
                 ? "HIT"
                 : "miss";
+    }
+    getDodgeMessage(attack, dodge) {
+        //early exit: no attack or no dodge
+        if (!isNumber(attack) || !isNumber(dodge)) {
+            return "";
+        }
+
+        //processing
+        return (attack > dodge * 2)
+            ? ""
+            : (attack > dodge)
+                ? ""
+                : "DODGED!";
     }
 
     commit() {

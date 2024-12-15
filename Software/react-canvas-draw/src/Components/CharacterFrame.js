@@ -17,8 +17,9 @@ import { formatNumber, isString } from "../Utility/Utility";
 import TempBonus from "../Data/TempBonus";
 import TempBonusFrame from "./TempBonusFrame";
 import Counter from "./Counter";
+import ActionRollAttack from "../Data/Actions/ActionRollAttack";
 
-function CharacterFrame({ character, updateCharacter, game, updateGame, diceRolled, attributeAdjusted, abilityModified, characterList, setCharacterList, renameConsumable }) {
+function CharacterFrame({ character, updateCharacter, game, updateGame, diceRolled, attributeAdjusted, abilityModified, characterList, setCharacterList, renameConsumable, addRoller }) {
     let showConsumableList = false;
     let setShowConsumableList = (b) => showConsumableList = b;
     [showConsumableList, setShowConsumableList] = useState(false);
@@ -301,6 +302,7 @@ function CharacterFrame({ character, updateCharacter, game, updateGame, diceRoll
                     </tr>
                 </tbody></table>
 
+                {/* Temp Bonuses */}
                 {!character.editAttributes &&
                     <>
                         <h2>
@@ -340,6 +342,27 @@ function CharacterFrame({ character, updateCharacter, game, updateGame, diceRoll
                         }
                     </>
                 }
+
+                {/* Actions */}
+                <h2>Actions</h2>
+                {/* Action: Attack */}
+                {
+                    characterList.length > 1 &&
+                    characterList
+                        .filter(char=>char != character)
+                        .map((char, i) => (
+                        <button className="plusMinus"
+                            onClick={() => {
+                                let roller = new ActionRollAttack(character, char);
+                                addRoller(roller);
+                            }}
+                            key={`action_attack_${i}`}
+                        >
+                            Attack {char.name}
+                        </button>
+                    ))
+                }
+
             </div>
 
 

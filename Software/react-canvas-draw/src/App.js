@@ -232,6 +232,10 @@ function App() {
     const updateRollerList = () => {
         setRollerList([...rollerList]);
     }
+    const addRoller = (roller) => {
+        rollerList.push(roller);
+        updateRollerList();
+    }
 
     //Character to Show
     let characterToShow = undefined;
@@ -266,6 +270,7 @@ function App() {
                             characterList={characterList}
                             setCharacterList={setCharacterList}
                             renameConsumable={renameConsumablePropagation}
+                            addRoller={addRoller}
                             key={`character_${characterToShow.name}`}
                         ></CharacterFrame>
                     }
@@ -282,6 +287,7 @@ function App() {
                                 characterList={characterList}
                                 setCharacterList={setCharacterList}
                                 renameConsumable={renameConsumablePropagation}
+                                addRoller={addRoller}
                                 key={`character_${char.name}_${i}`}
                             ></CharacterFrame>
                         ))

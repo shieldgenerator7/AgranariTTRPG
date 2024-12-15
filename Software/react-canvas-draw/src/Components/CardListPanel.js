@@ -1,7 +1,6 @@
 "use strict";
 
 import Dropzone from "react-dropzone";
-import { costDisplay, costSpec } from "../Data/CostSpec";
 import Creature, { backwardsCompatifyCreature, inflateCreature } from "../Data/Creature";
 import { downloadFile } from "../Utility/Download";
 import { UploadFile, UploadFromFilePicker } from "../Utility/Upload";

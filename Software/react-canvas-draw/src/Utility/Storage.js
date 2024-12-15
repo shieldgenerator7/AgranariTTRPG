@@ -2,8 +2,6 @@
 
 import { backwardsCompatifyCharacter, inflateCharacter } from "../Data/Character";
 import Consumable from "../Data/Consumable";
-import { backwardsCompatifyCreature, inflateCreature } from "../Data/Creature";
-import { backwardsCompatifyDeck, inflateDeck } from "../Data/Deck";
 import Game, { backwardsCompatifyGame, inflateGame } from "../Data/Game";
 import Log from "../Data/Log";
 import LogEntry from "../Data/LogEntry";
@@ -84,14 +82,6 @@ class Storage {
             entry._dateTime = new Date(entry.dateTime);
         });
         // Object
-        this.storage.cardList.forEach(card => {
-            inflateCreature(card);
-            backwardsCompatifyCreature(card);
-        });
-        this.storage.deckList.forEach(deck => {
-            inflateDeck(deck);
-            backwardsCompatifyDeck(deck);
-        });
     }
 
     backwardsCompatifyStorage(storage) {

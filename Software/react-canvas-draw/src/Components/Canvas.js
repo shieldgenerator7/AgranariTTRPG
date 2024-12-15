@@ -4,7 +4,6 @@
 import React, { useRef, useEffect } from 'react';
 import { RESOLUTION, renderCard } from '../Utility/Render';
 import { generateCardSkin } from '../Data/DrawData';
-import { costSpec } from '../Data/CostSpec';
 import { downloadFile } from '../Utility/Download';
 
 const width = 2.5 * RESOLUTION;

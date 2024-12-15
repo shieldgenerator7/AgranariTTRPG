@@ -1,8 +1,6 @@
 "use strict";
 
-import Ability from "../Data/Ability/Ability";
-import { abilityCosts, abilityEffects, abilityRequirements } from "../Data/Ability/AbilityData";
-import Creature from "../Data/Creature";
+import Ability from "../Data/Ability";
 
 export function parsePasteFromExcel(pasteString) {
     let pasteSplit = pasteString.split("\n");
@@ -17,7 +15,7 @@ function parseCreatureTabLine(creatureTabLine) {
 
     if (!creatureTabLine) { return; }
 
-    let card = new Creature();
+    let card = undefined;
     let fields = creatureTabLine.split("	").map(f => f.trim());
     const valid = (index) => fields[index] != undefined && fields[index] != "";
 
@@ -66,34 +64,6 @@ function parseCreatureTabLine(creatureTabLine) {
             if (/\+[0-9]+R/.test(symbol)) {//bug: allows extra letters around it
                 ability.costName = "rest";
                 ability.costX = symbol.match(/[0-9]+/)[0];
-                return;
-            }
-
-            //Req: with number
-            if (/[0-9]+/.test(symbol)) {//bug: allows extra letters around it
-                let genericSymbol = symbol.replace(/[0-9]+/, "X");
-                let atom = abilityRequirements.find(ar => ar.symbol == genericSymbol);
-                if (atom) {
-                    ability.requirementName = atom.name;
-                    ability.costX = symbol.match(/[0-9]+/)[0];
-                }
-                else {
-                    ability.costReqText = areq;
-                    ability.pointCost = acost;
-                }
-                return;
-            }
-
-            //Req: w/o number
-            {
-                let atom = abilityRequirements.find(ar => ar.symbol == symbol);
-                if (atom) {
-                    ability.requirementName = atom.name;
-                }
-                else {
-                    ability.costReqText = areq;
-                    ability.pointCost = acost;
-                }
                 return;
             }
         });

@@ -1,7 +1,6 @@
 "use strict";
 
 import { arrayMax, arraySort, getLines } from "../Utility/Utility";
-import { costSpec } from "./CostSpec";
 import DrawLayer, { DRAWLAYER_BOX, DRAWLAYER_CIRCLE, DRAWLAYER_IMAGE, DRAWLAYER_LAYERS, DRAWLAYER_TEXT } from "./DrawLayer";
 import Vector2, { VECTOR2_ZERO } from "./Vector2";
 

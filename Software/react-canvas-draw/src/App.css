@@ -847,6 +847,13 @@
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     background: #cebd90;
 }
+.willpower {
+    color:rgb(39, 114, 255);
+}
+.willpower:hover {
+    color:black;
+    background-color: rgb(126, 171, 255);
+}
 
 
 

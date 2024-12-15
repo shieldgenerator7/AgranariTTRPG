@@ -63,6 +63,7 @@ function RollSlotFrame({ rollSlot, updateRollSlot }) {
                                 })}
                                 label={`${(rollSlot.WillPower > 0) ? "+" : ""}${rollSlot.WillPower}`}
                                 inline={true}
+                                    extraclass="willpower"
                             ></Counter>
                         }
                     </>

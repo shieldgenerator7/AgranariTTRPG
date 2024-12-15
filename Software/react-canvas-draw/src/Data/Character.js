@@ -50,7 +50,7 @@ class Character {
     getStatValue(statName) {
         let value = this.getStat(statName)?.Stat ?? 0;
         let bonusList = this.getBonusList(statName);
-        return value + arraySum(bonusList, bonus => bonus.bonus);
+        return value + arraySum(bonusList, bonus => bonus.amount);
     }
 
     getMaxStatName(resourceName) {

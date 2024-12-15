@@ -9,15 +9,15 @@ function TempBonusFrame({ tempBonus, updateFunc }) {
             {tempBonus.editing &&
                 <>
                 <Counter
-                    value={tempBonus.bonus}
+                    value={tempBonus.amount}
                     setValue={(v) => {
-                        tempBonus.bonus = v;
+                        tempBonus.amount = v;
                         updateFunc();
                     }}
                     min={-1000}
                     max={1000}
                     inline={true}
-                    label={`${(tempBonus.bonus > 0) ? "+" : ""}${tempBonus.bonus}`}
+                    label={`${(tempBonus.amount > 0) ? "+" : ""}${tempBonus.amount}`}
                     showEditField={true}
                     ></Counter>
                     <Field
@@ -41,7 +41,7 @@ function TempBonusFrame({ tempBonus, updateFunc }) {
             }
             {!tempBonus.editing &&
                 <>
-                    {(tempBonus.bonus > 0) ? "+" : ""}{tempBonus.bonus} {tempBonus.filter}
+                    {(tempBonus.amount > 0) ? "+" : ""}{tempBonus.amount} {tempBonus.filter}
                 </>
             }
         </div>

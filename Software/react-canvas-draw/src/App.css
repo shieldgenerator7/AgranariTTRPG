@@ -808,8 +808,8 @@
     /* background: #f5eac9; */
     background: #cebd90;
     width: 500px;
-    height: 98%;
     /* min-height: 90%; */
+    min-height: 600px;
     border-radius: 25px;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     box-shadow: 10px 25px 15px rgb(66, 66, 66);
@@ -880,6 +880,14 @@
 }
 .commitButton:hover{    
     background: #ffeec1;
+}
+.rollerZone {
+    width: 600px;
+    min-width: 650px;
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+    overflow-y: auto;
 }
 
 

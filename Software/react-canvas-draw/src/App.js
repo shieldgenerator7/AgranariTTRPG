@@ -219,6 +219,20 @@ function App() {
         // storage.characterList = characterList;
     };
 
+    //Roller List
+    let rollerList = [];
+    let setRollerList = (list) => {
+        rollerList = list;
+        storage.rollerList = rollerList;
+        window.rollerList = rollerList;
+    };
+    const defaultRollerList = () => (storage.rollerList?.length > 0) ? storage.rollerList : [roller, new ActionRollAttack(characterList[1], characterList[0])];
+    [rollerList, setRollerList] = useState(defaultRollerList);
+    window.rollerList = rollerList;
+    const updateRollerList = () => {
+        setRollerList([...rollerList]);
+    }
+
     //Character to Show
     let characterToShow = undefined;
     if (paramCharacter?.trim() || false) {
@@ -229,10 +243,17 @@ function App() {
         <div className="App">
             <header className="App-header">
                 <div className='characterZone'>
+                    <div className='rollerZone'>
+                    {
+                        rollerList.map((roller,i) =>
                     <RollerFrame
                         actionRoller={roller}
-                        updateRoller={updateRoller}
+                        updateRoller={updateRollerList}
+                        key={`roller_${i}`}
                     ></RollerFrame>
+                        )
+                    }
+                    </div>
                     {characterToShow &&
                         <CharacterFrame
                             character={characterToShow}

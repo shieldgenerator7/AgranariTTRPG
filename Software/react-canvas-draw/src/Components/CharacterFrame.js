@@ -119,9 +119,9 @@ function CharacterFrame({ character, updateCharacter, game, updateGame, diceRoll
                                             character.statList = arr;
                                             updateCharacter(character);
                                         }}
-                                        allowReordering={false}
-                                        allowCopying={false}
-                                        allowDeletion={false}
+                                        // allowReordering={false}
+                                        // allowCopying={false}
+                                        // allowDeletion={false}
                                     ></ListOrdered>
                                 }
                                 {!character.editAttributes &&
@@ -184,7 +184,7 @@ function CharacterFrame({ character, updateCharacter, game, updateGame, diceRoll
                             </div>
 
 
-                            <h2>
+                            {/* <h2>
                                 Consumables
                                 {!showConsumableList &&
                                     <button className="addButton"
@@ -214,8 +214,8 @@ function CharacterFrame({ character, updateCharacter, game, updateGame, diceRoll
                                         }}
                                     ></SearchSelect>
                                 }
-                            </h2>
-                            <div className={"consumableContainer"}>
+                            </h2> */}
+                            {/* <div className={"consumableContainer"} >
                                 {character.editAttributes &&
                                     <ListOrdered
                                         arr={character.consumableList}
@@ -269,7 +269,7 @@ function CharacterFrame({ character, updateCharacter, game, updateGame, diceRoll
                                         ))
                                     }</>)
                                 }
-                            </div>
+                            </div> */}
 
                         </td>
                         <td>

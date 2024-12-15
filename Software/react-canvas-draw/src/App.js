@@ -230,7 +230,6 @@ function App() {
             <header className="App-header">
                 <div className='characterZone'>
                     <RollerFrame
-                        title="Attack"
                         actionRoller={roller}
                         updateRoller={updateRoller}
                     ></RollerFrame>

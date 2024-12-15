@@ -13,6 +13,8 @@ class ActionRollAttack {
         this.defender = defender;
         this.defenderName = defender.name;
 
+        this.title = `Attack: ${this.attackerName} --> ${this.defenderName}`;
+
         this.init();
     }
 

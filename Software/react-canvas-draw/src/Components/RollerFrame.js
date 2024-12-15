@@ -25,7 +25,7 @@ import RollSlotFrame from "./RollSlotFrame";
  * @returns 
  */
 //2024-12-11: copied from CharacterFrame
-function RollerFrame({ title, actionRoller, updateRoller, updateCharacter, game, updateGame, diceRolled, attributeAdjusted }) {
+function RollerFrame({ actionRoller, updateRoller, updateCharacter, game, updateGame, diceRolled, attributeAdjusted }) {
 
     const updateRollSlot = () => {
         updateRoller(actionRoller);
@@ -55,7 +55,7 @@ function RollerFrame({ title, actionRoller, updateRoller, updateCharacter, game,
 
     return (
         <div className="actionFrame">
-            {title}
+            {actionRoller.title}
             <table>
                 <tbody>
                     {

@@ -16,6 +16,11 @@ import Consumable from './Data/Consumable';
 import { Socket } from 'socket.io';
 
 function App() {
+    //Title
+    //2024-12-14: copied from https://stackoverflow.com/a/46176359/2336212
+    useEffect(() => {
+        document.title = `Agranari TTRPG ${VERSION}`;
+    }, []);
     //URL params
     const [searchParams, setSearchParams] = useSearchParams();
     const paramCharacter = searchParams.get("character");
@@ -181,10 +186,6 @@ function App() {
     //     setPanelList([...panelList]);
     // };
 
-    // useEffect(() => {
-    //     let characterName = character?.getNameText(true, false);
-    //     document.title = ((characterName) ? `${characterName} - ` : "") + `Creature Combat v${VERSION}`;
-    // }, [character, characterList]);
 
     let characterToShow = undefined;
     if (paramCharacter?.trim() || false) {

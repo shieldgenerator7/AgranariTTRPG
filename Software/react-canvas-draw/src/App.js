@@ -18,7 +18,7 @@ import RollerFrame from './Components/RollerFrame';
 import ActionRollAttack, { inflateActionRollAttack } from './Data/Actions/ActionRollAttack';
 import Dropzone from 'react-dropzone';
 import { UploadFile } from './Utility/Upload';
-import { readSpeciesFromCSV } from './Data/Species';
+import Species, { readSpeciesFromCSV } from './Data/Species';
 
 function App() {
     //Title
@@ -37,12 +37,12 @@ function App() {
     const defaultStorage = () => new Storage();
     [storage, setStorage] = useState(defaultStorage);
     //Character
-    let character = new Character("Tak Redwind");
+    let character = new Character("Tak Redwind", new Species("Squirrel"));
     let setCharacter = (c) => {
         character = c;
         storage.characterList = characterList;
     };
-    const defaultCharacter = () => storage.characterList[0] ?? new Character("Tak Redwind");
+    const defaultCharacter = () => storage.characterList[0] ?? new Character("Tak Redwind", new Species("Squirrel"));
     [character, setCharacter] = useState(defaultCharacter);
     window.character = character;
     let updateCharacter = (oldcharacter) => {
@@ -274,6 +274,13 @@ function App() {
         characterToShow = characterList.find(char => char.name.trim().toLowerCase() == paramCharacter.trim().toLowerCase());
     }
 
+    const createCharacter = (species)=>{
+        let index = characterList.length;
+        let character = new Character(`${species.name}${index+1}`, species);
+        characterList.push(character);
+        setCharacterList([...characterList]);
+    }
+
     return (
         <div className="App">
             <header className="App-header">
@@ -367,9 +374,7 @@ function App() {
                                                 <li key={i}>
                                                     <button className='plusMinus'
                                                         onClick={() => {
-                                                            // let char = createCharacter(species);
-                                                            // characterList.push(char);
-                                                            // setCharacterList([...characterList]);
+                                                            createCharacter(species);
                                                         }}
                                                     >
                                                         {species.name}

@@ -1,6 +1,7 @@
 "use strict";
 
 import Character, { inflateCharacter } from "../Data/Character";
+import Species from "../Data/Species";
 import Field from "./Field";
 import LogPanel from "./LogPanel";
 import React from "react";
@@ -30,7 +31,7 @@ function CommandPanel({ game, updateGame, characterList, setCharacterList, log }
                 ></Field>
                 <button
                     onClick={(e) => {
-                        let character = new Character("New Character");
+                        let character = new Character("New Character", new Species("New Species"));
                         characterList.push(character);
                         setCharacterList(characterList);
                     }}

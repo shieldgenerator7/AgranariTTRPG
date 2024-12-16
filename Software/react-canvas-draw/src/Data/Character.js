@@ -2,14 +2,14 @@
 
 import { inflateArray, clamp, arraySum } from "../Utility/Utility";
 import Ability, { inflateAbility } from "./Ability";
-import { inflateStat } from "./Stat";
+import Stat, { inflateStat } from "./Stat";
 import { inflateConsumable } from "./Consumable";
 import ConsumableReference, { inflateConsumableReference } from "./ConsumableReference";
 import { inflateRollGroup } from "./RollGroup";
 import { inflateBonus } from "./Bonus";
 
 class Character {
-    constructor(name) {
+    constructor(name, species) {
         this.name = name;
         this.portrait = undefined;//TODO: implement portrait
         this.statList = [];
@@ -20,6 +20,18 @@ class Character {
             health: 100,
             willPower: 20,
         };
+        
+        //species setup
+        this.species = species;
+        if (species) {
+            this.speciesName = species?.name;
+            this.statCosts = species.randomStatCosts();
+            this.statList = Object.entries(this.statCosts)
+                .map(([k, v]) => 
+                    new Stat(k, v)
+                );
+        }
+        //
 
         //TODO: implement equipment
         this.equipmentList = [];

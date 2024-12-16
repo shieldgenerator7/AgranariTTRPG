@@ -11,6 +11,7 @@ export const STATS_NO_VARIANCE = [
     "Willpower",
     "Willpower Factor",
     "Crit Factor",
+    "Armor",
 ];
 
 class Species{

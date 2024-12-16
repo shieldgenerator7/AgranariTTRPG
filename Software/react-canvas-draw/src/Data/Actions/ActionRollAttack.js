@@ -73,7 +73,9 @@ class ActionRollAttack {
     }
 
     rollAll() {
-        this.rollList.forEach(rollSlot => {
+        this.rollList
+            .filter(rollSlot=>rollSlot.rollable)
+            .forEach(rollSlot => {
             rollSlot.roll();
         })
     }

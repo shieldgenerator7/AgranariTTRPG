@@ -30,13 +30,13 @@ class RollSlot {
 
     roll() {
         let roll = rollDice(`1d${this.stat.StatVariance}`);
-        roll.addRoll(this.statName, this.stat.Stat);
+        // roll.addRoll(this.statName, this.stat.Stat);
         this.lastRoll = roll.Value;
     }
 
     contestWithWillPower(goal) {
         goal ??= this.goalFunc?.();
-        let diff = goal - this.lastRoll;
+        let diff = goal - this.Total;
         let willPowerFactor = this.character.getStatValue("willpowerfactor");
         this.WillPower = Math.max(Math.ceil(diff / willPowerFactor), 1);
     }
@@ -57,7 +57,7 @@ class RollSlot {
         if (this.totalFunc) {
             return this.totalFunc(this.lastRoll, this.WillPower);
         }
-        return this.lastRoll + (this.WillPower ?? 0) * this.character.getStatValue("willpowerfactor");
+        return this.lastRoll + this.character.getStatValue(this.statName) + (this.WillPower ?? 0) * this.character.getStatValue("willpowerfactor");
     }
 
     get Status() {

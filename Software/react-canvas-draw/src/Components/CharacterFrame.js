@@ -368,19 +368,24 @@ function CharacterFrame({ character, updateCharacter, game, updateGame, diceRoll
                 {/* Action: Attack */}
                 {
                     characterList.length > 1 &&
+                    <ul>{
                     characterList
                         .filter(char=>char != character)
                         .map((char, i) => (
+                            <li
+                            key={`action_attack_${i}`}
+                            >
                         <button className="plusMinus"
                             onClick={() => {
                                 let roller = new ActionRollAttack(character, char);
                                 addRoller(roller);
                             }}
-                            key={`action_attack_${i}`}
                         >
                             Attack {char.name}
                         </button>
+                            </li>
                     ))
+                    }</ul>
                 }
 
             </div>

@@ -64,7 +64,8 @@ function AttributeFrame({ stat, character, updateCharacter, game, diceRolled, at
         return (
             <div className="abilityFrame">
                 <span>
-                        <span>
+                    <span>
+                        <div className="attributeName">{stat.name}:</div>
                             <button className={"plusMinus"}
                                 onClick={
                                     () => {
@@ -144,7 +145,8 @@ function AttributeFrame({ stat, character, updateCharacter, game, diceRolled, at
                                         return false;
                                     }
                                 }
-                            >{`${stat.getDisplayText()}`}</button>
+                            >{`${formatNumber(stat.Stat)} + d${formatNumber(stat.StatVariance)}`}</button>
+                            {/* = {stat.lastRoll} */}
                         </span>
                 </span>
             </div>

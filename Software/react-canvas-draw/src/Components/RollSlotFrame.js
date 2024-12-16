@@ -49,6 +49,10 @@ function RollSlotFrame({ rollSlot, updateRollSlot }) {
                                     rollSlot.contestWithWillPower();
                                     updateRollSlot();
                                 }}
+                            onContextMenu={(e) => {
+                                e.preventDefault();
+                                e.stopPropagation();
+                            }}
                                 disabled={rollSlot.character.WillPower == 0}
                             >
                                 WP

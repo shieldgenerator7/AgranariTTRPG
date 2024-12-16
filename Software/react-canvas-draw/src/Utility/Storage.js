@@ -5,6 +5,7 @@ import Consumable from "../Data/Consumable";
 import Game, { backwardsCompatifyGame, inflateGame } from "../Data/Game";
 import Log from "../Data/Log";
 import LogEntry from "../Data/LogEntry";
+import { inflateSpecies } from "../Data/Species";
 import { arrayRemoveDuplicatesQuery } from "./Utility";
 
 //2024-03-08: copied from StoryViewer
@@ -82,6 +83,11 @@ class Storage {
         this.storage.log.entryList.forEach(entry => {
             Object.setPrototypeOf(entry, LogEntry.prototype);
             entry._dateTime = new Date(entry.dateTime);
+        });
+        //Species        
+        this.storage.speciesList.forEach(species => {
+            inflateSpecies(species);
+            // backwardsCompatifyCharacter(character);
         });
         // Object
     }

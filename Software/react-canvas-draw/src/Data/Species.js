@@ -55,6 +55,9 @@ class Species{
 }
 export default Species;
 
+export function inflateSpecies(species) {
+    Object.setPrototypeOf(species, Species.prototype);
+}
 
 
 export function readSpeciesFromCSV(speciesName, csv) {

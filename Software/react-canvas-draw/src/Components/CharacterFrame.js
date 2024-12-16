@@ -170,7 +170,7 @@ function CharacterFrame({ character, updateCharacter, game, updateGame, diceRoll
                                 }
                                 {!character.editAttributes &&
 
-                                    (<>{
+                                    (<table><tbody>{
                                         statList.map((attr, i) => (
                                             <AttributeFrame
                                                 stat={attr}
@@ -182,7 +182,7 @@ function CharacterFrame({ character, updateCharacter, game, updateGame, diceRoll
                                                 key={`character_attribute_${i}`}
                                             ></AttributeFrame>
                                         ))
-                                    }</>)
+                                    }</tbody></table>)
                                 }
                             </div>
                             <h2>Abilities</h2>

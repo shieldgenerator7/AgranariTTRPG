@@ -62,10 +62,9 @@ function AttributeFrame({ stat, character, updateCharacter, game, diceRolled, at
     //Button controls
     else {
         return (
-            <div className="abilityFrame">
-                <span>
-                    <span>
-                        <div className="attributeName">{stat.name}:</div>
+            <tr className="abilityFrame">
+                        <td className="attributeName">{stat.name}:</td>
+                <td>
                             <button className={"plusMinus"}
                                 onClick={
                                     () => {
@@ -147,9 +146,8 @@ function AttributeFrame({ stat, character, updateCharacter, game, diceRolled, at
                                 }
                             >{`${formatNumber(stat.Stat)} + d${formatNumber(stat.StatVariance)}`}</button>
                             {/* = {stat.lastRoll} */}
-                        </span>
-                </span>
-            </div>
+                </td>
+            </tr>
         );
     }
 }

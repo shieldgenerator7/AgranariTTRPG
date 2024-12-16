@@ -64,8 +64,8 @@ function AttributeFrame({ stat, character, updateCharacter, game, diceRolled, at
     //Button controls
     else {
         return (
-            <tr className="abilityFrame">
-                        <td className="attributeName">{stat.name}:</td>
+            <tr className="statRow">
+                        <td>{stat.name}:</td>
                 <td>
                             <button className={"plusMinus"}
                                 onClick={

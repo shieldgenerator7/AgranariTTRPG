@@ -306,11 +306,11 @@ function CharacterFrame({ character, updateCharacter, game, updateGame, diceRoll
                     </tr>
                 </tbody></table>
 
-                {/* Temp Bonuses */}
+                {/* Bonuses */}
                 {!character.editAttributes &&
                     <>
                         <h2>
-                            Temporary Bonuses
+                            Bonuses
                             <button className="addButton"
                                 onClick={(e) => {
                                     let tempBonus = new Bonus(2, "");

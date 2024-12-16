@@ -64,25 +64,6 @@ function AttributeFrame({ stat, character, updateCharacter, game, diceRolled, at
         return (
             <div className="abilityFrame">
                 <span>
-                    {onClickType == ONCLICK_ADJUST_VALUE &&
-                        <span>
-                            <Counter
-                                value={stat.value}
-                                setValue={(v) => {
-                                    let oldValue = stat.value;
-                                    stat.value = v;
-                                    updateCharacter(character);
-                                    attributeAdjusted(character, stat.name, oldValue, v);
-                                }}
-                                allowNegative={false}
-                                inline={true}
-                                min={0}
-                                max={stat.max}
-                                label={stat.getDisplayText()}
-                            ></Counter>
-                        </span>
-                    }
-                    {(true || onClickType == ONCLICK_DIE_ROLL) &&
                         <span>
                             <button className={"plusMinus"}
                                 onClick={
@@ -165,13 +146,6 @@ function AttributeFrame({ stat, character, updateCharacter, game, diceRolled, at
                                 }
                             >{`${stat.getDisplayText()}`}</button>
                         </span>
-                    }
-                    {
-                        stat.OnClickType == ONCLICK_TOGGLE &&
-                        <span>
-                            {stat.getDisplayText()}
-                        </span>
-                    }
                 </span>
             </div>
         );

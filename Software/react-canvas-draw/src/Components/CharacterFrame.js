@@ -36,6 +36,9 @@ function CharacterFrame({ character, updateCharacter, game, updateGame, diceRoll
         statList = statList.filter(stat => character._normalizeForMatching(stat.name).includes(searchQuery));
     }
 
+    let customDiceFormula, setCustomDiceFormula;
+    [customDiceFormula, setCustomDiceFormula] = useState("1d100");
+
     return (
         <div className="characterFrame"
             onClick={(e) => {
@@ -394,16 +397,35 @@ function CharacterFrame({ character, updateCharacter, game, updateGame, diceRoll
             {
                 !character.editAttributes &&
                 <div className="diceRollLogPanel">
-                    <h2>Dice Rolls
-                        {
+                        <h2>
+                            <span className="abilityFrameLine">
+                            Dice Rolls {"    "}
+                                <Field
+                                    value={customDiceFormula}
+                                    setValue={setCustomDiceFormula}
+                                placeholder={"1d100"}
+                                className={"editText"}
+                                ></Field>
+                            <button className="dieButton"
+                                onClick={() => {
+                                    let roll = rollDice(customDiceFormula);
+                                    diceRolled(character, customDiceFormula, roll.Value, roll.Value);
+                                    character.dieRollLog.push(roll);
+                                    character.dieRollLogSelect.length = 0;
+                                    updateCharacter(character);
+                                        }}
+                            >
+                                Roll
+                                </button>
+                            {
                             [
-                                "d4",
-                                "d6",
-                                "d8",
-                                "d10",
-                                "d12",
-                                "d20",
-                                "d100",
+                                // "d4",
+                                // "d6",
+                                // "d8",
+                                // "d10",
+                                // "d12",
+                                // "d20",
+                                // "d100",
                             ].map((d, i) => (
                                 <button className="dieButton"
                                     key={`character_dieroll_${i}`}
@@ -428,6 +450,7 @@ function CharacterFrame({ character, updateCharacter, game, updateGame, diceRoll
                                 }}>X
                             </button>
                         }
+                        </span>
                     </h2>
                     <span className="diceRollLog">
 

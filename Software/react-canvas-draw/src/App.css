@@ -918,6 +918,13 @@
     overflow-x: hidden;
     overflow-y: auto;
 }
+.textline {
+    font-size: medium;
+    display:flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    margin-bottom: 10px;
+}
 
 
 

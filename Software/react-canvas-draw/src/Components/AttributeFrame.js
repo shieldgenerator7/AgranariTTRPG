@@ -6,7 +6,7 @@ import Attribute from "../Data/Character";
 import { ACTION_ROLL_MODIFY, ONCLICK_ADJUST_VALUE, ONCLICK_DIE_ROLL, ONCLICK_TOGGLE } from "../Data/Constants";
 import { rollDice } from "../Data/DiceRoller";
 import RollGroup from "../Data/RollGroup";
-import { clamp, isString } from "../Utility/Utility";
+import { clamp, isString, formatNumber } from "../Utility/Utility";
 import Counter from "./Counter";
 import Field from "./Field";
 
@@ -18,28 +18,9 @@ function AttributeFrame({ stat, character, updateCharacter, game, diceRolled, at
             <div className="abilityFrameEdit">
                 <div className="abilityFrameLine">
                     {/* Name */}
-                    <Field
-                        name={"Stat"}
-                        value={stat.name}
-                        setValue={(value) => {
-                            attributeAdjusted(character, `${stat.name}_name`, stat.name, value);
-                            stat.name = value;
-                            updateCharacter(character);
-                        }}
-                        className={"editText"}
-                    ></Field>
-                    {/* Display Name */}
-                    <Field
-                        name={"Display"}
-                        value={stat.displayName}
-                        setValue={(value) => {
-                            attributeAdjusted(character, `${stat.name}_displayname`, stat.displayName, value);
-                            stat.displayName = value;
-                            updateCharacter(character);
-                        }}
-                        className={"editTextShort"}
-                        placeHolder={stat.name}
-                    ></Field>
+                    <div className="textline">
+                        {stat.name} = {formatNumber(stat.Stat)} + d{formatNumber(stat.StatVariance)}
+                    </div>
                 </div>
                 <div className="abilityFrameLine">
                     {/* XP */}
@@ -71,16 +52,9 @@ function AttributeFrame({ stat, character, updateCharacter, game, diceRolled, at
                         inline={true}
                     ></Counter>
                     {/* Stat Cost */}
-                    <Field
-                        name={"Stat Cost"}
-                        value={stat.statCost}
-                        setValue={(value) => {
-                            attributeAdjusted(character, `${stat.name}_statCost`, stat.statCost, value);
-                            stat.acceptStatCost(value);
-                            updateCharacter(character);
-                        }}
-                        className={"editTextShort"}
-                    ></Field>
+                    <div className="textline">
+                        ({formatNumber(stat.statCost) } xp/pt)
+                    </div>
                 </div>
             </div>
         );

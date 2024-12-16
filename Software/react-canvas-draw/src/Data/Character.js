@@ -33,6 +33,10 @@ class Character {
                     if (STATS_NO_VARIANCE.includes(k)) {
                         stat.hasVariance = false;
                     }
+                    stat.XP = 100;
+                    if (stat.hasVariance) {
+                        stat.XPVariance = 100;
+                    }
                     return stat;
                 });
         }

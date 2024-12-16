@@ -22,10 +22,6 @@ class Storage {
             game: new Game(),
             //log
             log: new Log(),
-            //list of all cards this player has
-            cardList: [],
-            //list of decks this player has
-            deckList: [],
             //species
             speciesList: [],
         };

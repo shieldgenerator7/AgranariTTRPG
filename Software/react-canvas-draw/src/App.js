@@ -191,36 +191,6 @@ function App() {
     //     setPanelList([...panelList]);
     // };
 
-    //Roller
-    let roller = new ActionRollAttack(characterList[0], characterList[1]);
-    let setRoller = (r) => {
-        roller = r;
-        storage.roller = roller;
-    };
-    const defaultRoller = () => storage.roller ?? new ActionRollAttack(characterList[0], characterList[1]);
-    [roller, setRoller] = useState(defaultRoller);
-    window.roller = roller;
-    let updateRoller = (oldroller) => {
-        let newroller = JSON.parse(JSON.stringify(oldroller));
-        // if (isImage(oldroller.imgPortrait)) {
-        //     newroller.imgPortrait = oldroller.imgPortrait;
-        // }
-        inflateActionRollAttack(
-            newroller,
-            characterList
-            // (r) => { if (r == roller) { updateRoller(r); } }
-        );
-        //
-        // let charList = [...characterList];
-        // if (charList.includes(oldroller)) {
-        //     let index = charList.indexOf(oldroller);
-        //     charList.splice(index, 1, newroller);
-        // }
-        // setCharacterList(charList);
-        //
-        setRoller(newroller);
-        // storage.characterList = characterList;
-    };
 
     //Roller List
     let rollerList = [];

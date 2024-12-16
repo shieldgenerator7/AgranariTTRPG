@@ -7,6 +7,7 @@ import { inflateConsumable } from "./Consumable";
 import ConsumableReference, { inflateConsumableReference } from "./ConsumableReference";
 import { inflateRollGroup } from "./RollGroup";
 import { inflateBonus } from "./Bonus";
+import { STATS_NO_VARIANCE } from "./Species";
 
 class Character {
     constructor(name, species) {
@@ -27,9 +28,13 @@ class Character {
             this.speciesName = species?.name;
             this.statCosts = species.randomStatCosts();
             this.statList = Object.entries(this.statCosts)
-                .map(([k, v]) => 
-                    new Stat(k, v)
-                );
+                .map(([k, v]) => {
+                    let stat = new Stat(k, v);
+                    if (STATS_NO_VARIANCE.includes(k)) {
+                        stat.hasVariance = false;
+                    }
+                    return stat;
+                });
         }
         //
 

@@ -19,7 +19,7 @@ function AttributeFrame({ stat, character, updateCharacter, game, diceRolled, at
                 <div className="abilityFrameLine">
                     {/* Name */}
                     <div className="textline">
-                        {stat.name} = {formatNumber(stat.Stat)} + d{formatNumber(stat.StatVariance)}
+                        {stat.name} = {formatNumber(stat.Stat)} {(stat.hasVariance) ? `+ d${formatNumber(stat.StatVariance)}`:""}
                     </div>
                 </div>
                 <div className="abilityFrameLine">
@@ -38,6 +38,7 @@ function AttributeFrame({ stat, character, updateCharacter, game, diceRolled, at
                         inline={true}
                     ></Counter>
                     {/* Variance XP */}
+                    { stat.hasVariance &&
                     <Counter
                         value={stat.XPVariance}
                         setValue={(value) => {
@@ -51,6 +52,7 @@ function AttributeFrame({ stat, character, updateCharacter, game, diceRolled, at
                         max={0}
                         inline={true}
                     ></Counter>
+                    }
                     {/* Stat Cost */}
                     <div className="textline">
                         ({formatNumber(stat.statCost) } xp/pt)
@@ -144,7 +146,7 @@ function AttributeFrame({ stat, character, updateCharacter, game, diceRolled, at
                                         return false;
                                     }
                                 }
-                            >{`${formatNumber(stat.Stat)} + d${formatNumber(stat.StatVariance)}`}</button>
+                            >{`${formatNumber(stat.Stat)} ${(stat.hasVariance)?` + d${formatNumber(stat.StatVariance)}`:""}`}</button>
                             {/* = {stat.lastRoll} */}
                 </td>
             </tr>

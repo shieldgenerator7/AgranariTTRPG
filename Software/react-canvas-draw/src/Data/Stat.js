@@ -18,6 +18,7 @@ class Stat {
         this.displayName = "";
         this.xp = 0;
         this.xp_variance = 0;
+        this.hasVariance = true;
 
         //computed variables
         this.statCost = statCost ?? 20;

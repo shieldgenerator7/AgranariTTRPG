@@ -6,7 +6,7 @@ import Bonus from "./Bonus";
 //2024-12-15: copied from https://stackoverflow.com/a/45709854/2336212
 const SPLIT_LINE = /\r?\n/;
 
-const STATS_NO_VARIANCE = [
+export const STATS_NO_VARIANCE = [
     "Max Health",
     "Willpower",
     "Willpower Factor",
@@ -46,9 +46,6 @@ class Species{
             //store value
             let name = row.name;
             statCosts[name] = val;
-            if (!STATS_NO_VARIANCE.includes(name)) {
-                statCosts[`${name} Variance`] = valvar;
-            }
         })
         return statCosts;
     }

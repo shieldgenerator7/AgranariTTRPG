@@ -245,6 +245,29 @@ function App() {
         updateRollerList();
     }
 
+    //Species List
+    let speciesList = [];
+    let setSpeciesList = (list) => {
+        speciesList = list;
+        storage.speciesList = speciesList;
+        window.speciesList = speciesList;
+    };
+    const defaultSpeciesList = () =>  storage.speciesList ?? [];
+    [speciesList, setSpeciesList] = useState(defaultSpeciesList);
+    window.speciesList = speciesList;
+    const updateSpeciesList = () => {
+        setSpeciesList([...speciesList]);
+    }
+    const addSpecies = (species) => {
+        speciesList.push(species);
+        updateSpeciesList();
+    }
+    const removeSpecies = (species) => {
+        let index = speciesList.indexOf(species);
+        speciesList.splice(index, 1);
+        updateSpeciesList();
+    }
+
     //Character to Show
     let characterToShow = undefined;
     if (paramCharacter?.trim() || false) {
@@ -319,6 +342,7 @@ function App() {
                                                         console.log("species", species);
                                                         let statCosts = species.randomStatCosts();
                                                         console.log("random stat costs", statCosts);
+                                                        addSpecies(species);
                                                     }
                                                     else {
                                                         console.log("file dropped:", filename)
@@ -335,6 +359,26 @@ function App() {
                                         </div>
                                     )}
                                 </Dropzone>
+                                <div>
+                                    Make new character of species:
+                                    <ul>
+                                        {
+                                            speciesList.map((species,i) => (
+                                                <li key={i}>
+                                                    <button className='plusMinus'
+                                                        onClick={() => {
+                                                            // let char = createCharacter(species);
+                                                            // characterList.push(char);
+                                                            // setCharacterList([...characterList]);
+                                                        }}
+                                                    >
+                                                        {species.name}
+                                                    </button>
+                                                </li>
+                                            ))
+                                        }
+                                    </ul>
+                                </div>
                         </div>
                     }
                 </div>

@@ -286,7 +286,7 @@ function App() {
                             setCharacterList={setCharacterList}
                             renameConsumable={renameConsumablePropagation}
                             addRoller={addRoller}
-                            key={`character_${characterToShow.name}`}
+                            key={`character_`}
                         ></CharacterFrame>
                     }
                     {!characterToShow &&
@@ -303,7 +303,7 @@ function App() {
                                 setCharacterList={setCharacterList}
                                 renameConsumable={renameConsumablePropagation}
                                 addRoller={addRoller}
-                                key={`character_${char.name}_${i}`}
+                                key={`character_${i}`}
                             ></CharacterFrame>
                         ))
                     }

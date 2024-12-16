@@ -166,9 +166,9 @@ function CharacterFrame({ character, updateCharacter, game, updateGame, diceRoll
                                             character.statList = arr;
                                             updateCharacter(character);
                                         }}
-                                    // allowReordering={false}
-                                    // allowCopying={false}
-                                    // allowDeletion={false}
+                                    allowReordering={false}
+                                    allowCopying={false}
+                                    allowDeletion={false}
                                     ></ListOrdered>
                                 }
                                 {!character.editAttributes &&

@@ -18,6 +18,7 @@ import RollerFrame from './Components/RollerFrame';
 import ActionRollAttack, { inflateActionRollAttack } from './Data/Actions/ActionRollAttack';
 import Dropzone from 'react-dropzone';
 import { UploadFile } from './Utility/Upload';
+import { readSpeciesFromCSV } from './Data/Species';
 
 function App() {
     //Title
@@ -311,14 +312,18 @@ function App() {
                                             UploadFile(
                                                 file,
                                                 true,
-                                                (json) => {
-                                                    let card = JSON.parse(decodeURIComponent(json));
-                                                    // inflateCreature(card);
-                                                    // backwardsCompatifyCreature(card);
-                                                    // cardList.push(card);
-                                                    // setCardList([...cardList]);
-                                                    // setCard(card);
-                                                    console.log("json dropped", card);
+                                                (content, filename) => {
+                                                    // let obj = JSON.parse(decodeURIComponent(content));
+                                                    if (filename.endsWith(".csv")) {
+                                                        let species = readSpeciesFromCSV("Wolf", content);
+                                                        console.log("species", species);
+                                                        let statCosts = species.randomStatCosts();
+                                                        console.log("random stat costs", statCosts);
+                                                    }
+                                                    else {
+                                                        console.log("file dropped:", filename)
+                                                        console.log(content);
+                                                    }
                                                 }
                                             ))
                                     }

@@ -241,7 +241,9 @@ export function inflateArray(arr, inflateFunc) {
 /**
  * Returns a random number between min and max, inclusive
  * */
-function randomRange(min, max) {
+export function randomRange(min, max) {
+    min = min * 1;
+    max = max * 1;
     if (min > max) {
         console.error("Min should be less than or equal to max!",
             "min:", min,

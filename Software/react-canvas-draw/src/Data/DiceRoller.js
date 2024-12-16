@@ -42,7 +42,7 @@ export function rollDice(dieRollString) {
 function _rollDice(count, die) {
     let group = new RollGroup();
     for (let i = 0; i < count; i++) {
-        let value = Math.ceil(Math.random() * die);
+        let value = Math.random() * die;
         let flair = (value == die)
             ? DIE_ROLL_FLAIR_CRIT
             : (value == 1)

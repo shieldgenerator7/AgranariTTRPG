@@ -22,9 +22,9 @@ Stealth,14,20,24
 Sight,15.6,20,22.8
 Hearing,17.2,20,21.6
 Smell,18.8,20,20.4
-Taste,20.4,20,19.2
-Touch,22,20,18
-Thermal Sense,23.6,20,16.8
-Direction Sense,25.2,20,15.6
-Infrared Sense,26.8,20,14.4
-Tinkering,28.4,10,13.2
+Taste,19.2,20,20.4
+Touch,18,20,22
+Thermal Sense,16.8,20,23.6
+Direction Sense,15.6,20,25.2
+Infrared Sense,14.4,20,26.8
+Tinkering,13.2,10,28.4

@@ -85,6 +85,12 @@ class Storage {
             inflateSpecies(species);
             // backwardsCompatifyCharacter(character);
         });
+        //hook up species into character
+        this.characterList.forEach(character => {
+            let speciesName = character.speciesName;
+            let species = this.speciesList.find(species => species.name == speciesName);
+            character.species = species;
+        })
         // Object
     }
 

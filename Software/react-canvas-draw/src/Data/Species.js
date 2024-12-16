@@ -49,6 +49,11 @@ class Species{
         })
         return statCosts;
     }
+
+    randomWound() {        
+        console.error("Method not implemented yet!");
+        return;
+    }
 }
 export default Species;
 

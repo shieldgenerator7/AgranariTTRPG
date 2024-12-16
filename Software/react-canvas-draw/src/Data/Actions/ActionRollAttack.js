@@ -121,7 +121,7 @@ class ActionRollAttack {
 
         //defender gets wounded
         if (damage > this.durabilitySlot.Total) {
-            this.defender.addWound(this.defender.species?.randomWound());
+            this.defender.addWound(this.defender.species?.randomWound?.());
         }
 
         //defender gets winced

@@ -54,6 +54,10 @@ function App() {
             newcharacter,
             (c) => { if (c == character) { updateCharacter(c); } }
         );
+        //species
+        let speciesName = character.speciesName;
+        let species = speciesList.find(species => species.name == speciesName);
+        character.species = species;
         //
         let charList = [...characterList];
         if (charList.includes(oldcharacter)) {

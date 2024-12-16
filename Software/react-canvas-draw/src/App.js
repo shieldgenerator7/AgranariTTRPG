@@ -285,6 +285,7 @@ function App() {
         <div className="App">
             <header className="App-header">
                 <div className='characterZone'>
+                    {!characterToShow && rollerList.length>0 &&
                     <div className='rollerZone'>
                     {
                         rollerList.map((roller,i) =>
@@ -297,6 +298,7 @@ function App() {
                         )
                     }
                     </div>
+                    }
                     {characterToShow &&
                         <CharacterFrame
                             character={characterToShow}

@@ -29,6 +29,13 @@ function CharacterFrame({ character, updateCharacter, game, updateGame, diceRoll
         btnShowConsumableListId,
         sltConsumableListId,
     ];
+
+    let statList = character.statList;
+    if (character.searchQuery) {
+        let searchQuery = character._normalizeForMatching(character.searchQuery);
+        statList = statList.filter(stat => character._normalizeForMatching(stat.name).includes(searchQuery));
+    }
+
     return (
         <div className="characterFrame"
             onClick={(e) => {
@@ -118,6 +125,16 @@ function CharacterFrame({ character, updateCharacter, game, updateGame, diceRoll
                     </table>
                 }
                 {/* // */}
+                
+                <Field
+                    placeHolder="Search"
+                    value={character.searchQuery ?? ""}
+                    setValue={(value) => {
+                        character.searchQuery = value;
+                        updateCharacter(character);
+                    }}
+                >
+                </Field>
                 <table><tbody>
                     <tr>
                         <td>
@@ -125,7 +142,7 @@ function CharacterFrame({ character, updateCharacter, game, updateGame, diceRoll
                             <div className={"attributeContainer"}>
                                 {character.editAttributes &&
                                     <ListOrdered
-                                        arr={character.statList}
+                                        arr={statList}
                                         contentFunc={
                                             (attr, i) => (<>
                                                 {!attr.IsSpacer &&
@@ -155,7 +172,7 @@ function CharacterFrame({ character, updateCharacter, game, updateGame, diceRoll
                                 {!character.editAttributes &&
 
                                     (<>{
-                                        character.statList.map((attr, i) => (
+                                        statList.map((attr, i) => (
                                             <AttributeFrame
                                                 stat={attr}
                                                 character={character}

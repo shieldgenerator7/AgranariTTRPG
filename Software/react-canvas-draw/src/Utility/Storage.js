@@ -25,6 +25,8 @@ class Storage {
             cardList: [],
             //list of decks this player has
             deckList: [],
+            //species
+            speciesList: [],
         };
         this.entryCount = 0;
         this.loadStorage();
@@ -103,6 +105,13 @@ class Storage {
     }
     set characterList(value) {
         this.storage.characterList = value;
+    }    
+
+    get speciesList() {
+        return this.storage.speciesList;
+    }
+    set speciesList(value) {
+        this.storage.speciesList = value;
     }
 
     get log() {

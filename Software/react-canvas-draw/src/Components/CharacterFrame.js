@@ -90,9 +90,6 @@ function CharacterFrame({ character, updateCharacter, game, updateGame, diceRoll
                             {Object.entries(character.resources).map(([k, v], i) => (
                                 <tr key={i}>
                                     <td>{k}</td>
-                                    <td className="rollSlotCellNumber">{formatNumber(v)}</td>
-                                    <td>/</td>
-                                    <td className="rollSlotCellNumber">{formatNumber(character.getStatValue(character.getMaxStatName(k)))}</td>
                                     <td className="rollSlotCellNumber">
                                         <Counter
                                             value={v}
@@ -103,8 +100,10 @@ function CharacterFrame({ character, updateCharacter, game, updateGame, diceRoll
                                             min={0}
                                             max={character.getStatValue(character.getMaxStatName(k))}
                                             inline={true}
+                                            label={formatNumber(v)}
                                         ></Counter>
                                     </td>
+                                    <td>/</td>
                                     <td>
                                         <button className="plusMinus"
                                             onClick={() => {
@@ -112,7 +111,7 @@ function CharacterFrame({ character, updateCharacter, game, updateGame, diceRoll
                                                 updateCharacter(character);
                                             }}
                                         >
-                                            R
+                                            {formatNumber(character.getStatValue(character.getMaxStatName(k)))}
                                         </button>
                                     </td>
                                 </tr>

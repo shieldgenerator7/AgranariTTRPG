@@ -19,6 +19,7 @@ import ActionRollAttack, { inflateActionRollAttack } from './Data/Actions/Action
 import Dropzone from 'react-dropzone';
 import { UploadFile } from './Utility/Upload';
 import Species, { readSpeciesFromCSV } from './Data/Species';
+import { createServer } from './Utility/Server';
 
 function App() {
     //Title
@@ -29,8 +30,16 @@ function App() {
     //URL params
     const [searchParams, setSearchParams] = useSearchParams();
     const paramCharacter = searchParams.get("character");
+    const paramServer = searchParams.get("server");
     //connection
+    //connection: server
+    if (paramServer >= 0) {
+        createServer(paramServer);
+    }
+    //connection: client
+    else {
     const socket = io();
+    }
     //Storage
     let storage;
     let setStorage = (s) => { storage = s; };

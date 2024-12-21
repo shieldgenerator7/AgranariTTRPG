@@ -338,7 +338,7 @@ function App() {
                                     {({ getRootProps, getInputProps }) => (
                                         <div {...getRootProps({ className: "dropzone" })}>
                                             <input {...getInputProps()} />
-                                            <p>drop .CHAR files here</p>
+                                            <p>drop .CSV files here</p>
                                         </div>
                                     )}
                                 </Dropzone>
@@ -348,7 +348,7 @@ function App() {
                                         {
                                             speciesList.map((species,i) => (
                                                 <li key={i}>
-                                                    <button className='plusMinus'
+                                                    <button
                                                         onClick={() => {
                                                             createCharacter(species);
                                                         }}

@@ -13,7 +13,7 @@ import CommandPanel from './Components/CommandPanel';
 import Log from './Data/Log';
 import Game, { inflateGame } from './Data/Game';
 import Consumable from './Data/Consumable';
-import { Socket } from 'socket.io';
+import { io } from 'socket.io-client';
 import RollerFrame from './Components/RollerFrame';
 import ActionRollAttack, { inflateActionRollAttack } from './Data/Actions/ActionRollAttack';
 import Dropzone from 'react-dropzone';
@@ -30,7 +30,7 @@ function App() {
     const [searchParams, setSearchParams] = useSearchParams();
     const paramCharacter = searchParams.get("character");
     //connection
-    const socket = Socket.io();
+    const socket = io();
     //Storage
     let storage;
     let setStorage = (s) => { storage = s; };

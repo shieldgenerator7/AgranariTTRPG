@@ -76,7 +76,7 @@ function RollSlotFrame({ rollSlot, updateRollSlot }) {
             </td>
             <td>
                 {
-                    <span>{"-->"}</span>
+                    <span>{"\u2192"}</span>
                 }
             </td>
             <td className="rollSlotCellNumber bold">

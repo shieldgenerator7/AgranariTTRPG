@@ -54,9 +54,9 @@ function AttributeFrame({ stat, character, updateCharacter, game, diceRolled, at
                     ></Counter>
                     }
                     {/* Stat Cost */}
-                    <div className="textline">
+                    {/* <div className="textline">
                         ({formatNumber(stat.statCost) } xp/pt)
-                    </div>
+                    </div> */}
                 </div>
             </div>
         );

@@ -921,13 +921,10 @@ button:hover {
 .commitButton{
     padding: 10px;
     margin: 20px;
-    border: solid #cebd90;
     font-size: .75em;
     border-radius: 20px;
-    background-color: #cebd90;
 }
 .commitButton:hover{    
-    background: #ffeec1;
 }
 .rollerZone {
     width: 600px;

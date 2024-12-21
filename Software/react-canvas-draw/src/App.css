@@ -60,6 +60,34 @@
     padding-right: 10px;
 }
 
+input[type="text"]{
+    /* background-color: #cebd90; */
+    background-color: #eedba6;
+    border: 1px solid #eedba6;
+    border-bottom: 1px solid black;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+input[type="text"]::placeholder {
+    color: #9e916e;
+}
+
+button {
+    display: inline;
+    padding: 5px;
+    margin: 5px;
+    border: none;
+    background: none;
+    border: 1px solid black;
+    border-radius: 5px;
+}
+
+button:hover {
+    background: #ffeec1;
+    border: 1px solid #cebd90;
+}
+
+
 .field {
     display: block;
 }
@@ -369,24 +397,20 @@
 }
 
 .plusMinus {
-    /* color: black; */
     font-size: large;
     padding: 5px;
-    border: none;
+    border: 1px solid transparent;
     border-bottom: 1px solid rgb(37, 37, 37);
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    background: #cebd90;
+    border-radius: 7px;
 }
 
 .plusMinus:hover {
-    color: black;
-    background: #ffeec1;
     border-radius: 7px;
 }
 .plusMinus:disabled:hover {
     color: rgb(167, 167, 167);
     background: #cebd90;
-    border-radius: 7px;
 }
 
 .characterZone {
@@ -565,7 +589,6 @@
     padding: px 25px 1px 25px;
     margin-left: 5px;
     /* margin-top: 3px; */
-    border: none;
     background: none;
     /* width: 30px; */
     height: 30px;
@@ -575,7 +598,7 @@
 
 .dieButton:hover {
     background: #ffeec1;
-    border: none;
+    border: 1px solid transparent;
 }
 
 .panelCloseButton {
@@ -621,17 +644,10 @@
 
 .buttonPanel button {
     margin-left: 10px;
-    border: none;
-    background: #a89b76;
     padding: 8px;
 }
 
 .buttonPanel button:hover {
-    border: none;
-    background: #a89b76;
-    color: white;
-    border: 1px solid white;
-    border-radius: 12px;
 }
 
 .commandPanel {
@@ -685,7 +701,9 @@
     display: flex;
     flex-direction: column;
     margin-top: 10px;
-    border: 1px solid #ffecb7;
+    border: none;
+    border-bottom: 1px dotted #a19470;
+    border-radius: 5px;
     padding: 5px;
     overflow-x: hidden;
 }

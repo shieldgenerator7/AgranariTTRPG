@@ -332,6 +332,7 @@ module.exports = function (webpackEnv) {
         "assert": false,
         "child_process": false,
         "crypto-browserify": require.resolve('crypto-browserify'), //if you want to use this module also don't forget npm i crypto-browserify
+        "timers": require.resolve("timers-browserify"),
       },
       // These are the reasonable defaults supported by the Node ecosystem.
       // We also include JSX as a common component filename extension to support

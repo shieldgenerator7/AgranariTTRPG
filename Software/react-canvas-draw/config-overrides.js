@@ -12,7 +12,12 @@ module.exports = function override (config, env) {
         "path": require.resolve("path-browserify"),
         "stream": require.resolve("stream-browserify"),
         "util": require.resolve("util/"),
-        "crypto": require.resolve("crypto-browserify")
+        "crypto": require.resolve("crypto-browserify"),
+        "buffer": require.resolve("buffer/"),
+        "querystring": require.resolve("querystring-es3"),
+        "assert": require.resolve("assert/"),
+        "url": require.resolve("url/"),
+        "timers": require.resolve("timers-browserify"),
     }
     
     return config

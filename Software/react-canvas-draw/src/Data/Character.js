@@ -179,6 +179,15 @@ class Character {
         );
     }
 
+    getHitChance(character) {
+        //2024-12-15: using formula from https://math.stackexchange.com/a/5009147/308576
+        let acc = this.getStatValue("accuracy");
+        let accvar = this.getStat("accuracy").StatVariance;
+        let dodge = this.getStatValue("dodge");
+        let dodgevar = this.getStat("dodge").StatVariance;
+
+    }
+
 }
 export default Character;
 window.Character = Character;

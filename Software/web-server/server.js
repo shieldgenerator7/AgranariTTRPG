@@ -36,6 +36,8 @@ const gameData = {
     players: {},
 };
 
+let storage = undefined;
+
 io.on('connection', (socket) => {
     console.log('player connected', socket.id);
     gameData.players[socket.id] = {
@@ -44,6 +46,9 @@ io.on('connection', (socket) => {
     };
 
     io.emit('updateGameData', gameData);
+
+    socket.join(socket.id);
+    io.to(socket.id).emit("storage", storage,);
 
     socket.on('disconnect', (reason) => {
         console.log("player disconnected:", socket.id, reason);
@@ -55,6 +60,13 @@ io.on('connection', (socket) => {
         console.log("Dice rolled!", characterName, statName, roll);
         io.emit("onDiceRolled", { characterName: characterName, statName: statName, roll: roll });
     });
+
+    socket.on("storage", (storage) => {
+        storage = storage;
+        io.emit("storage", storage); 
+    });
+
+
 
     console.log("gameData", gameData);
 })

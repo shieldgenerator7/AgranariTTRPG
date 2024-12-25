@@ -30,17 +30,27 @@ function App() {
     const [searchParams, setSearchParams] = useSearchParams();
     const paramCharacter = searchParams.get("character");
     const paramURL = searchParams.get("url"); //ex: http://localhost:3001
+    const paramDM = searchParams.get("dm");
     //connection
     const MSG_NOT_CONNECTED = "Not connected. Use the URL parameter 'url' to connect. ex: '?url=http://yoursite.com'";
-    const socket = (paramURL)
-        ? io.connect(paramURL)
-        : {
-            on: () => console.log("on: "+MSG_NOT_CONNECTED),
-            emit: () => console.log("emit: "+MSG_NOT_CONNECTED),
+    let socket;
+    let setSocket = (soc) => {
+        socket = soc;
+        window.socket = soc;
+    }
+    [socket, setSocket] = useState(() => {
+        return {
+            fake: true,
+            on: () => console.log("on: " + MSG_NOT_CONNECTED),
+            emit: () => console.log("emit: " + MSG_NOT_CONNECTED),
         };
-    if (socket){
+    });
+    if ((!socket || socket.fake) && paramURL){
         console.log("connecting to server", paramURL);
+
         //2024-12-24: copied from https://stackoverflow.com/a/41319051/2336212
+        socket = io.connect(paramURL);
+        setSocket(socket);
 
         const devicePixelRatio = window.devicePixelRatio || 1;
 
@@ -57,13 +67,26 @@ function App() {
             console.log("Dice rolled!", characterName, statName, roll); 
         });
 
+        socket.on('storage', (stor) => {
+            if (stor) {
+                console.log("receiving storage");
+                storage.storage = stor;
+                storage.saveStorage();
+                storage.loadStorage();
+            }
+        });
+
         window.socket = socket;
     }
     //Storage
     let storage;
     let setStorage = (s) => { storage = s; };
     const defaultStorage = () => new Storage();
-    [storage, setStorage] = useState(defaultStorage);
+    [storage, setStorage] = useState(defaultStorage);    
+    //DM
+    if (paramDM) {
+        socket.emit("storage", storage.storage);
+    }
     //Character
     let character = new Character("Tak Redwind", new Species("Squirrel"));
     let setCharacter = (c) => {

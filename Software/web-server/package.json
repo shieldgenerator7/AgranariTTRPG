@@ -1,17 +1,18 @@
 {
-  "name": "CalendarJournal",
-  "version": "1.0.0",
-  "description": "A daily journal that uses symbols on a calendar",
-  "main": "electron-main.js",
+  "name": "AgranariTTRPG-Server",
+  "version": "0.0.1",
+  "description": "The server for the multiplayer VTT for the Agranari TTRPG",
   "scripts": {
-    "electron": "electron ."
   },
   "author": "shieldgenerator7",
   "license": "ISC",
   "dependencies": {
-    "cors": "^2.8.5",
-    "express": "^4.18.2",
-    "http-server": "^14.1.1"
+    "cors": "^2.8.5",  
+    "express": "^4.21.2",
+    "http": "^0.0.1-security",
+    "http-server": "^14.1.1",
+    "socket.io": "^4.8.1",
+    "socket.io-client": "^4.8.1"
   },
   "devDependencies": {
     "electron": "^29.1.0"

@@ -53,6 +53,7 @@ io.on('connection', (socket) => {
 
     socket.on("onDiceRolled", ({ characterName, statName, roll })=> {
         console.log("Dice rolled!", characterName, statName, roll);
+        io.emit("onDiceRolled", { characterName: characterName, statName: statName, roll: roll });
     });
 
     console.log("gameData", gameData);

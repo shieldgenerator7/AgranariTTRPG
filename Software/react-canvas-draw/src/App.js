@@ -44,6 +44,10 @@ function App() {
         socket.on('connect', () => {
           console.log('Successfully connected!');
         });
+
+        socket.on('updateGameData', (gameData) => {
+            console.log("gameData updated", gameData);
+        });
     }
     //Storage
     let storage;

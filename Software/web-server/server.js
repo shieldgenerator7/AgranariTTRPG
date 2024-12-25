@@ -30,8 +30,20 @@ app.get('/', (req, res) => {
     res.sendFile(__dirname + '/index.html');
 });
 
+const gameData = {
+    players: {},
+};
+
 io.on('connection', (socket) => {
-    console.log('user connected', socket);
+    console.log('user connected', socket.id);
+    gameData.players[socket.id] = {
+        x: 100,
+        y: 100,
+    };
+
+    io.emit('updateGameData', gameData);
+
+    console.log("gameData", gameData);
 })
 
 server.listen(PORT_SERVER, () => {
@@ -39,3 +51,6 @@ server.listen(PORT_SERVER, () => {
 });
 
 console.log('server loaded!');
+
+
+

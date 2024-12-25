@@ -29,26 +29,27 @@ function App() {
     //URL params
     const [searchParams, setSearchParams] = useSearchParams();
     const paramCharacter = searchParams.get("character");
-    const paramServer = searchParams.get("server");
+    const paramURL = 'http://localhost:3001/'; //searchParams.get("url");
     //connection
-    //connection: server
-    if (isNumber(paramServer) && paramServer >= 0) {
-        // createServer(paramServer);
-    }
-    //connection: client
-    else {
-        console.log("connecting to server");
+    const socket = (paramURL)
+        ? io.connect(paramURL)
+        : undefined;
+    if (socket){
+        console.log("connecting to server", paramURL);
         //2024-12-24: copied from https://stackoverflow.com/a/41319051/2336212
-        const socket = io.connect('http://localhost:3001/');
+
+        const devicePixelRatio = window.devicePixelRatio || 1;
 
         socket.on('connect', () => {
-          console.log('Successfully connected!');
+          console.log('Successfully connected!',"id", socket.id);
         });
 
         socket.on('updateGameData', (gameData) => {
             console.log("gameData updated", gameData);
             window.gameData = gameData;
         });
+
+        window.socket = socket;
     }
     //Storage
     let storage;
@@ -298,6 +299,7 @@ function App() {
                             updateCharacter={(c) => updateCharacter(c)}
                             game={game}
                             updateGame={updateGame}
+                            socket={socket}
                             diceRolled={diceRolled}
                             attributeAdjusted={attributeAdjusted}
                             abilityModified={abilityModified}
@@ -315,6 +317,7 @@ function App() {
                                 updateCharacter={(c) => updateCharacter(c)}
                                 game={game}
                                 updateGame={updateGame}
+                                socket={socket}
                                 diceRolled={diceRolled}
                                 attributeAdjusted={attributeAdjusted}
                                 abilityModified={abilityModified}

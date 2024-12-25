@@ -19,7 +19,8 @@ import TempBonusFrame from "./TempBonusFrame";
 import Counter from "./Counter";
 import ActionRollAttack from "../Data/Actions/ActionRollAttack";
 
-function CharacterFrame({ character, updateCharacter, game, updateGame, diceRolled, attributeAdjusted, abilityModified, characterList, setCharacterList, renameConsumable, addRoller }) {
+function CharacterFrame({ character, updateCharacter, game, updateGame, socket, diceRolled, attributeAdjusted, abilityModified, characterList, setCharacterList, renameConsumable, addRoller }) {
+    
     let showConsumableList = false;
     let setShowConsumableList = (b) => showConsumableList = b;
     [showConsumableList, setShowConsumableList] = useState(false);
@@ -152,6 +153,7 @@ function CharacterFrame({ character, updateCharacter, game, updateGame, diceRoll
                                                         stat={attr}
                                                         character={character}
                                                         updateCharacter={updateCharacter}
+                                                        socket={socket}
                                                         diceRolled={diceRolled}
                                                         attributeAdjusted={attributeAdjusted}
                                                         key={`character_attribute_${i}`}
@@ -180,6 +182,7 @@ function CharacterFrame({ character, updateCharacter, game, updateGame, diceRoll
                                                 character={character}
                                                 updateCharacter={updateCharacter}
                                                 game={game}
+                                                socket={socket}
                                                 diceRolled={diceRolled}
                                                 attributeAdjusted={attributeAdjusted}
                                                 key={`character_attribute_${i}`}

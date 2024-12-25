@@ -51,6 +51,10 @@ io.on('connection', (socket) => {
         io.emit('updateGameData', gameData);
     });
 
+    socket.on("onDiceRolled", ({ characterName, statName, roll })=> {
+        console.log("Dice rolled!", characterName, statName, roll);
+    });
+
     console.log("gameData", gameData);
 })
 

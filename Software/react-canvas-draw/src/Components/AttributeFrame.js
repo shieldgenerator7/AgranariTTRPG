@@ -10,7 +10,7 @@ import { clamp, isString, formatNumber } from "../Utility/Utility";
 import Counter from "./Counter";
 import Field from "./Field";
 
-function AttributeFrame({ stat, character, updateCharacter, game, diceRolled, attributeAdjusted }) {
+function AttributeFrame({ stat, character, updateCharacter, game, socket, diceRolled, attributeAdjusted }) {
     let onClickType = stat.OnClickType;
     //Edit Attributes
     if (character.editAttributes) {
@@ -136,6 +136,16 @@ function AttributeFrame({ stat, character, updateCharacter, game, diceRolled, at
                                         character.dieRollLogSelect.length = 0;
                                         character.dieRollLogSelect.push(character.dieRollLog.length - 1);
                                         updateCharacter(character);
+
+                                        //network roll
+                                        socket.emit(
+                                            "onDiceRolled",
+                                            {
+                                                characterName: character.name,
+                                                statName: stat.name,
+                                                roll: stat.lastRoll,
+                                            }
+                                        );
                                     }
                                 }
                                 onContextMenu={

@@ -5,7 +5,7 @@ import { useSearchParams } from "react-router-dom";
 import { parsePasteFromExcel } from './Utility/Parser';
 import Storage from './Utility/Storage';
 import { VERSION } from './Version';
-import { arrayRemove, isImage } from './Utility/Utility';
+import { arrayRemove, isImage, isNumber } from './Utility/Utility';
 import { rollDice } from './Data/DiceRoller';
 import CharacterFrame from './Components/CharacterFrame';
 import Character, { inflateCharacter } from './Data/Character';
@@ -32,12 +32,18 @@ function App() {
     const paramServer = searchParams.get("server");
     //connection
     //connection: server
-    if (paramServer >= 0) {
+    if (isNumber(paramServer) && paramServer >= 0) {
         // createServer(paramServer);
     }
     //connection: client
     else {
-    const socket = io();
+        console.log("connecting to server");
+        //2024-12-24: copied from https://stackoverflow.com/a/41319051/2336212
+        const socket = io.connect('http://localhost:3001/');
+
+        socket.on('connect', () => {
+          console.log('Successfully connected!');
+        });
     }
     //Storage
     let storage;

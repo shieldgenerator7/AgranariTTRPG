@@ -1,40 +1,19 @@
 {
-  "name": "react-canvas-draw",
-  "version": "0.1.0",
-  "private": true,
-  "dependencies": {
-    "express": "^4.21.2",
-    "http": "^0.0.1-security",
-    "http-server": "^14.1.1",
-    "socket.io": "^4.8.1",
-    "socket.io-client": "^4.8.1"
-  },
+  "name": "CalendarJournal",
+  "version": "1.0.0",
+  "description": "A daily journal that uses symbols on a calendar",
+  "main": "electron-main.js",
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "deployfull": "npm run build && node build_correction.cjs && npm run deployonly",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
-    "deployonly": "gh-pages -d build"
+    "electron": "electron ."
   },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
+  "author": "shieldgenerator7",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "http-server": "^14.1.1"
   },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
+  "devDependencies": {
+    "electron": "^29.1.0"
   }
 }

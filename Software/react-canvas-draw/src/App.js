@@ -47,6 +47,7 @@ function App() {
 
         socket.on('updateGameData', (gameData) => {
             console.log("gameData updated", gameData);
+            window.gameData = gameData;
         });
     }
     //Storage

@@ -14,8 +14,10 @@ const server = http.createServer(app);
 const { Server } = require('socket.io');
 const io = new Server(
     server,
-    //2024-12-24: copied from https://socket.io/docs/v3/handling-cors/
     {
+        pingInterval: 2000,
+        pingTimeout: 5000,
+        //2024-12-24: copied from https://socket.io/docs/v3/handling-cors/
         cors: {
             origin: `http://localhost:${PORT_CLIENT}`,
             methods: ["GET", "POST"],
@@ -35,13 +37,19 @@ const gameData = {
 };
 
 io.on('connection', (socket) => {
-    console.log('user connected', socket.id);
+    console.log('player connected', socket.id);
     gameData.players[socket.id] = {
         x: 100,
         y: 100,
     };
 
     io.emit('updateGameData', gameData);
+
+    socket.on('disconnect', (reason) => {
+        console.log("player disconnected:", socket.id, reason);
+        delete gameData.players[socket.id];
+        io.emit('updateGameData', gameData);
+    });
 
     console.log("gameData", gameData);
 })

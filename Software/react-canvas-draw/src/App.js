@@ -29,11 +29,15 @@ function App() {
     //URL params
     const [searchParams, setSearchParams] = useSearchParams();
     const paramCharacter = searchParams.get("character");
-    const paramURL = 'http://localhost:3001/'; //searchParams.get("url");
+    const paramURL = searchParams.get("url"); //ex: http://localhost:3001
     //connection
+    const MSG_NOT_CONNECTED = "Not connected. Use the URL parameter 'url' to connect. ex: '?url=http://yoursite.com'";
     const socket = (paramURL)
         ? io.connect(paramURL)
-        : undefined;
+        : {
+            on: () => console.log("on: "+MSG_NOT_CONNECTED),
+            emit: () => console.log("emit: "+MSG_NOT_CONNECTED),
+        };
     if (socket){
         console.log("connecting to server", paramURL);
         //2024-12-24: copied from https://stackoverflow.com/a/41319051/2336212

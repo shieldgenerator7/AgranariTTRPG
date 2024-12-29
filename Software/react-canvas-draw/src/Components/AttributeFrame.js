@@ -2,13 +2,10 @@
 
 "use strict";
 
-import Attribute from "../Data/Character";
 import { ACTION_ROLL_MODIFY, ONCLICK_ADJUST_VALUE, ONCLICK_DIE_ROLL, ONCLICK_TOGGLE } from "../Data/Constants";
 import { rollDice } from "../Data/DiceRoller";
-import RollGroup from "../Data/RollGroup";
 import { clamp, isString, formatNumber } from "../Utility/Utility";
 import Counter from "./Counter";
-import Field from "./Field";
 
 function AttributeFrame({ stat, character, updateCharacter, game, socket, diceRolled, attributeAdjusted }) {
     let onClickType = stat.OnClickType;

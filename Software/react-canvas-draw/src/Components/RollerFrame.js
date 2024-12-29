@@ -1,21 +1,6 @@
 "use strict";
 
-import { useState } from "react";
-import Ability, { inflateAbility } from "../Data/Ability";
-import Stat, { inflateStat } from "../Data/Stat";
-import Character from "../Data/Character";
-import { DIE_ROLL_FLAIR_CRIT, DIE_ROLL_FLAIR_FUMBLE } from "../Data/Constants";
-import Consumable from "../Data/Consumable";
-import { rollDice } from "../Data/DiceRoller";
-import AbilityFrame from "./AbilityFrame";
-import AttributeFrame from "./AttributeFrame";
-import ConsumableFrame from "./ConsumableFrame";
-import Field from "./Field";
-import ListOrdered from "./ListOrdered";
-import SearchSelect from "./SearchSelect";
-import { isString } from "../Utility/Utility";
-import Bonus from "../Data/Bonus";
-import TempBonusFrame from "./TempBonusFrame";
+
 import RollSlotFrame from "./RollSlotFrame";
 
 /**

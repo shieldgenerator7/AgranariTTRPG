@@ -19,7 +19,7 @@ const io = new Server(
         pingTimeout: 5000,
         //2024-12-24: copied from https://socket.io/docs/v3/handling-cors/
         cors: {
-            origin: `http://localhost:${PORT_CLIENT}`,
+            origin: true,//`http://localhost:${PORT_CLIENT}`,
             methods: ["GET", "POST"],
         }
     }

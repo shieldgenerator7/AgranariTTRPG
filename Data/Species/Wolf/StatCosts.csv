@@ -1,0 +1,31 @@
+﻿Stat,Min XP Cost,Avg XP Cost,Max XP Cost
+---,---,---,---
+Accuracy,19,22,24
+Constitution,7,10,12
+Crit Factor,198,200,220
+Damage,1,5,9
+Dodge,15,25,40
+Durability,8,12,15
+Max Health,7,10,12
+Pain Tolerance,8,11,13
+Speed,15,18,20
+Strength,16,18,19
+Willpower,14,15,16
+Willpower Factor,45,50,57
+Search,15,20,21
+Charisma,18,20,23
+Scavenge,18,20,23
+Intimidate,11,20,22
+Courage,10,20,27
+Hope,10,20,27
+Stealth,14,20,24
+Sight,15.6,20,22.8
+Hearing,17.2,20,21.6
+Smell,18.8,20,20.4
+Taste,19.2,20,20.4
+Touch,18,20,22
+Thermal Sense,16.8,20,23.6
+Direction Sense,15.6,20,25.2
+Infrared Sense,14.4,20,26.8
+Tinkering,13.2,10,28.4
+Armor,8,10,12

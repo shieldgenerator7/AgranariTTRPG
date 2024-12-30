@@ -88,7 +88,7 @@ class ActionRollAttack {
         }
 
         //early exit: no damage        
-        if (!isNumber(this.damageSlot.lastRoll)) {
+        if (this.attackSlot.Total > this.dodgeSlot.Total && !isNumber(this.damageSlot.lastRoll)) {
             return;
         }
 

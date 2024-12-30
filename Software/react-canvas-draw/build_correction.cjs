@@ -8,7 +8,7 @@ function readWriteSync() {
 
   var data = fs.readFileSync('build/index.html', 'utf-8');
 
-  var newValue = data.replaceAll("=\"/assets", "=\"./assets");
+  var newValue = data.replaceAll("=\"/static", "=\"./static");
 
   fs.writeFileSync('build/index.html', newValue, 'utf-8');
 

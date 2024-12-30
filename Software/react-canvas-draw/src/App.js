@@ -183,7 +183,7 @@ function App() {
         storage.characterList = characterList;
 
         if (!character.editAttributes) {
-        socket.emit("characterUpdated", { socketId: socket.id, character: character });
+        socket.emit("characterUpdated", { socketId: socket.id, character: newcharacter });
         }
     };
 

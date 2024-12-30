@@ -113,30 +113,33 @@ function App() {
             setCharacterList([...characterList]);
         });
 
-        socket.on("rollerAdded", ({ socketId, roller }) => {
-            if (socketId == socket.id) { return; }
-            inflateActionRollAttack(roller, characterList);
-            console.log("rollerAdded", socketId, roller);
-            window.gameData.rollers.push(roller.title);
-            addRoller(roller, false);
-        });
+        // socket.on("rollerAdded", ({ socketId, roller }) => {
+        //     if (socketId == socket.id) { return; }
+        //     inflateActionRollAttack(roller, characterList);
+        //     console.log("rollerAdded", socketId, roller);
+        //     window.gameData.rollers.push(roller.title);
+        //     addRoller(roller, false);
+        // });
     
-        socket.on("rollerUpdated", ({ socketId, roller }) => {
+        socket.on("rollerUpdated", ({ socketId, rollerListIn }) => {
             if (socketId == socket.id) { return; }
+            rollerListIn.forEach(roller => {
             inflateActionRollAttack(roller, characterList);
-            console.log("rollerUpdated", socketId, roller);
-            window.gameData.rollers[0] = roller;//TODO: make it find the right roller
-            rollerList[0] = roller;
+            });
+            console.log("rollerUpdated", socketId, rollerListIn);
+            // window.gameData.rollers[0] = roller;//TODO: make it find the right roller
+            // rollerList[0] = roller;
+            rollerList = rollerListIn;
             updateRollerList(false);
         });
     
-        socket.on("rollerRemoved", ({ socketId, roller }) => {
-            if (socketId == socket.id) { return; }
-            inflateActionRollAttack(roller, characterList);
-            console.log("rollerRemoved", socketId, roller);
-            window.gameData.rollers.splice(0, 1);//TODO: make it find the right roller
-            removeRoller(roller, false, true);
-        });
+        // socket.on("rollerRemoved", ({ socketId, roller }) => {
+        //     if (socketId == socket.id) { return; }
+        //     inflateActionRollAttack(roller, characterList);
+        //     console.log("rollerRemoved", socketId, roller);
+        //     window.gameData.rollers.splice(0, 1);//TODO: make it find the right roller
+        //     removeRoller(roller, false, true);
+        // });
 
         window.socket = socket;
     }
@@ -325,7 +328,7 @@ function App() {
     window.rollerList = rollerList;
     const updateRollerList = (send = true) => {
         if (send) {
-            socket.emit("rollerUpdated", { socketId: socket.id, roller: rollerList[0] });
+            socket.emit("rollerUpdated", { socketId: socket.id, rollerList: rollerList });
         }
         setRollerList([...rollerList]);
         
@@ -333,9 +336,9 @@ function App() {
     const addRoller = (roller, send=true) => {
         rollerList.push(roller);
         if (send) {
-            socket.emit("rollerAdded", { socketId: socket.id, roller: roller });
+            // socket.emit("rollerAdded", { socketId: socket.id, roller: roller });
         }
-        updateRollerList();
+        updateRollerList(send);
 
     }
     const removeRoller = (roller, send=true, orFirst = false) => {
@@ -345,9 +348,9 @@ function App() {
         }
         rollerList.splice(index, 1);
         if (send) {
-            socket.emit("rollerRemoved", { socketId: socket.id, roller: roller });
+            // socket.emit("rollerRemoved", { socketId: socket.id, roller: roller });
         }
-        updateRollerList(false);
+        updateRollerList(send);
         
     }
 

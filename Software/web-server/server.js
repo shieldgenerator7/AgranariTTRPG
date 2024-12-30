@@ -89,20 +89,20 @@ io.on('connection', (socket) => {
         io.emit("characterUpdated", { socketId: socketId, character: character });
     });
 
-    socket.on("rollerAdded", ({ socketId, roller }) => {
-        gameData.rollers.push(roller.title);
-        io.emit("rollerAdded", { socketId: socket.id, roller: roller }); 
+    // socket.on("rollerAdded", ({ socketId, roller }) => {
+    //     gameData.rollers.push(roller.title);
+    //     io.emit("rollerAdded", { socketId: socketId, roller: roller }); 
+    // });
+
+    socket.on("rollerUpdated", ({ socketId, rollerList }) => {
+        // gameData.rollers[0] = roller;//TODO: make it find the right roller
+        io.emit("rollerUpdated", { socketId: socketId, rollerListIn: rollerList }); 
     });
 
-    socket.on("rollerUpdated", ({ socketId, roller }) => {
-        gameData.rollers[0] = roller;//TODO: make it find the right roller
-        io.emit("rollerUpdated", { socketId: socket.id, roller: roller }); 
-    });
-
-    socket.on("rollerRemoved", ({ socketId, roller }) => {
-        gameData.rollers.splice(0,1);//TODO: make it find the right roller
-        io.emit("rollerRemoved", { socketId: socket.id, roller: roller }); 
-    });
+    // socket.on("rollerRemoved", ({ socketId, roller }) => {
+    //     gameData.rollers.splice(0,1);//TODO: make it find the right roller
+    //     io.emit("rollerRemoved", { socketId: socketId, roller: roller }); 
+    // });
 
 
 

@@ -438,6 +438,7 @@ function App() {
                         updateRoller={updateRollerList}
                         key={`roller_${i}`}
                         removeRoller={removeRoller}
+                                updateCharacter={updateCharacter}
                     ></RollerFrame>
                         )
                     }

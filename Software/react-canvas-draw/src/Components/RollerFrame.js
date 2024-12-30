@@ -58,6 +58,8 @@ function RollerFrame({ actionRoller, updateRoller, removeRoller, updateCharacter
             <button className="commitButton"
                 onClick={() => {
                     actionRoller.commit();
+                    updateCharacter(actionRoller.attacker);
+                    updateCharacter(actionRoller.defender);
                     updateRoller(actionRoller);
                     removeRoller(actionRoller);
                 }}

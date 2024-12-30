@@ -13,14 +13,14 @@ import ConsumableFrame from "./ConsumableFrame";
 import Field from "./Field";
 import ListOrdered from "./ListOrdered";
 import SearchSelect from "./SearchSelect";
-import { formatNumber, isString } from "../Utility/Utility";
+import { _normalizeForMatching, formatNumber, isString } from "../Utility/Utility";
 import Bonus from "../Data/Bonus";
 import TempBonusFrame from "./TempBonusFrame";
 import Counter from "./Counter";
 import ActionRollAttack from "../Data/Actions/ActionRollAttack";
 
-function CharacterFrame({ character, updateCharacter, game, updateGame, socket, diceRolled, attributeAdjusted, abilityModified, characterList, setCharacterList, renameConsumable, addRoller }) {
-    
+function CharacterFrame({ character, updateCharacter, game, updateGame, socket, characterIsInGame, diceRolled, attributeAdjusted, abilityModified, characterList, setCharacterList, renameConsumable, addRoller }) {
+
     let showConsumableList = false;
     let setShowConsumableList = (b) => showConsumableList = b;
     [showConsumableList, setShowConsumableList] = useState(false);
@@ -33,8 +33,8 @@ function CharacterFrame({ character, updateCharacter, game, updateGame, socket, 
 
     let statList = character.statList;
     if (character.searchQuery) {
-        let searchQuery = character._normalizeForMatching(character.searchQuery);
-        statList = statList.filter(stat => character._normalizeForMatching(stat.name).includes(searchQuery));
+        let searchQuery = _normalizeForMatching(character.searchQuery);
+        statList = statList.filter(stat => _normalizeForMatching(stat.name).includes(searchQuery));
     }
 
     let customDiceFormula, setCustomDiceFormula;
@@ -120,15 +120,15 @@ function CharacterFrame({ character, updateCharacter, game, updateGame, socket, 
                                     </td>
                                 </tr>
                             ))}
-                                <tr>
-                                    <td>XP</td>
-                                    <td className="rollSlotCellNumber">{ character.XPTotal}</td>
-                                </tr>
+                            <tr>
+                                <td>XP</td>
+                                <td className="rollSlotCellNumber">{character.XPTotal}</td>
+                            </tr>
                         </tbody>
                     </table>
                 }
                 {/* // */}
-                
+
                 <Field
                     placeHolder="Search"
                     value={character.searchQuery ?? ""}
@@ -168,9 +168,9 @@ function CharacterFrame({ character, updateCharacter, game, updateGame, socket, 
                                             character.statList = arr;
                                             updateCharacter(character);
                                         }}
-                                    allowReordering={false}
-                                    allowCopying={false}
-                                    allowDeletion={false}
+                                        allowReordering={false}
+                                        allowCopying={false}
+                                        allowDeletion={false}
                                     ></ListOrdered>
                                 }
                                 {!character.editAttributes &&
@@ -375,22 +375,22 @@ function CharacterFrame({ character, updateCharacter, game, updateGame, socket, 
                 {
                     characterList.length > 1 &&
                     <ul>{
-                    characterList
-                        .filter(char=>char != character)
-                        .map((char, i) => (
-                            <li
-                            key={`action_attack_${i}`}
-                            >
-                        <button className="plusMinus"
-                            onClick={() => {
-                                let roller = new ActionRollAttack(character, char);
-                                addRoller(roller);
-                            }}
-                        >
-                            Attack {char.name}
-                        </button>
-                            </li>
-                    ))
+                        characterList
+                            .filter(char => char != character)
+                            .map((char, i) => (
+                                <li
+                                    key={`action_attack_${i}`}
+                                >
+                                    <button className="plusMinus"
+                                        onClick={() => {
+                                            let roller = new ActionRollAttack(character, char);
+                                            addRoller(roller);
+                                        }}
+                                    >
+                                        Attack {char.name}
+                                    </button>
+                                </li>
+                            ))
                     }</ul>
                 }
 
@@ -400,15 +400,15 @@ function CharacterFrame({ character, updateCharacter, game, updateGame, socket, 
             {
                 !character.editAttributes &&
                 <div className="diceRollLogPanel">
-                        <h2>
-                            <span className="abilityFrameLine">
+                    <h2>
+                        <span className="abilityFrameLine">
                             Dice Rolls {"    "}
-                                <Field
-                                    value={customDiceFormula}
-                                    setValue={setCustomDiceFormula}
+                            <Field
+                                value={customDiceFormula}
+                                setValue={setCustomDiceFormula}
                                 placeholder={"1d100"}
                                 className={"editText"}
-                                ></Field>
+                            ></Field>
                             <button className="dieButton"
                                 onClick={() => {
                                     let roll = rollDice(customDiceFormula);
@@ -416,43 +416,43 @@ function CharacterFrame({ character, updateCharacter, game, updateGame, socket, 
                                     character.dieRollLog.push(roll);
                                     character.dieRollLogSelect.length = 0;
                                     updateCharacter(character);
-                                        }}
+                                }}
                             >
                                 Roll
-                                </button>
-                            {
-                            [
-                                // "d4",
-                                // "d6",
-                                // "d8",
-                                // "d10",
-                                // "d12",
-                                // "d20",
-                                // "d100",
-                            ].map((d, i) => (
-                                <button className="dieButton"
-                                    key={`character_dieroll_${i}`}
-                                    onClick={(e) => {
-                                        let roll = rollDice(d);
-                                        diceRolled(character, d, roll.Value, roll.Value);
-                                        character.dieRollLog.push(roll);
-                                        character.dieRollLogSelect.length = 0;
-                                        updateCharacter(character);
-                                    }}
-                                >
-                                    {d}
-                                </button>
-                            ))
-                        }
-                        {character.dieRollLog.length > 0 &&
-                            <button className="panelCloseButton"
-                                onClick={() => {
-                                    character.dieRollLog = [];
-                                    character.dieRollLogSelect = [];
-                                    updateCharacter(character);
-                                }}>X
                             </button>
-                        }
+                            {
+                                [
+                                    // "d4",
+                                    // "d6",
+                                    // "d8",
+                                    // "d10",
+                                    // "d12",
+                                    // "d20",
+                                    // "d100",
+                                ].map((d, i) => (
+                                    <button className="dieButton"
+                                        key={`character_dieroll_${i}`}
+                                        onClick={(e) => {
+                                            let roll = rollDice(d);
+                                            diceRolled(character, d, roll.Value, roll.Value);
+                                            character.dieRollLog.push(roll);
+                                            character.dieRollLogSelect.length = 0;
+                                            updateCharacter(character);
+                                        }}
+                                    >
+                                        {d}
+                                    </button>
+                                ))
+                            }
+                            {character.dieRollLog.length > 0 &&
+                                <button className="panelCloseButton"
+                                    onClick={() => {
+                                        character.dieRollLog = [];
+                                        character.dieRollLogSelect = [];
+                                        updateCharacter(character);
+                                    }}>X
+                                </button>
+                            }
                         </span>
                     </h2>
                     <span className="diceRollLog">
@@ -545,6 +545,13 @@ function CharacterFrame({ character, updateCharacter, game, updateGame, socket, 
                             }
                         });
                     }}>PASTE</button>
+                }
+                {!characterIsInGame &&
+                    <button onClick={(e) => {
+                        socket.emit("submitCharacter", character);
+                    }}>
+                        Submit
+                    </button>
                 }
             </div>
         </div>

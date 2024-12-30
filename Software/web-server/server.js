@@ -19,7 +19,7 @@ const io = new Server(
         pingTimeout: 5000,
         //2024-12-24: copied from https://socket.io/docs/v3/handling-cors/
         cors: {
-            origin: `http://localhost:${PORT_CLIENT}`,
+            origin: true,//`http://localhost:${PORT_CLIENT}`,
             methods: ["GET", "POST"],
         }
     }
@@ -34,16 +34,19 @@ app.get('/', (req, res) => {
 
 const gameData = {
     players: {},
+    characters: {},
+    rollers: [],
 };
 
 let storage = undefined;
 
 io.on('connection', (socket) => {
     console.log('player connected', socket.id);
-    gameData.players[socket.id] = {
+    let player = {
         x: 100,
         y: 100,
     };
+    gameData.players[socket.id] = player;
 
     io.emit('updateGameData', gameData);
 
@@ -56,20 +59,55 @@ io.on('connection', (socket) => {
         io.emit('updateGameData', gameData);
     });
 
-    socket.on("onDiceRolled", ({ characterName, statName, roll })=> {
+    socket.on("onDiceRolled", ({ characterName, statName, roll }) => {
         console.log("Dice rolled!", characterName, statName, roll);
         io.emit("onDiceRolled", { characterName: characterName, statName: statName, roll: roll });
     });
 
     socket.on("storage", (storage) => {
         storage = storage;
-        io.emit("storage", storage); 
+        // io.emit("storage", storage); 
     });
+
+    socket.on("submitCharacter", (character) => {
+        if (Object.hasOwn(gameData.characters, character.name)) {
+            console.warn("cant add character with name", character.name, "because a character with that name already exists!");
+            return;
+        }
+        gameData.characters[character.name] = character;
+        io.emit("characterSubmitted", {
+            socketId: socket.id,
+            character: character,
+        });
+    });
+
+    socket.on("characterUpdated", ({ socketId, character }) => {
+
+        gameData[character.name] = character;
+
+
+        io.emit("characterUpdated", { socketId: socketId, character: character });
+    });
+
+    // socket.on("rollerAdded", ({ socketId, roller }) => {
+    //     gameData.rollers.push(roller.title);
+    //     io.emit("rollerAdded", { socketId: socketId, roller: roller }); 
+    // });
+
+    socket.on("rollerUpdated", ({ socketId, rollerList }) => {
+        // gameData.rollers[0] = roller;//TODO: make it find the right roller
+        io.emit("rollerUpdated", { socketId: socketId, rollerListIn: rollerList });
+    });
+
+    // socket.on("rollerRemoved", ({ socketId, roller }) => {
+    //     gameData.rollers.splice(0,1);//TODO: make it find the right roller
+    //     io.emit("rollerRemoved", { socketId: socketId, roller: roller }); 
+    // });
 
 
 
     console.log("gameData", gameData);
-})
+});
 
 server.listen(PORT_SERVER, () => {
     console.log(`App listening on port ${PORT_SERVER}`);

@@ -426,6 +426,10 @@ function validateIndexBounds(value, max, name) {
     return true;
 }
 
+export function _normalizeForMatching(name) {
+    return name?.trim().replaceAll(" ", "").toLowerCase();
+}
+
 export function makeUserFacing(str) {
     return capitalizeFirstLetters(str.replaceAll("-", " "));
 }

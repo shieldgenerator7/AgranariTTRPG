@@ -60,7 +60,7 @@
     padding-right: 10px;
 }
 
-input[type="text"]{
+input[type="text"] {
     /* background-color: #cebd90; */
     background-color: #eedba6;
     border: 1px solid #eedba6;
@@ -68,6 +68,7 @@ input[type="text"]{
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
 }
+
 input[type="text"]::placeholder {
     color: #9e916e;
 }
@@ -386,11 +387,12 @@ button:hover {
     background-color: transparent;
     font-size: large;
     padding: 20px;
-    margin:0px;
+    margin: 0px;
     border: none;
     border-radius: 0px;
     border-bottom-left-radius: 10px;
 }
+
 .panelEx:hover {
     color: black;
     background-color: rgba(255, 255, 255, .5);
@@ -408,6 +410,7 @@ button:hover {
 .plusMinus:hover {
     border-radius: 7px;
 }
+
 .plusMinus:disabled:hover {
     color: rgb(167, 167, 167);
     background: #cebd90;
@@ -467,8 +470,7 @@ button:hover {
     width: 100%;
 }
 
-.characterContent td {
-}
+.characterContent td {}
 
 .attributeContainer {
     display: block;
@@ -647,8 +649,7 @@ button:hover {
     padding: 8px;
 }
 
-.buttonPanel button:hover {
-}
+.buttonPanel button:hover {}
 
 .commandPanel {
     background: #cebd90;
@@ -856,16 +857,18 @@ button:hover {
     min-width: 600px;
     padding: 10px;
 }
-.headerButton{
+
+.headerButton {
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     background-color: transparent;
     font-size: 1em;
     text-align: left;
     border-radius: 15px;
-    border:none;
+    border: none;
 }
-.headerButton:hover{
-    background-color: rgba(255,255,255,0.5);
+
+.headerButton:hover {
+    background-color: rgba(255, 255, 255, 0.5);
 }
 
 .rollSlotFrame {
@@ -918,14 +921,16 @@ button:hover {
 .resourceTable {
     font-size: .65em;
 }
-.commitButton{
+
+.commitButton {
     padding: 10px;
     margin: 20px;
     font-size: .75em;
     border-radius: 20px;
 }
-.commitButton:hover{    
-}
+
+.commitButton:hover {}
+
 .rollerZone {
     width: 600px;
     min-width: 650px;
@@ -934,13 +939,15 @@ button:hover {
     overflow-x: hidden;
     overflow-y: auto;
 }
+
 .textline {
     font-size: medium;
-    display:flex;
+    display: flex;
     justify-content: flex-end;
     align-items: flex-end;
     margin-bottom: 10px;
 }
+
 .attributeName {
     /* color: black; */
     font-size: large;
@@ -951,7 +958,8 @@ button:hover {
     background: #cebd90;
     display: inline;
 }
-.statRow{
+
+.statRow {
     margin: 0px;
     padding: 0px;
     padding-top: 10px;
@@ -963,14 +971,16 @@ button:hover {
     text-align: left;
     /* margin-bottom: 10px; */
 }
-.statRow td{
+
+.statRow td {
     margin: 0px;
     padding: 0px;
     /* text */
     /* font-size: small; */
     border-bottom: 1px dotted #a19470;
 }
-.statRow td button{
+
+.statRow td button {
     position: relative;
 }
 
@@ -981,14 +991,17 @@ button:hover {
     border-radius: 20px;
     color: #69685e;
     background-color: #8f8e7f;
-    padding:10px;
-    margin:10px;
+    padding: 10px;
+    margin: 10px;
     text-align: center;
 }
-.dropzone:hover{
+
+.dropzone:hover {
     background-color: rgb(167, 167, 167);
     border: 1px dashed rgb(110, 110, 110);
-}/**/
+}
+
+/**/
 
 
 

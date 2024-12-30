@@ -5,7 +5,7 @@ import { useSearchParams } from "react-router-dom";
 import { parsePasteFromExcel } from './Utility/Parser';
 import Storage from './Utility/Storage';
 import { VERSION } from './Version';
-import { arrayRemove, isImage, isNumber } from './Utility/Utility';
+import { _normalizeForMatching, arrayRemove, isImage, isNumber } from './Utility/Utility';
 import { rollDice } from './Data/DiceRoller';
 import CharacterFrame from './Components/CharacterFrame';
 import Character, { inflateCharacter } from './Data/Character';
@@ -37,7 +37,7 @@ function App() {
     let setSocket = (soc) => {
         socket = soc;
         window.socket = soc;
-    }
+    };
     [socket, setSocket] = useState(() => {
         return {
             fake: true,
@@ -45,7 +45,11 @@ function App() {
             emit: () => console.log("emit: " + MSG_NOT_CONNECTED),
         };
     });
-    if ((!socket || socket.fake) && paramURL){
+    if ((!socket || socket.fake) && paramURL) {
+        window.gameData = {
+            players: {},
+            characters: {},
+        };
         console.log("connecting to server", paramURL);
 
         //2024-12-24: copied from https://stackoverflow.com/a/41319051/2336212
@@ -55,7 +59,7 @@ function App() {
         const devicePixelRatio = window.devicePixelRatio || 1;
 
         socket.on('connect', () => {
-          console.log('Successfully connected!',"id", socket.id);
+            console.log('Successfully connected!', "id", socket.id);
         });
 
         socket.on('updateGameData', (gameData) => {
@@ -63,8 +67,8 @@ function App() {
             window.gameData = gameData;
         });
 
-        socket.on('onDiceRolled', ({ characterName, statName, roll }) => {           
-            console.log("Dice rolled!", characterName, statName, roll); 
+        socket.on('onDiceRolled', ({ characterName, statName, roll }) => {
+            console.log("Dice rolled!", characterName, statName, roll);
         });
 
         socket.on('storage', (stor) => {
@@ -76,13 +80,74 @@ function App() {
             }
         });
 
+        socket.on("characterSubmitted", ({ socketId, character }) => {
+            // if (socketId == socket.id) { return; }
+
+            window.gameData.characters[character.name] = character;
+            if (!characterIsInGame(character.name)) {
+                addCharacter(character);
+            }
+            else {
+                setCharacterList([...characterList]);
+            }
+        });
+
+        socket.on("characterUpdated", ({ socketId, character }) => {
+            if (socketId == socket.id) { return; }
+            let oldChar = undefined;
+            for (let char of characterList) {
+                if (_normalizeForMatching(char.name) == _normalizeForMatching(character.name)) {
+                    oldChar = char;
+                    break;
+                }
+            }
+            if (oldChar) {
+                delete window.gameData[oldChar.name];//delete for good measure in case names match but look different, ex: capitalization
+                window.gameData.characters[character.name] = character;
+
+                let index = characterList.indexOf(oldChar);
+                inflateCharacter(character);
+                characterList.splice(index, 1, character);
+            }
+
+            setCharacterList([...characterList]);
+        });
+
+        // socket.on("rollerAdded", ({ socketId, roller }) => {
+        //     if (socketId == socket.id) { return; }
+        //     inflateActionRollAttack(roller, characterList);
+        //     console.log("rollerAdded", socketId, roller);
+        //     window.gameData.rollers.push(roller.title);
+        //     addRoller(roller, false);
+        // });
+
+        socket.on("rollerUpdated", ({ socketId, rollerListIn }) => {
+            if (socketId == socket.id) { return; }
+            rollerListIn.forEach(roller => {
+                inflateActionRollAttack(roller, characterList);
+            });
+            console.log("rollerUpdated", socketId, rollerListIn);
+            // window.gameData.rollers[0] = roller;//TODO: make it find the right roller
+            // rollerList[0] = roller;
+            rollerList = rollerListIn;
+            updateRollerList(false);
+        });
+
+        // socket.on("rollerRemoved", ({ socketId, roller }) => {
+        //     if (socketId == socket.id) { return; }
+        //     inflateActionRollAttack(roller, characterList);
+        //     console.log("rollerRemoved", socketId, roller);
+        //     window.gameData.rollers.splice(0, 1);//TODO: make it find the right roller
+        //     removeRoller(roller, false, true);
+        // });
+
         window.socket = socket;
     }
     //Storage
     let storage;
     let setStorage = (s) => { storage = s; };
     const defaultStorage = () => new Storage();
-    [storage, setStorage] = useState(defaultStorage);    
+    [storage, setStorage] = useState(defaultStorage);
     //DM
     if (paramDM) {
         socket.emit("storage", storage.storage);
@@ -119,6 +184,10 @@ function App() {
         //
         setCharacter(newcharacter);
         storage.characterList = characterList;
+
+        if (!character.editAttributes) {
+            socket.emit("characterUpdated", { socketId: socket.id, character: newcharacter });
+        }
     };
 
     let renameConsumablePropagation = (oldname, newname, exceptCharacter) => {
@@ -257,18 +326,33 @@ function App() {
     const defaultRollerList = () => (storage.rollerList?.length > 0) ? storage.rollerList : [];
     [rollerList, setRollerList] = useState(defaultRollerList);
     window.rollerList = rollerList;
-    const updateRollerList = () => {
+    const updateRollerList = (send = true) => {
+        if (send) {
+            socket.emit("rollerUpdated", { socketId: socket.id, rollerList: rollerList });
+        }
         setRollerList([...rollerList]);
-    }
-    const addRoller = (roller) => {
+
+    };
+    const addRoller = (roller, send = true) => {
         rollerList.push(roller);
-        updateRollerList();
-    }
-    const removeRoller = (roller) => {
+        if (send) {
+            // socket.emit("rollerAdded", { socketId: socket.id, roller: roller });
+        }
+        updateRollerList(send);
+
+    };
+    const removeRoller = (roller, send = true, orFirst = false) => {
         let index = rollerList.indexOf(roller);
+        if (index < 0 && orFirst) {
+            index = 0;
+        }
         rollerList.splice(index, 1);
-        updateRollerList();
-    }
+        if (send) {
+            // socket.emit("rollerRemoved", { socketId: socket.id, roller: roller });
+        }
+        updateRollerList(send);
+
+    };
 
     //Species List
     let speciesList = [];
@@ -277,21 +361,21 @@ function App() {
         storage.speciesList = speciesList;
         window.speciesList = speciesList;
     };
-    const defaultSpeciesList = () =>  storage.speciesList ?? [];
+    const defaultSpeciesList = () => storage.speciesList ?? [];
     [speciesList, setSpeciesList] = useState(defaultSpeciesList);
     window.speciesList = speciesList;
     const updateSpeciesList = () => {
         setSpeciesList([...speciesList]);
-    }
+    };
     const addSpecies = (species) => {
         speciesList.push(species);
         updateSpeciesList();
-    }
+    };
     const removeSpecies = (species) => {
         let index = speciesList.indexOf(species);
         speciesList.splice(index, 1);
         updateSpeciesList();
-    }
+    };
 
     //Character to Show
     let characterToShow = undefined;
@@ -299,30 +383,66 @@ function App() {
         characterToShow = characterList.find(char => char.name.trim().toLowerCase() == paramCharacter.trim().toLowerCase());
     }
 
-    const createCharacter = (species)=>{
+    const createCharacter = (species) => {
         let index = characterList.length;
-        let character = new Character(`${species.name}${index+1}`, species);
-        characterList.push(character);
-        setCharacterList([...characterList]);
-    }
+        let character = new Character(`${species.name}${index + 1}`, species);
+        addCharacter(character);
+    };
+
+    const addCharacter = (character) => {
+        inflateCharacter(character);
+        if (!characterList.some(char => _normalizeForMatching(char.name) == _normalizeForMatching(character.name))) {
+            characterList.push(character);
+
+            // gameData.players[socket.id].characterList.push(character);
+
+            setCharacterList([...characterList]);
+        }
+    };
+
+    const characterIsInGame = (character) => {
+        if (!window.gameData?.characters) {
+            console.log("cant search", window.gameData?.characters);
+            return false;
+        }
+        // return Object.entries(window.gameData.players)
+        //     .map(([k, v]) => v)
+        //     .some(([k, v]) =>
+        //         v.characterList
+        //             .some(char => char.name == character.name)
+        //     ) ?? false;
+        for (let [k, v] of Object.entries(window.gameData.characters)) {
+            console.log("searching", k, v);
+            if (!v) {
+                console.log("error not found", k, v);
+                continue;
+            }
+            if (_normalizeForMatching(v.name) == _normalizeForMatching(character.name)) {
+                return true;
+            }
+        }
+        return false;
+    };
+    window.characterIsInGame = characterIsInGame;
 
     return (
         <div className="App">
             <header className="App-header">
                 <div className='characterZone'>
-                    {!characterToShow && rollerList.length>0 &&
-                    <div className='rollerZone'>
-                    {
-                        rollerList.map((roller,i) =>
-                    <RollerFrame
-                        actionRoller={roller}
-                        updateRoller={updateRollerList}
-                        key={`roller_${i}`}
-                        removeRoller={removeRoller}
-                    ></RollerFrame>
-                        )
-                    }
-                    </div>
+                    {!characterToShow && rollerList.length > 0 &&
+                        <div className='rollerZone'>
+                            {
+                                rollerList.map((roller, i) =>
+                                    <RollerFrame
+                                        actionRoller={roller}
+                                        updateRoller={updateRollerList}
+                                        key={`roller_${i}`}
+                                        removeRoller={removeRoller}
+                                        updateCharacter={updateCharacter}
+                                    ></RollerFrame>
+                                )
+                            }
+                        </div>
                     }
                     {characterToShow &&
                         <CharacterFrame
@@ -331,6 +451,7 @@ function App() {
                             game={game}
                             updateGame={updateGame}
                             socket={socket}
+                            characterIsInGame={characterIsInGame(characterToShow)}
                             diceRolled={diceRolled}
                             attributeAdjusted={attributeAdjusted}
                             abilityModified={abilityModified}
@@ -349,6 +470,7 @@ function App() {
                                 game={game}
                                 updateGame={updateGame}
                                 socket={socket}
+                                characterIsInGame={characterIsInGame(char)}
                                 diceRolled={diceRolled}
                                 attributeAdjusted={attributeAdjusted}
                                 abilityModified={abilityModified}
@@ -363,56 +485,56 @@ function App() {
                     {
                         !characterToShow &&
                         <div className='characterFrame'>
-                                Character Menu
-                                {/* Drop Zone */}
-                                <Dropzone
-                                    onDrop={
-                                        files => files.forEach(file =>
-                                            UploadFile(
-                                                file,
-                                                true,
-                                                (content, filename) => {
-                                                    // let obj = JSON.parse(decodeURIComponent(content));
-                                                    if (filename.endsWith(".csv")) {
-                                                        let species = readSpeciesFromCSV("Wolf", content);
-                                                        console.log("species", species);
-                                                        let statCosts = species.randomStatCosts();
-                                                        console.log("random stat costs", statCosts);
-                                                        addSpecies(species);
-                                                    }
-                                                    else {
-                                                        console.log("file dropped:", filename)
-                                                        console.log(content);
-                                                    }
+                            Character Menu
+                            {/* Drop Zone */}
+                            <Dropzone
+                                onDrop={
+                                    files => files.forEach(file =>
+                                        UploadFile(
+                                            file,
+                                            true,
+                                            (content, filename) => {
+                                                // let obj = JSON.parse(decodeURIComponent(content));
+                                                if (filename.endsWith(".csv")) {
+                                                    let species = readSpeciesFromCSV("Wolf", content);
+                                                    console.log("species", species);
+                                                    let statCosts = species.randomStatCosts();
+                                                    console.log("random stat costs", statCosts);
+                                                    addSpecies(species);
                                                 }
-                                            ))
+                                                else {
+                                                    console.log("file dropped:", filename);
+                                                    console.log(content);
+                                                }
+                                            }
+                                        ))
+                                }
+                            >
+                                {({ getRootProps, getInputProps }) => (
+                                    <div {...getRootProps({ className: "dropzone" })}>
+                                        <input {...getInputProps()} />
+                                        <p>drop .CSV files here</p>
+                                    </div>
+                                )}
+                            </Dropzone>
+                            <div>
+                                Make new character of species:
+                                <ul>
+                                    {
+                                        speciesList.map((species, i) => (
+                                            <li key={i}>
+                                                <button
+                                                    onClick={() => {
+                                                        createCharacter(species);
+                                                    }}
+                                                >
+                                                    {species.name}
+                                                </button>
+                                            </li>
+                                        ))
                                     }
-                                >
-                                    {({ getRootProps, getInputProps }) => (
-                                        <div {...getRootProps({ className: "dropzone" })}>
-                                            <input {...getInputProps()} />
-                                            <p>drop .CSV files here</p>
-                                        </div>
-                                    )}
-                                </Dropzone>
-                                <div>
-                                    Make new character of species:
-                                    <ul>
-                                        {
-                                            speciesList.map((species,i) => (
-                                                <li key={i}>
-                                                    <button
-                                                        onClick={() => {
-                                                            createCharacter(species);
-                                                        }}
-                                                    >
-                                                        {species.name}
-                                                    </button>
-                                                </li>
-                                            ))
-                                        }
-                                    </ul>
-                                </div>
+                                </ul>
+                            </div>
                         </div>
                     }
                 </div>

@@ -14,7 +14,7 @@ export const STATS_NO_VARIANCE = [
     "Armor",
 ];
 
-class Species{
+class Species {
     constructor(name) {
         this.name = name;
         this.adultAge = 21;
@@ -47,11 +47,11 @@ class Species{
             //store value
             let name = row.name;
             statCosts[name] = val;
-        })
+        });
         return statCosts;
     }
 
-    randomWound() {        
+    randomWound() {
         console.error("Method not implemented yet!");
         return;
     }

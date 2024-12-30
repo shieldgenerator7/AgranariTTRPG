@@ -1,6 +1,6 @@
 "use strict";
 
-import { inflateArray, clamp, arraySum } from "../Utility/Utility";
+import { inflateArray, clamp, arraySum, _normalizeForMatching } from "../Utility/Utility";
 import Ability, { inflateAbility } from "./Ability";
 import Stat, { inflateStat } from "./Stat";
 import { inflateConsumable } from "./Consumable";
@@ -21,7 +21,7 @@ class Character {
             health: 100,
             willPower: 20,
         };
-        
+
         //species setup
         this.species = species;
         if (species) {
@@ -54,18 +54,14 @@ class Character {
         this.isCharacter = true;
     }
 
-    _normalizeForMatching(name) {
-        return name?.trim().replaceAll(" ", "").toLowerCase();
-    }
-
     getStat(statName) {
-        statName = this._normalizeForMatching(statName);
+        statName = _normalizeForMatching(statName);
         if (!statName) {
             console.error("statname must be a name of a stat! statName: ", statName);
             return;
         }
         return this.statList
-            .find(a => this._normalizeForMatching(a.name) == statName || this._normalizeForMatching(a.displayName) == statName);
+            .find(a => _normalizeForMatching(a.name) == statName || _normalizeForMatching(a.displayName) == statName);
     }
 
     getStatValue(statName) {
@@ -75,9 +71,9 @@ class Character {
     }
 
     getMaxStatName(resourceName) {
-        resourceName = this._normalizeForMatching(resourceName);
+        resourceName = _normalizeForMatching(resourceName);
         let stat = this.statList
-            .find(a => this._normalizeForMatching(a.name).includes(resourceName) || this._normalizeForMatching(a.displayName).includes(resourceName));
+            .find(a => _normalizeForMatching(a.name).includes(resourceName) || _normalizeForMatching(a.displayName).includes(resourceName));
         return stat?.name;
     }
 
@@ -109,7 +105,7 @@ class Character {
 
     addWound() {
         console.error("Method not implemented yet!");
-        return;        
+        return;
     }
 
     getConsumable(cnsmName) {
@@ -173,9 +169,9 @@ class Character {
     }
 
     getBonusList(statName) {
-        statName = this._normalizeForMatching(statName);
+        statName = _normalizeForMatching(statName);
         return this.bonusList.filter(
-            bonus => this._normalizeForMatching(bonus.filter).includes(statName)
+            bonus => _normalizeForMatching(bonus.filter).includes(statName)
         );
     }
 

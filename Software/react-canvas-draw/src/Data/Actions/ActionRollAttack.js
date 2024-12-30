@@ -74,10 +74,10 @@ class ActionRollAttack {
 
     rollAll() {
         this.rollList
-            .filter(rollSlot=>rollSlot.rollable)
+            .filter(rollSlot => rollSlot.rollable)
             .forEach(rollSlot => {
-            rollSlot.roll();
-        })
+                rollSlot.roll();
+            });
     }
 
     commit() {
@@ -88,7 +88,7 @@ class ActionRollAttack {
         }
 
         //early exit: no damage        
-        if (!isNumber(this.damageSlot.lastRoll)) {
+        if (this.attackSlot.Total > this.dodgeSlot.Total && !isNumber(this.damageSlot.lastRoll)) {
             return;
         }
 

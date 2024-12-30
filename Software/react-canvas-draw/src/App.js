@@ -92,7 +92,8 @@ function App() {
             }
         });
 
-        socket.on("characterUpdated", character => {
+        socket.on("characterUpdated", ({ socketId, character }) => {
+            if (socketId == socket.id) { return; }
             let oldChar = undefined;
             for (let char of characterList) {
                 if (_normalizeForMatching(char.name) == _normalizeForMatching(character.name)) {
@@ -157,7 +158,7 @@ function App() {
         storage.characterList = characterList;
 
         if (!character.editAttributes) {
-        socket.emit("characterUpdated", character);
+        socket.emit("characterUpdated", { socketId: socket.id, character: character });
         }
     };
 

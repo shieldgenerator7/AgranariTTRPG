@@ -80,12 +80,12 @@ io.on('connection', (socket) => {
         });
     });
 
-    socket.on("characterUpdated", character => {
+    socket.on("characterUpdated", ({ socketId, character }) => {
         
         gameData[character.name] = character;
 
-        io.emit("characterUpdated", character);
         
+        io.emit("characterUpdated", { socketId: socketId, character: character });
     });
 
 

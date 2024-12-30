@@ -40,10 +40,12 @@ let storage = undefined;
 
 io.on('connection', (socket) => {
     console.log('player connected', socket.id);
-    gameData.players[socket.id] = {
+    let player = {
+        characterList: [],
         x: 100,
         y: 100,
     };
+    gameData.players[socket.id] = player;
 
     io.emit('updateGameData', gameData);
 
@@ -64,6 +66,14 @@ io.on('connection', (socket) => {
     socket.on("storage", (storage) => {
         storage = storage;
         io.emit("storage", storage); 
+    });
+
+    socket.on("submitCharacter", ( character ) => {
+        player.characterList.push(character);
+        io.emit("characterSubmitted", {
+            socketId: socket.id,
+            character: character,
+        });
     });
 
 

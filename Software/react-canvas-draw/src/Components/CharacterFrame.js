@@ -19,7 +19,7 @@ import TempBonusFrame from "./TempBonusFrame";
 import Counter from "./Counter";
 import ActionRollAttack from "../Data/Actions/ActionRollAttack";
 
-function CharacterFrame({ character, updateCharacter, game, updateGame, socket, diceRolled, attributeAdjusted, abilityModified, characterList, setCharacterList, renameConsumable, addRoller }) {
+function CharacterFrame({ character, updateCharacter, game, updateGame, socket, characterIsInGame, diceRolled, attributeAdjusted, abilityModified, characterList, setCharacterList, renameConsumable, addRoller }) {
     
     let showConsumableList = false;
     let setShowConsumableList = (b) => showConsumableList = b;
@@ -545,6 +545,13 @@ function CharacterFrame({ character, updateCharacter, game, updateGame, socket, 
                             }
                         });
                     }}>PASTE</button>
+                }
+                {!characterIsInGame && 
+                    <button onClick={(e) => {                    
+                        socket.emit("submitCharacter", character);
+                    }}>
+                        Submit
+                    </button>
                 }
             </div>
         </div>

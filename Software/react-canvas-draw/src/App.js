@@ -76,6 +76,13 @@ function App() {
             }
         });
 
+        socket.on("characterSubmitted", ({ socketId, character })=> {
+            // if (socketId == socket.id) { return; }
+
+            window.gameData.players[socketId].characterList.push(character);
+            addCharacter(character);
+        });
+
         window.socket = socket;
     }
     //Storage
@@ -301,9 +308,41 @@ function App() {
 
     const createCharacter = (species)=>{
         let index = characterList.length;
-        let character = new Character(`${species.name}${index+1}`, species);
-        characterList.push(character);
+        let character = new Character(`${species.name}${index + 1}`, species);
+        addCharacter(character);
+    }
+
+    const addCharacter = (character) => {
+        inflateCharacter(character);
+        characterList.push(character);        
+        
+        // gameData.players[socket.id].characterList.push(character);
+
         setCharacterList([...characterList]);
+    }
+
+    const characterIsInGame = (character) => {
+        if (!window.gameData?.players) {
+            console.log("cant search", window.gameData?.players);
+            return false;
+        }
+        // return Object.entries(window.gameData.players)
+        //     .map(([k, v]) => v)
+        //     .some(([k, v]) =>
+        //         v.characterList
+        //             .some(char => char.name == character.name)
+        //     ) ?? false;
+        for (let [k, v] in Object.entries(window.gameData.players)) {
+            console.log("searching", k, v);
+            if (!v) {
+                console.log("error not found", k, v);
+                continue;
+            }
+            if (v.characterList.some(char => char.name == character.name)) {
+                return true;
+            }
+        }
+        return false;
     }
 
     return (
@@ -331,6 +370,7 @@ function App() {
                             game={game}
                             updateGame={updateGame}
                             socket={socket}
+                            characterIsInGame={characterIsInGame(characterToShow)}
                             diceRolled={diceRolled}
                             attributeAdjusted={attributeAdjusted}
                             abilityModified={abilityModified}
@@ -349,6 +389,7 @@ function App() {
                                 game={game}
                                 updateGame={updateGame}
                                 socket={socket}
+                                characterIsInGame={characterIsInGame(char)}
                                 diceRolled={diceRolled}
                                 attributeAdjusted={attributeAdjusted}
                                 abilityModified={abilityModified}

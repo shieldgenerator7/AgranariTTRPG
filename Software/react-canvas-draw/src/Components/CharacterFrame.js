@@ -13,7 +13,7 @@ import ConsumableFrame from "./ConsumableFrame";
 import Field from "./Field";
 import ListOrdered from "./ListOrdered";
 import SearchSelect from "./SearchSelect";
-import { formatNumber, isString } from "../Utility/Utility";
+import { _normalizeForMatching, formatNumber, isString } from "../Utility/Utility";
 import Bonus from "../Data/Bonus";
 import TempBonusFrame from "./TempBonusFrame";
 import Counter from "./Counter";
@@ -33,8 +33,8 @@ function CharacterFrame({ character, updateCharacter, game, updateGame, socket, 
 
     let statList = character.statList;
     if (character.searchQuery) {
-        let searchQuery = character._normalizeForMatching(character.searchQuery);
-        statList = statList.filter(stat => character._normalizeForMatching(stat.name).includes(searchQuery));
+        let searchQuery = _normalizeForMatching(character.searchQuery);
+        statList = statList.filter(stat => _normalizeForMatching(stat.name).includes(searchQuery));
     }
 
     let customDiceFormula, setCustomDiceFormula;

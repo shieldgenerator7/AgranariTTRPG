@@ -84,7 +84,12 @@ function App() {
             // if (socketId == socket.id) { return; }
 
             window.gameData.characters[character.name] = character;
+            if (!characterIsInGame(character.name)) {
             addCharacter(character);
+            }
+            else {
+                setCharacterList([...characterList]);
+            }
         });
 
         window.socket = socket;
@@ -318,11 +323,13 @@ function App() {
 
     const addCharacter = (character) => {
         inflateCharacter(character);
-        characterList.push(character);        
-        
+        if (!characterList.some(char => _normalizeForMatching(char.name) == _normalizeForMatching(character.name))) {
+        characterList.push(character);
+    
         // gameData.players[socket.id].characterList.push(character);
 
         setCharacterList([...characterList]);
+        }
     }
 
     const characterIsInGame = (character) => {

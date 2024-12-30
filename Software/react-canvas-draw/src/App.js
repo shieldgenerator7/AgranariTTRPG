@@ -92,6 +92,26 @@ function App() {
             }
         });
 
+        socket.on("characterUpdated", character => {
+            let oldChar = undefined;
+            for (let char of characterList) {
+                if (_normalizeForMatching(char.name) == _normalizeForMatching(character.name)) {
+                    oldChar = char;
+                    break;
+                }
+            }
+            if (oldChar) {
+                delete window.gameData[oldChar.name];//delete for good measure in case names match but look different, ex: capitalization
+                window.gameData.characters[character.name] = character;
+
+                let index = characterList.indexOf(oldChar);
+                inflateCharacter(character);
+                characterList.splice(index, 1, character);
+            }
+            
+            setCharacterList([...characterList]);
+        });
+
         window.socket = socket;
     }
     //Storage
@@ -135,6 +155,8 @@ function App() {
         //
         setCharacter(newcharacter);
         storage.characterList = characterList;
+
+        socket.emit("characterUpdated", character);
     };
 
     let renameConsumablePropagation = (oldname, newname, exceptCharacter) => {

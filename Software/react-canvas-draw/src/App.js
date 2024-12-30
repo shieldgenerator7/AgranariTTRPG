@@ -113,6 +113,31 @@ function App() {
             setCharacterList([...characterList]);
         });
 
+        socket.on("rollerAdded", ({ socketId, roller }) => {
+            if (socketId == socket.id) { return; }
+            inflateActionRollAttack(roller, characterList);
+            console.log("rollerAdded", socketId, roller);
+            window.gameData.rollers.push(roller.title);
+            addRoller(roller, false);
+        });
+    
+        socket.on("rollerUpdated", ({ socketId, roller }) => {
+            if (socketId == socket.id) { return; }
+            inflateActionRollAttack(roller, characterList);
+            console.log("rollerUpdated", socketId, roller);
+            window.gameData.rollers[0] = roller;//TODO: make it find the right roller
+            rollerList[0] = roller;
+            updateRollerList(false);
+        });
+    
+        socket.on("rollerRemoved", ({ socketId, roller }) => {
+            if (socketId == socket.id) { return; }
+            inflateActionRollAttack(roller, characterList);
+            console.log("rollerRemoved", socketId, roller);
+            window.gameData.rollers.splice(0, 1);//TODO: make it find the right roller
+            removeRoller(roller, false, true);
+        });
+
         window.socket = socket;
     }
     //Storage
@@ -298,17 +323,32 @@ function App() {
     const defaultRollerList = () => (storage.rollerList?.length > 0) ? storage.rollerList : [];
     [rollerList, setRollerList] = useState(defaultRollerList);
     window.rollerList = rollerList;
-    const updateRollerList = () => {
+    const updateRollerList = (send = true) => {
+        if (send) {
+            socket.emit("rollerUpdated", { socketId: socket.id, roller: rollerList[0] });
+        }
         setRollerList([...rollerList]);
+        
     }
-    const addRoller = (roller) => {
+    const addRoller = (roller, send=true) => {
         rollerList.push(roller);
+        if (send) {
+            socket.emit("rollerAdded", { socketId: socket.id, roller: roller });
+        }
         updateRollerList();
+
     }
-    const removeRoller = (roller) => {
+    const removeRoller = (roller, send=true, orFirst = false) => {
         let index = rollerList.indexOf(roller);
+        if (index < 0 && orFirst) {
+            index = 0;
+        }
         rollerList.splice(index, 1);
-        updateRollerList();
+        if (send) {
+            socket.emit("rollerRemoved", { socketId: socket.id, roller: roller });
+        }
+        updateRollerList(false);
+        
     }
 
     //Species List

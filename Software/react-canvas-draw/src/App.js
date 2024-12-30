@@ -156,7 +156,9 @@ function App() {
         setCharacter(newcharacter);
         storage.characterList = characterList;
 
+        if (!character.editAttributes) {
         socket.emit("characterUpdated", character);
+        }
     };
 
     let renameConsumablePropagation = (oldname, newname, exceptCharacter) => {

@@ -10,18 +10,6 @@ In D&D, you have a d20, and some other dice like d4 and d6. You use the d20 most
 
 However in this game, dice can be any number. You could roll a 1d37 or a 1d18. It’s all up to you and your DM.
 
-## There are no character levels
-
-Well there are, but it’s cosmetic only. A level is just a number to indicate a character’s power level. You don’t ever really “level up” and you gain features and power without “gaining a level”.
-
-## XP is used to increase skills
-
-When you gain XP, you spend it on certain skills, like Accuracy to increase your chance of hitting with your weapon, Dodge to increase your chance of dodging attacks, and lots of other things, like Smell to increase your chance of sensing a creature by scent alone.
-
-## You gain XP even out of combat
-
-Every day you can practice your skills, even if it’s not combat related. Each day you practice skills, you gain a little XP to spend as you choose on skills.
-
 ## The Units are meters
 
 In D&D, every square is 5ft. In this game, each square is 1 meter. Likewise, speed is measured in meters per second, instead of D&D’s feet per round (6 seconds).
@@ -33,6 +21,24 @@ In D&D, if you don’t like the outcome of a roll, you can use things like the L
 In this game, you have a resource called Willpower. When you don’t like the outcome of a roll, you can spend Willpower to increase the result of that roll, potentially changing the outcome. You can spend as many willpower points as you want on a single roll. You can spend it on any number of rolls on any given day. At the very least, you regain all willpower at the start of each day.
 
 The amount you spend is multiplied by your Willpower Factor, which increases how much bonus your willpower gives to your roll.
+
+# Character
+
+## There are no classes
+
+In D&D, you pick your character’s class and that determines what features you can get. In this game, you can pick any feature any time, as long as you meet its requirements and can spend the XP for it.
+
+## There are no character levels
+
+Well there are, but it’s cosmetic only. A level is just a number to indicate a character’s power level. You don’t ever really “level up” and you gain features and power without “gaining a level”.
+
+## XP is used to increase skills
+
+When you gain XP, you spend it on certain skills, like Accuracy to increase your chance of hitting with your weapon, Dodge to increase your chance of dodging attacks, and lots of other things, like Smell to increase your chance of sensing a creature by scent alone.
+
+## You gain XP even out of combat
+
+Every day you can practice your skills, even if it’s not combat related. Each day you practice skills, you gain a little XP to spend as you choose on skills.
 
 ## Character stats are different
 
@@ -89,6 +95,10 @@ In D&D, creatures usually only get stunned by rare effects, such as Stunning Str
 When you hit with an attack, your target takes damage and the pain from the damage has a chance to stun them. If they become stunned, they wince in pain from the attack. They stop all channels and can’t take actions or move for a short while. This is comparable to making Constitution saving throws for concentration I D&D.
 
 To decrease your chance of getting winced, increase your Pain Tolerance.
+
+## Resistances provide damage reduction
+
+In D&D, if you have resistance to a damage type, you take half damage from it. In this game, resistance is a number. The higher your resistance to a damage type, the less than damage you take from it. However, no matter how much damage resistance you have, you will always take damage when hit, even if only a tiny bit. The formula uses the Armor formula from League of Legends.
 
 # Roleplay
 

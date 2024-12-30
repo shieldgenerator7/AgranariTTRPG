@@ -34,6 +34,7 @@ app.get('/', (req, res) => {
 
 const gameData = {
     players: {},
+    characters: {},
 };
 
 let storage = undefined;
@@ -41,7 +42,6 @@ let storage = undefined;
 io.on('connection', (socket) => {
     console.log('player connected', socket.id);
     let player = {
-        characterList: [],
         x: 100,
         y: 100,
     };
@@ -69,7 +69,11 @@ io.on('connection', (socket) => {
     });
 
     socket.on("submitCharacter", ( character ) => {
-        player.characterList.push(character);
+        if (Object.hasOwn(gameData.characters, character.name)) {
+            console.warn("cant add character with name", character.name, "because a character with that name already exists!");
+            return;
+        }
+        gameData.characters[character.name] = character;
         io.emit("characterSubmitted", {
             socketId: socket.id,
             character: character,

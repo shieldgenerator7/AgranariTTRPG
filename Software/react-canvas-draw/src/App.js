@@ -5,7 +5,7 @@ import { useSearchParams } from "react-router-dom";
 import { parsePasteFromExcel } from './Utility/Parser';
 import Storage from './Utility/Storage';
 import { VERSION } from './Version';
-import { arrayRemove, isImage, isNumber } from './Utility/Utility';
+import { _normalizeForMatching, arrayRemove, isImage, isNumber } from './Utility/Utility';
 import { rollDice } from './Data/DiceRoller';
 import CharacterFrame from './Components/CharacterFrame';
 import Character, { inflateCharacter } from './Data/Character';
@@ -46,6 +46,10 @@ function App() {
         };
     });
     if ((!socket || socket.fake) && paramURL){
+        window.gameData = {
+            players: {},
+            characters: {},
+        }
         console.log("connecting to server", paramURL);
 
         //2024-12-24: copied from https://stackoverflow.com/a/41319051/2336212
@@ -79,7 +83,7 @@ function App() {
         socket.on("characterSubmitted", ({ socketId, character })=> {
             // if (socketId == socket.id) { return; }
 
-            window.gameData.players[socketId].characterList.push(character);
+            window.gameData.characters[character.name] = character;
             addCharacter(character);
         });
 
@@ -322,8 +326,8 @@ function App() {
     }
 
     const characterIsInGame = (character) => {
-        if (!window.gameData?.players) {
-            console.log("cant search", window.gameData?.players);
+        if (!window.gameData?.characters) {
+            console.log("cant search", window.gameData?.characters);
             return false;
         }
         // return Object.entries(window.gameData.players)
@@ -332,18 +336,19 @@ function App() {
         //         v.characterList
         //             .some(char => char.name == character.name)
         //     ) ?? false;
-        for (let [k, v] in Object.entries(window.gameData.players)) {
+        for (let [k, v] of Object.entries(window.gameData.characters)) {
             console.log("searching", k, v);
             if (!v) {
                 console.log("error not found", k, v);
                 continue;
             }
-            if (v.characterList.some(char => char.name == character.name)) {
+            if (_normalizeForMatching(v.name) == _normalizeForMatching(character.name)) {
                 return true;
             }
         }
         return false;
     }
+    window.characterIsInGame = characterIsInGame;
 
     return (
         <div className="App">

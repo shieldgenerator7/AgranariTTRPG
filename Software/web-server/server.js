@@ -65,7 +65,7 @@ io.on('connection', (socket) => {
 
     socket.on("storage", (storage) => {
         storage = storage;
-        io.emit("storage", storage); 
+        // io.emit("storage", storage); 
     });
 
     socket.on("submitCharacter", ( character ) => {

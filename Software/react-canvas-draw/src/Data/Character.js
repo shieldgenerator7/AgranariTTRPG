@@ -21,7 +21,7 @@ class Character {
             health: 100,
             willPower: 20,
         };
-        
+
         //species setup
         this.species = species;
         if (species) {
@@ -105,7 +105,7 @@ class Character {
 
     addWound() {
         console.error("Method not implemented yet!");
-        return;        
+        return;
     }
 
     getConsumable(cnsmName) {

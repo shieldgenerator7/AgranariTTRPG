@@ -59,7 +59,7 @@ io.on('connection', (socket) => {
         io.emit('updateGameData', gameData);
     });
 
-    socket.on("onDiceRolled", ({ characterName, statName, roll })=> {
+    socket.on("onDiceRolled", ({ characterName, statName, roll }) => {
         console.log("Dice rolled!", characterName, statName, roll);
         io.emit("onDiceRolled", { characterName: characterName, statName: statName, roll: roll });
     });
@@ -69,7 +69,7 @@ io.on('connection', (socket) => {
         // io.emit("storage", storage); 
     });
 
-    socket.on("submitCharacter", ( character ) => {
+    socket.on("submitCharacter", (character) => {
         if (Object.hasOwn(gameData.characters, character.name)) {
             console.warn("cant add character with name", character.name, "because a character with that name already exists!");
             return;
@@ -82,10 +82,10 @@ io.on('connection', (socket) => {
     });
 
     socket.on("characterUpdated", ({ socketId, character }) => {
-        
+
         gameData[character.name] = character;
 
-        
+
         io.emit("characterUpdated", { socketId: socketId, character: character });
     });
 
@@ -96,7 +96,7 @@ io.on('connection', (socket) => {
 
     socket.on("rollerUpdated", ({ socketId, rollerList }) => {
         // gameData.rollers[0] = roller;//TODO: make it find the right roller
-        io.emit("rollerUpdated", { socketId: socketId, rollerListIn: rollerList }); 
+        io.emit("rollerUpdated", { socketId: socketId, rollerListIn: rollerList });
     });
 
     // socket.on("rollerRemoved", ({ socketId, roller }) => {
@@ -107,7 +107,7 @@ io.on('connection', (socket) => {
 
 
     console.log("gameData", gameData);
-})
+});
 
 server.listen(PORT_SERVER, () => {
     console.log(`App listening on port ${PORT_SERVER}`);

@@ -74,10 +74,10 @@ class ActionRollAttack {
 
     rollAll() {
         this.rollList
-            .filter(rollSlot=>rollSlot.rollable)
+            .filter(rollSlot => rollSlot.rollable)
             .forEach(rollSlot => {
-            rollSlot.roll();
-        })
+                rollSlot.roll();
+            });
     }
 
     commit() {

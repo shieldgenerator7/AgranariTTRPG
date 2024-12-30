@@ -46,7 +46,7 @@ function RollerFrame({ actionRoller, updateRoller, removeRoller, updateCharacter
                     updateRoller(actionRoller);
                 }}
             >
-            {actionRoller.title}
+                {actionRoller.title}
             </button>
             <table>
                 <tbody>

@@ -336,8 +336,12 @@ The player can’t take meaningful actions until they roll a Pain Tolerance valu
 
 This isn’t the place for it, but its easy to access atm.
 
+## Hit Chance
+
 Whats the chance you hit an attack, based on your accuracy and the opponent’s dodge?
 
 In the randomness range overlap area, theres a 1/[size of overlap] chance of a tie, after that, the remaining chance is split 50/50
 
 Acc range above overlap (as percent of total acc range) +(Acc range in overlap – 1/overlap)/2 (as percent of total acc range) – Acc range under overlap (as percent of total acc range)
+
+Total Outcome = (acc var) \* (dodge var)

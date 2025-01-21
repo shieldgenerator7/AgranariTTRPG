@@ -1,0 +1,767 @@
+{
+    "name": "Wryonin",
+    "statList": [
+        {
+            "name": "Accuracy",
+            "displayName": "",
+            "xp": 100,
+            "xp_variance": 100,
+            "hasVariance": true,
+            "statCost": 19.375711927571952,
+            "bonusList": {},
+            "bonusTotal": 0,
+            "lastRoll": 0,
+            "statValue": 5.161100679748359,
+            "statVarianceValue": 25.8055033987418,
+            "displayStyle": 0
+        },
+        {
+            "name": "Constitution",
+            "displayName": "",
+            "xp": 100,
+            "xp_variance": 100,
+            "hasVariance": true,
+            "statCost": 8.560401605299269,
+            "bonusList": {},
+            "bonusTotal": 0,
+            "lastRoll": 0,
+            "statValue": 11.68169492633331,
+            "statVarianceValue": 58.40847463166655,
+            "displayStyle": 0
+        },
+        {
+            "name": "Crit Factor",
+            "displayName": "",
+            "xp": 100,
+            "xp_variance": 0,
+            "hasVariance": false,
+            "statCost": 199.85351589896305,
+            "bonusList": {},
+            "bonusTotal": 0,
+            "lastRoll": 0,
+            "statValue": 0.5003664786690843,
+            "statVarianceValue": 0,
+            "displayStyle": 0
+        },
+        {
+            "name": "Damage",
+            "displayName": "",
+            "xp": 100,
+            "xp_variance": 100,
+            "hasVariance": true,
+            "statCost": 5.690553473019733,
+            "bonusList": {},
+            "bonusTotal": 0,
+            "lastRoll": 0,
+            "statValue": 17.57298309806309,
+            "statVarianceValue": 87.86491549031547,
+            "displayStyle": 0
+        },
+        {
+            "name": "Dodge",
+            "displayName": "",
+            "xp": 100,
+            "xp_variance": 100,
+            "hasVariance": true,
+            "statCost": 36.618134887402064,
+            "bonusList": {},
+            "bonusTotal": 0,
+            "lastRoll": 0,
+            "statValue": 2.73088731328049,
+            "statVarianceValue": 13.654436566402449,
+            "displayStyle": 0
+        },
+        {
+            "name": "Durability",
+            "displayName": "",
+            "xp": 100,
+            "xp_variance": 100,
+            "hasVariance": true,
+            "statCost": 9.30334624764627,
+            "bonusList": {},
+            "bonusTotal": 0,
+            "lastRoll": 0,
+            "statValue": 10.74882062196705,
+            "statVarianceValue": 53.74410310983525,
+            "displayStyle": 0
+        },
+        {
+            "name": "Max Health",
+            "displayName": "",
+            "xp": 100,
+            "xp_variance": 0,
+            "hasVariance": false,
+            "statCost": 7.336286359846154,
+            "bonusList": {},
+            "bonusTotal": 0,
+            "lastRoll": 0,
+            "statValue": 13.630874681682553,
+            "statVarianceValue": 0,
+            "displayStyle": 0
+        },
+        {
+            "name": "Pain Tolerance",
+            "displayName": "",
+            "xp": 100,
+            "xp_variance": 100,
+            "hasVariance": true,
+            "statCost": 10.631980609989569,
+            "bonusList": {},
+            "bonusTotal": 0,
+            "lastRoll": 0,
+            "statValue": 9.405585249661033,
+            "statVarianceValue": 47.027926248305164,
+            "displayStyle": 0
+        },
+        {
+            "name": "Speed",
+            "displayName": "",
+            "xp": 100,
+            "xp_variance": 100,
+            "hasVariance": true,
+            "statCost": 16.13835673254244,
+            "bonusList": {},
+            "bonusTotal": 0,
+            "lastRoll": 0,
+            "statValue": 6.196417742975866,
+            "statVarianceValue": 30.98208871487933,
+            "displayStyle": 0
+        },
+        {
+            "name": "Strength",
+            "displayName": "",
+            "xp": 100,
+            "xp_variance": 100,
+            "hasVariance": true,
+            "statCost": 17.540119856451344,
+            "bonusList": {},
+            "bonusTotal": 0,
+            "lastRoll": 0,
+            "statValue": 5.7012153177060245,
+            "statVarianceValue": 28.506076588530124,
+            "displayStyle": 0
+        },
+        {
+            "name": "Willpower",
+            "displayName": "",
+            "xp": 100,
+            "xp_variance": 0,
+            "hasVariance": false,
+            "statCost": 14.544557568211848,
+            "bonusList": {},
+            "bonusTotal": 0,
+            "lastRoll": 0,
+            "statValue": 6.875423988046018,
+            "statVarianceValue": 0,
+            "displayStyle": 0
+        },
+        {
+            "name": "Willpower Factor",
+            "displayName": "",
+            "xp": 100,
+            "xp_variance": 0,
+            "hasVariance": false,
+            "statCost": 45.607559380196285,
+            "bonusList": {},
+            "bonusTotal": 0,
+            "lastRoll": 0,
+            "statValue": 2.192618972797347,
+            "statVarianceValue": 0,
+            "displayStyle": 0
+        },
+        {
+            "name": "Search",
+            "displayName": "",
+            "xp": 100,
+            "xp_variance": 100,
+            "hasVariance": true,
+            "statCost": 15.66147375148127,
+            "bonusList": {},
+            "bonusTotal": 0,
+            "lastRoll": 0,
+            "statValue": 6.385095144097915,
+            "statVarianceValue": 31.925475720489572,
+            "displayStyle": 0
+        },
+        {
+            "name": "Charisma",
+            "displayName": "",
+            "xp": 100,
+            "xp_variance": 100,
+            "hasVariance": true,
+            "statCost": 18.429363858900775,
+            "bonusList": {},
+            "bonusTotal": 0,
+            "lastRoll": 0,
+            "statValue": 5.426123265329275,
+            "statVarianceValue": 27.130616326646372,
+            "displayStyle": 0
+        },
+        {
+            "name": "Scavenge",
+            "displayName": "",
+            "xp": 100,
+            "xp_variance": 100,
+            "hasVariance": true,
+            "statCost": 18.067291284656516,
+            "bonusList": {},
+            "bonusTotal": 0,
+            "lastRoll": 0,
+            "statValue": 5.534863993969262,
+            "statVarianceValue": 27.67431996984631,
+            "displayStyle": 0
+        },
+        {
+            "name": "Intimidate",
+            "displayName": "",
+            "xp": 100,
+            "xp_variance": 100,
+            "hasVariance": true,
+            "statCost": 15.063950073565461,
+            "bonusList": {},
+            "bonusTotal": 0,
+            "lastRoll": 0,
+            "statValue": 6.638365071023577,
+            "statVarianceValue": 33.191825355117885,
+            "displayStyle": 0
+        },
+        {
+            "name": "Courage",
+            "displayName": "",
+            "xp": 100,
+            "xp_variance": 100,
+            "hasVariance": true,
+            "statCost": 25.938082998694505,
+            "bonusList": {},
+            "bonusTotal": 0,
+            "lastRoll": 0,
+            "statValue": 3.855335030157515,
+            "statVarianceValue": 19.276675150787575,
+            "displayStyle": 0
+        },
+        {
+            "name": "Hope",
+            "displayName": "",
+            "xp": 100,
+            "xp_variance": 100,
+            "hasVariance": true,
+            "statCost": 24.962318932727968,
+            "bonusList": {},
+            "bonusTotal": 0,
+            "lastRoll": 0,
+            "statValue": 4.006038071602815,
+            "statVarianceValue": 20.030190358014078,
+            "displayStyle": 0
+        },
+        {
+            "name": "Stealth",
+            "displayName": "",
+            "xp": 100,
+            "xp_variance": 100,
+            "hasVariance": true,
+            "statCost": 18.612660888945015,
+            "bonusList": {},
+            "bonusTotal": 0,
+            "lastRoll": 0,
+            "statValue": 5.372686935880027,
+            "statVarianceValue": 26.86343467940013,
+            "displayStyle": 0
+        },
+        {
+            "name": "Sight",
+            "displayName": "",
+            "xp": 100,
+            "xp_variance": 100,
+            "hasVariance": true,
+            "statCost": 22.51853317938251,
+            "bonusList": {},
+            "bonusTotal": 0,
+            "lastRoll": 0,
+            "statValue": 4.440786582474114,
+            "statVarianceValue": 22.203932912370572,
+            "displayStyle": 0
+        },
+        {
+            "name": "Hearing",
+            "displayName": "",
+            "xp": 100,
+            "xp_variance": 100,
+            "hasVariance": true,
+            "statCost": 18.202566432060454,
+            "bonusList": {},
+            "bonusTotal": 0,
+            "lastRoll": 0,
+            "statValue": 5.493730808413285,
+            "statVarianceValue": 27.468654042066426,
+            "displayStyle": 0
+        },
+        {
+            "name": "Smell",
+            "displayName": "",
+            "xp": 100,
+            "xp_variance": 100,
+            "hasVariance": true,
+            "statCost": 20.163634316264712,
+            "bonusList": {},
+            "bonusTotal": 0,
+            "lastRoll": 0,
+            "statValue": 4.959423407085716,
+            "statVarianceValue": 24.79711703542858,
+            "displayStyle": 0
+        },
+        {
+            "name": "Taste",
+            "displayName": "",
+            "xp": 100,
+            "xp_variance": 100,
+            "hasVariance": true,
+            "statCost": 19.368022265081187,
+            "bonusList": {},
+            "bonusTotal": 0,
+            "lastRoll": 0,
+            "statValue": 5.163149785318611,
+            "statVarianceValue": 25.815748926593052,
+            "displayStyle": 0
+        },
+        {
+            "name": "Touch",
+            "displayName": "",
+            "xp": 100,
+            "xp_variance": 100,
+            "hasVariance": true,
+            "statCost": 21.822327638680214,
+            "bonusList": {},
+            "bonusTotal": 0,
+            "lastRoll": 0,
+            "statValue": 4.582462588580577,
+            "statVarianceValue": 22.912312942902886,
+            "displayStyle": 0
+        },
+        {
+            "name": "Thermal Sense",
+            "displayName": "",
+            "xp": 100,
+            "xp_variance": 100,
+            "hasVariance": true,
+            "statCost": 22.606346269855052,
+            "bonusList": {},
+            "bonusTotal": 0,
+            "lastRoll": 0,
+            "statValue": 4.423536594825467,
+            "statVarianceValue": 22.11768297412733,
+            "displayStyle": 0
+        },
+        {
+            "name": "Direction Sense",
+            "displayName": "",
+            "xp": 100,
+            "xp_variance": 100,
+            "hasVariance": true,
+            "statCost": 23.219243883026422,
+            "bonusList": {},
+            "bonusTotal": 0,
+            "lastRoll": 0,
+            "statValue": 4.30677245580341,
+            "statVarianceValue": 21.533862279017047,
+            "displayStyle": 0
+        },
+        {
+            "name": "Infrared Sense",
+            "displayName": "",
+            "xp": 100,
+            "xp_variance": 100,
+            "hasVariance": true,
+            "statCost": 22.093283956923944,
+            "bonusList": {},
+            "bonusTotal": 0,
+            "lastRoll": 0,
+            "statValue": 4.526262378873758,
+            "statVarianceValue": 22.631311894368785,
+            "displayStyle": 0
+        },
+        {
+            "name": "Tinkering",
+            "displayName": "",
+            "xp": 100,
+            "xp_variance": 100,
+            "hasVariance": true,
+            "statCost": 13.845352274067665,
+            "bonusList": {},
+            "bonusTotal": 0,
+            "lastRoll": 0,
+            "statValue": 7.222640350386746,
+            "statVarianceValue": 36.11320175193373,
+            "displayStyle": 0
+        },
+        {
+            "name": "Armor",
+            "displayName": "",
+            "xp": 100,
+            "xp_variance": 100,
+            "hasVariance": true,
+            "statCost": 8.514783242660904,
+            "bonusList": {},
+            "bonusTotal": 0,
+            "lastRoll": 0,
+            "statValue": 11.744280171335236,
+            "statVarianceValue": 58.72140085667618,
+            "displayStyle": 0
+        }
+    ],
+    "abilityList": [],
+    "consumableList": [],
+    "bonusList": [
+        {
+            "amount": 100,
+            "filter": "Max Health",
+            "editing": false
+        },
+        {
+            "amount": 20,
+            "filter": "Will Power",
+            "editing": false
+        },
+        {
+            "amount": 50,
+            "filter": "Constitution",
+            "editing": false
+        },
+        {
+            "amount": 30,
+            "filter": "Armor",
+            "editing": false
+        }
+    ],
+    "resources": {
+        "health": 113.63087468168256,
+        "willPower": 26.875423988046016
+    },
+    "species": {
+        "name": "Wolf",
+        "adultAge": 21,
+        "baseStatList": [],
+        "statCostList": [
+            {
+                "name": "Accuracy",
+                "min": "19",
+                "avg": "22",
+                "max": "24"
+            },
+            {
+                "name": "Constitution",
+                "min": "7",
+                "avg": "10",
+                "max": "12"
+            },
+            {
+                "name": "Crit Factor",
+                "min": "198",
+                "avg": "200",
+                "max": "220"
+            },
+            {
+                "name": "Damage",
+                "min": "1",
+                "avg": "5",
+                "max": "9"
+            },
+            {
+                "name": "Dodge",
+                "min": "15",
+                "avg": "25",
+                "max": "40"
+            },
+            {
+                "name": "Durability",
+                "min": "8",
+                "avg": "12",
+                "max": "15"
+            },
+            {
+                "name": "Max Health",
+                "min": "7",
+                "avg": "10",
+                "max": "12"
+            },
+            {
+                "name": "Pain Tolerance",
+                "min": "8",
+                "avg": "11",
+                "max": "13"
+            },
+            {
+                "name": "Speed",
+                "min": "15",
+                "avg": "18",
+                "max": "20"
+            },
+            {
+                "name": "Strength",
+                "min": "16",
+                "avg": "18",
+                "max": "19"
+            },
+            {
+                "name": "Willpower",
+                "min": "14",
+                "avg": "15",
+                "max": "16"
+            },
+            {
+                "name": "Willpower Factor",
+                "min": "45",
+                "avg": "50",
+                "max": "57"
+            },
+            {
+                "name": "Search",
+                "min": "15",
+                "avg": "20",
+                "max": "21"
+            },
+            {
+                "name": "Charisma",
+                "min": "18",
+                "avg": "20",
+                "max": "23"
+            },
+            {
+                "name": "Scavenge",
+                "min": "18",
+                "avg": "20",
+                "max": "23"
+            },
+            {
+                "name": "Intimidate",
+                "min": "11",
+                "avg": "20",
+                "max": "22"
+            },
+            {
+                "name": "Courage",
+                "min": "10",
+                "avg": "20",
+                "max": "27"
+            },
+            {
+                "name": "Hope",
+                "min": "10",
+                "avg": "20",
+                "max": "27"
+            },
+            {
+                "name": "Stealth",
+                "min": "14",
+                "avg": "20",
+                "max": "24"
+            },
+            {
+                "name": "Sight",
+                "min": "15.6",
+                "avg": "20",
+                "max": "22.8"
+            },
+            {
+                "name": "Hearing",
+                "min": "17.2",
+                "avg": "20",
+                "max": "21.6"
+            },
+            {
+                "name": "Smell",
+                "min": "18.8",
+                "avg": "20",
+                "max": "20.4"
+            },
+            {
+                "name": "Taste",
+                "min": "19.2",
+                "avg": "20",
+                "max": "20.4"
+            },
+            {
+                "name": "Touch",
+                "min": "18",
+                "avg": "20",
+                "max": "22"
+            },
+            {
+                "name": "Thermal Sense",
+                "min": "16.8",
+                "avg": "20",
+                "max": "23.6"
+            },
+            {
+                "name": "Direction Sense",
+                "min": "15.6",
+                "avg": "20",
+                "max": "25.2"
+            },
+            {
+                "name": "Infrared Sense",
+                "min": "14.4",
+                "avg": "20",
+                "max": "26.8"
+            },
+            {
+                "name": "Tinkering",
+                "min": "13.2",
+                "avg": "10",
+                "max": "28.4"
+            },
+            {
+                "name": "Armor",
+                "min": "8",
+                "avg": "10",
+                "max": "12"
+            }
+        ]
+    },
+    "speciesName": "Wolf",
+    "statCosts": {
+        "Accuracy": 19.375711927571952,
+        "Constitution": 8.560401605299269,
+        "Crit Factor": 199.85351589896305,
+        "Damage": 5.690553473019733,
+        "Dodge": 36.618134887402064,
+        "Durability": 9.30334624764627,
+        "Max Health": 7.336286359846154,
+        "Pain Tolerance": 10.631980609989569,
+        "Speed": 16.13835673254244,
+        "Strength": 17.540119856451344,
+        "Willpower": 14.544557568211848,
+        "Willpower Factor": 45.607559380196285,
+        "Search": 15.66147375148127,
+        "Charisma": 18.429363858900775,
+        "Scavenge": 18.067291284656516,
+        "Intimidate": 15.063950073565461,
+        "Courage": 25.938082998694505,
+        "Hope": 24.962318932727968,
+        "Stealth": 18.612660888945015,
+        "Sight": 22.51853317938251,
+        "Hearing": 18.202566432060454,
+        "Smell": 20.163634316264712,
+        "Taste": 19.368022265081187,
+        "Touch": 21.822327638680214,
+        "Thermal Sense": 22.606346269855052,
+        "Direction Sense": 23.219243883026422,
+        "Infrared Sense": 22.093283956923944,
+        "Tinkering": 13.845352274067665,
+        "Armor": 8.514783242660904
+    },
+    "equipmentList": [],
+    "restList": [],
+    "dieRollLog": [
+        {
+            "name": "Accuracy",
+            "rollList": [
+                {
+                    "name": "d25.8055033987418",
+                    "value": 7.121368724450194,
+                    "flair": "drf_normal"
+                },
+                {
+                    "name": "Accuracy",
+                    "value": 5.161100679748359,
+                    "flair": "drf_normal"
+                }
+            ]
+        },
+        {
+            "name": "Accuracy",
+            "rollList": [
+                {
+                    "name": "d25.8055033987418",
+                    "value": 6.960434707798413,
+                    "flair": "drf_normal"
+                },
+                {
+                    "name": "Accuracy",
+                    "value": 5.161100679748359,
+                    "flair": "drf_normal"
+                }
+            ]
+        },
+        {
+            "name": "Strength",
+            "rollList": [
+                {
+                    "name": "d28.506076588530124",
+                    "value": 2.889268318215499,
+                    "flair": "drf_normal"
+                },
+                {
+                    "name": "Strength",
+                    "value": 5.7012153177060245,
+                    "flair": "drf_normal"
+                }
+            ]
+        },
+        {
+            "name": "Speed",
+            "rollList": [
+                {
+                    "name": "d30.98208871487933",
+                    "value": 21.51703264751396,
+                    "flair": "drf_normal"
+                },
+                {
+                    "name": "Speed",
+                    "value": 6.196417742975866,
+                    "flair": "drf_normal"
+                }
+            ]
+        },
+        {
+            "name": "Speed",
+            "rollList": [
+                {
+                    "name": "d30.98208871487933",
+                    "value": 15.024055354054497,
+                    "flair": "drf_normal"
+                },
+                {
+                    "name": "Speed",
+                    "value": 6.196417742975866,
+                    "flair": "drf_normal"
+                }
+            ]
+        },
+        {
+            "name": "Pain Tolerance",
+            "rollList": [
+                {
+                    "name": "d47.027926248305164",
+                    "value": 46.126086771725035,
+                    "flair": "drf_normal"
+                },
+                {
+                    "name": "Pain Tolerance",
+                    "value": 9.405585249661033,
+                    "flair": "drf_normal"
+                }
+            ]
+        },
+        {
+            "name": "Damage",
+            "rollList": [
+                {
+                    "name": "d87.86491549031547",
+                    "value": 19.824165428365237,
+                    "flair": "drf_normal"
+                },
+                {
+                    "name": "Damage",
+                    "value": 17.57298309806309,
+                    "flair": "drf_normal"
+                }
+            ]
+        }
+    ],
+    "dieRollLogSelect": [
+        6
+    ],
+    "isCharacter": true,
+    "editAttributes": false,
+    "searchQuery": " "
+}

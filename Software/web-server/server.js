@@ -12,6 +12,7 @@ const app = express();
 const http = require('http');
 const server = http.createServer(app);
 const { Server } = require('socket.io');
+const { storeCharacter, getCharacterNameList, loadCharacter } = require('./storage');
 const io = new Server(
     server,
     {
@@ -39,6 +40,12 @@ const gameData = {
 };
 
 let storage = undefined;
+//populate characters list
+let characterList = getCharacterNameList();
+characterList.forEach(charName => {
+    let character = loadCharacter(charName);
+    gameData.characters[charName] = character;
+})
 
 io.on('connection', (socket) => {
     console.log('player connected', socket.id);
@@ -84,6 +91,8 @@ io.on('connection', (socket) => {
     socket.on("characterUpdated", ({ socketId, character }) => {
 
         gameData.characters[character.name] = character;
+
+        storeCharacter(character);
 
 
         io.emit("characterUpdated", { socketId: socketId, character: character });

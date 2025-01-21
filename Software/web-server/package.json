@@ -2,13 +2,12 @@
   "name": "AgranariTTRPG-Server",
   "version": "0.0.1",
   "description": "The server for the multiplayer VTT for the Agranari TTRPG",
-  "scripts": {
-  },
+  "scripts": {},
   "author": "shieldgenerator7",
   "license": "ISC",
   "dependencies": {
     "aws": "^0.0.3-2",
-    "cors": "^2.8.5",  
+    "cors": "^2.8.5",
     "express": "^4.21.2",
     "http": "^0.0.1-security",
     "http-server": "^14.1.1",

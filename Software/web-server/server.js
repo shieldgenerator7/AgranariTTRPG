@@ -83,7 +83,7 @@ io.on('connection', (socket) => {
 
     socket.on("characterUpdated", ({ socketId, character }) => {
 
-        gameData[character.name] = character;
+        gameData.characters[character.name] = character;
 
 
         io.emit("characterUpdated", { socketId: socketId, character: character });

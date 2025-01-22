@@ -6,6 +6,7 @@
   "author": "shieldgenerator7",
   "license": "ISC",
   "dependencies": {
+    "@aws-sdk/client-s3": "^3.733.0",
     "aws": "^0.0.3-2",
     "cors": "^2.8.5",
     "express": "^4.21.2",

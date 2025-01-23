@@ -42,9 +42,15 @@ const gameData = {
 let storage = undefined;
 //populate characters list
 let characterList = getCharacterNameList();
+characterList.push("Wryonin");//test code
 characterList.forEach(charName => {
-    let character = loadCharacter(charName);
-    gameData.characters[charName] = character;
+    loadCharacter(charName).then((response) => {
+        response.Body.transformToString().then(res => {
+            let character = JSON.parse(res);
+            gameData.characters[charName] = character;
+            console.log("character loaded!", charName, character);
+        });
+    });
 })
 
 io.on('connection', (socket) => {

@@ -1,6 +1,6 @@
 
 //2025-01-21: copied from https://stackoverflow.com/a/77181535/2336212
-import { S3Client, PutObjectCommand } from '@aws-sdk/client-s3';
+import { S3Client, GetObjectCommand, PutObjectCommand } from '@aws-sdk/client-s3';
 
 const REGION = "us-east-1";
 
@@ -34,7 +34,23 @@ export async function storeCharacter(character) {
     }
 }
 
-export function loadCharacter(characterName) {
+export async function loadCharacter(characterName) {
+    
+    const params = getParamsGet(characterName);
+    try {
+        const results = await s3.send(new GetObjectCommand(params));
+        console.log(
+            "Successfully retrieved " +
+            params.Key +
+            " from " +
+            params.Bucket +
+            "/" +
+            params.Key
+        );
+        return results; // For unit tests.
+    } catch (err) {
+        console.log("Error", err);
+    }
     return {};
 }
 
@@ -46,5 +62,11 @@ function getParams(character) {
         Bucket: BUCKET_NAME,
         Key: getKey(character.name),
         Body: JSON.stringify(character),
+    };
+}
+function getParamsGet(characterName) {
+    return {
+        Bucket: BUCKET_NAME,
+        Key: getKey(characterName),
     };
 }

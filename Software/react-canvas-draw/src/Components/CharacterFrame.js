@@ -18,6 +18,7 @@ import Bonus from "../Data/Bonus";
 import TempBonusFrame from "./TempBonusFrame";
 import Counter from "./Counter";
 import ActionRollAttack from "../Data/Actions/ActionRollAttack";
+import { storeCharacter } from "../Utility/storage_aws";
 
 function CharacterFrame({ character, updateCharacter, game, updateGame, socket, characterIsInGame, diceRolled, attributeAdjusted, abilityModified, characterList, setCharacterList, renameConsumable, addRoller }) {
 
@@ -549,6 +550,7 @@ function CharacterFrame({ character, updateCharacter, game, updateGame, socket, 
                 {!characterIsInGame &&
                     <button onClick={(e) => {
                         socket.emit("submitCharacter", character);
+                        storeCharacter(character);
                     }}>
                         Submit
                     </button>

@@ -1,4 +1,5 @@
-import { AWS } from 'aws-sdk';
+//2025-01-25: copied from https://stackoverflow.com/a/77037754/2336212
+import * as AWS from "@aws-sdk/client-sns";
 
 //2025-01-25: copied from https://docs.aws.amazon.com/sdk-for-javascript/v2/developer-guide/s3-example-photo-album.html
 var characterBucketName = "sg7-testbucket1";

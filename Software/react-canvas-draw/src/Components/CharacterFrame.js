@@ -18,7 +18,7 @@ import Bonus from "../Data/Bonus";
 import TempBonusFrame from "./TempBonusFrame";
 import Counter from "./Counter";
 import ActionRollAttack from "../Data/Actions/ActionRollAttack";
-import { storeCharacter } from "../Utility/storage_aws";
+import { storeCharacter } from "../Utility/storage_aws_static";
 
 function CharacterFrame({ character, updateCharacter, game, updateGame, socket, characterIsInGame, diceRolled, attributeAdjusted, abilityModified, characterList, setCharacterList, renameConsumable, addRoller }) {
 

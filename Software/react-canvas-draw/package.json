@@ -8,6 +8,7 @@
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "assert": "^2.1.0",
+    "aws-sdk": "^2.1692.0",
     "express": "^4.21.2",
     "http": "^0.0.1-security",
     "http-server": "^14.1.1",

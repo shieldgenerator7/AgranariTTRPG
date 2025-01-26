@@ -58,26 +58,27 @@ export async function storeCharacter(character) {
 
 export async function loadCharacter(characterName) {
     
-    // const params = getParamsGet(characterName);
-    // try {
-    //     const results = await s3.send(new GetObjectCommand(params));
-    //     console.log(
-    //         "Successfully retrieved " +
-    //         params.Key +
-    //         " from " +
-    //         params.Bucket +
-    //         "/" +
-    //         params.Key
-    //     );
-    //     return results; // For unit tests.
-    // } catch (err) {
-    //     console.log("Error", err);
-    // }
+    //2025-01-25: copied from https://docs.aws.amazon.com/sdk-for-javascript/v2/developer-guide/s3-example-photo-album.html
+    var characterKey = getKey(characterName);
+    s3.listObjects({ Prefix: characterKey }, function (err, data) {
+        if (err) {
+            return alert("There was an error viewing your character: " + err.message);
+        }
+        // 'this' references the AWS.Response instance that represents the response
+        var href = this.request.httpRequest.endpoint.href;
+        var bucketUrl = href + characterBucketName + "/";
+      
+        var characterList = data.Contents.map(function (character) {
+            var characterKey = character.Key;
+            var characterUrl = bucketUrl + encodeURIComponent(characterKey);
+
+        });
+    });
     return {};
 }
 
 function getKey(characterName) {
-    return `${characterName}.json`;
+    return `${encodeURIComponent(characterName)}/${characterName}.json`;
 }
 function getParams(character) {
     // return {

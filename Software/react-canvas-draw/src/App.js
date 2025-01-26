@@ -19,6 +19,7 @@ import ActionRollAttack, { inflateActionRollAttack } from './Data/Actions/Action
 import Dropzone from 'react-dropzone';
 import { UploadFile } from './Utility/Upload';
 import Species, { readSpeciesFromCSV } from './Data/Species';
+import { useAuth } from "react-oidc-context";
 
 function App() {
     //Title
@@ -377,6 +378,33 @@ function App() {
         updateSpeciesList();
     };
 
+    //Authentication
+    //2025-01-25: copied from https://us-east-1.console.aws.amazon.com/cognito/v2/idp/set-up-your-application?region=us-east-1
+    const auth = useAuth();
+    const signOutRedirect = () => {
+        const clientId = "60en6jq8d6hu6afh271f232601";
+        const logoutUri = "<logout uri>";
+        const cognitoDomain = "https://<user pool domain>";
+        window.location.href = `${cognitoDomain}/logout?client_id=${clientId}&logout_uri=${encodeURIComponent(logoutUri)}`;
+    };
+
+    if (auth.isLoading) {
+        return <div>Loading...</div>;
+    }
+
+    if (auth.error) {
+        return <div>Encountering error... {auth.error.message}</div>;
+    }
+
+    if (!auth.isAuthenticated) {
+        return (
+            <div>
+                <button onClick={() => auth.signinRedirect()}>Sign in</button>
+                <button onClick={() => signOutRedirect()}>Sign out</button>
+            </div>
+        );
+    }
+
     //Character to Show
     let characterToShow = undefined;
     if (paramCharacter?.trim() || false) {
@@ -547,6 +575,15 @@ function App() {
                         log={log}
                     ></CommandPanel>
                 }
+                {/* //2025-01-25: copied from https://us-east-1.console.aws.amazon.com/cognito/v2/idp/set-up-your-application?region=us-east-1 */}
+                <div>
+                    <pre> Hello: {auth.user?.profile.email} </pre>
+                    <pre> ID Token: {auth.user?.id_token} </pre>
+                    <pre> Access Token: {auth.user?.access_token} </pre>
+                    <pre> Refresh Token: {auth.user?.refresh_token} </pre>
+
+                    <button onClick={() => auth.removeUser()}>Sign out</button>
+                </div>
             </header>
         </div>
     );

@@ -42,7 +42,7 @@ Time cost: 3 min (for a humanoid target 1.5m in height)
 
 Requirements:
 
--   Change Fur Pattern Ease: 100
+-   Change Fur Pattern: 100
 -   Sight: 50
 
 Change the target’s fur pattern to match that of their surroundings. When you start casting this spell, make a Sight stat check. When you finish casting this spell, the target gets a bonus to their Stealth checks equal to the result of your Sight check multiplied by your Camouflage Stealth Factor stat.
@@ -61,12 +61,24 @@ Parent Spell: Change Fur Pattern
 
 Bend Fur, Bend Skin
 
-Time cost: 5 min
+Time cost: 5 min (for a humanoid target 1.5m in height)
+
 Requirements:
 
 -   Camouflage: 100
+-   Sight: 50
+-   Touch: 50
 
-Change the texture and finer shape of your skin, further blending into your environment. Make a Deception ability check, and add its result to the previous Deception check.
+Change the texture and finer shape of the target’s skin, further blending them into their environment. When you start casting this spell, make a Sight stat check and a Touch stat check. When you finish casting this spell, the target gets a bonus to their Stealth checks equal to the result of your Sight check multiplied by your Camouflage Stealth Factor stat, plus the result of your Touch check multiplied by your Octopus Camouflage Stealth Factor stat.
+
+The target only keeps this Stealth bonus while in an area for which they were camouflaged.
+
+When calculating time cost, scale it based on the target’s height.
+
+Stats:
+
+• Octopus Camouflage Stealth Factor: 0.1x
+
 Parent spell: Camouflage
 
 ## Change Eye Color

@@ -8,6 +8,14 @@ How this magic system works.
 
 Every spell has a stat called “[Spell Name] Ease” specifically for it. The more you cast a spell, the easier it is to cast, and the less time it takes to cast. You can put XP into this ease stat for each spell to decrease its time cost.
 
+## Parent Spells
+
+Some spells have a parent spell. A spell’s parent spell is a spell that is a prerequisite for being able to cast this spell, as it is usually a more complex version of the parent spell. The spell will list the parent spell as a requirement to be able to cast this spell.
+
+Additionally, having ease in the parent spell makes it easier to cast the spell. Every spell that has a parent spell has an additional stat (not listed), called “[Spell Name] Parent Ease Factor”. This stat starts at 0, but you can spend XP to increase it. When calculating the time cost of a spell, multiply the parent spell’s ease with this ease factor stat, and add the result to your total ease for this casting.
+
+If the parent spell also has a parent spell, you can include that parent’s spell ease as well, using the parent spell’s parent ease factor stat. And thusly up the chain.
+
 # Spells
 
 A non-exhaustive list of possible spells.
@@ -47,13 +55,19 @@ Stats:
 
 -   Camouflage Stealth Factor: 0.1x
 
+Parent Spell: Change Fur Pattern
+
 ## Octopus Camouflage
 
 Bend Fur, Bend Skin
 
 Time cost: 5 min
+Requirements:
+
+-   Camouflage: 100
 
 Change the texture and finer shape of your skin, further blending into your environment. Make a Deception ability check, and add its result to the previous Deception check.
+Parent spell: Camouflage
 
 ## Change Eye Color
 
@@ -91,11 +105,7 @@ Change the color of the target’s fur in any pattern you want. The colors can b
 
 When calculating time cost, scale it based on the target’s height.
 
-When calculating time cost for this spell, include your Change Fur Color Ease multiplied by your Change Fur Color Ease – Change Fur Pattern Factor stat.
-
-Stats:
-
--   Change Fur Color Ease – Change Fur Pattern Factor: 0
+Parent spell: Change Fur Color
 
 ## Heal Scar
 

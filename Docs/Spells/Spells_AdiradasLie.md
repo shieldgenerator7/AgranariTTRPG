@@ -6,6 +6,8 @@ Adirada backstory.
 
 How this magic system works.
 
+## Spell Ease
+
 Every spell has a stat called “[Spell Name] Ease” specifically for it. The more you cast a spell, the easier it is to cast, and the less time it takes to cast. You can put XP into this ease stat for each spell to decrease its time cost.
 
 ## Parent Spells
@@ -24,7 +26,7 @@ A non-exhaustive list of possible spells.
 
 Bend Bone
 
-Time cost: 5 min (3 sec/point)
+Time cost: 5 min
 
 The target grows long sharp teeth and gains the Bite action. The target gains additional damage on their bite attack, equal to your Carnivorate Damage stat.
 
@@ -83,7 +85,7 @@ Parent spell: Camouflage
 
 ## Change Eye Color
 
-Bend Jelly
+Bend Gell
 
 Time cost: 5 sec
 

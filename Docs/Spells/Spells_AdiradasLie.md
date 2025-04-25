@@ -26,20 +26,34 @@ Stats:
 
 -   Carnivorate Damage: 1 + d1
 
-
-
-
-
-
 ## Camouflage
 
-Difficulty: 25
+Bend Fur
 
-Change your body color to match that of your surroundings. Make a Deception ability check to determine how effective it is. You get a bonus to Stealth checks based on its effectiveness.
+Time cost: 3 min (for a humanoid target 1.5m in height)
 
-Spell Bend
+Requirements:
 
--   Mimic (Difficulty + 15): Change the texture and finer shape of your skin, further blending into your environment. Make a Deception ability check, and add its result to the previous Deception check.
+-   Change Fur Pattern Ease: 100
+-   Sight: 50
+
+Change the target’s fur pattern to match that of their surroundings. When you start casting this spell, make a Sight stat check. When you finish casting this spell, the target gets a bonus to their Stealth checks equal to the result of your Sight check multiplied by your Camouflage Stealth Factor stat.
+
+The target only keeps this Stealth bonus while in an area for which they were camouflaged.
+
+When calculating time cost, scale it based on the target’s height.
+
+Stats:
+
+-   Camouflage Stealth Factor: 0.1x
+
+## Octopus Camouflage
+
+Bend Fur, Bend Skin
+
+Time cost: 5 min
+
+Change the texture and finer shape of your skin, further blending into your environment. Make a Deception ability check, and add its result to the previous Deception check.
 
 ## Change Eye Color
 
@@ -53,11 +67,35 @@ Bend Bone, Bend Flesh, Bend Skin
 
 Time cost: 30 min
 
+## Change Fur Color
+
+Bend Fur
+
+Time cost: 1 min (for a humanoid target 1.5m in height)
+
+Change the color of the target’s fur to any solid color you want. The color can be a realistic fur color or not.
+
+When calculating time cost, scale it based on the target’s height.
+
 ## Change Fur Pattern
 
-Bend Hair
+Bend Fur
 
-Time cost: 2 min
+Time cost: 2 min (for a humanoid target 1.5m in height)
+
+Requirements:
+
+-   Change Fur Color Ease: 20
+
+Change the color of the target’s fur in any pattern you want. The colors can be realistic fur colors or not.
+
+When calculating time cost, scale it based on the target’s height.
+
+When calculating time cost for this spell, include your Change Fur Color Ease multiplied by your Change Fur Color Ease – Change Fur Pattern Factor stat.
+
+Stats:
+
+-   Change Fur Color Ease – Change Fur Pattern Factor: 0
 
 ## Heal Scar
 

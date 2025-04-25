@@ -6,6 +6,8 @@ Adirada backstory.
 
 How this magic system works.
 
+Every spell has a stat called “[Spell Name] Ease” specifically for it. The more you cast a spell, the easier it is to cast, and the less time it takes to cast. You can put XP into this ease stat for each spell to decrease its time cost.
+
 # Spells
 
 A non-exhaustive list of possible spells.
@@ -23,7 +25,6 @@ If they already have sharp teeth, they grow more teeth and/or the ones they alre
 Stats:
 
 -   Carnivorate Damage: 1 + d1
--   Carnivorate Ease: 0
 
 
 

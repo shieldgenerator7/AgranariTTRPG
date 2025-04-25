@@ -25,16 +25,10 @@ Stats:
 -   Carnivorate Damage: 1 + d1
 -   Carnivorate Ease: 0
 
-## Buff Ability Score
 
-Difficulty: 15
 
-Increase one of your ability scores by 1.
 
-Spell Bend
 
--   (Difficulty +12): Increase the ability score by an additional 1 point.
--   (Difficulty +10): Increase an additional ability score by 1 point.
 
 ## Camouflage
 
@@ -46,23 +40,59 @@ Spell Bend
 
 -   Mimic (Difficulty + 15): Change the texture and finer shape of your skin, further blending into your environment. Make a Deception ability check, and add its result to the previous Deception check.
 
-## Change Appearance
+## Change Eye Color
 
-Difficulty: 0
+Bend Jelly
 
-Change slight things about your appearance. Here’s a non-exhaustive list of things this spell can do:
+Time cost: 5 sec
 
--   Change eye color, head/muzzle shape, fur pattern, etc.
--   Remove scars, pimples, birthmarks, etc.
--   Add beauty marks, eyeshadow, stripes, tattoos, etc.
+## Change Head Shape
 
-These changes are purely cosmetic and have no impact on your physical abilities.
+Bend Bone, Bend Flesh, Bend Skin
 
-## Change Size
+Time cost: 30 min
+
+## Change Fur Pattern
+
+Bend Hair
+
+Time cost: 2 min
+
+## Heal Scar
+
+Bend Skin
+
+Time cost: 30 sec
+
+## Remove Blemish
+
+Bend Skin
+
+Time cost: 5 sec
+
+[DEV NOTE: “Blemish” is the name for the physical indication that a person has their species ability!]
+
+## Remove Birthmark
+
+Bend Skin
+
+Time cost: 10 sec
+
+## Enlarge Size
 
 Difficulty: 10
 
-Increase or decrease your size by up to 10%.
+Increase your size by up to 10%.
+
+Spell Bend:
+
+-   (Difficulty +10): Increase the percentage by up to an additional 10%.
+
+## Reduce Size
+
+Difficulty: 10
+
+Reduce your size by up to 10%.
 
 Spell Bend:
 
@@ -92,12 +122,6 @@ Spell Bend
 
 -   Copy Species (Difficulty +75): You may mimic an individual who is a different species than you. This follows the transformation rules outlined in the “Change Species” spell.
 -   Copy Blemish (Difficulty +50): Make a History and Arcana check. If you pass both, you may copy their Blemish stats for your new form. If you are looking at them while casting the spell, you get Advantage x3 on this History check.
-
-## Minor Camouflage
-
-Difficulty: 10
-
-Change your skin and fur to match your surroundings. As long as you stay in that one spot, you are very difficult to spot. You get a +5 to Stealth checks relating to sight.
 
 ## Modify Limb
 
@@ -133,6 +157,15 @@ Spell Bend
 Difficulty: 20
 
 Increase the muscles in one of your limbs. You get +5 to Strength ability checks and saving throws made with that limb. If both of your legs have increased muscles, gain +5 movement speed.
+
+Spell Bend
+
+-   Extra limb (Difficulty +15): Apply this effect to 1 additional limb.
+-   Extra muscles (Difficulty +18): Increase the Strength bonus by +5 and the movement speed bonus by +5.
+
+## Atrophy Limb
+
+Difficulty: 20
 
 Alternatively, you can decrease your muscles, with the same rules, but with a -5 Strength bonus and a -5 movement speed bonus. The movement speed “bonus” applies if at least one of your legs has this effect. The spell bending options can also alternatively be negative.
 

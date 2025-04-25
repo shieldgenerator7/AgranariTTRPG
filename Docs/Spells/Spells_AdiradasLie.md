@@ -89,11 +89,17 @@ Bend Gell
 
 Time cost: 5 sec
 
+The target’s eye color changes to whatever color you want. The color can be natural or not.
+
 ## Change Head Shape
 
 Bend Bone, Bend Flesh, Bend Skin
 
 Time cost: 30 min
+
+The target’s head changes to the shape you want. This includes eyes, ears, nose, mouth and teeth, and fur placement. Fur pattern remains the same as much as possible.
+
+The target loses actions they could do with their old head form and gain actions they can do with their new head form.
 
 ## Change Fur Color
 

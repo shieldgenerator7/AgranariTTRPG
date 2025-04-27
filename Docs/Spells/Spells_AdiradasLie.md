@@ -32,6 +32,40 @@ Each spell says what material that it is intended to bend. This is not a restric
 
 A non-exhaustive list of possible spells.
 
+## Bark Snack
+
+Bend Wood
+
+Time cost: 30 sec (for a 1 square dm of tree bark)
+
+The target piece of tree bark peels off the tree.
+
+## Bestow Heirloom
+
+Bend Bone
+
+Time cost: 10 days
+
+Copy effect from original antler heirloom to target antler heirloom.
+
+The original heirloom is not effected.
+
+If the target heirloom already had an heirloom effect, the previous effect is suppressed.
+
+While the spell is only partially complete, the target still has its previous effect, but reduced proportional to the spell’s completion percent. The target has the new effect as well, but only partially effective, proportional to the spell’s completion percent.
+
+## Bioluminate
+
+Bend Fur
+
+Time cost: 1 min (for a humanoid target 1.5m in height)
+
+Make the target’s fur glow. The light is dim, and cannot blind.
+
+When calculating time cost, scale it based on the target’s height.
+
+Parent spell: Change Fur Color
+
 ## Carnivorate
 
 Bend Bone
@@ -137,6 +171,28 @@ When calculating time cost, scale it based on the target’s height.
 
 Parent spell: Change Fur Color
 
+## Graft Limb
+
+Bend Bone, Bend Flesh, Bend Fur
+
+Time cost: 4 min
+
+Take a severed limb and graft it onto the target. The target gains full control of the limb.
+
+The limb does not have to be originally from the target, and it does not need to be grafted in the place it’s “supposed to go”.
+
+## Grass Chains
+
+Bend Leaf
+
+Time cost: 1 min
+
+The target blade of grass grows 10x its length and increases in strength. As it grows, you may have it wrap around something within its range. The grass has increased strength equal to your Grass Chains Strength stat.
+
+Stats:
+
+-   Grass Chains Strength: 1+d1
+
 ## Grow Antlers
 
 Bend Bone
@@ -156,6 +212,14 @@ Stats:
 Bend Skin
 
 Time cost: 30 sec
+
+## Leaf Cloth
+
+Bend Leaf
+
+Time cost: 1 min
+
+Expand the target leaf to be big enough to use as a piece of cloth. The leaf cloth will be 10x the size of the leaf’s original size.
 
 ## Remove Blemish
 

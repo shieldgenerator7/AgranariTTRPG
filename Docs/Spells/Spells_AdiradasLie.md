@@ -103,6 +103,14 @@ Stats:
 
 Parent Spell: Change Fur Pattern
 
+## Diggy Hole
+
+Bend Dirt
+
+Time cost: 5 sec (for a 1 square dm block of dirt)
+
+The target area of dirt compresses down or to the side, creating a hole in the ground.
+
 ## Octopus Camouflage
 
 Bend Fur, Bend Skin
@@ -192,6 +200,24 @@ The target blade of grass grows 10x its length and increases in strength. As it 
 Stats:
 
 -   Grass Chains Strength: 1+d1
+
+## Grave
+
+Bend Dirt
+
+Time cost: 7.5 hrs (for a grave 2.5m x 1m x 2m)
+
+Requirements:
+
+-   Diggy Hole: 20
+
+The target area of dirt recedes into the ground and to the sides, leaving enough room for the grave.
+
+Breaking the hoof clipping is usually sufficient to bury its contents, as the dirt comes back from the walls of the grave instead of from the ground.
+
+This spell will ignore non-dirt matter, such as stones, roots, and worms that may be in the target area.
+
+Parent spell: Diggy Hole
 
 ## Grow Antlers
 
@@ -370,3 +396,15 @@ Modify the target’s hooves to not make any noise when traversing terrain. The 
 Stats:
 
 -   Silent Step Stealth: 1 +d1
+
+## Worldly Shackles
+
+Bend Dirt
+
+Time cost: 1 minute (for 2 blocks of dirt 2dm x 3dm x 1dm each)
+
+The target area of dirt comes up and fastens around the feet of whoever is standing above it. The shackles have a strength equal to your Worldly Shackles Strength stat.
+
+Stats:
+
+-   Worldly Shackles Strength: 1+d1

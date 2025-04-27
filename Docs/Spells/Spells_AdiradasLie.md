@@ -267,15 +267,21 @@ Spell Bend
 -   Extra limb (Difficulty +15): Apply this effect to 1 additional limb.
 -   Extra muscles (Difficulty +18): Increase the Strength bonus by +5 and the movement speed bonus by +5.
 
-## Ornate
+## Ornate Fur
 
-Difficulty: 10
+Bend Fur
 
-Create a special intricate pattern on yourself that excentuates your style and garnishes the respect of others. Increase your Charisma by +1 and get a +2 bonus on Charisma checks and saving throws.
+Time cost: 2 min (for a humanoid target 1.5m in height)
 
-Spell Bend
+Requirements:
 
--   (Difficulty +5): Increase your Charisma by an additional +1 and increase the Charisma bonus by an additional +1.
+-   Change Fur Pattern: 20
+
+Create a special intricate pattern on the target that identifies them as a figure of importance, such as a noble, leader, or king; or that is a uniform of a certain profession, such as medic or firefighter.
+
+You must have knowledge of the specific pattern you want and the requirements of it.
+
+Parent spell: Change Fur Pattern
 
 ## Silent Step
 

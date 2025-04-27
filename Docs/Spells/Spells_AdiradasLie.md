@@ -36,7 +36,7 @@ A non-exhaustive list of possible spells.
 
 Bend Wood
 
-Time cost: 30 sec (for a 1 square dm of tree bark)
+Time cost: 30 sec (for a 1 square dm piece of tree bark)
 
 The target piece of tree bark peels off the tree.
 

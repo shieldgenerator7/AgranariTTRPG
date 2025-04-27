@@ -285,6 +285,16 @@ Parent spell: Change Fur Pattern
 
 ## Silent Step
 
-Difficulty: 20
+Bend Fur
 
-Modify your hooves, paws, feet, etc. to not make any noise when traversing terrain. You get a +5 bonus to Stealth checks relating to sound.
+Time cost: 3 min
+
+Requirements:
+
+-   Stealth: 50
+
+Modify the target’s hooves to not make any noise when traversing terrain. The target gains a bonus to Stealth checks equal to your Silent Step Stealth stat.
+
+Stats:
+
+-   Silent Step Stealth: 1 +d1

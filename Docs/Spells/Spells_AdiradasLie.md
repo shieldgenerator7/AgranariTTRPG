@@ -1,6 +1,6 @@
 # Adirada’s Lie
 
-Adirada, the Deer Goddess of Truth and Nature, was a normal deer who was granted the extraordinary ability to bend reality. She passed on her gift to her descendants, who now know it as Adirada’s Lie.
+Adirada-Do, the Deer Goddess of Truth and Nature, was a normal deer who was granted the extraordinary ability to bend reality. She passed on her gift to her descendants, who now know it as Adirada’s Lie.
 
 Those who have the power of Adirada’s Lie have a blemish on their hoof hands: the middle hoof finger is disproportionately bigger than the other hoof fingers. This is the source of their power.
 

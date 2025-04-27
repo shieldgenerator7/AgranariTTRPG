@@ -213,6 +213,14 @@ Bend Skin
 
 Time cost: 30 sec
 
+## Mental Carving
+
+Bend Wood
+
+Time cost: 3 min (for a 1 cube dm block of wood)
+
+The target block morphs in shape to any shape you want.
+
 ## Leaf Cloth
 
 Bend Leaf

@@ -6,7 +6,9 @@ Those who have the power of Adirada’s Lie have a blemish on their hoof hands: 
 
 # Magic System
 
-How this magic system works.
+While a deer casts a spell, their middle hoof grows. When they stop casting the spell, the middle hoof stops growing. Then they can clip the extra bit off to make a hoof clipping. The hoof clipping holds the spell in place. The spell lasts as long as the hoof clipping does. If the hoof clipping breaks, gets destroyed, or decomposes, then the spell it holds reverts to its original form, if possible. This means that deer spells are effectively permanent, as long as the hoof clipping remains intact.
+
+Deer spells take a long time to fully cast. Instead of being “complete” at the end, they are cast overtime, and they effect their target gradually over time. Meaning that if a spell is interrupted, it still has some level of completion that is held by the hoof clipping.
 
 ## Spell Ease
 
@@ -19,6 +21,12 @@ Some spells have a parent spell. A spell’s parent spell is a spell that is a p
 Additionally, having ease in the parent spell makes it easier to cast the spell. Every spell that has a parent spell has an additional stat (not listed), called “[Spell Name] Parent Ease Factor”. This stat starts at 0, but you can spend XP to increase it. When calculating the time cost of a spell, multiply the parent spell’s ease with this ease factor stat, and add the result to your total ease for this casting.
 
 If the parent spell also has a parent spell, you can include that parent’s spell ease as well, using the parent spell’s parent ease factor stat. And thusly up the chain.
+
+## Materials
+
+Each material has its own resistance to being bended. This resistance is more or less consistent across all things of the same material.
+
+Each spell says what material that it is intended to bend. This is not a restriction or requirement. You can bend materials with a spell other than the one listed, but then you have to modify the time cost for that other material. If you bend the intended material, then you don’t have to modify the time cost.
 
 # Spells
 

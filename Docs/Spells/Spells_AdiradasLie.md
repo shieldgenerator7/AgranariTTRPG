@@ -137,6 +137,20 @@ When calculating time cost, scale it based on the target’s height.
 
 Parent spell: Change Fur Color
 
+## Grow Antlers
+
+Bend Bone
+
+Time cost: 5 min
+
+The target grows a set of antlers in any shape or configuration you want. The target gains the Antler Stab action, with damage equal to your Grow Antlers Damage stat.
+
+If the target already has antlers, you can bend the existing antlers. Their Antler Stab damage is increased by your Grow Antlers Damage stat.
+
+Stats:
+
+-   Grow Antlers Damage: 0 +d0
+
 ## Heal Scar
 
 Bend Skin

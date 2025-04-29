@@ -127,7 +127,7 @@ When the hoof clipping breaks, the limb flies in a straight line back to the tar
 
 Bend Dirt
 
-Time cost: 5 sec (for a 1 square dm block of dirt)
+Time cost: 5 sec (for a 1 cube dm block of dirt)
 
 The target area of dirt compresses down or to the side, creating a hole in the ground.
 

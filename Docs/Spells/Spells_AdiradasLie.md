@@ -103,6 +103,26 @@ Stats:
 
 Parent Spell: Change Fur Pattern
 
+## Craft Tool
+
+Bend Stone
+
+Time cost: 5 min (for a 1 cube dm block of stone)
+
+The target bends into the shape you want.
+
+## Detach Limb
+
+Bend Fur, Bend Skin, Bend Flesh, Bend Bone
+
+Time cost: 10 min
+
+The target’s limb becomes disconnected from their body and falls off. The target still retains full control of the limb, and still maintains all feeling in the limb. Moving the limb far away doesn’t prevent this.
+
+The opening where the disconnection happened seems to be completely open, but does bleed. Blood flows like normal from the target to its detached limb and back, and cutting the limb still makes it bleed.
+
+When the hoof clipping breaks, the limb flies in a straight line back to the target, if able.
+
 ## Diggy Hole
 
 Bend Dirt
@@ -239,6 +259,18 @@ Bend Skin
 
 Time cost: 30 sec
 
+## Heal Wound
+
+Bend Flesh
+
+Time cost: 1 min (for a wound 1dm x 1dm)
+
+The target wound seals up, preventing further bleeding. Additionally, the target heals for an amount of health equal to your Heal Wound Heal stat.
+
+Stats:
+
+-   Heal Wound Heal: 0+d0
+
 ## Mental Carving
 
 Bend Wood
@@ -314,6 +346,14 @@ Spell Bend
 -   Copy Species (Difficulty +75): You may mimic an individual who is a different species than you. This follows the transformation rules outlined in the “Change Species” spell.
 -   Copy Blemish (Difficulty +50): Make a History and Arcana check. If you pass both, you may copy their Blemish stats for your new form. If you are looking at them while casting the spell, you get Advantage x3 on this History check.
 
+## Mind Meld
+
+Bend Skin
+
+Time cost: 15 min
+
+The target’s hand hoof tips becomes connected to the deer they are touching. The target can read the other deer’s thoughts and embed thoughts of their own.
+
 ## Modify Limb
 
 Difficulty: 25
@@ -381,6 +421,22 @@ You must have knowledge of the specific pattern you want and the requirements of
 
 Parent spell: Change Fur Pattern
 
+## Paint Rock
+
+Bend Stone
+
+Time cost: 1 min
+
+The target rock changes color.
+
+## Shut Up
+
+Bend Skin
+
+Time cost: 2 min
+
+The target’s lips seal shut, effectively preventing them from talking. It does not stop them from breathing through their nose or other non-mouth breathing method. They can still mumble incoherently.
+
 ## Silent Step
 
 Bend Fur
@@ -396,6 +452,64 @@ Modify the target’s hooves to not make any noise when traversing terrain. The 
 Stats:
 
 -   Silent Step Stealth: 1 +d1
+
+## Steel Bones
+
+Bend Bone
+
+Time cost: 3 days (for a humanoid target 1.5m in height)
+
+The target’s bones change to steel, increasing their durability. The target gains durability equal to your Steel Bones Durability stat.
+
+Stats:
+
+-   Steel Bones Durability: 0+d0
+
+## Tastenate
+
+Bend Leaf
+
+Time cost: 30 sec (for a piece of fruit 1dm x 1dm x 1dm, or a collection of fruit of the same size)
+
+The target fruit becomes imbued with the taste of another fruit or food.
+
+## Telepathic Tongue
+
+Bend Flesh
+
+Time cost: 2 min
+
+The target’s tongue becomes a conduit for their brain. When two telepathic tongues touch, they can communicate telepathically.
+
+## Thick Skin
+
+Bend Skin
+
+Time cost: 3 min (for a humanoid target 1.5m in height)
+
+The target’s skin becomes thicker and more resistant to attacks. The target gains armor equal to your Thick Skin Armor stat.
+
+Stats:
+
+-   Thick Skin Armor: 1
+
+## Tree Hug
+
+Bend Wood
+
+Time cost: 2 min (for a tree branch 1dm in diameter)
+
+The target branch bends around, allowing it hug someone that is touching it.
+
+## Wandering Eye
+
+Bend Gel
+
+Time cost: 10 min
+
+The target’s eye dislodges from its socket, grows a layer of skin, and sprouts legs, wings, and/or other appendages. The target can control the movement of the eye. The eye has unlimited range. The target can still see everything the eye sees, and can feel everything the eye’s limbs touch.
+
+When the hoof clipping is destroyed, if the eye is not in its socket, it still reverts to its normal eye shape, and flies back in a straight line to its socket, as much as it can.
 
 ## Worldly Shackles
 

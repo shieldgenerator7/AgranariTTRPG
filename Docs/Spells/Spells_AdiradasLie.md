@@ -30,7 +30,7 @@ Each spell says what material that it is intended to bend. This is not a restric
 
 # Spells
 
-A non-exhaustive list of possible spells.
+A non-exhaustive list of possible spells. I want to stress this. These are a sample of what can be done in this magic system, to give you an idea of what is possible with it. It is by no means a complete list of everything you can do with it. You can make your own spells, and you can use these spells as a reference to figure out what the time cost of your spells would be.
 
 ## Bark Snack
 
@@ -464,6 +464,18 @@ The target’s bones change to steel, increasing their durability. The target ga
 Stats:
 
 -   Steel Bones Durability: 0+d0
+
+## Stretch Limb
+
+Bend Flesh, Bend Bone, Bend Skin, Bend Fur
+
+Time cost: 2 min
+
+The target’s limb grows in length, allowing them to reach things they couldn’t before. The length is their original limb length multiplied by one plus your Stretch Limb Factor.
+
+Stats:
+
+-   Stretch Limb Factor: 0.1x
 
 ## Tastenate
 

@@ -12,7 +12,7 @@ Deer spells take a long time to fully cast. Instead of being “complete” at t
 
 ## Spell Ease
 
-Every spell has a stat called “[Spell Name] Ease” specifically for it. The more you cast a spell, the easier it is to cast, and the less time it takes to cast. You can put XP into this ease stat for each spell to decrease its time cost.
+Every spell has a stat called “[Spell Name] Ease” specifically for that spell. The more you cast a spell, the easier it is to cast, and the less time it takes to cast. You can put XP into this ease stat for each spell to decrease its time cost.
 
 ## Parent Spells
 
@@ -22,11 +22,17 @@ Additionally, having ease in the parent spell makes it easier to cast the spell.
 
 If the parent spell also has a parent spell, you can include that parent’s spell ease as well, using the parent spell’s parent ease factor stat. And thusly up the chain.
 
+You can cast any spell, even if you don’t know the parent spell. But casting it without knowing the parent spell greatly increases the time cost of the spell, to the point of being impractical.
+
 ## Materials
 
 Each material has its own resistance to being bended. This resistance is more or less consistent across all things of the same material.
 
 Each spell says what material that it is intended to bend. This is not a restriction or requirement. You can bend materials with a spell other than the one listed, but then you have to modify the time cost for that other material. If you bend the intended material, then you don’t have to modify the time cost.
+
+## Overcasting
+
+Spells can be overcast.
 
 # Spells
 

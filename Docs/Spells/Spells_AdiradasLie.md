@@ -30,9 +30,41 @@ Each material has its own resistance to being bended. This resistance is more or
 
 Each spell says what material that it is intended to bend. This is not a restriction or requirement. You can bend materials with a spell other than the one listed, but then you have to modify the time cost for that other material. If you bend the intended material, then you don’t have to modify the time cost.
 
+## Willful Resistance
+
+In addition to the raw material itself resisting your bending, biological organisms can willfully resist being changed.
+
+If a creature is unaware that they’re being bended, or simply don’t care, their willful resistance is 0. Their willful resistance goes up if they don’t want to be bended, and their willful resistance goes down if they do want to be bended. Willful targets can meaningfully speed up the spell casting.
+
 ## Overcasting
 
-Spells can be overcast.
+Spells can be overcast. Because spells are cast overtime, they can have partial effects before the time is complete. Likewise, if they are cast for longer than their time cost, they can have effects stronger than their base power. It scales based on time.
+
+## Area of Effect
+
+You can choose how big of an area your target is, and it does not have to be contiguous. You can target multiple characters, a wide area of dirt, or several apples in a crate. The bigger the area of effect, and/or the larger number of targets, the slower the spell will be, and the longer it will take to cast. Most spells specify how big of an area the time cost is calculated for. If you choose a bigger area, adjust the time up cost accordingly. And if you choose a smaller area, adjust the time cost down accordingly. Targeting double the area makes it take double the time. Targeting half the area makes it take half the time.
+
+## Character Stats
+
+Every character that can use Adirada’s Lie has several stats that govern how well they can use it.
+
+**Hoof Growth Rate (cm/sec):** How fast the middle hoof grows while channeling a spell.
+
+**Max Hoof Length (cm):** The max hoof length of a middle hoof before the hoof clipping falls off by itself. This does not break the hoof clipping.
+
+**Cast Range (m):** The soft range you can cast spells. Beyond this range, spells quickly take so long that it becomes impractical. Spells cast closer than this range take significantly less time to cast. Spells cast at touch range may take hardly any time at all. This stat is actually a formula that returns a value similar to spell ease. The higher the value, the less time the spell costs.
+
+## Factor Summary
+
+A spell’s time cost can vary depending on a lot of different factors:
+
+-   Spell ease (spell ease)
+-   Range (spell ease)
+-   Target area (scale factor)
+-   Material resistance (spell ease)
+-   Willful resistance (spell ease)
+
+The factors marked with “spell ease” add/subtract to the spell’s ease to influence the time cost. The factors marked with “scale factor” scale the resulting time cost afterwards to influence the time cost, using a multiplier for the scaling.
 
 # Spells
 

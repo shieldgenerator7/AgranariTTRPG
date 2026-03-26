@@ -1,6 +1,6 @@
 "use strict";
 
-import Log from "../Data/Log";
+import Log from "../../Data/Log";
 import LogEntryFrame from "./LogEntryFrame";
 import React from "react";
 

@@ -2,9 +2,9 @@
 
 import Dropzone from "react-dropzone";
 import Creature, { backwardsCompatifyCreature, inflateCreature } from "../Data/Creature";
-import { downloadFile } from "../Utility/Download";
-import { UploadFile, UploadFromFilePicker } from "../Utility/Upload";
-import { arraySort, arraySum, clamp } from "../Utility/Utility";
+import { downloadFile } from "../../../Utility/Download";
+import { UploadFile, UploadFromFilePicker } from "../../../Utility/Upload";
+import { arraySort, arraySum, clamp } from "../../../Utility/Utility";
 
 function CardListPanel({ cardList, setCardList, currentCard, setCard, updateCard, setPasteString }) {
     return (

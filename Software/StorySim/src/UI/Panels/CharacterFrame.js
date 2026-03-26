@@ -1,24 +1,24 @@
 "use strict";
 
 import { useState } from "react";
-import Ability, { inflateAbility } from "../Data/Ability";
-import Stat, { inflateStat } from "../Data/Stat";
-import Character from "../Data/Character";
-import { DIE_ROLL_FLAIR_CRIT, DIE_ROLL_FLAIR_FUMBLE } from "../Data/Constants";
-import Consumable from "../Data/Consumable";
-import { rollDice } from "../Data/DiceRoller";
+import Ability, { inflateAbility } from "../../../Data/Ability";
+import Stat, { inflateStat } from "../../../Data/Stat";
+import Character from "../../../Data/Character";
+import { DIE_ROLL_FLAIR_CRIT, DIE_ROLL_FLAIR_FUMBLE } from "../../../Data/Constants";
+import Consumable from "../../../Data/Consumable";
+import { rollDice } from "../../../Data/DiceRoller";
 import AbilityFrame from "./AbilityFrame";
 import AttributeFrame from "./AttributeFrame";
-import ConsumableFrame from "./ConsumableFrame";
-import Field from "./Field";
-import ListOrdered from "./ListOrdered";
-import SearchSelect from "./SearchSelect";
-import { _normalizeForMatching, formatNumber, isString } from "../Utility/Utility";
-import Bonus from "../Data/Bonus";
-import TempBonusFrame from "./TempBonusFrame";
-import Counter from "./Counter";
-import ActionRollAttack from "../Data/Actions/ActionRollAttack";
-import { storeCharacter } from "../Utility/storage_aws_static";
+import ConsumableFrame from "../ConsumableFrame";
+import Field from "../Field";
+import ListOrdered from "../ListOrdered";
+import SearchSelect from "../SearchSelect";
+import { _normalizeForMatching, formatNumber, isString } from "../../../Utility/Utility";
+import Bonus from "../../../Data/Bonus";
+import TempBonusFrame from "../TempBonusFrame";
+import Counter from "../Counter";
+import ActionRollAttack from "../../../Data/Actions/ActionRollAttack";
+import { storeCharacter } from "../../../Utility/storage_aws_static";
 
 function CharacterFrame({ character, updateCharacter, game, updateGame, socket, characterIsInGame, diceRolled, attributeAdjusted, abilityModified, characterList, setCharacterList, renameConsumable, addRoller }) {
 

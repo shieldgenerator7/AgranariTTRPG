@@ -1,7 +1,7 @@
 "use strict";
 
-import Counter from "./Counter";
-import Field from "./Field";
+import Counter from "../Components/Counter";
+import Field from "../Components/Field";
 
 function TempBonusFrame({ tempBonus, updateFunc }) {
     return (

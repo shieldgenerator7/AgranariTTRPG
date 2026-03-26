@@ -1,8 +1,8 @@
 "use strict";
 
-import Character, { inflateCharacter } from "../Data/Character";
-import Species from "../Data/Species";
-import Field from "./Field";
+import Character, { inflateCharacter } from "../../Data/Character";
+import Species from "../../Data/Species";
+import Field from "../Components/Field";
 import LogPanel from "./LogPanel";
 import React from "react";
 

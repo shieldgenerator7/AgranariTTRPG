@@ -1,7 +1,7 @@
 "use strict";
 
 import React from 'react';
-import { clamp, isNumber } from "../Utility/Utility";
+import { clamp, isNumber } from "../../Utility/Utility";
 
 function Counter({ value, setValue, allowNegative = false, inline = false, max = 99, increment = 1, label = "", showEditField = false, extraclass = "" }) {
     //input checking

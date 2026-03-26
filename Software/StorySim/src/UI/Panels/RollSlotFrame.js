@@ -1,12 +1,12 @@
 "use strict";
 
-import Attribute from "../Data/Character";
-import { ACTION_ROLL_MODIFY, ONCLICK_ADJUST_VALUE, ONCLICK_DIE_ROLL, ONCLICK_TOGGLE } from "../Data/Constants";
-import { rollDice } from "../Data/DiceRoller";
-import RollGroup from "../Data/RollGroup";
-import { clamp, formatNumber, isNumber, isString } from "../Utility/Utility";
-import Counter from "./Counter";
-import Field from "./Field";
+import Attribute from "../../Data/Character";
+import { ACTION_ROLL_MODIFY, ONCLICK_ADJUST_VALUE, ONCLICK_DIE_ROLL, ONCLICK_TOGGLE } from "../../Data/Constants";
+import { rollDice } from "../../Data/DiceRoller";
+import RollGroup from "../../Data/RollGroup";
+import { clamp, formatNumber, isNumber, isString } from "../../Utility/Utility";
+import Counter from "../Components/Counter";
+import Field from "../Components/Field";
 
 //2024-12-11: copied from AttributeFrame
 function RollSlotFrame({ rollSlot, updateRollSlot }) {

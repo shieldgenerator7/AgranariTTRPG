@@ -1,10 +1,10 @@
 "use strict";
 
-import { ACTION_ROLL_MODIFY, ACTION_ROLL_REROLL, ACTION_VARIABLE_MODIFY } from "../Data/Constants";
-import { rollDice } from "../Data/DiceRoller";
-import { isString } from "../Utility/Utility";
-import Field from "./Field";
-import SearchSelect from "./SearchSelect";
+import { ACTION_ROLL_MODIFY, ACTION_ROLL_REROLL, ACTION_VARIABLE_MODIFY } from "../../../Data/Constants";
+import { rollDice } from "../../../Data/DiceRoller";
+import { isString } from "../../../Utility/Utility";
+import Field from "../Field";
+import SearchSelect from "../SearchSelect";
 
 function AbilityFrame({ ability, character, updateFunc, attributeAdjusted, abilityModified, diceRolled, title, showResourceCost = true, inline = false, activeFunc, setActiveFunc }) {
     activeFunc ??= () => ability.Active;

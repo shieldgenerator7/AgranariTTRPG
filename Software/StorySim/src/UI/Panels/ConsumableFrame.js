@@ -1,8 +1,8 @@
 "use strict";
 
-import AbilityFrame from "./AbilityFrame";
-import Counter from "./Counter";
-import Field from "./Field";
+import AbilityFrame from "./Panels/AbilityFrame";
+import Counter from "../Components/Counter";
+import Field from "../Components/Field";
 
 function ConsumableFrame({ consumableReference, character, updateCharacter, game, updateFunc, attributeAdjusted, abilityModified, diceRolled }) {
     let consumable = game.getConsumable(consumableReference.consumableName);

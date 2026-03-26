@@ -2,9 +2,9 @@
 
 //2024-03-02: copied from https://www.dhiwise.com/post/designing-stunning-artwork-with-react-canvas-draw
 import React, { useRef, useEffect } from 'react';
-import { RESOLUTION, renderCard } from '../Utility/Render';
-import { generateCardSkin } from '../Data/DrawData';
-import { downloadFile } from '../Utility/Download';
+import { RESOLUTION, renderCard } from '../../Utility/Render';
+import { generateCardSkin } from '../../Data/DrawData';
+import { downloadFile } from '../../Utility/Download';
 
 const width = 2.5 * RESOLUTION;
 const height = 3.5 * RESOLUTION;

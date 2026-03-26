@@ -1,6 +1,6 @@
 "use strict";
 
-import Ability from "../Data/Ability";
+import Ability from "../Data/Actions/Ability";
 
 export function parsePasteFromExcel(pasteString) {
     let pasteSplit = pasteString.split("\n");

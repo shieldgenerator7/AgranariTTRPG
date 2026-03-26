@@ -1,6 +1,6 @@
 "use strict";
 
-import { ACTION_ROLL_MODIFY, ONCLICK_TOGGLE } from "./Constants";
+import { ACTION_ROLL_MODIFY, ONCLICK_TOGGLE } from "../Constants";
 
 class Ability {
     constructor(name) {

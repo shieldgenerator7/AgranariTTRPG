@@ -1,7 +1,7 @@
 "use strict";
 
 import { inflateArray, clamp, arraySum, _normalizeForMatching } from "../Utility/Utility";
-import Ability, { inflateAbility } from "./Ability";
+import Ability, { inflateAbility } from "./Actions/Ability";
 import Stat, { inflateStat } from "./Stat";
 import { inflateConsumable } from "./Consumable";
 import ConsumableReference, { inflateConsumableReference } from "./ConsumableReference";

@@ -1,6 +1,6 @@
 "use strict";
 
-import Ability, { inflateAbility } from "./Ability";
+import Ability, { inflateAbility } from "./Actions/Ability";
 
 class Consumable {
     constructor(name) {

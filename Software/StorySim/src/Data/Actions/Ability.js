@@ -2,6 +2,9 @@
 
 import { ACTION_ROLL_MODIFY, ONCLICK_TOGGLE } from "../Constants";
 
+/**
+ * Something a character can do, ex: attack or cast a spell
+ */
 class Ability {
     constructor(name) {
         this.name = name;
@@ -11,16 +14,13 @@ class Ability {
         this.resourceName = "";
         this.resourceCost = 0;
 
-        //on click
-        this.onclick = ONCLICK_TOGGLE;
-        this.action = ACTION_ROLL_MODIFY;
+        this.conditionList = [];//TODO: conditions (ex: holding sword)
 
-        //effect
-        this.dieRollBonus = 0;
-        this.dieRollAttributeFilter = "";//"Attack" or other attribute
+        this.rollList = [];//rolls to do as part of activating ability
 
-        //runtime vars
-        this.active = false;
+        this.actionList = [];//actions to take based on the result of the rolls (or to just take if there are no rolls to make)
+
+        //ideally i think i would have a custom scripting language for the abilities
 
     }
 

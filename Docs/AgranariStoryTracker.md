@@ -53,3 +53,53 @@ Most programs have an undo system so you can undo mistakes you made, or undo som
 # Information
 
 Some characters learn something new and that changes things in the story. Im not really sure how to track that, exactly. I guess every character could have a knowledge section of each character sheet.
+
+# Playback
+
+Because it tracks everything, you watch a realtime playback of the events of the story. Sure, itll be from a 2D topdown perspective, but still, that’s pretty cool, right?
+
+In fact, you can watch a full playback of everything that happens in the story, from the beginning to the end, going through each scene. Timeskips would be skipped, of course.
+
+So you can watch a battle playout the way it did during the session, or how you decided it would play out. Complete with any visual effects that were added, and player comments.
+
+Maybe even voiceline recordings, too. If it can record that kind of thing for in-character moments.
+
+So conversation scenes can also be played back.
+
+# Conversations
+
+Some scenes are mostly all talk, and little action takes place. It’s hard to say how much time passes here, so you can timestamp each line of dialogue, and it will do its best to figure out how long each thing will take to say. Then each line of dialogue will appear in the timeline, complete with its starting point and duration. You can change both, so you can have it take place during another character’s dialogue (interrupting them), and have them speaker faster or slower. This is useful for figuring out how long the conversation lasts, if that matters. I imagine that for most conversations, the actual time it takes doesn’t matter at all. But some conversations or dialogue happens during time-sensitive moments, and how long it takes actually matters.
+
+# Exports
+
+With all this information, the tool can export into several formats. It can export as a video, showing all the important scenes and how they play out. It can export as a story, narrating everything that happens. It can also export as an audiobook, which is basically the story but with sound.
+
+Of course, none of these exports are going to be \*good\*. You wouldn’t be able to make professional level stuff with this. But it could be a good starting point for a story or so.
+
+# Abilities and Actions
+
+Every character has abilities and actions they gain throughout the story. You can even add them at anytime mid scene. This is useful if the character wants to do something creative with their tools that you didn’t expect, so you can give them a mechanical ability to describe how that tool usage works in game.
+
+## Hotbars
+
+Each character has a lot of actions they can do, but most actions only happen in certain contexts, and each character needs easy access to actions they do a lot, so this is where hotbars come into play.
+
+Each hotbar is specific to a character, but can be copied between characters. Copying a hotbar to another character doesn’t give that character any new abilities / actions they didn’t already have.
+
+Each character can have multiple hotbars they can switch between.
+
+Each button on a hotbar has a keyboard shortcut they can use to activate that action quickly, and it can be assigned to any key on the keyboard, not just 1-9.
+
+## Ongoing Actions
+
+Lots of actions have durations, and for that duration, they are active, and changing stats of characters and objects.
+
+So each action has a start timestamp, and either an end timestamp with the stat changes at the end (to be linearly interpolated in the middle), or it has a list of what the stats will be at certain times. Or it will say how stats change over time, so if the endpoint changes, you know what the stats will be at that time.
+
+This is similar to timeskips work, I see.
+
+One example is movement. When the character takes the move action, the action has a start timestamp and an end timestamp, with where they were when they started, and where they were when the time ended. Then, in the timeline, you can change the duration of the movement to say how fast they went. Ideally, when you use the move action, you also can say how fast they move, or you have various move actions for different speeds.
+
+## Windup
+
+Some actions have a windup, then do something. Attacking, for example. After the attack windup, the attack goes through, and says to do some rolls that calculate damage.

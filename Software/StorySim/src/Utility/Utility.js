@@ -334,7 +334,7 @@ function flipImage(img, flipX, flipY) {
     return newImage;
 }
 
-function copy(obj) {
+export function copy(obj) {
     return JSON.parse(JSON.stringify(obj));
 }
 

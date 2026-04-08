@@ -10,15 +10,15 @@ class Event{
     constructor(timestamp, characterName) {
 
         //saved data
-        this.timestamp = timestamp ?? 0;//in milliseconds since start of in-universe time
         this.characterName = characterName ?? "";//the character the event acts upon
         this.duration = 1;//in milliseconds
         //keyframe is an "any" object
         // it can have any variables in it
-        //every keyframe needs at least a timestamp
         //key frames need to be in order by timestamp
         //only put interpolatable variables in here (numbers)
         //assumes all key frames have all the same variables
+        this.timestamp = timestamp ?? 0;//in milliseconds relative to start of scene
+        //every keyframe needs at least a timestamp (relative to event timestamp).
         this.keyFrameList = [];
 
         //cached variables        
@@ -33,23 +33,32 @@ class Event{
         this._keyList = Object.keys(kf1);
     }
 
+    /**
+     * Retrieves the frame at the given scene time
+     * @param {number} timestamp Timestamp relative to start of scene
+     * @returns The frame for the character that contains what the values should be set to
+     */
     getFrame(timestamp) {
+        if (timestamp < this.timestamp) {
+            return null;
+        }
+        const TIMESTAMP = timestamp - this.timestamp;
         for (let i = 0; i < keyFrameList.length; i++){
             const kf1 = this.keyFrameList[i];
-            if (kf1.timestamp == timestamp) {
+            if (kf1.timestamp == TIMESTAMP) {
                 return copy(kf1);
             }
             if (!kf2) {
                 break;
             }
             const kf2 = this.keyFrameList[i + 1];
-            if (kf2.timestamp == timestamp) {
+            if (kf2.timestamp == TIMESTAMP) {
                 return copy(kf2);
             }
             //found lower and upper bound, interpolate
-            if (between(timestamp, kf1.timestamp, kf2.timestamp)) {
+            if (between(TIMESTAMP, kf1.timestamp, kf2.timestamp)) {
                 //percent = partial duration / full duration
-                const percent = (timestamp - kf1.timestamp) / (kf2.timestamp - kf1.timestamp);
+                const percent = (TIMESTAMP - kf1.timestamp) / (kf2.timestamp - kf1.timestamp);
                 const kf = {};
                 this._keyList.forEach(k => {
                     kf[k] = (kf2[k] - kf1[k]) * percent;

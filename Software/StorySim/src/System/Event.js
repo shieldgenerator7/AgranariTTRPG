@@ -1,24 +1,28 @@
-import { inflateCharacter } from "../Data/Character";
-import { between, copy, inflateArray, isNumber } from "../Utility/Utility";
+import { arrayRemove, between, copy} from "../Utility/Utility";
 
-
+const RESERVED_KEY_WORDS = [
+    "timestamp",
+];
 
 /**
  * This describes an event in a timeline, such as a character moving, taking an action, gaining exp, etc
+ * This is for recording events that have already happened, and not for queuing actions that will take place in the future
  */
 class Event{
-    constructor(timestamp, characterName) {
+    constructor(timestamp, characterName, actionName) {
 
         //saved data
-        this.characterName = characterName ?? "";//the character the event acts upon
-        this.duration = 1;//in milliseconds
-        //keyframe is an "any" object
-        // it can have any variables in it
-        //key frames need to be in order by timestamp
-        //only put interpolatable variables in here (numbers)
-        //assumes all key frames have all the same variables
         this.timestamp = timestamp ?? 0;//in milliseconds relative to start of scene
-        //every keyframe needs at least a timestamp (relative to event timestamp).
+        this.characterName = characterName ?? "";//the character that created this event
+        this.actionName = actionName ?? "";//the action that created this event
+        this.duration = 0;//in milliseconds
+        /** keyframe is an "any" object,
+        * it can have any variables in it.
+        * every keyframe needs at least a timestamp (relative to event timestamp).
+        * key frames need to be in order by timestamp.
+        * only put interpolatable variables in here (numbers).
+        * assumes all key frames have all the same variables.
+        */
         this.keyFrameList = [];
 
         //cached variables        
@@ -28,9 +32,19 @@ class Event{
     /** sets up all the cached variables */
     init() {
         //TODO: error check key frame list having null values
-        //TODO: error check key frames not having same values
+        //TODO: error check key frames being in order by timestamp
         const kf1 = this.keyFrameList[0];
         this._keyList = Object.keys(kf1);
+        RESERVED_KEY_WORDS.forEach(word => {            
+            arrayRemove(this._keyList, word);
+        });
+        //TODO: error check key frames not having same values
+        //TODO: error check all key variables are numbers
+
+        //set the duration if necessary
+        if (duration < this.keyFrameList[-1].timestamp) {
+            this.duration = this.keyFrameList[-1].timestamp;
+        }
     }
 
     /**

@@ -14,11 +14,12 @@ class Ability {
         this.resourceName = "";
         this.resourceCost = 0;
 
-        this.conditionList = [];//TODO: conditions (ex: holding sword)
+        this.requirementList = [];//TODO: requirements for this ability to be available (ex: holding sword)
+        //requirement vs condition:
+        //   requirement: something that needs to be true for the ability to be available to be activated / triggered
+        //   condition: something that needs to be true for continued processing of the ability (ex: a roll meeting a certain value and/or beating another roll)
 
-        this.rollList = [];//rolls to do as part of activating ability
-
-        this.actionList = [];//actions to take based on the result of the rolls (or to just take if there are no rolls to make)
+        this.processList = [];//list of conditions, rolls, actions (usually in that order)
 
         //ideally i think i would have a custom scripting language for the abilities
 

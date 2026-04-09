@@ -3,7 +3,7 @@
 /**
  * An action taken as part of an ability
  */
-class AbilityAction{
+class AbilityAction extends AbilityAtom{
     constructor() {
         this.action = ACTION_ROLL_MODIFY;
 
@@ -13,7 +13,8 @@ class AbilityAction{
         this.dieRollBonus = 0;
     }
 
-    takeAction(){
+    process(){
         //do nothing
+        return true;
     }
 }

@@ -1,13 +1,13 @@
 "use strict";
 
-import { clamp, formatNumber } from "../Utility/Utility";
-import { LIMIT_POSITIVE_ONLY, ONCLICK_ADJUST_VALUE, ONCLICK_DIE_ROLL, ONCLICK_TOGGLE, REGEX_SPACER_TEST } from "./Constants";
+import { formatNumber } from "../Utility/Utility";
 
 let stringifyAttribute = [
     "name",
     "displayname",
     "xp",
     "xp_variance",
+    "statCost",
 ];
 
 class Stat {
@@ -19,12 +19,17 @@ class Stat {
         this.xp = 0;
         this.xp_variance = 0;
         this.hasVariance = true;
+        /**
+         * How much each stat point costs in xp, conversion rate.
+         * usually costs losts of xp to gain 1 base stat point,
+         * costs less xp to gain 1 variance stat point.
+         * aka easy to increase the max value, hard to increase the min value
+         */
+        this.statCost = statCost ?? 20;
 
         //computed variables
-        this.statCost = statCost ?? 20;
         this.bonusList = {};
         this.bonusTotal = 0;
-        this.lastRoll = 0;
         this.statValue = 0;
         this.statVarianceValue = 0;
         this.displayStyle = 0;//TODO: make setting for this; 0: 20 +d20, 1: 20 - 40
@@ -104,8 +109,7 @@ export default Stat;
 export function inflateStat(stat) {
     Object.setPrototypeOf(stat, Stat.prototype);
 
-    stat.statCost = stat.statCost ?? 20;
-    stat.lastRoll = 0;
+    stat.statCost ??= 20;
     stat.displayStyle = 0;
     stat._computeValues();
 }

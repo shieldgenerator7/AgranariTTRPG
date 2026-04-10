@@ -3,10 +3,6 @@
 import { inflateArray, clamp, arraySum, _normalizeForMatching } from "../Utility/Utility";
 import Ability, { inflateAbility } from "./Actions/Ability";
 import Stat, { inflateStat } from "./Stat";
-import { inflateConsumable } from "./Consumable";
-import ConsumableReference, { inflateConsumableReference } from "./ConsumableReference";
-import { inflateRollGroup } from "./RollGroup";
-import { inflateBonus } from "./Bonus";
 import { STATS_NO_VARIANCE } from "./Species";
 
 class Character {
@@ -14,10 +10,8 @@ class Character {
         this.name = name;
         this.portrait = undefined;//TODO: implement portrait
         this.statList = [];
-        this.abilityList = [];
-        this.consumableList = [];
-        this.bonusList = [];
-        this.resources = {
+        this.actionList = [];
+        this.resourceList = {
             health: 100,
             willPower: 20,
         };
@@ -44,12 +38,6 @@ class Character {
 
         //TODO: implement equipment
         this.equipmentList = [];
-        //TODO: implement consumables
-        this.consumableList = [];
-
-        this.restList = [];//TOOD: implement rests
-        this.dieRollLog = [];
-        this.dieRollLogSelect = [];
 
         this.isCharacter = true;
     }
@@ -66,8 +54,7 @@ class Character {
 
     getStatValue(statName) {
         let value = this.getStat(statName)?.Stat ?? 0;
-        let bonusList = this.getBonusList(statName);
-        return value + arraySum(bonusList, bonus => bonus.amount);
+        return value;
     }
 
     getMaxStatName(resourceName) {
@@ -108,82 +95,6 @@ class Character {
         return;
     }
 
-    getConsumable(cnsmName) {
-        cnsmName = cnsmName.trim();
-        return this.consumableList.find(cr => cr.consumableName == cnsmName);
-    }
-
-    hasResource(ability) {
-        console.error("Method not re-implemented yet!");
-        return;
-        //Attributes
-        let attr = this.getStat(ability.resourceName);
-        if (attr && attr.value >= ability.resourceCost) {
-            return true;
-        }
-        //Consumables
-        let conRef = this.getConsumable(ability.resourceName);
-        if (conRef && conRef.count >= ability.resourceCost) {
-            return true;
-        }
-        //Default
-        return false;
-    }
-
-    consumeResource(ability) {
-        console.error("Method not re-implemented yet!");
-        return;
-        //Attributes
-        let attr = this.getStat(ability.resourceName);
-        if (attr) {
-            let prevValue = attr.Value;
-            attr.Value -= ability.resourceCost;
-            return [prevValue, attr.Value];
-        }
-        //Consumables
-        let conRef = this.getConsumable(ability.resourceName);
-        if (conRef) {
-            let prevCount = conRef.count;
-            conRef.count -= ability.resourceCost;
-            return [prevCount, conRef.count];
-        }
-        //Default
-        return [0, 0];
-    }
-
-    addConsumable(consumable, count) {
-        let consumableReference = this.getConsumable(consumable.name);
-        if (!consumableReference) {
-            //early exit: theres none to add, and its not in the list
-            if (count == 0) {
-                return;
-            }
-            consumableReference = new ConsumableReference(consumable.name, 0);
-            this.consumableList.push(consumableReference);
-        }
-        consumableReference.count += count;
-        if (consumableReference.count <= 0 && !consumableReference.active) {
-            let index = this.consumableList.indexOf(consumableReference);
-            this.consumableList.splice(index, 1);
-        }
-    }
-
-    getBonusList(statName) {
-        statName = _normalizeForMatching(statName);
-        return this.bonusList.filter(
-            bonus => _normalizeForMatching(bonus.filter).includes(statName)
-        );
-    }
-
-    getHitChance(character) {
-        //2024-12-15: using formula from https://math.stackexchange.com/a/5009147/308576
-        let acc = this.getStatValue("accuracy");
-        let accvar = this.getStat("accuracy").StatVariance;
-        let dodge = this.getStatValue("dodge");
-        let dodgevar = this.getStat("dodge").StatVariance;
-
-    }
-
 }
 export default Character;
 window.Character = Character;
@@ -195,14 +106,7 @@ export function inflateCharacter(character, updateCharacter = (c) => { }) {
 
     character.statList = inflateArray(character.statList, inflateStat);
 
-    character.abilityList = inflateArray(character.abilityList, inflateAbility);
-
-    character.consumableList = inflateArray(character.consumableList, inflateConsumableReference);
-
-    character.bonusList = inflateArray(character.bonusList, inflateBonus);
-
-    character.dieRollLog = inflateArray(character.dieRollLog, inflateRollGroup);
-    character.dieRollLogSelect = inflateArray(character.dieRollLogSelect, () => { });
+    character.actionList = inflateArray(character.actionList, inflateAbility);
 
     character.resources ??= {
         health: 100,

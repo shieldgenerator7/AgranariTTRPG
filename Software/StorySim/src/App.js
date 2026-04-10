@@ -19,10 +19,12 @@ import Dropzone from 'react-dropzone';
 import { UploadFile } from './Utility/Upload';
 import Species, { readSpeciesFromCSV } from './Data/Species';
 import { useAuth } from "react-oidc-context";
+import { testTimeline } from './Test/TestTimeline';
 
 function App() {
     //Title
     //2024-12-14: copied from https://stackoverflow.com/a/46176359/2336212
+    window.testTimeline = testTimeline;
     useEffect(() => {
         document.title = `Agranari TTRPG ${VERSION}`;
     }, []);

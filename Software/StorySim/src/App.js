@@ -7,7 +7,6 @@ import Storage from './Utility/Storage';
 import { VERSION } from './Version';
 import { _normalizeForMatching, arrayRemove, isImage, isNumber } from './Utility/Utility';
 import { rollDice } from './Data/DiceRoller';
-import CharacterFrame from './UI/Components/Panels/CharacterFrame';
 import Character, { inflateCharacter } from './Data/Character';
 import CommandPanel from './UI/Panels/CommandPanel';
 import Log from './Data/Log';
@@ -475,44 +474,6 @@ function App() {
                                 )
                             }
                         </div>
-                    }
-                    {characterToShow &&
-                        <CharacterFrame
-                            character={characterToShow}
-                            updateCharacter={(c) => updateCharacter(c)}
-                            game={game}
-                            updateGame={updateGame}
-                            socket={socket}
-                            characterIsInGame={characterIsInGame(characterToShow)}
-                            diceRolled={diceRolled}
-                            attributeAdjusted={attributeAdjusted}
-                            abilityModified={abilityModified}
-                            characterList={characterList}
-                            setCharacterList={setCharacterList}
-                            renameConsumable={renameConsumablePropagation}
-                            addRoller={addRoller}
-                            key={`character_`}
-                        ></CharacterFrame>
-                    }
-                    {!characterToShow &&
-                        characterList.map((char, i) => (
-                            <CharacterFrame
-                                character={char}
-                                updateCharacter={(c) => updateCharacter(c)}
-                                game={game}
-                                updateGame={updateGame}
-                                socket={socket}
-                                characterIsInGame={characterIsInGame(char)}
-                                diceRolled={diceRolled}
-                                attributeAdjusted={attributeAdjusted}
-                                abilityModified={abilityModified}
-                                characterList={characterList}
-                                setCharacterList={setCharacterList}
-                                renameConsumable={renameConsumablePropagation}
-                                addRoller={addRoller}
-                                key={`character_${i}`}
-                            ></CharacterFrame>
-                        ))
                     }
                     {
                         !characterToShow &&

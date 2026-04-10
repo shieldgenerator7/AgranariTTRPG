@@ -9,6 +9,14 @@ export class Timeline{
         this.eventList = [];
     }
 
+    getEvent(charName, actionName, timestamp) {
+        return this.eventList.find(event =>
+            event.characterName == charName
+            && event.actionName == actionName
+            && event.timestamp <= timestamp && event.timestamp + event.duration >= timestamp
+        );
+    }
+
     /**
      * Returns a copy of the given character that is fast forwarded
      * @param {Character} character The character object to fast forward.

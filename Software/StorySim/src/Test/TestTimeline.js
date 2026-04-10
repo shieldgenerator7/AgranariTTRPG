@@ -33,6 +33,13 @@ export function testTimeline (){
     //Change
     outputCharacter("Char2", timeline.fastForward(char1, 2), "Strength");
 
+    
+    //0: expect no change
+    outputCharacter("Char3", timeline.fastForward(char1, 0), "Strength");
+    //1: expect change
+    outputCharacter("Char4", timeline.fastForward(char1, 1), "Strength");
+};
+
 function outputCharacter(name, character, statName) {
     inflateCharacter(character);
     console.log(name, copy(character), character.getStat(statName)?.Stat);

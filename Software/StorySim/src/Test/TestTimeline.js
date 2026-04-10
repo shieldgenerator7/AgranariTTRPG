@@ -28,12 +28,12 @@ export function testTimeline (){
     console.log("scene", copy(scene));
 
     //Pre Output
-    console.log("Char1", copy(char1), char1.statList[0].Stat);
+    outputCharacter("Char1", char1, "Strength");
 
     //Change
-    const char2 = timeline.fastForward(char1, 2);
-    inflateCharacter(char2);
+    outputCharacter("Char2", timeline.fastForward(char1, 2), "Strength");
 
-    //Post Output
-    console.log("Char2", copy(char2), char2.statList[0].Stat);
-};
+function outputCharacter(name, character, statName) {
+    inflateCharacter(character);
+    console.log(name, copy(character), character.getStat(statName)?.Stat);
+}

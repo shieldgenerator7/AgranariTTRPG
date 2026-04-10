@@ -1,5 +1,5 @@
 import { inflateCharacter } from "../Data/Character";
-import { copy } from "../Utility/Utility";
+import { arraySort, copy } from "../Utility/Utility";
 import { RESERVED_KEY_WORDS } from "./Event";
 
 
@@ -7,6 +7,15 @@ import { RESERVED_KEY_WORDS } from "./Event";
 export class Timeline{
     constructor() {
         this.eventList = [];
+    }
+
+    _keep() {
+        arraySort(this.eventList, event => event.timestamp);
+    }
+
+    addEvent(event) {
+        this.eventList.push(event);
+        this._keep();
     }
 
     getEvent(charName, actionName, timestamp) {
